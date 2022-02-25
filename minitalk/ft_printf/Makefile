@@ -6,10 +6,10 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 13:38:53 by lgenevey          #+#    #+#              #
-#    Updated: 2021/11/16 10:16:00 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/02/25 14:52:51 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-CC = gcc
+
 CFLAGS = -Wall -Wextra -Werror
 SRCS =	ft_printf.c \
 		ft_putchar_fd.c \
@@ -23,7 +23,7 @@ SRCS =	ft_printf.c \
 		ft_norminette.c
 
 OBJS = ${SRCS:.c=.o}
-NAME = libftprintf.a
+NAME = ft_printf.a
 AR = ar rc
 RM = rm -f
 LIBFT_PATH = $(PARENT_DIR)

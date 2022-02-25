@@ -6,11 +6,22 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:59:03 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/02/17 20:34:06 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/02/25 17:50:07 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+	get information
+	display it
+	send acknowlwdge to client
+	---
+	Manual says to use sigaction() instead of signal() for portability reasons
+
+*/
+
 #include "../includes/minitalk.h"
+
+
 
 
 /*
@@ -20,7 +31,7 @@
 void	sig_handler(int sig)
 {
 	if (sig == SIGUSR1 || sig == SIGUSR2)
-		ft_printf("correct signal sent");
+		ft_printf("blblblbl");
 }
 
 /*
@@ -28,13 +39,10 @@ void	sig_handler(int sig)
 */
 int	main(void)
 {
-	int	pid;
-
-	pid = getpid();
-	ft_printf("%d\n", pid);
+	ft_putnbr(getpid()); // get and write pid we can use it on client
 	while(1)
 	{
-
+		pause();
 	}
 
 	return (0);

@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 15:59:08 by lgenevey          #+#    #+#              #
-#    Updated: 2022/02/17 15:59:09 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/02/25 14:43:46 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,9 @@ OBJS = ${SRCS:.c=.o}
 
 CLIENT = client
 SERVER = server
-LIBFT = libft/libft.all
+#LIBFT = libft/libft.all
 FT_PRINTF = ft_printf/printf.a
-LIBFT_PATH = ./libft/
+#LIBFT_PATH = ./libft/
 FT_PRINTF_PATH = ./ft_printf/
 
 AR = ar rc
@@ -30,26 +30,37 @@ RM = rm -f
 
 all: ${SERVER} ${CLIENT}
 
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_PATH)
+# $(LIBFT):
+# 	$(MAKE) -C $(LIBFT_PATH)
 
 $(FT_PRINTF):
 	$(MAKE) -C $(FT_PRINTF_PATH)
 
-$(CLIENT): $(FT_PRINTF) $(LIBFT) client.o minitalk.h
-	$(CC) -o client client.o $(LIBFT) $(FT_PRINTF)
+# $(CLIENT): $(FT_PRINTF) $(LIBFT) client.o minitalk.h
+# 	$(CC) -o client client.o $(LIBFT) $(FT_PRINTF)
+
+# $(SERVER): $(FT_PRINTF) $(LIBFT) server.o minitalk.h
+# 	$(CC) -o server server.o $(LIBFT) $(FT_PRINTF)
+$(CLIENT): $(FT_PRINTF) client.o minitalk.h
+	$(CC) -o client client.o $(FT_PRINTF)
 
 $(SERVER): $(FT_PRINTF) $(LIBFT) server.o minitalk.h
-	$(CC) -o server server.o $(LIBFT) $(FT_PRINTF)
+	$(CC) -o server server.o $(FT_PRINTF)
 
+# clean:
+# 	${RM} ${OBJS}
+# 	$(MAKE) -C $(LIBFT_PATH) clean
+# 	$(MAKE) -C $(FT_PRINTF_PATH) clean
 clean:
 	${RM} ${OBJS}
-	$(MAKE) -C $(LIBFT_PATH) clean
 	$(MAKE) -C $(FT_PRINTF_PATH) clean
 
+# fclean: clean
+# 	${RM} ${SERVER} ${SERVER}
+# 	$(MAKE) -C $(LIBFT_PATH) fclean
+# 	$(MAKE) -C $(FT_PRINTF_PATH) fclean
 fclean: clean
 	${RM} ${SERVER} ${SERVER}
-	$(MAKE) -C $(LIBFT_PATH) fclean
 	$(MAKE) -C $(FT_PRINTF_PATH) fclean
 
 re: fclean all
