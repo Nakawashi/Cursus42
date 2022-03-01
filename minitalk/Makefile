@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 15:59:08 by lgenevey          #+#    #+#              #
-#    Updated: 2022/03/01 15:12:47 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/03/01 15:30:39 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ FT_PRINTF_DIR	=	./FT_PRINTF
 
 
 	# Mandatory Variables #
-CLIENT	=	./src/client.c
-SERVER	=	./src/server.c
+CLIENT_SRC	=	./src/client.c
+SERVER_SRC	=	./src/server.c
 INC		=	-I. -I$(FT_PRINTF_DIR) -I$(FT_PRINTF_DIR)/stack \
 			-I$(FT_PRINTF_DIR)/get_next_line
 
@@ -48,17 +48,16 @@ ifeq ($(SANITIZE), 1)
 	D_FLAG	=	-fsanitize=leak -g
 endif
 
-
 all: $(SERVER) $(CLIENT)
 
 $(NAME): all
 
 $(SERVER): $(FT_PRINTF)
-	@ $(CC) $(D_FLAG) $(CFLAG) $(SERVER) $(FT_PRINTF) $(INC) -o $(SERVER)
+	@ $(CC) $(D_FLAG) $(CFLAG) $(SERVER_SRC) $(FT_PRINTF) $(INC) -o $(SERVER)
 	@printf "$(_SUCCESS) server ready.\n"
 
 $(CLIENT): $(FT_PRINTF)
-	@ $(CC) $(D_FLAG) $(CFLAG) $(CLIENT) $(FT_PRINTF) $(INC) -o $(CLIENT)
+	@ $(CC) $(D_FLAG) $(CFLAG) $(CLIENT_SRC) $(FT_PRINTF) $(INC) -o $(CLIENT)
 	@printf "$(_SUCCESS) client ready.\n"
 
 
