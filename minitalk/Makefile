@@ -10,59 +10,78 @@
 #                                                                              #
 # **************************************************************************** #
 
+	# Library Name #
+NAME =
+CLIENT	=	client
+SERVER	=	server
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-SRCS = server.c \
-	   client.c
+	# ft_printf Variables #
+FT_PRINTF		=	./FT_PRINTF/FT_PRINTF.a
+FT_PRINTF_DIR	=	./FT_PRINTF
 
-OBJS = ${SRCS:.c=.o}
 
-CLIENT = client
-SERVER = server
-#LIBFT = libft/libft.all
-FT_PRINTF = ft_printf/printf.a
-#LIBFT_PATH = ./libft/
-FT_PRINTF_PATH = ./ft_printf/
+	# Mandatory Variables #
+CLIENT	=	client.c
+SERVER	=	server.c
+INC		=	-I. -I$(FT_PRINTF_DIR) -I$(FT_PRINTF_DIR)/stack \
+			-I$(FT_PRINTF_DIR)/get_next_line
 
-AR = ar rc
-RM = rm -f
+	# Compiling Variables #
+CC			=	gcc
+CFLAG		=	-Wall -Wextra -Werror
+RM			=	rm -f
 
-all: ${SERVER} ${CLIENT}
+	# Colors #
+GREEN		=	\e[38;5;118m
+YELLOW		=	\e[38;5;226m
+RESET		=	\e[0m
+_SUCCESS	=	[$(GREEN)SUCCESS$(RESET)]
+_INFO		=	[$(YELLOW)INFO$(RESET)]
 
-# $(LIBFT):
-# 	$(MAKE) -C $(LIBFT_PATH)
+	# Debugger https://github.com/mlanca-c/Minitalk/blob/main/Makefile #
+ifeq ($(DEBUG), 1)
+	D_FLAG	=	-g
+endif
+
+	# Fsanitize #
+ifeq ($(SANITIZE), 1)
+	D_FLAG	=	-fsanitize=leak -g
+endif
+
+
+all: $(SERVER) $(CLIENT)
+
+$(NAME): all
+
+$(SERVER): $(FT_PRINTF)
+	@ $(CC) $(D_FLAG) $(CFLAG) $(SERVER) $(FT_PRINTF) $(INC) -o $(SERVER)
+	@printf "$(_SUCCESS) server ready.\n"
+
+$(CLIENT): $(FT_PRINTF)
+	@ $(CC) $(D_FLAG) $(CFLAG) $(CLIENT) $(FT_PRINTF) $(INC) -o $(CLIENT)
+	@printf "$(_SUCCESS) client ready.\n"
+
 
 $(FT_PRINTF):
-	$(MAKE) -C $(FT_PRINTF_PATH)
+	@ $(MAKE) DEBUG=$(DEBUG) -C ./FT_PRINTF
 
-# $(CLIENT): $(FT_PRINTF) $(LIBFT) client.o minitalk.h
-# 	$(CC) -o client client.o $(LIBFT) $(FT_PRINTF)
-
-# $(SERVER): $(FT_PRINTF) $(LIBFT) server.o minitalk.h
-# 	$(CC) -o server server.o $(LIBFT) $(FT_PRINTF)
-$(CLIENT): $(FT_PRINTF) client.o minitalk.h
-	$(CC) -o client client.o $(FT_PRINTF)
-
-$(SERVER): $(FT_PRINTF) $(LIBFT) server.o minitalk.h
-	$(CC) -o server server.o $(FT_PRINTF)
-
-# clean:
-# 	${RM} ${OBJS}
-# 	$(MAKE) -C $(LIBFT_PATH) clean
-# 	$(MAKE) -C $(FT_PRINTF_PATH) clean
 clean:
-	${RM} ${OBJS}
-	$(MAKE) -C $(FT_PRINTF_PATH) clean
+	@ $(RM) $(CLIENT) $(SERVER)
+	@printf "$(_INFO) client removed.\n"
+	@printf "$(_INFO) server removed.\n"
 
-# fclean: clean
-# 	${RM} ${SERVER} ${SERVER}
-# 	$(MAKE) -C $(LIBFT_PATH) fclean
-# 	$(MAKE) -C $(FT_PRINTF_PATH) fclean
-fclean: clean
-	${RM} ${SERVER} ${SERVER}
-	$(MAKE) -C $(FT_PRINTF_PATH) fclean
+fclean:
+	@ $(MAKE) fclean -C $(FT_PRINTF_DIR)
+	@ $(RM) $(CLIENT) $(SERVER)
+	@printf "$(_INFO) client removed.\n"
+	@printf "$(_INFO) server removed.\n"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+mandatory:	$(CLIENT) $(SERVER)
+bonus:		mandatory
+
+m : mandatory
+b : bonus
+
+.PHONY: all clean fclean re mandatory m bonus b

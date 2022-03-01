@@ -23,7 +23,7 @@ SRCS =	ft_printf.c \
 		ft_norminette.c
 
 OBJS = ${SRCS:.c=.o}
-NAME = libftprintf.a
+NAME = FT_PRINTF.a
 AR = ar rc
 RM = rm -f
 LIBFT_PATH = $(PARENT_DIR)
