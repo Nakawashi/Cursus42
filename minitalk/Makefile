@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/17 15:59:08 by lgenevey          #+#    #+#              #
-#    Updated: 2022/02/25 14:43:46 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/03/01 15:12:47 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,8 @@ FT_PRINTF_DIR	=	./FT_PRINTF
 
 
 	# Mandatory Variables #
-CLIENT	=	client.c
-SERVER	=	server.c
+CLIENT	=	./src/client.c
+SERVER	=	./src/server.c
 INC		=	-I. -I$(FT_PRINTF_DIR) -I$(FT_PRINTF_DIR)/stack \
 			-I$(FT_PRINTF_DIR)/get_next_line
 

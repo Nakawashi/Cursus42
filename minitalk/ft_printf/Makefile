@@ -6,19 +6,17 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/08 13:38:53 by lgenevey          #+#    #+#              #
-#    Updated: 2022/02/25 14:52:51 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/03/01 15:11:39 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFLAGS = -Wall -Wextra -Werror
 SRCS =	ft_printf.c \
-		ft_putchar_fd.c \
-		ft_putstr_fd.c \
-		ft_putnbr_fd.c \
+		ft_putchar.c \
+		ft_putstr.c \
+		ft_putnbr.c \
 		ft_positive_putnbr.c \
-		ft_count_digit.c \
-		ft_case_s.c \
-		ft_putbase_fd.c \
+		ft_putbase.c \
 		ft_putpointer.c \
 		ft_norminette.c
 
