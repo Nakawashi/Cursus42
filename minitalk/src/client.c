@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:58:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/03/01 18:42:24 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/03/04 18:32:04 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,70 +40,57 @@ int	ft_atoi(const char *str)
 	return ((v * sign) / 10);
 }
 
-void	send_bits(char c)
+/*
+
+	bits :
+*/
+void	send_bits(pid_t pid, char *s)
 {
+	int	bits;
 	int	i;
 
-	// i = 8;
-	// while(i > 0)
-	// {
-	// 	if (c & (1 << i))
-	// 		kill(pid, SIGUSR1);
-	// 	else
-	// 		kill(pid, SIGUSR2);
-	// }
-	i = 8; // faire un paquet de 8 bits stockes dans une variable malloc
-	while (i > 0)
+	bits = 7;
+	i = 0;
+	while (s[i])
 	{
-		putchar((c & (1 << i)) ? '1' : '0');
-		i--;
-	}
-
-}
-
-//https://github.com/lavrenovamaria/42-minitalk/blob/main/src/client.c
-void	bit_by_bit(int pid, int bit)
-{
-	int	counter;
-
-	counter = 0;
-	while (counter <= 7)
-	{
-		if ((bit >> counter) & 1)
+		while (bits > 0)
 		{
-			if (kill(pid, SIGUSR1) == -1)
-				ft_putstr_fd("Error signal\n", 1);
+			if (s[i] & (1 >> i))
+				kill(pid, SIGUSR1);
+			else if (!(s[i] & (1 << i)))
+				kill(pid, SIGUSR2);
+			ft_printf("s[i] : %c\n", s[i]);
+			ft_printf("USR1 %d\n", SIGUSR1);
+			ft_printf("USR1 %d\n", SIGUSR2);
+			bits--;
 		}
-		else
-		{
-			if (kill(pid, SIGUSR2) == -1)
-				ft_putstr_fd("Error signal\n", 1);
-		}
-		counter++;
-		usleep(100);
+		i++;
 	}
 }
 
+/**/
+char c = 'a';
 
 int	main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
-		ft_printf("Incorrect number of arguments.\n");
-		ft_printf("[./client] [server's pid] [string]\n");
+		ft_printf("Incorrect number of arguments : [./client] [server's pid] [string]\n");
 		return (0);
 	}
 	pid_t 	pid;
 	char	*message;
+	//struct	sigaction bernard;
 
 	pid = ft_atoi(argv[1]);
 	message = argv[2];
-	//struct	sigaction bernard;
+
 
 	//bernard.sa_handler = &handle_sigusr1; // link our signal handler to signal
 	//sigaction(SIGUSR1, &bernard, NULL);
 
-	// envoyer le message en utilisant
+	// envoyer le message
+	send_bits(pid, message);
 
 
 
@@ -119,7 +106,7 @@ message recu
 decortiquer la chaine pour transformer les char en bit sur 1 octet chaque
 et envoyer chaque bit 1 à 1 avec kill()
 
-
+sigemptyset
 
 
 */
