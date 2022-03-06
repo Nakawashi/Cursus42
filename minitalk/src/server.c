@@ -21,9 +21,6 @@
 
 #include "../includes/minitalk.h"
 
-
-
-
 /*
 	Here we create signal handler
 	int sig : signal that needs to be handled
@@ -36,6 +33,9 @@ void	sig_handler(int sig)
 
 /*
 	error checker
+	struct de sigation à configurer
+	pid et signal à mettre dans la struct
+	
 */
 int	main(void)
 {
@@ -51,5 +51,7 @@ int	main(void)
 /*
 recuperer le bordel
 envoyer un signal avec que des 0 qui indiquera au client que cest bon
+via sigaction on peut récup le pid du client et lui envoyé l'accusé de réception
+le bitwise permet de gérer les UNICODE
 
 */

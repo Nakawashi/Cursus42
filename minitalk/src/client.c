@@ -40,8 +40,10 @@ int	ft_atoi(const char *str)
 	return ((v * sign) / 10);
 }
 
-/*
+void sig_handler
 
+/*
+	si la comparaison avec le bit vaut 1, envoyer sigusr1 mais il n'est pas encore défini (sig handler)
 	bits :
 */
 void	send_bits(pid_t pid, char *s)
@@ -56,8 +58,8 @@ void	send_bits(pid_t pid, char *s)
 		while (bits > 0)
 		{
 			if (s[i] & (1 >> i))
-				kill(pid, SIGUSR1);
-			else if (!(s[i] & (1 << i)))
+				kill(pid, SIGUSR1); // il faut encore définir ce que vaut sigusr1 via le sigaction
+			else if (!(s[i] & (1 << i))) // juste mettre else sans condition, pas besoin
 				kill(pid, SIGUSR2);
 			ft_printf("s[i] : %c\n", s[i]);
 			ft_printf("USR1 %d\n", SIGUSR1);
@@ -67,9 +69,6 @@ void	send_bits(pid_t pid, char *s)
 		i++;
 	}
 }
-
-/**/
-char c = 'a';
 
 int	main(int argc, char **argv)
 {
