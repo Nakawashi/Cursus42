@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:58:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/03/11 17:04:50 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/03/11 16:38:54 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,11 @@ static int	ft_atoi(const char *str)
 	return ((v * sign) / 10);
 }
 
-// pause() : se remet en route si un signal est emis
-
 /*
 	send SIGUSR1 if bitwise result is 1. SIGUSR2 if 0.
 	pid : on which process to send signals
 	*s : text to compare to bits-bitwise
-	pause() : lock le processus. Se delock lors d'un nouveau signal, pret a recevoir le kill du serveur
 */
-
-void	sigusr_handler(int signal, siginfo_t *siginfo, void *unused)
-{
-	(void) signal;
-	(void) siginfo;
-	(void) *unused;
-	ft_printf("message recu! %d\n", siginfo->si_pid);
-}
-
 static void	send_signals(pid_t pid, char *s)
 {
 	int	bits;
@@ -67,11 +55,17 @@ static void	send_signals(pid_t pid, char *s)
 		while (bits <= 7)
 		{
 			if (s[i] & (1 << bits))
+			{
 				kill(pid, SIGUSR1);
+				ft_printf("1");
+			}
 			else
+			{
 				kill(pid, SIGUSR2);
+				ft_printf("0");
+			}
+			usleep(100200);
 			bits++;
-			pause();
 		}
 		i++;
 	}
@@ -85,7 +79,6 @@ int	main(int argc, char **argv)
 {
 	pid_t 	pid;
 	char	*message;
-	struct sigaction bernardo;
 
 	if (argc != 3)
 	{
@@ -96,10 +89,6 @@ int	main(int argc, char **argv)
 	if (!pid || pid < 0)
 		return (0);
 	message = argv[2];
-	sigemptyset(&bernardo.sa_mask);
-	bernardo.sa_sigaction = &sigusr_handler;
-	bernardo.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR1, &bernardo, NULL);
 	send_signals(pid, message);
 	return (0);
 }
