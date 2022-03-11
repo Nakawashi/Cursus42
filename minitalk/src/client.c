@@ -6,15 +6,13 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:58:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/03/04 18:32:04 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:24:58 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
-#include <string.h>
-#include <stdio.h>
 
-int	ft_atoi(const char *str)
+static int	ft_atoi(const char *str)
 {
 	int		i;
 	long	v;
@@ -40,72 +38,51 @@ int	ft_atoi(const char *str)
 	return ((v * sign) / 10);
 }
 
-void sig_handler
-
 /*
-	si la comparaison avec le bit vaut 1, envoyer sigusr1 mais il n'est pas encore défini (sig handler)
-	bits :
+	send SIGUSR1 if bitwise result is 1. SIGUSR2 if 0.
+	pid : on which process to send signals
+	*s : text to compare to bits-bitwise
 */
-void	send_bits(pid_t pid, char *s)
+static void	send_signals(pid_t pid, char *s)
 {
 	int	bits;
 	int	i;
 
-	bits = 7;
 	i = 0;
 	while (s[i])
 	{
+		bits = 8;
 		while (bits > 0)
 		{
-			if (s[i] & (1 >> i))
-				kill(pid, SIGUSR1); // il faut encore définir ce que vaut sigusr1 via le sigaction
-			else if (!(s[i] & (1 << i))) // juste mettre else sans condition, pas besoin
+			if (s[i] & (1 << bits))
+				kill(pid, SIGUSR1);
+			else
 				kill(pid, SIGUSR2);
-			ft_printf("s[i] : %c\n", s[i]);
-			ft_printf("USR1 %d\n", SIGUSR1);
-			ft_printf("USR1 %d\n", SIGUSR2);
+			//usleep(200);s
 			bits--;
 		}
 		i++;
 	}
 }
 
+/*
+	here I use signal to send USR1 and USR2 depending on bitwise result
+	I check server side the function of each signal.
+*/
 int	main(int argc, char **argv)
 {
-	if (argc != 3)
-	{
-		ft_printf("Incorrect number of arguments : [./client] [server's pid] [string]\n");
-		return (0);
-	}
 	pid_t 	pid;
 	char	*message;
-	//struct	sigaction bernard;
 
+	if (argc != 3)
+	{
+		ft_printf("Invalid arguments : [./client] [server's pid] [string]\n");
+		return (0);
+	}
 	pid = ft_atoi(argv[1]);
+	if (!pid || pid < 0)
+		return (0);
 	message = argv[2];
-
-
-	//bernard.sa_handler = &handle_sigusr1; // link our signal handler to signal
-	//sigaction(SIGUSR1, &bernard, NULL);
-
-	// envoyer le message
-	send_bits(pid, message);
-
-
-
+	send_signals(pid, message);
 	return (0);
 }
-
-/*
-
-infos necessaires :
-
-pid
-message recu
-decortiquer la chaine pour transformer les char en bit sur 1 octet chaque
-et envoyer chaque bit 1 à 1 avec kill()
-
-sigemptyset
-
-
-*/

@@ -6,52 +6,51 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:59:03 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/03/04 14:59:26 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/03/11 15:29:25 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-	get information
-	display it
-	send acknowlwdge to client
-	---
-	Manual says to use sigaction() instead of signal() for portability reasons
-
-*/
 
 #include "../includes/minitalk.h"
 
 /*
-	Here we create signal handler
-	int sig : signal that needs to be handled
+	rebuild the letter
+	position : in which bit we are between the 8th (position++ means we move one
+	to the leftv)
+	letter : 8 bits to make a letter
+	letter |= (1 << position) :  compare the char to 1 then move to left
 */
-void	sig_handler(int sig)
+static void	sigusr_handler(int signal)
 {
-	if (sig == SIGUSR1 || sig == SIGUSR2)
-		ft_printf("blblblbl");
+	static char 	letter;
+	static int		position;
+
+	letter = 0;
+	position = 0;
+	if (signal == SIGUSR1)
+		letter |= (1 << position);
+	position++;
+	if (position == 7)
+	{
+		ft_printf("%c", letter);
+		position = 0;
+		letter = 0;
+	}
 }
 
+
 /*
-	error checker
-	struct de sigation à configurer
-	pid et signal à mettre dans la struct
-	
+	usage of sigaction : to associate a signal to a handler
 */
 int	main(void)
 {
-	ft_putnbr(getpid()); // get and write pid we can use it on client
-	while(1)
-	{
-		pause();
-	}
+	struct sigaction bernard;
 
+	bernard.sa_sigaction = &sigusr_handler;
+	sigemptyset(&bernard.sa_mask);
+	sigaddset(&bernard.sa_mask, SIGUSR1);
+	sigaddset(&bernard.sa_mask, SIGUSR2);
+	sigaction(SIGUSR1, &bernard, NULL);
+	sigaction(SIGUSR2, &bernard, NULL);
+	ft_printf("Server's PID : %d\n", getpid());
 	return (0);
 }
-
-/*
-recuperer le bordel
-envoyer un signal avec que des 0 qui indiquera au client que cest bon
-via sigaction on peut récup le pid du client et lui envoyé l'accusé de réception
-le bitwise permet de gérer les UNICODE
-
-*/
