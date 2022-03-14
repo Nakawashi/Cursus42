@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_base.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:59:03 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/03/11 16:33:26 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/03/14 18:19:27 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 	letter : 8 bits to make a letter
 	line 32 : write 1 only if comparaison OR = 1, then shift left
 */
-void	sigusr_handler(int signal, siginfo_t *siginfo, void *unused)
+void	ft_sig_handler(int signal, siginfo_t *siginfo, void *unused)
 {
 	static char 	letter = 0;
 	static int		position = 0;
@@ -47,13 +47,13 @@ void	sigusr_handler(int signal, siginfo_t *siginfo, void *unused)
 */
 int	main(void)
 {
-	struct sigaction bernard;
+	struct sigaction sig;
 
-	sigemptyset(&bernard.sa_mask);
-	bernard.sa_sigaction = &sigusr_handler;
-	bernard.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR1, &bernard, NULL);
-	sigaction(SIGUSR2, &bernard, NULL);
+	sigemptyset(&sig.sa_mask);
+	sig.sa_sigaction = &ft_sig_handler;
+	sig.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sig, NULL);
+	sigaction(SIGUSR2, &sig, NULL);
 	ft_printf("Server's PID : %d\n", getpid());
 	while(1)
 		pause();

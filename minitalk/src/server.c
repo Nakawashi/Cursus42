@@ -6,11 +6,53 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:59:03 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/03/14 17:03:40 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/03/14 18:50:54 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
+
+/*
+	-- description
+	usage of sigaction : to associate a signal to a handler
+	sig structure is a way to tell what to do with signals, through
+	the function above : sa_sigaction() (which i named ft_sig_handler)
+
+	-
+	struct sigaction {
+     void     (*sa_handler)(int);
+     void     (*sa_sigaction)(int, siginfo_t *, void *);
+     sigset_t   sa_mask;
+     int        sa_flags;
+     void     (*sa_restorer)(void);
+	 -
+
+	-- code explanation
+	except for the line dedicated to display the process ID, everything is made
+	for sending the acknowledgement to the client.
+	1. creation of sig, our instance of what is going to do
+	2. clean *set (pending or blocked signals)
+	3. link sig to sa_sigaction function to tell what to do
+	4. sa_flags : Si SA_SIGINFO est spécifié dans sa_flags, alors sa_sigaction
+       (au lieu de sa_handler) spécifie la fonction de traitement du signal
+       pour le signe.
+	5. use sigaction in our way
+
+*/
+int	main(void)
+{
+	struct sigaction sig;
+
+	sigemptyset(&sig.sa_mask);
+	sig.sa_sigaction = &ft_sig_handler;
+	sig.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sig, NULL);
+	sigaction(SIGUSR2, &sig, NULL);
+	ft_printf("Server's PID : %d\n", getpid());
+	while(1)
+		pause();
+	return (0);
+}
 
 /*
 	-- description
@@ -24,19 +66,22 @@
 	letter : current letter, 8 bits to make a letter
 
 	-- code explanation
-	line 37 : write 1 only if  the result of the 'OR' is equaal to 1, then
-	shift to the left to check next bit
-	line 48 : siginfo->si_pid : contient le pid du process qui a emis le signal
-	usleep(200) : petit temps que je laisse entre les signaux
+	we know that info is coming 8 by 8
+	1. write 1 only if  the result of the 'OR' is equal to 1, then
+	shift '<-- x position' to the left to check next bit
+	2. siginfo->si_pid : contient le pid du process qui a emis le signal
+	3. usleep(200) : petit temps que je laisse entre les signaux
+	4. send signal to client to say the message has been sent
+
 */
-void	sigusr_handler(int signal, siginfo_t *siginfo, void *unused)
+void	ft_sig_handler(int signal, siginfo_t *siginfo, void *unused)
 {
 	static char 	letter = 0;
 	static int		position = 0;
 
 	(void) *unused;
 	if (signal == SIGUSR1)
-		letter |= (1 << position);
+		letter = letter | (1 << position);
 	position++;
 	if (position == 8)
 	{
@@ -44,49 +89,5 @@ void	sigusr_handler(int signal, siginfo_t *siginfo, void *unused)
 		position = 0;
 		letter = 0;
 	}
-	usleep(200);
-	if (letter == '\0')
-		kill(siginfo->si_pid, SIGUSR1);
-}
-
-/*
-	-- description
-	usage of sigaction : to associate a signal to a handler
-	bernard structure is a way to tell what to do with signals, through
-	the function above : sa_sigaction() (which i named sigusr_handler)
-
-	-
-	struct sigaction {
-     void     (*sa_handler)(int);
-     void     (*sa_sigaction)(int, siginfo_t *, void *);
-     sigset_t   sa_mask;
-     int        sa_flags;
-     void     (*sa_restorer)(void);
-	 -
-	 
-	-- code explanation
-	except for the line dedicated to display the process ID, everything is made
-	for sending the acknowledgement to the client.
-	1. creation of bernard, our instance of what is going to do
-	2. clean *set (pending or blocked signals)
-	3. link bernard to sa_sigaction function to tell what to do
-	4. sa_flags : Si SA_SIGINFO est spécifié dans sa_flags, alors sa_sigaction
-       (au lieu de sa_handler) spécifie la fonction de traitement du signal
-       pour le signe.
-	5. use sigaction in our way
-
-*/
-int	main(void)
-{
-	struct sigaction bernard;
-
-	sigemptyset(&bernard.sa_mask);
-	bernard.sa_sigaction = &sigusr_handler;
-	bernard.sa_flags = SA_SIGINFO;
-	sigaction(SIGUSR1, &bernard, NULL);
-	sigaction(SIGUSR2, &bernard, NULL);
-	ft_printf("Server's PID : %d\n", getpid());
-	while(1)
-		pause();
-	return (0);
+	kill(siginfo->si_pid, SIGUSR1);
 }
