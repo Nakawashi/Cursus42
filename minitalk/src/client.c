@@ -6,14 +6,14 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:58:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/03/14 19:06:46 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/03/14 19:13:00 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// c'est laid mais pour afficher 1x le message acknowledge et pas 1 par bit
-static int	once;
-
 #include "../includes/minitalk.h"
+
+// c'est laid mais pour afficher 1x le message acknowledge et pas 1 par bit
+static int	g_once;
 
 /*
 	-- description
@@ -24,12 +24,11 @@ static int	once;
 */
 int	main(int argc, char **argv)
 {
-	pid_t	pid;
-	char	*message;
-	struct	sigaction bernardo;
+	pid_t				pid;
+	char				*message;
+	struct sigaction	bernardo;
 
-
-	once = 1;
+	g_once = 1;
 	if (argc != 3)
 	{
 		ft_printf("Invalid arguments : [./client] [server's pid] [string]\n");
@@ -91,11 +90,10 @@ void	send_signals(pid_t pid, char *s)
 void	sigusr1_handler(int signal, siginfo_t *siginfo, void *unused)
 {
 	(void) *unused;
-
-	if (signal == SIGUSR1 && once == 1)
+	if (signal == SIGUSR1 && g_once == 1)
 	{
 		ft_printf("message has been sent from server %d\n", siginfo->si_pid);
-		once = 0;
+		g_once = 0;
 	}
 }
 
