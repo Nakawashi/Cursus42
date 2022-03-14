@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:58:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/03/11 17:04:50 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/03/14 17:05:39 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,31 @@ static int	ft_atoi(const char *str)
 // pause() : se remet en route si un signal est emis
 
 /*
-	send SIGUSR1 if bitwise result is 1. SIGUSR2 if 0.
-	pid : on which process to send signals
-	*s : text to compare to bits-bitwise
-	pause() : lock le processus. Se delock lors d'un nouveau signal, pret a recevoir le kill du serveur
+	-- description
+	tells what to do when client get SIGUSR1 from server (= inform the user
+	that the message is over and well sent)
 */
-
 void	sigusr_handler(int signal, siginfo_t *siginfo, void *unused)
 {
-	(void) signal;
 	(void) siginfo;
 	(void) *unused;
-	ft_printf("message recu! %d\n", siginfo->si_pid);
+	if (signal == SIGUSR1)
+		ft_printf("message recu! %d\n", siginfo->si_pid);
 }
 
+
+/*
+	- description
+	send SIGUSR1 if bitwise comparaison result is 1. SIGUSR2 if 0.
+
+	- arguments
+	pid : on which process to send signals
+	*s : we gonna check each bits from each char to send USR1 or USR2
+
+	- code explanation
+	pause() : lock the process until a new signal arrives. Ready to get
+	the kill() from the server (acknowledgement)
+*/
 static void	send_signals(pid_t pid, char *s)
 {
 	int	bits;
@@ -83,9 +94,9 @@ static void	send_signals(pid_t pid, char *s)
 */
 int	main(int argc, char **argv)
 {
-	pid_t 	pid;
+	pid_t	pid;
 	char	*message;
-	struct sigaction bernardo;
+	struct	sigaction bernardo;
 
 	if (argc != 3)
 	{
