@@ -6,14 +6,11 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:58:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/03/14 19:13:00 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/03/18 17:16:20 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
-
-// c'est laid mais pour afficher 1x le message acknowledge et pas 1 par bit
-static int	g_once;
 
 /*
 	-- description
@@ -28,7 +25,6 @@ int	main(int argc, char **argv)
 	char				*message;
 	struct sigaction	bernardo;
 
-	g_once = 1;
 	if (argc != 3)
 	{
 		ft_printf("Invalid arguments : [./client] [server's pid] [string]\n");
@@ -43,6 +39,8 @@ int	main(int argc, char **argv)
 	bernardo.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &bernardo, NULL);
 	send_signals(pid, message);
+	while (1)
+		;
 	return (0);
 }
 
@@ -76,9 +74,16 @@ void	send_signals(pid_t pid, char *s)
 			else
 				kill(pid, SIGUSR2);
 			bit++;
-			pause();
+			usleep(150);
 		}
 		i++;
+	}
+	i = 0;
+	while (i < 8)
+	{
+		kill(pid, SIGUSR2);
+		i++;
+		usleep(150);
 	}
 }
 
@@ -86,14 +91,15 @@ void	send_signals(pid_t pid, char *s)
 	-- description
 	tells what to do when client get SIGUSR1 from server (= inform the user
 	that the message is over and well sent)
+	exit(0) :
 */
 void	sigusr1_handler(int signal, siginfo_t *siginfo, void *unused)
 {
 	(void) *unused;
-	if (signal == SIGUSR1 && g_once == 1)
+	if (signal == SIGUSR1)
 	{
-		ft_printf("message has been sent from server %d\n", siginfo->si_pid);
-		g_once = 0;
+		ft_printf("message sent successfully to server %d\n", siginfo->si_pid);
+		exit(0);
 	}
 }
 

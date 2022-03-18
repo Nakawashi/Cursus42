@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:59:03 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/03/14 19:15:48 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/03/18 17:17:46 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,13 @@ int	main(void)
 {
 	struct sigaction	sig;
 
-	sigemptyset(&sig.sa_mask);
 	sig.sa_sigaction = &ft_sig_handler;
 	sig.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &sig, NULL);
 	sigaction(SIGUSR2, &sig, NULL);
 	ft_printf("Server's PID : %d\n", getpid());
 	while (1)
-	{
-		pause();
-	}
+		;
 	return (0);
 }
 
@@ -87,9 +84,10 @@ void	ft_sig_handler(int signal, siginfo_t *siginfo, void *unused)
 	position++;
 	if (position == 8)
 	{
+		if (letter == 0)
+			kill(siginfo->si_pid, SIGUSR1);
 		ft_printf("%c", letter);
 		position = 0;
 		letter = 0;
 	}
-	kill(siginfo->si_pid, SIGUSR1);
 }
