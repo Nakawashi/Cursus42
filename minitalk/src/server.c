@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:59:03 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/03/18 18:27:38 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/03/18 18:33:58 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,14 @@
 	except for the line dedicated to display the process ID, everything is made
 	for sending the acknowledgement to the client.
 	1. creation of sig, our instance of what is going to do
-	2. clean *set (pending or blocked signals)
+	2. clean *set (pending or blocked signals) (removed)
 	3. link sig to sa_sigaction function to tell what to do
 	4. sa_flags : Si SA_SIGINFO est spécifié dans sa_flags, alors sa_sigaction
        (au lieu de sa_handler) spécifie la fonction de traitement du signal
        pour le signe.
 	5. use sigaction in our way
+	6. pause() : wait next signal. Whithout it the CPU is 99% working,
+	   forever checking if while (1) is true.
 
 */
 int	main(void)

@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:58:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/03/18 17:16:20 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/03/18 18:34:57 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,8 @@ void	send_signals(pid_t pid, char *s)
 
 /*
 	-- description
-	tells what to do when client get SIGUSR1 from server (= inform the user
-	that the message is over and well sent)
-	exit(0) :
+	Called when server send the acknowledgement signal
+	exit(0) : finish programm when get the signal
 */
 void	sigusr1_handler(int signal, siginfo_t *siginfo, void *unused)
 {
