@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:59:03 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/03/18 17:17:46 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/03/18 18:27:38 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(void)
 	sigaction(SIGUSR2, &sig, NULL);
 	ft_printf("Server's PID : %d\n", getpid());
 	while (1)
-		;
+		pause();
 	return (0);
 }
 
