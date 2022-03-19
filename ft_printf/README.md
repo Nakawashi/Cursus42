@@ -16,4 +16,19 @@ make (to generate the programm libftprintf.a)
 gcc main.c libftprintf.a (will generate ./a.out)
 ./a.out (run to see main.c results)
 ```
-then compare printf and my ft_printf
+then compare values between real printf and my ft_printf, for example :
+```
+lgenevey@c1r1s7 ft_printf % gcc main.c libftprintf.a
+lgenevey@c1r1s7 ft_printf % ./a.out
+Salut
+%s : Hey
+%u : 4294967286
+%x : fffffff6
+ret printf: 16
+Salut
+%s : Hey
+%u : 4294967286
+%x : fffffff6
+ret ft_printf: 16
+lgenevey@c1r1s7 ft_printf %
+```
