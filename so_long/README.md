@@ -32,12 +32,13 @@ int	main(void)
 	mlx_loop(mlx_ptr);
 }
 ```
-A propos de mlx_pixel_put() :
+A propos de mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color) :
 - identifiant de la connexion
 - identifiant de la fenêtre
 - coordonnées du pixel
 - couleur du pixel stockée sur un int en rgb, un octet pour le R, un pour le G un pour le B.
--- voir comment est stockée la couleur dans la mémoire graphique d'une machine. --
+
+--> voir comment est stockée la couleur dans la mémoire graphique d'une machine.
 
 # Comment jouer
 Because the miniLibX uses Appkit and MX11 you need to link them adding `-lmlx -framework OpenGL -framework AppKit` when you compile.
