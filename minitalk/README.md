@@ -18,3 +18,19 @@ Vous devez réaliser un programme de communication sous la forme d’un client e
 # Partie Bonus
 - Le serveur confirme la réception de chaque message en envoyant un signal au client.
 - Le support des caractères Unicode !
+
+# Execution
+```
+make
+
+// open two terminals, one for client, one for server
+
+// run the server to get its PID
+lgenevey@c1r15s7 minitalk % ./server
+Server's PID : 70257
+
+// run the client with correct arguments
+lgenevey@c1r15s7 minitalk % ./client 70257 "coucou"
+
+// server got the message, and keep listening to new signals. Client got the acknowledge message.
+```
