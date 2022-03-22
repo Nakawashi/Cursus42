@@ -21,11 +21,14 @@ int	main(void)
 	void	*mlx_ptr;
 	void	*win_ptr;
 
-	// Fonction qui nous connecte au serveur graphique du Mac. Renvoie un pointeur sur void qui correspond a l'identifiant de la connexion au serveur graphique.
+	// Fonction qui nous connecte au serveur graphique du Mac.
+	// Renvoie un pointeur sur void qui correspond a l'identifiant de la connexion au serveur graphique.
 	mlx_ptr = mlx_init();
-	// Ouvrir une fenêtre. Renvoie l'id de la fenêtre que l'on crée. Il est possible d'en ouvrir plusieurs en même temps, d'où le besoin de les différencier.
+	// Ouvrir une fenêtre. Renvoie l'id de la fenêtre que l'on crée.
+	//Il est possible d'en ouvrir plusieurs en même temps, d'où le besoin de les différencier.
 	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "nom_de_la_fenetre");
-	// Demande à MacOS de dessiner ce qu'on lui a demandé (ici ouvrir la fenêtre) et ecoute et recupère les evenements utilisateurs
+	// Demande à MacOS de dessiner ce qu'on lui a demandé (ici ouvrir la fenêtre),
+	// ecoute et recupère les evenements utilisateurs
 	mlx_loop(mlx_ptr);
 }
 ```
