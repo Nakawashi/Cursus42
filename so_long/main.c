@@ -7,4 +7,4 @@ int main()
 	return (0);
 }
 
-// gcc -Wall -Wextra -Werror -Iminilibx -Lminilibx -framework OpenGL -framework AppKit main.c
+// gcc -Wall -Wextra -Werror -Imlx -Lmlx mlx/libmlx.a -framework OpenGL -framework AppKit main.c
