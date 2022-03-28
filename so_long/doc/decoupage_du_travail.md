@@ -32,7 +32,13 @@
 
 > Gestion des erreurs pour chaque evenement non OK. Quitter proprement le programme, avec des signaux probablement.<br>
 
-Objectif :
-Afficher ce qui est fixe d'abord. Une image, puis tout le mur autour.
-Definir ce qui seront les murs, les items, la sortie
-Definir la taille de la fenetre par rapport aux nombres d'elements a afficher
+Objectif :<br>
+Choisir mes sprites<br>
+- murs / collisions
+- sol normal
+- perso
+- items
+- sortie
+Afficher ce qui est fixe d'abord. Une image, puis tout le mur autour.<br>
+Definir ce qui seront les murs, les items, la sortie<br>
+Definir la taille de la fenetre par rapport aux nombres d'elements a afficher<br>
