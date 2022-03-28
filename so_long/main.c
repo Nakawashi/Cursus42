@@ -1,5 +1,5 @@
-#include "mlx/mlx.h"
-#include <unistd.h>
+#include "so_long.h"
+#include <map/map.h>
 
 int	main(void)
 {
