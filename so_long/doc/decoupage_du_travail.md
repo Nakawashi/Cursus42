@@ -30,4 +30,4 @@
 
 ## Erreurs
 
-Gestion des erreurs pour chaque evenement non OK. Quitter proprement le programme, avec des signaux probablement.<br>
+> Gestion des erreurs pour chaque evenement non OK. Quitter proprement le programme, avec des signaux probablement.<br>
