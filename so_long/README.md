@@ -1,7 +1,9 @@
 # Description
+
 Créer un jeu en 2D dans lequel un dauphin s'échappe de la planete Terre après avoir mangé du poisson. (Collecter des items avant de sortir du niveau). En utilisant la MiniLibX.
 
 # MiniLibX
+
 miniLibX manuals:
 
 - man /usr/share/man/man3/mlx.1
@@ -13,6 +15,7 @@ miniLibX manuals:
 Flags de compilation sur MacOS : `-lmlx -framework OpenGL -framework AppKit`
 
 ## Petit exemple :
+
 ```C
 #include <mlx.h>
 
@@ -41,6 +44,7 @@ A propos de mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color)
 --> voir comment est stockée la couleur dans la mémoire graphique d'une machine.
 
 # Comment jouer
+
 Because the miniLibX uses Appkit and MX11 you need to link them adding `-lmlx -framework OpenGL -framework AppKit` when you compile.
 
 # Le code
