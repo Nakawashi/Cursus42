@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/03/22 16:14:49 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/03/28 13:03:50 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,14 @@
 NAME = so_long.a
 
 # Variables #
-SRC = 
+SRC =
 
 # Compiling Variables #
-CC			=	gcc
-CFLAG		=	-Wall -Wextra -Werror
-RM			=	rm -f
+CC		=	gcc
+CFLAG	=	-Wall -Wextra -Werror
+INCLUDE	=	-Imlx -Lmlx mlx/libmlx.a -framework OpenGL -framework AppKit
+RM		=	rm -f
+OBJ		=	*.o
 
 # Colors #
 GREEN		=	\e[38;5;118m
@@ -28,12 +30,12 @@ RESET		=	\e[0m
 _SUCCESS	=	[$(GREEN)SUCCESS$(RESET)]
 _INFO		=	[$(YELLOW)INFO$(RESET)]
 
-all:
+all: $(NAME)
 
 clean:
 
 fclean:
 
-re:
+re: fclean all
 
 .PHONY: all clean fclean re
