@@ -1,32 +1,32 @@
 # Découper le travail
 
-> x Le Makefile ne relink pas et fonctionne avec les règles $(NAME), all, clean, fclean et relink <br>
+> [ ] Le Makefile ne relink pas et fonctionne avec les règles $(NAME), all, clean, fclean et relink <br>
 
 ## Parsing de la fenêtre
 
-> x Possible de fermer la fenetre via la croix<br>
-> x Possible de fermer la fenetre via ESC<br>
-> x Fenetre fluide mais **voir ce que ca veut dire**<br>
-> x Afficher le nombre de mouvements ici plutôt que dans le Shell<br>
+> [ ] Possible de fermer la fenetre via la croix<br>
+> [ ] Possible de fermer la fenetre via ESC<br>
+> [ ] Fenetre fluide mais **voir ce que ca veut dire**<br>
+> [ ] Afficher le nombre de mouvements ici plutôt que dans le Shell<br>
 
 
 ## Parsing de la carte
 
-> x Au moins une sortie, un item et une position de départ<br>
-> x Extension de la carte<br>
-> x Carte rectangulaire<br>
-> x On est bien entouré par des murs partout<br>
-> x Les murs nous bloquent le passage<br>
-> x Check toutes les cartes proposées et accepter celles qui sont OK avec tout<br>
-> x La map donnée en exemple dans le PDF fonctionne<br>
+> [ ] Au moins une sortie, un item et une position de départ<br>
+> [ ] Extension de la carte<br>
+> [ ] Carte rectangulaire<br>
+> [ ] On est bien entouré par des murs partout<br>
+> [ ] Les murs nous bloquent le passage<br>
+> [ ] Check toutes les cartes proposées et accepter celles qui sont OK avec tout<br>
+> [ ] La map donnée en exemple dans le PDF fonctionne<br>
 
 
 ## Jeu
 
-> x Déplacements via W A S D<br>
-> x Incrémenter de 1 pour chaque mouvement effectué<br>
-> x Avoir collecté tous les items, sortir, afficher le nombre de mouvements<br>
-> x Mouvement des sprites<br>
+> [ ] Déplacements via W A S D<br>
+> [ ] Incrémenter de 1 pour chaque mouvement effectué<br>
+> [ ] Condition de victoire Ok : avoir collecté tous les items, sortir, afficher le nombre de mouvements<br>
+> [ ] Mouvement des sprites<br>
 
 ## Erreurs
 
