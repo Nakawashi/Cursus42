@@ -24,16 +24,16 @@ int	ft_putnbr(int n)
 
 int	deal_key(int key, void *param)
 {
-	int	key_nb;
+	(void) *param;
 
-	key_nb = ft_putnbr(key);
-	if (key_nb == 37)
-		ft_putchar('L');
-	if (key_nb == 38)
-		ft_putchar('U');
-	if (key_nb == 39)
-		ft_putchar('R');
-	if (key_nb == 40)
+	ft_putnbr(key);
+	if (key == 13)
+		ft_putchar('w');
+	if (key == 0)
+		ft_putchar('a');
+	if (key == 1)
+		ft_putchar('s');
+	if (key == 2)
 		ft_putchar('D');
 	return (0);
 }
@@ -44,9 +44,8 @@ int	main(void)
 	void	*win_ptr;
 
 	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "Fallout 4");
-	//mlx_pixel_put(mlx_ptr, win_ptr, 250, 250, 0xFFFFFF);
-	mlx_key_hook(mlx_ptr, deal_key, (void *)0);
+	win_ptr = mlx_new_window(mlx_ptr, 1920, 1080, "Half Life 3");
+	mlx_key_hook(win_ptr, deal_key, (void *)0);
 	mlx_loop(mlx_ptr);
-	return (0);	
+	return (0);
 }
