@@ -39,6 +39,7 @@ Choisir mes sprites<br>
 - perso
 - items
 - sortie<br>
+
 Afficher ce qui est fixe d'abord. Une image, puis tout le mur autour.<br>
 Definir ce qui seront les murs, les items, la sortie<br>
 Definir la taille de la fenetre par rapport aux nombres d'elements a afficher<br>
