@@ -32,8 +32,10 @@
 
 > Gestion des erreurs pour chaque evenement non OK. Quitter proprement le programme, avec des signaux probablement.<br>
 
-Objectif :<br>
+### Objectif :<br>
+
 Choisir mes sprites<br>
+
 - murs / collisions
 - sol normal
 - perso
