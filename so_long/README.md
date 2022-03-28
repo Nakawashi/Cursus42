@@ -1,10 +1,12 @@
 # Description
 
-Créer un jeu en 2D dans lequel un dauphin s'échappe de la planete Terre après avoir mangé du poisson. (Collecter des items avant de sortir du niveau). En utilisant la MiniLibX.
+> Créer un jeu en 2D dans lequel un dauphin s'échappe de la planete Terre après avoir mangé du poisson. <br>
+> (Collecter des items avant de sortir du niveau). En utilisant la MiniLibX.
 
 # MiniLibX
 
 miniLibX manuals:
+https://gontjarow.github.io/MiniLibX/
 
 - man /usr/share/man/man3/mlx.1
 - man /usr/share/man/man3/mlx_new_window.1	: window handler
@@ -41,10 +43,8 @@ A propos de mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color)
 - coordonnées du pixel
 - couleur du pixel stockée sur un int en rgb, un octet pour le R, un pour le G un pour le B.
 
---> voir comment est stockée la couleur dans la mémoire graphique d'une machine.
-
 # Comment jouer
 
-Because the miniLibX uses Appkit and MX11 you need to link them adding `-lmlx -framework OpenGL -framework AppKit` when you compile.
+> Because the miniLibX uses Appkit and MX11 you need to link them adding `-lmlx -framework OpenGL -framework AppKit` when you compile.
 
 # Le code
