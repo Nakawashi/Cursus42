@@ -58,8 +58,8 @@ make fclean
 ```
 
 ## Contrôles
-WASD ou les flèches pour se déplacer
-Q, EST ou croix pour quitter
+WASD ou les flèches pour se déplacer<br>
+Q, EST ou croix pour quitter<br>
 
 > Because the miniLibX uses Appkit and MX11 you need to link them adding `-lmlx -framework OpenGL -framework AppKit` when you compile.
 
