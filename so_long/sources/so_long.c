@@ -1,17 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/01 16:51:45 by lgenevey          #+#    #+#             */
+/*   Updated: 2022/04/01 18:29:54 by lgenevey         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
-#include <map/map.h>
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	void	*img_ptr;
+	if (argc != 2)
+	{
+		ft_printf("Arguments invalid.\n[.ber] file needed.");
+		exit(1);
+	}
+	if (is_img_ber(argv[1])) // check si le format de l'image est bien un .ber. 1 si oui, 0 si non.
+	{
+		t_window window;
+		void	*mlx_id;
 
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1920, 1080, "Half Life 3");
-	img_ptr = mlx_new_image(mlx_ptr, 48, 48);
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, 0, 0);
-	mlx_loop(mlx_ptr);
+		mlx_id = mlx_init();
+		window.id = mlx_new_window(mlx_id, 500, 500, "Half Life 3 Deluxe Edition");
+		mlx_loop(mlx_id);
+	}
+	else
+	{
+		ft_printf("Map format invalid. \n[.ber] wanted");
+		exit(1);
+	}
+
+
+
+
+	// void	*mlx_ptr;
+	// void	*win_ptr;
+	// void	*img_ptr;
+
+	// mlx_ptr = mlx_init();
+	// win_ptr = mlx_new_window(mlx_ptr, 1920, 1080, "Half Life 3");
+	// img_ptr = mlx_new_image(mlx_ptr, 48, 48);
+	// mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, 0, 0);
+	// mlx_loop(mlx_ptr);
 	return (0);
 }
 
