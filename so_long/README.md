@@ -16,7 +16,7 @@ https://gontjarow.github.io/MiniLibX/
 
 Flags de compilation sur MacOS : `-lmlx -framework OpenGL -framework AppKit`
 
-## Petit exemple :
+## Introduction :
 
 ```C
 #include <mlx.h>
@@ -38,9 +38,28 @@ int	main(void)
 }
 ```
 
-
 # Comment jouer
+
+```shell
+# Clone the project and access the folder
+git clone https://github.com/nakawashi/so_long && cd so_long/
+
+# Run make to build the game
+make
+
+# Run make with bonus
+make bonus
+
+# Run the game with the map as an argument
+./so_long_bonus "assets/maps/exemple.ber"
+
+# Clean built files
+make fclean
+```
+
+## Contrôles
+WASD ou les flèches pour se déplacer
+Q, EST ou croix pour quitter
 
 > Because the miniLibX uses Appkit and MX11 you need to link them adding `-lmlx -framework OpenGL -framework AppKit` when you compile.
 
-# Lancer le jeu
