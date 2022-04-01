@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/04/01 16:32:31 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/04/01 18:32:24 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ MINILIBX_PATH = mlx
 NAME = so_long
 
 # File sources #
-SRC =
+SRC = *.c
+OBJ = $(SRC:.c=.o)
 
 CC		=	gcc
 CFLAG	=	-Wall -Wextra -Werror
@@ -30,6 +31,10 @@ WARN_COLOR	= \033[0;33m
 NO_COLOR	= \033[m
 
 all: $(NAME)
+
+$(NAME): $(OBJ)
+	@echo "$(COM_COLOR)[OK] Generating $(NAME)...$(NO_COLOR)"
+	@ar rc $(NAME) $(OBJ)
 
 clean:
 	@rm -rf *.c
