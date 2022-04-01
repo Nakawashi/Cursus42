@@ -12,8 +12,9 @@
 
 ## Parsing de la carte
 
-> [ ] Au moins une sortie, un item et une position de départ<br>
+> [ ] Bon nombre d'arguments au lancer du programme<br>
 > [ ] Extension de la carte<br>
+> [ ] Au moins une sortie, un item et une position de départ<br>
 > [ ] Carte rectangulaire<br>
 > [ ] On est bien entouré par des murs partout<br>
 > [ ] Les murs nous bloquent le passage<br>
