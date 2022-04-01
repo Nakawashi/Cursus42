@@ -6,26 +6,22 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/04/01 16:26:49 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/04/01 16:32:31 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY: all clean fclean re
+MINILIBX_PATH = mlx
 
 # Library Name #
 NAME = so_long
 
-# Variables #
+# File sources #
 SRC =
 
-# Compiling Variables #
 CC		=	gcc
 CFLAG	=	-Wall -Wextra -Werror
 INCLUDE	=	-Imlx -Lmlx mlx/libmlx.a -framework OpenGL -framework AppKit
-RM		=	rm -f
 
-# Colors #
-# Exemple : echo -e "blablabla $(OK_COLOR)ici la couleur $(NO_COLOR)"
 COM_COLOR	= \033[0;34m
 OBJ_COLOR	= \033[0;36m
 OK_COLOR	= \033[0;32m
@@ -45,3 +41,5 @@ fclean: clean
 
 re: fclean all
 	@echo "$(OK_COLOR)[SUCCESS] clean and make$(NO_COLOR)"
+
+.PHONY: all clean fclean re

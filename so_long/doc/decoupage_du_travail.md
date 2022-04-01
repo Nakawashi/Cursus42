@@ -45,3 +45,6 @@ Choisir mes sprites<br>
 Afficher une image fixe<br>
 Afficher les bords de la map<br>
 Definir la taille de la fenetre par rapport aux nombres d'elements a afficher<br>
+Gerer le Makefile<br>
+
+-> check si on a des parametres et si on recoit le bon type de fichier.
