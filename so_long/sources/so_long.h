@@ -50,7 +50,7 @@ typedef struct s_player
 # define KEY_S 115
 # define KEY_D 100
 
-int	is_img_ber(char *s);
+int	check_img_extension(char *s, char *extension);
 
 
 #endif

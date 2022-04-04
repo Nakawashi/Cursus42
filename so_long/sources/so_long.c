@@ -12,9 +12,18 @@
 
 #include "so_long.h"
 
-int	is_img_ber(char *s)
+int	check_img_extension(char *s, char *extension)
 {
-	return (0);
+	int		i;
+
+	i = 3;
+	while (i >= 0)
+	{
+		if (ft_strrchr(s, extension[i]) == NULL)
+			return (0);
+		i--;
+	}
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -24,7 +33,7 @@ int	main(int argc, char **argv)
 		ft_printf("--> Arguments invalid.\n--> [.ber] file needed.");
 		exit(1);
 	}
-	if (is_img_ber(argv[1])) // check si le format de l'image est bien un .ber. 1 si oui, 0 si non.
+	if (check_img_extension(argv[1], ".ber")) // check si le format de l'image est bien un .ber. 1 si oui, 0 si non.
 	{
 		t_window window;
 		void	*mlx_id;
