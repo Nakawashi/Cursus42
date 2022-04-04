@@ -14,9 +14,9 @@
 
 > [X] Bon nombre d'arguments au lancer du programme<br>
 > [X] Extension de la carte<br>
-> [ ] Au moins une sortie, un item et une position de départ<br>
 > [ ] Carte rectangulaire<br>
 > [ ] On est bien entouré par des murs partout<br>
+> [ ] Au moins une sortie, un item et une position de départ<br>
 > [ ] Les murs nous bloquent le passage<br>
 > [ ] Check toutes les cartes proposées et accepter celles qui sont OK avec tout<br>
 > [ ] La map donnée en exemple dans le PDF fonctionne<br>
