@@ -12,8 +12,8 @@
 
 ## Parsing de la carte
 
-> [ ] Bon nombre d'arguments au lancer du programme<br>
-> [ ] Extension de la carte<br>
+> [X] Bon nombre d'arguments au lancer du programme<br>
+> [X] Extension de la carte<br>
 > [ ] Au moins une sortie, un item et une position de départ<br>
 > [ ] Carte rectangulaire<br>
 > [ ] On est bien entouré par des murs partout<br>
