@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "../libraries/libft/libft.h"
+# include "../libraries/libft/ft_printf/ft_printf.h"
 # include "../libraries/minilibx/mlx.h"
 
 typedef struct s_window
@@ -48,6 +49,8 @@ typedef struct s_player
 # define KEY_A 97
 # define KEY_S 115
 # define KEY_D 100
+
+int	is_img_ber(char *s);
 
 
 #endif

@@ -49,3 +49,4 @@ int	main(void)
 	mlx_loop(mlx_ptr);
 	return (0);
 }
+/*gcc sources/so_long.c sources/so_long.h -Ilibraries/minilibx  libraries/minilibx/libmlx.a libraries/libft/ft_printf/libftprintf.a  -framework OpenGL -framework AppKit*/

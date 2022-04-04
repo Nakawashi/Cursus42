@@ -12,11 +12,16 @@
 
 #include "so_long.h"
 
+int	is_img_ber(char *s)
+{
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		ft_printf("Arguments invalid.\n[.ber] file needed.");
+		ft_printf("--> Arguments invalid.\n--> [.ber] file needed.");
 		exit(1);
 	}
 	if (is_img_ber(argv[1])) // check si le format de l'image est bien un .ber. 1 si oui, 0 si non.
@@ -30,7 +35,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_printf("Map format invalid. \n[.ber] wanted");
+		ft_printf("--> Map format invalid. \n--> [.ber] wanted");
 		exit(1);
 	}
 
