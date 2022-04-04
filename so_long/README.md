@@ -68,4 +68,6 @@ Q, EST ou croix pour quitter<br>
 - Les tags -L et -I (inclure une librairie et le fichier header)<br>
 - Inclure différentes librairies et les gérer dans le Makefile de so_long pour compiler le tout <br>
 - Organiser le travail en amont : les dossiers, le Makefile
+- Récupérer les données dans différents fichiers et bien link le tout
+- Structures
 
