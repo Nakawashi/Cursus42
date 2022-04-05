@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/05 00:55:35 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/04/05 14:58:28 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct s_player
 # define KEY_S 115
 # define KEY_D 100
 
-int	map_check(const char *s, char *extension);
+int	map_check(const char *s);
 int	check_img_extension(const char *s, char *extension);
-
+int	**read_map(char *file);
 
 #endif
