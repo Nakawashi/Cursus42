@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:51:45 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/05 14:58:14 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/05 16:11:22 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 
 		mlx_id = mlx_init();
 		window.id = mlx_new_window(mlx_id, 500, 500, "Half Life 3");
+		read_map(argv[1]);
 		mlx_loop(mlx_id);
 	}
 	else

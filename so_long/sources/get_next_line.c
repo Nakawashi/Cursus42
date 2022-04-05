@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:09:57 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/12/27 17:02:38 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/05 17:33:16 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,6 @@ fd : file descriptor, id unique du fichier a lire. Le 0 1 et 2 sont reserves
 pour les entrees et sorties std et les erreurs
 la prochaine ligne lue
 
----- READ ----
-decscription :
-tente de lire nbytes de donnees de l'objet référencé par le descripteur
-dans le tampon pointé par buf.
-arguments :
-fd : file descriptor, fichier ouvert.
-*buffer : tableau qui contient les nbytes lues. Tampon qui garde l'eventuel
-surplus que demande BUFFER_SIZE.
-nbytes : le nombre d'octets a lire a la fois
-valeurs de retour :
-nbytes caracteres selon le BUFFER_SIZE donné
-0 quand on arrive en fin de fichier
--1 si erreur rencontrée
 */
 
 /*
@@ -90,7 +77,7 @@ char	*ft_fill_line(char *statiq)
 */
 char	*ft_overwrite_statiq(char *statiq, char *s)
 {
-	char	*jarjar;
+	char	*temp;
 	int		s_length;
 	int		statiq_length;
 
@@ -101,12 +88,13 @@ char	*ft_overwrite_statiq(char *statiq, char *s)
 	}
 	s_length = ft_strlen(s);
 	statiq_length = ft_strlen(statiq);
-	jarjar = ft_substr(statiq, s_length, statiq_length - s_length);
+	temp = ft_substr(statiq, s_length, statiq_length - s_length);
 	free(statiq);
-	return (jarjar);
+	return (temp);
 }
 
-/* read file and return filled static variable to save infos
+/*
+	read file and return filled static variable to save infos
  */
 char	*ft_read_buffer(int fd, char *statiq)
 {
@@ -114,7 +102,7 @@ char	*ft_read_buffer(int fd, char *statiq)
 	ssize_t		been_read;
 
 	been_read = 1;
-	while (!ft_strchr(statiq, '\n') && been_read != 0)
+	while (!ft_find_char(statiq, '\n') && been_read != 0)
 	{
 		been_read = read(fd, buffer, BUFFER_SIZE);
 		if (been_read == -1)

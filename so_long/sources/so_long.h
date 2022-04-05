@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/05 14:58:28 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/05 16:11:50 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+#include <fcntl.h>
 # include "../libraries/libft/libft.h"
 # include "../libraries/libft/ft_printf/ft_printf.h"
 # include "../libraries/minilibx/mlx.h"
@@ -52,6 +53,6 @@ typedef struct s_player
 
 int	map_check(const char *s);
 int	check_img_extension(const char *s, char *extension);
-int	**read_map(char *file);
+int	**read_map(char *path_to_file);
 
 #endif

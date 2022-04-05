@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/04/05 12:58:42 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/04/05 16:13:35 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ all:	$(NAME) # Compile every mandatory files
 
 bonus:	$(NAME_BONUS) # Compile every bonus files
 
-$(NAME):	$(LIBFT) $(OBJ) $(MINILIBX) $(HEADER)
+$(NAME):	$(SOURCES) $(LIBFT) $(OBJ) $(MINILIBX) $(HEADER)
 			$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MINILIBX) \
 			$(INCLUDE) -o $(NAME)
 			@echo "$(COM_COLOR)     - Compiling minilibx and libft libraries... $(NO_COLOR)"

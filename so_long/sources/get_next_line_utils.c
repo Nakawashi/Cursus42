@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 13:38:30 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/12/23 15:02:00 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/05 17:33:16 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ size_t	ft_strlen(const char *s)
 /*
  * return 1 if c is found in *s, 0 if not
  */
-int	ft_strchr(const char *s, int c)
+int	ft_find_char(const char *s, int c)
 {
 	int		i;
 
@@ -52,7 +52,7 @@ int	ft_strchr(const char *s, int c)
  * free s1 car plus besoin, on a les infos dans s3
  * pas besoin de free buffer il est ecrase par read apres
  */
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*s3;
 	int		i;
@@ -80,7 +80,7 @@ char	*ft_strjoin(char *s1, char *s2)
  * permet de pouvoir retourner une chaine de caracteres vide
  * au lieu de NULL on a un tableau avec juste un \0 return ft_strdup("");
  */
-char	*ft_strdup(char *s1)
+char	*ft_strdup(const char *s1)
 {
 	char	*copy;
 	int		i;
@@ -100,7 +100,7 @@ char	*ft_strdup(char *s1)
 	return (copy);
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char	*str;
 	size_t	i;
