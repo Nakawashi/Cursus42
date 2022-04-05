@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/04/01 19:24:57 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/04/05 12:58:42 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,12 +22,14 @@ FT_PRINTF		=	$(FT_PRINTF_DIR)libftprintf.a
 MINILIBX_DIR	=	libraries/minilibx/
 MINILIBX		=	$(MINILIBX_DIR)libmlx.a
 
-SRC	=	sources/*.c
-OBJ	=	$(SRC:.c=.o)
+SOURCES	=	sources/*.c
+OBJ		=	$(SOURCES:.c=.o)
+HEADER	=	sources/so_long.h
+##HEADER_BONUS	=
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
-INCLUDE	=	-Iminilibx -Lminilibx minilibx/libmlx.a -framework OpenGL -framework AppKit
+INCLUDE	=	-framework OpenGL -framework AppKit
 RM		=	rm -f
 
 COM_COLOR	= \033[0;34m
@@ -46,33 +48,38 @@ all:	$(NAME) # Compile every mandatory files
 
 bonus:	$(NAME_BONUS) # Compile every bonus files
 
-$(NAME): $(LIBFT) $(OBJ)
-	@echo "$(COM_COLOR)     - Compiling minilibx and libft libraries... $(NO_COLOR)"
-	@$(MAKE) -C $(MINILIBX_DIR)
-	@$(MAKE) -C $(LIBFT_DIR)
-	@$(MAKE) -C $(FT_PRINTF_DIR)
+$(NAME):	$(LIBFT) $(OBJ) $(MINILIBX) $(HEADER)
+			$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MINILIBX) \
+			$(INCLUDE) -o $(NAME)
+			@echo "$(COM_COLOR)     - Compiling minilibx and libft libraries... $(NO_COLOR)"
 
-$(OBJ): $(SRC)
-	@echo "$(COM_COLOR)     - Making object files... $(NO_COLOR)"
-	@gcc $(CFLAGS) -c $(SRC)
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
+
+$(MINILIBX):
+	$(MAKE) -C $(MINILIBX)
+
+$(FT_PRINTF):
+	$(MAKE) _C $(FT_PRINTF_DIR)
 
 norm: # Apply Norminette check
-	@echo $(OBJ_COLOR) "[NORM - START]"
-	@norminette $(SRC) sources/*.h
-	@echo $(NO_COLOR) "[NORM - END]"
+	@echo "$(OBJ_COLOR)[NORM - START]"
+	@norminette $(SOURCES) sources/*.*
+	@echo "[NORM - END]$(NO_COLOR)"
 
 clean: # Clean generated files
 	@echo "$(OK_COLOR)[SUCCESS] '.o' DELETED$(NO_COLOR)"
 	$(MAKE) -C $(LIBFT_PATH) clean
 	$(MAKE) -C $(MINILIBX_DIR) clean
-	$(RM) $(OBJ_DIR)
+	$(MAKE) -C $(FT_PRINTF_DIR) clean
+	$(RM) $(OBJ)
 
 fclean:	clean # Clean generated files plus the library .o and .a
 	@echo "$(OK_COLOR)[SUCCESS] '.a' DELETED$(NO_COLOR)"
 	$(MAKE) -C $(LIBFT_PATH) fclean
-	$(RM) $(NAME) $(NAME_BONUS)
+	$(RM) $(NAME)
 
 re: fclean all # fclean then all
-	@echo "$(OK_COLOR)[SUCCESS] clean and make$(NO_COLOR)"
+	@echo "$(OK_COLOR)[SUCCESS] cleaned and remake$(NO_COLOR)"
 
 .PHONY:	all clean fclean re norm bonus help
