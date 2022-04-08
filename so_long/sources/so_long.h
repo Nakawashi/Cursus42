@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/05 16:11:50 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/08 20:39:23 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ typedef struct s_player
 # define KEY_S 115
 # define KEY_D 100
 
-int	map_check(const char *s);
-int	check_img_extension(const char *s, char *extension);
+int	map_check(const char *file, char *extension);
+int	check_img_extension(const char *file, char *extension);
 int	**read_map(char *path_to_file);
 
 #endif
