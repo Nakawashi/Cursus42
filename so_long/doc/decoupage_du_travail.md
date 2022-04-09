@@ -17,6 +17,7 @@
 > [ ] Carte rectangulaire<br>
 > [ ] On est bien entouré par des murs partout<br>
 > [ ] Au moins une sortie, un item et une position de départ<br>
+> [ ] Pas de caractere inopiné genre Z<br>
 > [ ] Les murs nous bloquent le passage<br>
 > [ ] Check toutes les cartes proposées et accepter celles qui sont OK avec tout<br>
 > [ ] La map donnée en exemple dans le PDF fonctionne<br>

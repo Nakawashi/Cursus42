@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/04/08 18:58:23 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/04/09 13:15:45 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ HEADERS	=	sources/*.h
 OBJ		=	$(SOURCES:.c=.o)
 
 CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror -fsanitize=address -g3
 INCLUDE	=	-framework OpenGL -framework AppKit
 AR		=	ar rc
 RM		=	rm -f
@@ -45,8 +45,8 @@ all:	$(NAME)	## Compile every mandatory files
 
 bonus:	$(NAME_BONUS)	## Compile every bonus files
 
-$(NAME): $(OBJ)
-	$(CC) $(SOURCES) -I$(HEADERS) $(LIBFT) $(FT_PRINTF) $(MINILIBX) $(INCLUDE) -o $(NAME)
+$(NAME):
+	$(CC) $(SOURCES) $(MINILIBX) $(FT_PRINTF) $(LIBFT) $(INCLUDE) -o $(NAME)
 
 norm:	## Apply Norminette check
 	@echo "$(OBJ_COLOR)[NORM - START]"
