@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:05:41 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/09 13:47:37 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/09 17:16:05 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #include "get_next_line.h"
 
 /*
-	Lis la carte donnee en parametres et la stock dans un tableau
-	a deux dimensions qui facilitera l'utilisation plus tard
+	Read the .ber map and saves it on map.map which is a 2 dimension table.
 */
 char	**read_map(const char *path_to_file)
 {

@@ -27,6 +27,7 @@ char	**read_map(const char *path_to_file)
 			if (!line)
 				break;
 			saved = ft_strjoin_free(saved, line);
+			ft_printf("saved : \n%s\n", saved);
 			free(line);
 		}
 		map.map = ft_split(saved, '\n'); //printf("map.map :	\n%s\n", map.map[0]);
@@ -36,8 +37,24 @@ char	**read_map(const char *path_to_file)
 	return (map.map);
 }
 
+int	check_walls_around(t_map *map)
+{
+	// check murs donc premiere et derniere ligne sont des 1
+	// reste des lignes premier et dernier char sont des 1
+	// retourne 1 si ok
+	int	x;
+	int	y;
+
+	x = 0;
+	ft_printf("map.map[0] : %s", *map[0]->map);
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
-	read_map(argv[1]);
+	t_map	map;
+
+	map.map = read_map(argv[1]);
+	check_walls_around(&map);
 	return (0);
 }
