@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/08 20:39:33 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/09 12:15:55 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	check_img_extension(const char *file, char *extension)
 /*
     We want walls all around the map
 */
-int	check_walls_around(char *s)
+int	check_walls_around(const char *s)
 {
 	// check murs donc premiere et derniere ligne sont des 1
 	// reste des lignes premier et dernier char sont des 1
@@ -70,13 +70,13 @@ int	check_walls_around(char *s)
 }
 
 // pour un carre il doit y avoir le meme nombre de char par ligne
-int	check_if_square(char *file)
+int	check_if_square(const char *file)
 {
 	return (1);
 }
 
 // check si on a bien 01PEC
-int	check_assets(char *file)
+int	check_assets(const char *file)
 {
 	return (1);
 }

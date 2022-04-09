@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/08 20:47:17 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/09 12:49:21 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_window
 
 typedef struct s_map
 {
+	char	**map;
 
 }	t_map;
 
@@ -53,10 +54,10 @@ typedef struct s_player
 
 int	map_check(const char *file, char *extension);
 int	check_img_extension(const char *file, char *extension);
-int	check_walls_around(char *s);
-int	check_if_square(char *file);
-int	check_assets(char *file);
+int	check_walls_around(const char *s);
+int	check_if_square(const char *file);
+int	check_assets(const char *file);
 
-int	**read_map(char *path_to_file);
+char	**read_map(const char *path_to_file);
 
 #endif

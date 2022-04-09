@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:05:41 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/08 20:34:26 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/09 13:47:37 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,34 @@
 #include "get_next_line.h"
 
 /*
-	put content of the file inside map
-	then split each line in **map
+	Lis la carte donnee en parametres et la stock dans un tableau
+	a deux dimensions qui facilitera l'utilisation plus tard
 */
-int	**read_map(char *path_to_file)
+char	**read_map(const char *path_to_file)
 {
+	t_map	map;
 	int		fd;
 	char	*line;
-	char	**map;
+	char	*saved;
 
 	fd = open(path_to_file, O_RDONLY);
 	if (fd < 0)
-		return (NULL);
+		ft_printf("Error : can't find a file");
 	if (fd > 0)
 	{
-		// get next line pour lire et mettre la ligne dans line et finir avec un tableaau a deux dim
-		map = get_next_line(fd);
-		while (map)
+		saved = ft_strdup("");
+		while(1)
 		{
-			ft_printf("map before:	%s\n", map);
-			map = get_next_line(fd);
+			line = get_next_line(fd);
+			if (!line)
+				break;
+			saved = ft_strjoin_free(saved, line);
+			free(line);
 		}
-		map = ft_split(map, '\n');
+		map.map = ft_split(saved, '\n');
+		free(saved);
 	}
-	free(map);
 	close(fd);
-	return (map);
+	return (map.map);
 }
 

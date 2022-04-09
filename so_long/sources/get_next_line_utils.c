@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 13:38:30 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/05 17:33:16 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/09 12:36:56 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	ft_find_char(const char *s, int c)
  * free s1 car plus besoin, on a les infos dans s3
  * pas besoin de free buffer il est ecrase par read apres
  */
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin_free(char *s1, char *s2)
 {
 	char	*s3;
 	int		i;

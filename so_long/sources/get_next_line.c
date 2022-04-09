@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:09:57 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/05 17:33:16 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/09 12:36:48 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ char	*ft_read_buffer(int fd, char *statiq)
 		if (been_read == -1)
 			return (NULL);
 		buffer[been_read] = '\0';
-		statiq = ft_strjoin(statiq, buffer);
+		statiq = ft_strjoin_free(statiq, buffer);
 	}
 	return (statiq);
 }
