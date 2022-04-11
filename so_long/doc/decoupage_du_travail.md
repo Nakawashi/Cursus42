@@ -14,8 +14,8 @@
 
 > [X] Bon nombre d'arguments au lancer du programme<br>
 > [X] Extension de la carte<br>
-> [ ] Carte rectangulaire<br>
-> [ ] On est bien entouré par des murs partout<br>
+> [X] Carte rectangulaire<br>
+> [en cours] On est bien entouré par des murs partout<br>
 > [ ] Au moins une sortie, un item et une position de départ<br>
 > [ ] Pas de caractere inopiné genre Z<br>
 > [ ] Les murs nous bloquent le passage<br>
