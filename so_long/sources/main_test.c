@@ -84,11 +84,15 @@ int	check_walls_around(t_map *map, char **file)
 		while (file[j][i])
 		{
 			//ft_printf("file[j][i]		%c\n", file[j][i]);
-			if (((j == 0 || j == map->rows_nb) && (i == 0 || i == map->line_lenght)) && (file[j][i] != '1'))
+			if (((j == 0 || j == map->rows_nb) || (i == 0 || i == map->line_lenght)) && (file[j][i] != '1'))
 			{
 				ft_printf("erreur pas que des 1 au premier et dernier char\n");
 				return (0);
 			}
+			ft_printf("j :	%d\n", j);
+			ft_printf("j :	%d\n", j);
+			ft_printf("file[j][i] :	%c\n", file[j][i]);
+			ft_printf("file[j] :	%c\n", file[j]); // probleme ici je rentre pas dans la boucle si le X est en bas a gauche
 			i++;
 		}
 		j++;
