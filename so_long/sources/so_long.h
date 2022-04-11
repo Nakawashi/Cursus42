@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/09 18:03:14 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:55:57 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-#include <fcntl.h>
+# include <fcntl.h>
 # include "../libraries/libft/libft.h"
 # include "../libraries/libft/ft_printf/ft_printf.h"
 # include "../libraries/minilibx/mlx.h"
@@ -30,6 +30,8 @@ typedef struct s_window
 typedef struct s_map
 {
 	char	**map;
+	int		line_lenght;
+	int		rows_nb;
 
 }	t_map;
 
@@ -53,10 +55,10 @@ typedef struct s_player
 # define KEY_D 100
 
 int	map_check(const char *file, char *extension);
-int	check_img_extension(const char *file, char *extension);
-int	check_walls_around(t_map *map);
-int	check_if_square(const char *file);
-int	check_assets(const char *file);
+int	check_img_extension(const char *file_path, char *extension);
+int	check_walls_around(t_map *map, char **table);
+int	is_rectangle(t_map *map, char **table);
+int	check_assets(char **table);
 
 char	**read_map(const char *path_to_file);
 

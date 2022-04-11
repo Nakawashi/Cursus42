@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:05:41 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/09 17:16:05 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/11 14:02:58 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 */
 char	**read_map(const char *path_to_file)
 {
-	t_map	map;
 	int		fd;
 	char	*line;
 	char	*saved;
+	char	**map;
 
 	fd = open(path_to_file, O_RDONLY);
 	if (fd < 0)
@@ -37,10 +37,10 @@ char	**read_map(const char *path_to_file)
 			saved = ft_strjoin_free(saved, line);
 			free(line);
 		}
-		map.map = ft_split(saved, '\n');
+		map = ft_split(saved, '\n');
 		free(saved);
 	}
 	close(fd);
-	return (map.map);
+	return (map);
 }
 
