@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/09 17:23:02 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/11 20:58:52 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,25 @@
     - At least 4 lines, 4 columns to be coherent (square)
     - Each asked items (E, P, C, 0, 1)
 */
-int	map_check(const char *map, char *extension)
+int	map_check(const char *file, char *extension)
 {
-	if (check_img_extension(map, extension) && check_walls_around(map)
-		&& check_if_square(map) && check_assets(map))
-		return (1);
+	t_map	map;
+	char	**table;
+
+	if (check_img_extension(file, extension))
+	{
+		table = read_map(file);
+		if (!table)
+			return (0);
+		if (is_rectangle(&map, table) && check_walls_around && check_assets(table))
+		{
+			return (1);
+		}
+		else
+			return(NOT_RECTANGLE);
+	}
+	else
+		return (ERROR_WRONG_IMG_EXTENSION);
 	return (0);
 }
 
@@ -32,51 +46,88 @@ int	map_check(const char *map, char *extension)
     I took the decision to hardcode nb of extension's letters + '\0'
     xlsx or docx would not work here, but it's easy to update
 	Remember : ft_strncmp returns 0 if both are the same
+
+	const char *file_path :	(../assets/map/filename.ber)
+	char *extension :		dot + file extension = ".ber"
 */
-int	check_img_extension(const char *map, char *extension)
+int	check_img_extension(const char *file_path, char *extension)
 {
 	char	*new_ext;
 
-	if (!map)
+	if (!file_path)
 		return (0);
-	new_ext = ft_strrchr(map, '.');
+	new_ext = ft_strrchr(file_path, '.');
 	if (ft_strncmp(new_ext, extension, 5))
 		return (0);
 	return (1);
 }
 
 /*
-    We want walls all around the map
-*/
-int	check_walls_around(char **map)
-{
-	// check murs donc premiere et derniere ligne sont des 1
-	// reste des lignes premier et dernier char sont des 1
-	// retourne 1 si ok
-	int	x;
-	int	y;
+	first and last line should be 1
+	first and last char per line should be 1
+	had to intervert j and i to check horizontally :D
 
-	x = 0;
-	while (&map[x][y])
+	t_map *map :	reference of struct s_map, init in map_check()
+	char **file :	2D array that contains the map.
+*/
+int	check_walls_around(t_map *map, char **table)
+{
+	int	i;
+	int	j;
+
+	map->rows_nb = 0;
+	while (table[map->rows_nb])
+		map->rows_nb++;
+	// ft_printf("map->rows_nb :		%d\n", map->rows_nb);
+	// ft_printf("map->line_lenght :	%d\n", map->line_lenght);
+	j = 0;
+	while (j < map->rows_nb)
 	{
-		y = 0;
-		while (&map[x][y])
+		i = 0;
+		while (table[j][i])
 		{
-			y++;
+			//ft_printf("file[j][i]		%c\n", file[j][i]);
+			if (((j == 0 || j == map->rows_nb) && (i == 0 || i == map->line_lenght)) && (table[j][i] != '1'))
+			{
+				ft_printf("erreur pas que des 1 au premier et dernier char\n");
+				return (0);
+			}
+			i++;
 		}
-		x++;
+		j++;
 	}
 	return (1);
 }
 
-// pour un carre il doit y avoir le meme nombre de char par ligne
-int	check_if_square(const char *file)
+/*
+	if each line has same nb of char, it's a rectangle
+	compare all lines with the first (map->line_lenght)
+
+	t_map *map :	reference of struct s_map, init in map_check()
+	char **file :	2D array that contains the map.
+*/
+int	is_rectangle(t_map *map, char **table)
 {
+	int	current_line;
+	int	i;
+
+	map->line_lenght = ft_strlen(table[0]); //13
+	ft_printf("line_lenght :	%d\n", map->line_lenght);
+	i = 1;
+	while(table[i]) // strings
+	{
+		current_line = ft_strlen(table[i]);
+		ft_printf("current_line :	%d\n", current_line);
+		if (map->line_lenght == current_line)
+			i++;
+		else
+			return (0);
+	}
 	return (1);
 }
 
 // check si on a bien 01PEC
-int	check_assets(const char *file)
+int	check_assets(char **table)
 {
 	return (1);
 }
