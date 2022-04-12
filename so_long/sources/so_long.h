@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/11 20:55:57 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/12 22:41:32 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@
 # include "../libraries/libft/libft.h"
 # include "../libraries/libft/ft_printf/ft_printf.h"
 # include "../libraries/minilibx/mlx.h"
+
+typedef enum e_elements
+{
+	EMPTY = '0',
+	WALL = '1',
+	PLAYER_START = 'P',
+	EXIT = 'E',
+	COLLECTIBLE = 'C'
+}	t_elements;
 
 typedef struct s_window
 {
@@ -34,6 +43,13 @@ typedef struct s_map
 	int		rows_nb;
 
 }	t_map;
+
+typedef struct s_assets
+{
+	int	P;
+	int	E;
+	int	C;
+}	t_assets;
 
 typedef struct s_img
 {
