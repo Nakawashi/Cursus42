@@ -39,7 +39,8 @@ char	**read_map(const char *path_to_file)
 
 /*
 	if each line has same nb of char, it's a rectangle
-	compare all lines with the first (map->line_lenght)
+	compare all lines with the first one (map->line_lenght)
+	Careful here is initiate map.line_length
 */
 int	is_rectangle(t_map *map, char **file)
 {
@@ -75,24 +76,19 @@ int	check_walls_around(t_map *map, char **file)
 	map->rows_nb = 0;
 	while (file[map->rows_nb])
 		map->rows_nb++;
-	ft_printf("map->rows_nb :		%d\n", map->rows_nb);
-	ft_printf("map->line_lenght :	%d\n", map->line_lenght);
 	j = 0;
-	while (j < map->rows_nb)
+	while (file[j])
 	{
 		i = 0;
 		while (file[j][i])
 		{
-			//ft_printf("file[j][i]		%c\n", file[j][i]);
-			if (((j == 0 || j == map->rows_nb) || (i == 0 || i == map->line_lenght)) && (file[j][i] != '1'))
+			if ((j == 0 || j == map->rows_nb - 1
+			|| i == 0 || i == map->line_lenght - 1)
+			&& (file[j][i] != '1'))
 			{
 				ft_printf("erreur pas que des 1 au premier et dernier char\n");
 				return (0);
 			}
-			ft_printf("j :	%d\n", j);
-			ft_printf("j :	%d\n", j);
-			ft_printf("file[j][i] :	%c\n", file[j][i]);
-			ft_printf("file[j] :	%c\n", file[j]); // probleme ici je rentre pas dans la boucle si le X est en bas a gauche
 			i++;
 		}
 		j++;
