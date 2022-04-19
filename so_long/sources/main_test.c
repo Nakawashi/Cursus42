@@ -96,6 +96,28 @@ int	check_walls_around(t_map *map, char **file)
 	return (1);
 }
 
+// ft_strnstr
+int	check_assets(char **table)
+{
+	char	*assets;
+	int		count;
+	int		i;
+	int		j;
+
+	assets = "PEC01";
+	i = 0;
+	while (table[i]) //search line per line
+	{
+		j = 0;
+		while (table[i][j])
+		{
+			if (table[i][j] == 'P' || table[i][j] == )
+		}
+
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_map	map;
@@ -104,5 +126,7 @@ int	main(int argc, char **argv)
 	table = read_map(argv[1]);
 	is_rectangle(&map, table);
 	check_walls_around(&map, table);
+	if (!check_assets(table))
+		printf("mauvaise lettre");
 	return (0);
 }
