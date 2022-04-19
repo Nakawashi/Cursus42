@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/19 11:47:20 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/19 14:24:13 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_map
 typedef struct s_assets
 {
 	int	P;
-	int	E;
+	int E;
 	int	C;
 }	t_assets;
 
@@ -75,7 +75,7 @@ int	map_check(const char *file, char *extension);
 int	check_img_extension(const char *file_path, char *extension);
 int	check_walls_around(t_map *map, char **table);
 int	is_rectangle(t_map *map, char **table);
-int	check_assets(char **table);
+int	check_assets(char **table, t_assets *ass);
 
 char	**read_map(const char *path_to_file);
 
