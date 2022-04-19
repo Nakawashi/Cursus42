@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:05:41 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/11 14:02:58 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/19 17:36:58 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ char	**read_map(const char *path_to_file)
 	char	*saved;
 	char	**map;
 
+	map = NULL;
 	fd = open(path_to_file, O_RDONLY);
 	if (fd < 0)
-		ft_printf("Error : can't find a file");
+		return (0);
 	if (fd > 0)
 	{
 		saved = ft_strdup("");
