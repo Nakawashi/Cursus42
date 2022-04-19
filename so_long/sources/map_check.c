@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/12 19:53:11 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/19 13:45:11 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,36 @@
 int	map_check(const char *file, char *extension)
 {
 	t_map	map;
+	t_assets ass;
 	char	**table;
 
-	if (check_img_extension(file, extension))
+	table = read_map(file);
+	if (!table)
 	{
-		table = read_map(file);
-		if (!table)
-			return (0);
-		if (is_rectangle(&map, table) && check_walls_around && check_assets(table))
-		{
-			return (1);
-		}
-		else
-			return(perror("Error: map not rectangles, walls or assets pb"));
+		ft_printf("pas de fichier lisible\n");
+		return (0);
 	}
-	else
-		return (perror("Error: wrong image extension"));
-	return (0);
+	if (!check_img_extension(file, extension))
+	{
+		ft_printf("Mauvaise extension\n");
+		return (0);
+	}
+	if (!is_rectangle(&map, table))
+	{
+		ft_printf("Map pas rectangulaire\n");
+		return (0);
+	}
+	if (!check_walls_around(&map, table))
+	{
+		ft_printf("Pas que des 1 autour\n");
+		return (0);
+	}
+	if (!check_assets(table, &ass))
+	{
+		printf("Mauvaises lettres dans la map\n");
+		return (0);
+	}
+	return (1);
 }
 
 /*
@@ -76,7 +89,7 @@ int	check_walls_around(t_map *map, char **file)
 	int	j;
 
 	map->rows_nb = 0;
-	while (file[map->rows_nb])
+	while (file[map->rows_nb]) // get number of lines == height
 		map->rows_nb++;
 	j = 0;
 	while (file[j])
@@ -87,10 +100,7 @@ int	check_walls_around(t_map *map, char **file)
 			if ((j == 0 || j == map->rows_nb - 1
 			|| i == 0 || i == map->line_lenght - 1)
 			&& (file[j][i] != '1'))
-			{
-				ft_printf("erreur pas que des 1 au premier et dernier char\n");
 				return (0);
-			}
 			i++;
 		}
 		j++;
@@ -111,12 +121,10 @@ int	is_rectangle(t_map *map, char **table)
 	int	i;
 
 	map->line_lenght = ft_strlen(table[0]); //13
-	ft_printf("line_lenght :	%d\n", map->line_lenght);
 	i = 1;
 	while(table[i]) // strings
 	{
 		current_line = ft_strlen(table[i]);
-		ft_printf("current_line :	%d\n", current_line);
 		if (map->line_lenght == current_line)
 			i++;
 		else
@@ -126,68 +134,75 @@ int	is_rectangle(t_map *map, char **table)
 }
 
 // check si on a bien 01PEC
-int	check_assets(char **table)
+int	check_assets(char **table, t_assets *ass)
 {
 	int		i;
 	int		j;
-	char	c;
 
-	//01PEC
 	i = 0;
-	while (table[i])
+	while (table[i]) //search line per line
 	{
 		j = 0;
-		c = table[i][j];
-		while (table[i][j])
+		while (table[i][j]) // search char per char
 		{
-			if (c != '0' && c != '1' && c != 'P' && c != 'E' && c != 'C')
+			if (table[i][j] == 'P' || table[i][j] == 'E' || table[i][j] == 'C'
+			|| table[i][j] == '1' || table[i][j] == '0')
+			{
+				if (table[i][j] == 'P')
+					ass->P++;
+				else if (table[i][j] == 'E')
+					ass->E++;
+				else if (table[i][j] == 'C')
+					ass->C++;
+			}
+			else
 				return (0);
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	if (ass->P == 1 && ass->E == 1 && ass->C > 0)
+		return (1);
+	return(0);
 }
-// prendre le tableau deux dimensions et comparer chaque char au tableau 01PEC
 
 
 
 
 
+// #include <unistd.h>
 
-#include <unistd.h>
+// int	main(int argc, char **argv)
+// {
+// 	char	table[128];
+// 	int		i, j;
 
-int	main(int argc, char **argv)
-{
-	char	table[128];
-	int		i, j;
-
-	if (argc == 3)
-	{
-		i = 0;
-		while (table[i])
-		{
-			table[i] = 0;
-			i++;
-		}
-		i = 2;
-		while (i > 0)
-		{
-			j = 0;
-			while (argv[i][j])
-			{
-				if (i == 2 && !table[(unsigned char)argv[i][j]])
-					table[(unsigned char)argv[i][j]] = 1;
-				else if (i == 1 && table[(unsigned char)argv[i][j]] == 1)
-				{
-					write(1, &argv[i][j], 1);
-					table[(unsigned char)argv[i][j]] = 2;
-				}
-				j++;
-			}
-			i--;
-		}
-	}
-	write(1, "\n", 1);
-	return (0);
-}
+// 	if (argc == 3)
+// 	{
+// 		i = 0;
+// 		while (table[i])
+// 		{
+// 			table[i] = 0;
+// 			i++;
+// 		}
+// 		i = 2;
+// 		while (i > 0)
+// 		{
+// 			j = 0;
+// 			while (argv[i][j])
+// 			{
+// 				if (i == 2 && !table[(unsigned char)argv[i][j]])
+// 					table[(unsigned char)argv[i][j]] = 1;
+// 				else if (i == 1 && table[(unsigned char)argv[i][j]] == 1)
+// 				{
+// 					write(1, &argv[i][j], 1);
+// 					table[(unsigned char)argv[i][j]] = 2;
+// 				}
+// 				j++;
+// 			}
+// 			i--;
+// 		}
+// 	}
+// 	write(1, "\n", 1);
+// 	return (0);
+//}
