@@ -22,6 +22,12 @@ $^ = liste des dépendences
 $? = liste des dépendences plus récentes que la cible
 $* = nom du fichier, sans son extension
 
+# Vers la librairie
+-lft
+-lmlx
+Pour trouver le nom, enlever le mot "lib" du .a et ecrire la suite.<br>
+Exemple : libftprintf sera -lftprintf
+
 %.o : %.c = toutes les cibles en .o seront créées avec toutes les dependences en .c
 
 
