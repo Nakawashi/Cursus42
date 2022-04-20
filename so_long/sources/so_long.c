@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:51:45 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/19 18:29:07 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/20 19:50:37 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ int	main(int argc, char **argv)
 	if (map_check(argv[1], ".ber"))
 	{
 		t_window	window;
+		t_map		*map;
 		void		*mlx_id;
 
 		mlx_id = mlx_init();
 		window.id = mlx_new_window(mlx_id, 500, 500, "Half Life 3");
+		map_init(t_map &map);
 		mlx_loop(mlx_id);
 	}
 	else

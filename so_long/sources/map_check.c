@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/19 13:45:11 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/20 20:01:33 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 int	map_check(const char *file, char *extension)
 {
 	t_map	map;
-	t_assets ass;
+	t_game game;
 	char	**table;
 
 	table = read_map(file);
@@ -46,7 +46,7 @@ int	map_check(const char *file, char *extension)
 		ft_printf("Pas que des 1 autour\n");
 		return (0);
 	}
-	if (!check_assets(table, &ass))
+	if (!check_assets(table, &game))
 	{
 		printf("Mauvaises lettres dans la map\n");
 		return (0);
@@ -134,7 +134,7 @@ int	is_rectangle(t_map *map, char **table)
 }
 
 // check si on a bien 01PEC
-int	check_assets(char **table, t_assets *ass)
+int	check_assets(char **table, t_game *game)
 {
 	int		i;
 	int		j;
@@ -149,11 +149,11 @@ int	check_assets(char **table, t_assets *ass)
 			|| table[i][j] == '1' || table[i][j] == '0')
 			{
 				if (table[i][j] == 'P')
-					ass->P++;
+					game->count_P++;
 				else if (table[i][j] == 'E')
-					ass->E++;
+					game->count_E++;
 				else if (table[i][j] == 'C')
-					ass->C++;
+					game->count_C++;
 			}
 			else
 				return (0);
@@ -161,7 +161,7 @@ int	check_assets(char **table, t_assets *ass)
 		}
 		i++;
 	}
-	if (ass->P == 1 && ass->E == 1 && ass->C > 0)
+	if (game->count_P == 1 && game->count_E == 1 && game->count_C > 0)
 		return (1);
 	return(0);
 }
