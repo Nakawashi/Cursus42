@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/20 20:57:54 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/20 21:02:57 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	map_check(const char *file, char *extension, t_map *map)
 	t_game		game;
 
 	window_init(&window);
-	map_init(&map);
 	game_init(&game);
 	if (!check_img_extension(file, extension))
 	{

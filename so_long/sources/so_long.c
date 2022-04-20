@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:51:45 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/20 20:36:43 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/20 21:05:26 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 		ft_printf("Invalid nb of arguments.\n--> [program name] [.ber file]");
 		exit(1);
 	}
+	map_init(&map);
 	map.map = read_map(argv[1]);
 	if (map_check(argv[1], ".ber", &map))
 	{
