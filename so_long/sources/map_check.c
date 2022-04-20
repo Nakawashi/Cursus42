@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/20 20:01:33 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/20 20:57:54 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,34 +19,30 @@
 	- At least 4 lines, 4 columns to be coherent (square)
 	- Each asked items (E, P, C, 0, 1)
 */
-int	map_check(const char *file, char *extension)
+int	map_check(const char *file, char *extension, t_map *map)
 {
-	t_map	map;
-	t_game game;
-	char	**table;
+	t_window	window;
+	t_game		game;
 
-	table = read_map(file);
-	if (!table)
-	{
-		ft_printf("pas de fichier lisible\n");
-		return (0);
-	}
+	window_init(&window);
+	map_init(&map);
+	game_init(&game);
 	if (!check_img_extension(file, extension))
 	{
 		ft_printf("Mauvaise extension\n");
 		return (0);
 	}
-	if (!is_rectangle(&map, table))
+	if (!is_rectangle(map))
 	{
 		ft_printf("Map pas rectangulaire\n");
 		return (0);
 	}
-	if (!check_walls_around(&map, table))
+	if (!check_walls_around(map))
 	{
 		ft_printf("Pas que des 1 autour\n");
 		return (0);
 	}
-	if (!check_assets(table, &game))
+	if (!check_assets(map, &game))
 	{
 		printf("Mauvaises lettres dans la map\n");
 		return (0);
@@ -81,25 +77,24 @@ int	check_img_extension(const char *file_path, char *extension)
 	had to intervert j and i to check horizontally :D
 
 	t_map *map :	reference of struct s_map, init in map_check()
-	char **file :	2D array that contains the map.
 */
-int	check_walls_around(t_map *map, char **file)
+int	check_walls_around(t_map *map)
 {
 	int	i;
 	int	j;
 
 	map->rows_nb = 0;
-	while (file[map->rows_nb]) // get number of lines == height
+	while (map->map[map->rows_nb]) // get number of lines == height
 		map->rows_nb++;
 	j = 0;
-	while (file[j])
+	while (map->map[j])
 	{
 		i = 0;
-		while (file[j][i])
+		while (map->map[j][i])
 		{
 			if ((j == 0 || j == map->rows_nb - 1
 			|| i == 0 || i == map->line_lenght - 1)
-			&& (file[j][i] != '1'))
+			&& (map->map[j][i] != '1'))
 				return (0);
 			i++;
 		}
@@ -113,18 +108,17 @@ int	check_walls_around(t_map *map, char **file)
 	compare all lines with the first (map->line_lenght)
 
 	t_map *map :	reference of struct s_map, init in map_check()
-	char **file :	2D array that contains the map.
 */
-int	is_rectangle(t_map *map, char **table)
+int	is_rectangle(t_map *map)
 {
 	int	current_line;
 	int	i;
 
-	map->line_lenght = ft_strlen(table[0]); //13
+	map->line_lenght = ft_strlen(map->map[0]); //13
 	i = 1;
-	while(table[i]) // strings
+	while(map->map[i]) // strings
 	{
-		current_line = ft_strlen(table[i]);
+		current_line = ft_strlen(map->map[i]);
 		if (map->line_lenght == current_line)
 			i++;
 		else
@@ -134,25 +128,25 @@ int	is_rectangle(t_map *map, char **table)
 }
 
 // check si on a bien 01PEC
-int	check_assets(char **table, t_game *game)
+int	check_assets(t_map *map, t_game *game)
 {
 	int		i;
 	int		j;
 
 	i = 0;
-	while (table[i]) //search line per line
+	while (map->map[i]) //search line per line
 	{
 		j = 0;
-		while (table[i][j]) // search char per char
+		while (map->map[i][j]) // search char per char
 		{
-			if (table[i][j] == 'P' || table[i][j] == 'E' || table[i][j] == 'C'
-			|| table[i][j] == '1' || table[i][j] == '0')
+			if (map->map[i][j] == 'P' || map->map[i][j] == 'E' || map->map[i][j] == 'C'
+			|| map->map[i][j] == '1' || map->map[i][j] == '0')
 			{
-				if (table[i][j] == 'P')
+				if (map->map[i][j] == 'P')
 					game->count_P++;
-				else if (table[i][j] == 'E')
+				else if (map->map[i][j] == 'E')
 					game->count_E++;
-				else if (table[i][j] == 'C')
+				else if (map->map[i][j] == 'C')
 					game->count_C++;
 			}
 			else

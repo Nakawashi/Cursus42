@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/20 20:06:01 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/20 20:42:40 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 
 typedef struct s_window
 {
-	void	*id;
+	void	*mlx_id;
+	void	*win_id;
 	int		win_width;
 	int		win_height;
 }	t_window;
@@ -57,12 +58,14 @@ void	window_init(t_window *window);
 void	map_init(t_map *map);
 void	game_init(t_game *game);
 
-int	map_check(const char *file, char *extension);
+int	map_check(const char *file, char *extension, t_map *map);
 int	check_img_extension(const char *file_path, char *extension);
-int	check_walls_around(t_map *map, char **table);
-int	is_rectangle(t_map *map, char **table);
-int	check_assets(char **table, t_game *game);
+int	check_walls_around(t_map *map);
+int	is_rectangle(t_map *map);
+int	check_assets(t_map *map, t_game *game);
 
 char	**read_map(const char *path_to_file);
+
+void	free_map(char **map);
 
 #endif

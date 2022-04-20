@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:27:56 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/20 20:05:38 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/20 20:36:52 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 void	window_init(t_window *window)
 {
-	window->id = NULL;
 	window->win_height = 0;
 	window->win_width = 0;
 }

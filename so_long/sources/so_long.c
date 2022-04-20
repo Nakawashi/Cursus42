@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:51:45 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/20 19:50:37 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/20 20:36:43 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,27 @@
 
 int	main(int argc, char **argv)
 {
+	t_map		map;
+
 	if (argc != 2)
 	{
 		ft_printf("Invalid nb of arguments.\n--> [program name] [.ber file]");
 		exit(1);
 	}
-	if (map_check(argv[1], ".ber"))
+	map.map = read_map(argv[1]);
+	if (map_check(argv[1], ".ber", &map))
 	{
-		t_window	window;
-		t_map		*map;
-		void		*mlx_id;
+		void	*mlx_id;
+		void	*win_id;
 
 		mlx_id = mlx_init();
-		window.id = mlx_new_window(mlx_id, 500, 500, "Half Life 3");
-		map_init(t_map &map);
+		win_id = mlx_new_window(mlx_id, 500, 500, "Half Life 3");
 		mlx_loop(mlx_id);
 	}
 	else
 	{
 		ft_printf("--> Map format invalid. \n--> [.ber] required");
+		free_map(map.map);
 		exit(1);
 	}
 	return (0);
