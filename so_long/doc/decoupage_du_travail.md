@@ -2,28 +2,29 @@
 
 > [ ] Le Makefile ne relink pas et fonctionne avec les règles $(NAME), all, clean, fclean et relink <br>
 
-## Parsing de la fenêtre
+## La fenêtre
 
-> [ ] Possible de fermer la fenetre via la croix<br>
-> [ ] Possible de fermer la fenetre via ESC<br>
+> [en cours] Possible de fermer la fenetre via la croix<br>
+> [en cours] Possible de fermer la fenetre via ESC<br>
 > [ ] Fenetre fluide mais **voir ce que ca veut dire**<br>
 > [ ] Afficher le nombre de mouvements ici plutôt que dans le Shell<br>
 
 
-## Parsing de la carte
+## La carte
 
 > [X] Bon nombre d'arguments au lancer du programme<br>
 > [X] Extension de la carte<br>
 > [X] Carte rectangulaire<br>
 > [X] On est bien entouré par des murs partout<br>
-> [en cours] Au moins une sortie, un item et une position de départ<br>
-> [en cours] Pas de caractere inopiné genre Z<br>
+> [X] Au moins une sortie, un item et une position de départ<br>
+> [X] Pas de caractere inopiné genre Z<br>
+> [ ] Afficher les images fixes<br>
 > [ ] Les murs nous bloquent le passage<br>
-> [ ] Check toutes les cartes proposées et accepter celles qui sont OK avec tout<br>
-> [ ] La map donnée en exemple dans le PDF fonctionne<br>
+> [X] Check toutes les cartes proposées et accepter celles qui sont OK avec tout<br>
+> [ ] La map donnée en exemple dans le PDF fonctionne, avec les images<br>
 
 
-## Jeu
+## Le jeu
 
 > [ ] Déplacements via W A S D<br>
 > [ ] Incrémenter de 1 pour chaque mouvement effectué<br>
