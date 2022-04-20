@@ -6,18 +6,20 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/04/19 19:05:09 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/04/20 20:07:15 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	so_long
 NAME_BONUS	=	so_long_bonus
 
-SRC			=	sources/so_long.c \
+SRCS			=	sources/so_long.c \
 				sources/get_next_line_utils.c \
 				sources/get_next_line.c \
 				sources/map_check.c \
-				sources/map_read.c
+				sources/map_read.c \
+				sources/init_structures.c \
+				sources/window.c
 
 LIBFT_DIR		=	libraries/libft
 LIBFT			=	libraries/libft/libft.a
@@ -26,7 +28,7 @@ FT_PRINTF		=	libraries/libft/ft_printf/libftprintf.a
 MINILIBX_DIR	=	libraries/minilibx
 MINILIBX		=	libraries/minilibx/libmlx.a
 
-OBJS	=	$(SRC:.c=.o)
+OBJS	=	$(SRCS:.c=.o)
 CC		=	gcc
 RM		=	rm -f
 
