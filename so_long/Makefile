@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/04/22 11:33:48 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/04/22 18:13:09 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,13 +53,13 @@ help: ## Print help on Makefile
 all:	$(NAME)	## Compile every mandatory files
 
 $(NAME)	:	$(OBJS)
-	@echo "$(BLUE)     - Making minilibx... $(NONE)"
+	@echo "$(BLUE)Making minilibx... $(NONE)"
 	@$(MAKE) -C $(MINILIBX_DIR)
-	@echo "$(BLUE)     - Making libft... $(NONE)"
+	@echo "$(BLUE)Making libft... $(NONE)"
 	@$(MAKE) -C $(LIBFT_DIR)
-	@echo "$(BLUE)     - Making ft_printf... $(NONE)"
+	@echo "$(BLUE)Making ft_printf... $(NONE)"
 	@$(MAKE) -C $(FT_PRINTF_DIR)
-	@echo "$(BLUE)     - Making so_long... $(NONE)"
+	@echo "$(BLUE)Making so_long... $(NONE)"
 	@$(CC) $(OBJS) $(CFLAGS) -I $(MINILIBX_DIR) -I $(LIBFT_DIR) -I $(FT_PRINTF_DIR) $(INCLUDE) -o $(NAME)
 	@printf "$(GREEN) so_long ready.\n$(NONE)"
 
