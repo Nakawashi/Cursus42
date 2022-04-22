@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/22 11:58:40 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/22 18:54:58 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	map_check(const char *file, char *extension, t_map *map)
 		if (!check_walls_around(map))
 			ft_printf("Pas que des 1 autour\n");
 		if (!check_assets(map))
-			printf("Mauvaises lettres dans la map\n");
+			ft_printf("Mauvaises lettres dans la map\n");
 	}
 	return (0);
 }
@@ -117,7 +117,26 @@ int	is_rectangle(t_map *map)
 	return (1);
 }
 
-// check si on a bien 01PEC
+
+static int	compare_assets(t_map *map, int i, int j)
+{
+	if (map->map[i][j] == 'P' || map->map[i][j] == 'E'
+			|| map->map[i][j] == 'C' || map->map[i][j] == '1'
+				|| map->map[i][j] == '0')
+	{
+		if (map->map[i][j] == 'P')
+			map->count_P++;
+		else if (map->map[i][j] == 'E')
+			map->count_E++;
+		else if (map->map[i][j] == 'C')
+			map->count_C++;
+	}
+	else
+		return (0);
+	return (1);
+}
+
+// faire fonction qui compare
 int	check_assets(t_map *map)
 {
 	int		i;
@@ -129,19 +148,8 @@ int	check_assets(t_map *map)
 		j = 0;
 		while (map->map[i][j]) // search char per char
 		{
-			if (map->map[i][j] == 'P' || map->map[i][j] == 'E'
-					|| map->map[i][j] == 'C' || map->map[i][j] == '1'
-						|| map->map[i][j] == '0')
-			{
-				if (map->map[i][j] == 'P')
-					map->count_P++;
-				else if (map->map[i][j] == 'E')
-					map->count_E++;
-				else if (map->map[i][j] == 'C')
-					map->count_C++;
-			}
-			else
-				return (0);
+			if (!compare_assets(map, i, j))
+				return(0);
 			j++;
 		}
 		i++;
@@ -150,44 +158,3 @@ int	check_assets(t_map *map)
 		return (1);
 	return (0);
 }
-
-
-
-
-
-// #include <unistd.h>
-
-// int	main(int argc, char **argv)
-// {
-// 	char	table[128];
-// 	int		i, j;
-
-// 	if (argc == 3)
-// 	{
-// 		i = 0;
-// 		while (table[i])
-// 		{
-// 			table[i] = 0;
-// 			i++;
-// 		}
-// 		i = 2;
-// 		while (i > 0)
-// 		{
-// 			j = 0;
-// 			while (argv[i][j])
-// 			{
-// 				if (i == 2 && !table[(unsigned char)argv[i][j]])
-// 					table[(unsigned char)argv[i][j]] = 1;
-// 				else if (i == 1 && table[(unsigned char)argv[i][j]] == 1)
-// 				{
-// 					write(1, &argv[i][j], 1);
-// 					table[(unsigned char)argv[i][j]] = 2;
-// 				}
-// 				j++;
-// 			}
-// 			i--;
-// 		}
-// 	}
-// 	write(1, "\n", 1);
-// 	return (0);
-//}
