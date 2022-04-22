@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:05:41 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/20 20:20:22 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/22 11:59:33 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ char	**read_map(const char *path_to_file)
 			if (!line)
 				break;
 			saved = ft_strjoin_free(saved, line);
+			//ft_printf("saved : \n%s\n", saved);
 			free(line);
 		}
 		map = ft_split(saved, '\n');

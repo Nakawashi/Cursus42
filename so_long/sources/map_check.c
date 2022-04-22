@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/22 11:11:45 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/22 11:58:40 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,19 @@ int	map_check(const char *file, char *extension, t_map *map)
 
 	window_init(&window);
 	if (check_img_extension(file, extension) && is_rectangle(map)
-	&& check_walls_around(map) && check_assets(map))
-		return (0);
-	if (!check_img_extension(file, extension))
-		ft_printf("Mauvaise extension\n");
-	if (!is_rectangle(map))
-		ft_printf("Map pas rectangulaire\n");
-	if (!check_walls_around(map))
-		ft_printf("Pas que des 1 autour\n");
-	if (!check_assets(map))
-		printf("Mauvaises lettres dans la map\n");
+		&& check_walls_around(map) && check_assets(map))
+		return (1);
+	else
+	{
+		if (!check_img_extension(file, extension))
+			ft_printf("Mauvaise extension\n");
+		if (!is_rectangle(map))
+			ft_printf("Map pas rectangulaire\n");
+		if (!check_walls_around(map))
+			ft_printf("Pas que des 1 autour\n");
+		if (!check_assets(map))
+			printf("Mauvaises lettres dans la map\n");
+	}
 	return (0);
 }
 
@@ -80,9 +83,8 @@ int	check_walls_around(t_map *map)
 		i = 0;
 		while (map->map[j][i])
 		{
-			if ((j == 0 || j == map->rows_nb - 1
-			|| i == 0 || i == map->line_lenght - 1)
-			&& (map->map[j][i] != '1'))
+			if ((j == 0 || j == map->rows_nb - 1 || i == 0
+					|| i == map->line_lenght - 1) && (map->map[j][i] != '1'))
 				return (0);
 			i++;
 		}
@@ -104,7 +106,7 @@ int	is_rectangle(t_map *map)
 
 	map->line_lenght = ft_strlen(map->map[0]); //13
 	i = 1;
-	while(map->map[i]) // strings
+	while (map->map[i]) // strings
 	{
 		current_line = ft_strlen(map->map[i]);
 		if (map->line_lenght == current_line)
@@ -127,8 +129,9 @@ int	check_assets(t_map *map)
 		j = 0;
 		while (map->map[i][j]) // search char per char
 		{
-			if (map->map[i][j] == 'P' || map->map[i][j] == 'E' || map->map[i][j] == 'C'
-			|| map->map[i][j] == '1' || map->map[i][j] == '0')
+			if (map->map[i][j] == 'P' || map->map[i][j] == 'E'
+					|| map->map[i][j] == 'C' || map->map[i][j] == '1'
+						|| map->map[i][j] == '0')
 			{
 				if (map->map[i][j] == 'P')
 					map->count_P++;
@@ -145,7 +148,7 @@ int	check_assets(t_map *map)
 	}
 	if (map->count_P == 1 && map->count_E == 1 && map->count_C > 0)
 		return (1);
-	return(0);
+	return (0);
 }
 
 

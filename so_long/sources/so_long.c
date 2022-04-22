@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:51:45 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/22 11:02:55 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/22 12:00:14 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 int	main(int argc, char **argv)
 {
-	t_map		map;
+	t_map	map;
 
 	if (argc == 2)
 	{
 		map_init(&map);
 		map.map = read_map(argv[1]);
+		//ft_printf("map.map : %s\n", map.map[2]);
 		if (map_check(argv[1], ".ber", &map))
 		{
 			void	*mlx_id;

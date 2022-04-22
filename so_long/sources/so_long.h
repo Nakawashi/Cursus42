@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/22 11:11:06 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/22 11:25:59 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,13 @@ void	window_init(t_window *window);
 void	map_init(t_map *map);
 void	img_init(t_img *img);
 
-int	map_check(const char *file, char *extension, t_map *map);
-int	check_img_extension(const char *file_path, char *extension);
-int	check_walls_around(t_map *map);
-int	is_rectangle(t_map *map);
-int	check_assets(t_map *map);
+int		map_check(const char *file, char *extension, t_map *map);
+int		check_img_extension(const char *file_path, char *extension);
+int		check_walls_around(t_map *map);
+int		is_rectangle(t_map *map);
+int		check_assets(t_map *map);
 
 char	**read_map(const char *path_to_file);
-
 void	free_map(char **map);
 
 #endif
