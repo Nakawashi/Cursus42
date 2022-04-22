@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/20 21:04:46 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/22 11:11:06 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ typedef struct s_map
 	char	**map;
 	int		line_lenght;
 	int		rows_nb;
-
-}	t_map;
-
-typedef struct s_game
-{
 	int		count_P;
 	int 	count_E;
 	int		count_C;
+
+}	t_map;
+
+typedef struct s_img
+{
 	void	*img_id;
 
-}	t_game;
+}	t_img;
 
 # define SPRITE_SIZE 48
 
@@ -56,13 +56,13 @@ typedef struct s_game
 
 void	window_init(t_window *window);
 void	map_init(t_map *map);
-void	game_init(t_game *game);
+void	img_init(t_img *img);
 
 int	map_check(const char *file, char *extension, t_map *map);
 int	check_img_extension(const char *file_path, char *extension);
 int	check_walls_around(t_map *map);
 int	is_rectangle(t_map *map);
-int	check_assets(t_map *map, t_game *game);
+int	check_assets(t_map *map);
 
 char	**read_map(const char *path_to_file);
 

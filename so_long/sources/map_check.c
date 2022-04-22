@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/20 21:02:57 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/22 11:11:45 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,20 @@
 int	map_check(const char *file, char *extension, t_map *map)
 {
 	t_window	window;
-	t_game		game;
 
 	window_init(&window);
-	game_init(&game);
+	if (check_img_extension(file, extension) && is_rectangle(map)
+	&& check_walls_around(map) && check_assets(map))
+		return (0);
 	if (!check_img_extension(file, extension))
-	{
 		ft_printf("Mauvaise extension\n");
-		return (0);
-	}
 	if (!is_rectangle(map))
-	{
 		ft_printf("Map pas rectangulaire\n");
-		return (0);
-	}
 	if (!check_walls_around(map))
-	{
 		ft_printf("Pas que des 1 autour\n");
-		return (0);
-	}
-	if (!check_assets(map, &game))
-	{
+	if (!check_assets(map))
 		printf("Mauvaises lettres dans la map\n");
-		return (0);
-	}
-	return (1);
+	return (0);
 }
 
 /*
@@ -127,7 +116,7 @@ int	is_rectangle(t_map *map)
 }
 
 // check si on a bien 01PEC
-int	check_assets(t_map *map, t_game *game)
+int	check_assets(t_map *map)
 {
 	int		i;
 	int		j;
@@ -142,11 +131,11 @@ int	check_assets(t_map *map, t_game *game)
 			|| map->map[i][j] == '1' || map->map[i][j] == '0')
 			{
 				if (map->map[i][j] == 'P')
-					game->count_P++;
+					map->count_P++;
 				else if (map->map[i][j] == 'E')
-					game->count_E++;
+					map->count_E++;
 				else if (map->map[i][j] == 'C')
-					game->count_C++;
+					map->count_C++;
 			}
 			else
 				return (0);
@@ -154,7 +143,7 @@ int	check_assets(t_map *map, t_game *game)
 		}
 		i++;
 	}
-	if (game->count_P == 1 && game->count_E == 1 && game->count_C > 0)
+	if (map->count_P == 1 && map->count_E == 1 && map->count_C > 0)
 		return (1);
 	return(0);
 }
