@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/22 11:25:59 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/25 13:35:36 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,22 +48,27 @@ typedef struct s_img
 
 # define SPRITE_SIZE 48
 
-// ascii code for each lowercase letter
-# define KEY_W
-# define KEY_A
-# define KEY_S
-# define KEY_D
+// ascii code for each lowercase letter and arrow
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_UP 65362
+# define KEY_LEFT 65361
+# define KEY_DOWN 65364
+# define KEY_RIGHT 65363
+
+# define WALL "assets/images/1_wall.xpm"
+# define GROUND "assets/images/0_ground.xpm"
+# define PLAYER "assets/images/P_hero.xpm"
+# define EXIT "assets/images/E_exit.xpm"
+# define COLLECTIBLE "assets/images/C_item.xpm"
 
 void	window_init(t_window *window);
 void	map_init(t_map *map);
 void	img_init(t_img *img);
 
 int		map_check(const char *file, char *extension, t_map *map);
-int		check_img_extension(const char *file_path, char *extension);
-int		check_walls_around(t_map *map);
-int		is_rectangle(t_map *map);
-int		check_assets(t_map *map);
-
 char	**read_map(const char *path_to_file);
 void	free_map(char **map);
 

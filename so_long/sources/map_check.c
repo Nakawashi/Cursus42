@@ -3,43 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/22 18:54:58 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/25 13:09:47 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-/*
-	Combine all requirement for map parsing
-	- Correct .ber extension
-	- Walls around the map
-	- At least 4 lines, 4 columns to be coherent (square)
-	- Each asked items (E, P, C, 0, 1)
-*/
-int	map_check(const char *file, char *extension, t_map *map)
-{
-	t_window	window;
-
-	window_init(&window);
-	if (check_img_extension(file, extension) && is_rectangle(map)
-		&& check_walls_around(map) && check_assets(map))
-		return (1);
-	else
-	{
-		if (!check_img_extension(file, extension))
-			ft_printf("Mauvaise extension\n");
-		if (!is_rectangle(map))
-			ft_printf("Map pas rectangulaire\n");
-		if (!check_walls_around(map))
-			ft_printf("Pas que des 1 autour\n");
-		if (!check_assets(map))
-			ft_printf("Mauvaises lettres dans la map\n");
-	}
-	return (0);
-}
 
 /*
 	Used in main file
@@ -50,7 +21,7 @@ int	map_check(const char *file, char *extension, t_map *map)
 	const char *file_path :	(../assets/map/filename.ber)
 	char *extension :		dot + file extension = ".ber"
 */
-int	check_img_extension(const char *file_path, char *extension)
+static int	check_img_extension(const char *file_path, char *extension)
 {
 	char	*new_ext;
 
@@ -69,7 +40,7 @@ int	check_img_extension(const char *file_path, char *extension)
 
 	t_map *map :	reference of struct s_map, init in map_check()
 */
-int	check_walls_around(t_map *map)
+static int	check_walls_around(t_map *map)
 {
 	int	i;
 	int	j;
@@ -99,7 +70,7 @@ int	check_walls_around(t_map *map)
 
 	t_map *map :	reference of struct s_map, init in map_check()
 */
-int	is_rectangle(t_map *map)
+static int	is_rectangle(t_map *map)
 {
 	int	current_line;
 	int	i;
@@ -137,7 +108,7 @@ static int	compare_assets(t_map *map, int i, int j)
 }
 
 // faire fonction qui compare
-int	check_assets(t_map *map)
+static int	check_assets(t_map *map)
 {
 	int		i;
 	int		j;
@@ -156,5 +127,34 @@ int	check_assets(t_map *map)
 	}
 	if (map->count_P == 1 && map->count_E == 1 && map->count_C > 0)
 		return (1);
+	return (0);
+}
+
+/*
+	Combine all requirement for map parsing
+	- Correct .ber extension
+	- Walls around the map
+	- At least 4 lines, 4 columns to be coherent (square)
+	- Each asked items (E, P, C, 0, 1)
+*/
+int	map_check(const char *file, char *extension, t_map *map)
+{
+	t_window	window;
+
+	window_init(&window);
+	if (check_img_extension(file, extension) && is_rectangle(map)
+		&& check_walls_around(map) && check_assets(map))
+		return (1);
+	else
+	{
+		if (!check_img_extension(file, extension))
+			ft_printf("Mauvaise extension\n");
+		if (!is_rectangle(map))
+			ft_printf("Map pas rectangulaire\n");
+		if (!check_walls_around(map))
+			ft_printf("Pas que des 1 autour\n");
+		if (!check_assets(map))
+			ft_printf("Mauvaises lettres dans la map\n");
+	}
 	return (0);
 }
