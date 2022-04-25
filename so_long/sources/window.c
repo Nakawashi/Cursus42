@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:00:06 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/25 13:41:53 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/04/25 14:32:03 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,3 @@ int	deal_key(int key, void *param)
 		ft_putchar('D');
 	return (0);
 }
-
-
-
-int	main(void)
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 1920, 1080, "Half Life 3");
-	mlx_key_hook(win_ptr, deal_key, (void *)0);
-	mlx_loop(mlx_ptr);
-	return (0);
-} 

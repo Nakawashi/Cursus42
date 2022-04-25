@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/25 13:35:36 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/04/25 14:32:25 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,14 @@ typedef struct s_img
 # define EXIT "assets/images/E_exit.xpm"
 # define COLLECTIBLE "assets/images/C_item.xpm"
 
+void	struct_init(t_window *window, t_map *map);
 void	window_init(t_window *window);
 void	map_init(t_map *map);
-void	img_init(t_img *img);
-
 int		map_check(const char *file, char *extension, t_map *map);
 char	**read_map(const char *path_to_file);
 void	free_map(char **map);
+
+int	deal_key(int key, void *param);
+
 
 #endif

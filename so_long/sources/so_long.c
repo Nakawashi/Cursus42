@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:51:45 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/22 18:42:15 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/04/25 14:32:45 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 
 			mlx_id = mlx_init();
 			win_id = mlx_new_window(mlx_id, 500, 500, "Half Life 3");
+			mlx_key_hook(win_id, deal_key, (void *)0);
 			mlx_loop(mlx_id);
 		}
 		free_map(map.map);
