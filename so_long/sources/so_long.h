@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/25 14:32:25 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/04/29 17:49:22 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,20 @@
 # include "../libraries/libft/ft_printf/ft_printf.h"
 # include "../libraries/minilibx/mlx.h"
 
-typedef struct s_window
+typedef struct s_game
 {
 	void	*mlx_id;
 	void	*win_id;
 	int		win_width;
 	int		win_height;
-}	t_window;
-
-typedef struct s_map
-{
 	char	**map;
-	int		line_lenght;
-	int		rows_nb;
+	int		map_width; // line length
+	int		map_height; // number of rows
 	int		count_P;
 	int 	count_E;
 	int		count_C;
-
-}	t_map;
-
-typedef struct s_img
-{
 	void	*img_id;
-
-}	t_img;
+}	t_game;
 
 # define SPRITE_SIZE 48
 
@@ -64,10 +54,8 @@ typedef struct s_img
 # define EXIT "assets/images/E_exit.xpm"
 # define COLLECTIBLE "assets/images/C_item.xpm"
 
-void	struct_init(t_window *window, t_map *map);
-void	window_init(t_window *window);
-void	map_init(t_map *map);
-int		map_check(const char *file, char *extension, t_map *map);
+void	init_game(t_game *game);
+int		map_check(const char *file, t_game *game);
 char	**read_map(const char *path_to_file);
 void	free_map(char **map);
 

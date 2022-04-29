@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:00:06 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/25 14:32:03 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/04/29 14:50:00 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,6 @@
 
 */
 
-int	ft_putchar(char c)
-{
-	return (write(1, &c, 1));
-}
-
-int	ft_putnbr(int n)
-{
-	int	count;
-
-	count = 0;
-	if (n < 0)
-	{
-		count += write(1, "-", 1);
-		n *= -1;
-	}
-	if (n > 9)
-		count += ft_putnbr(n / 10);
-	count += ft_putchar(n % 10 + '0');
-	return (count);
-}
 
 int	deal_key(int key, void *param)
 {
