@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/04/22 18:13:09 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/05/03 14:30:02 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,10 @@ SRCS			=	sources/so_long.c \
 					sources/get_next_line.c \
 					sources/map_check.c \
 					sources/map_read.c \
-					sources/init_structures.c \
+					sources/init_game.c \
 					sources/window.c \
-					sources/free_2D_table.c
+					sources/hooks.c \
+					sources/clean_stuff.c
 
 LIBFT_DIR		=	libraries/libft
 LIBFT			=	libraries/libft/libft.a
@@ -66,9 +67,9 @@ $(NAME)	:	$(OBJS)
 bonus:	$(NAME_BONUS)	## Compile every bonus files
 
 norm:	## Apply Norminette check
-	@echo "$(VIOLET)[NORM - START]"
+	@echo "$(VIOLET)[NORM - START]$(NONE)"
 	@norminette sources/*.*
-	@echo "[NORM - END]$(NONE)"
+	@echo "$(VIOLET)[NORM - END]$(NONE)"
 
 clean: ## Clean generated files
 	@$(RM) $(OBJS)

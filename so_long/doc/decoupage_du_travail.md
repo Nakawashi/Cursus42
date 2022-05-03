@@ -4,9 +4,9 @@
 
 ## La fenêtre
 
-> [en cours] Possible de fermer la fenetre via la croix<br>
-> [en cours] Possible de fermer la fenetre via ESC<br>
-> [ ] Fenetre fluide mais **voir ce que ca veut dire**<br>
+> [X] Possible de fermer la fenetre via la croix<br>
+> [X] Possible de fermer la fenetre via ESC<br>
+> [ ] Check les leaks dûs a la fermeture de la fenêtre<br>
 > [ ] Afficher le nombre de mouvements ici plutôt que dans le Shell<br>
 
 

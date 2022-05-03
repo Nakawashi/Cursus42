@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:51:45 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/25 14:32:45 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/03 14:18:17 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,24 @@
 
 int	main(int argc, char **argv)
 {
-	t_map	map;
-
 	if (argc == 2)
 	{
-		map_init(&map);
-		map.map = read_map(argv[1]);
-		//ft_printf("map.map : %s\n", map.map[2]);
-		if (map_check(argv[1], ".ber", &map))
-		{
-			void	*mlx_id;
-			void	*win_id;
+		t_game	game;
 
-			mlx_id = mlx_init();
-			win_id = mlx_new_window(mlx_id, 500, 500, "Half Life 3");
-			mlx_key_hook(win_id, deal_key, (void *)0);
-			mlx_loop(mlx_id);
+		init_game(&game);
+		if (map_check(argv[1], &game))
+		{
+			game_hooks(&game);
+			//images en memoire
+			//afficher les images selon le contenu de la map
+			//mlx_key_hook(game.win_id, deal_key, (void *)0);
+			mlx_loop(game.mlx_id);
 		}
-		free_map(map.map);
-		exit(1);
+		else
+		{
+			free_map(game.map);
+			exit(1);
+		}
 	}
 	else
 	{

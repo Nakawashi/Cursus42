@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/03 11:34:38 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/03 20:41:34 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,32 +21,34 @@
 # include "../libraries/libft/ft_printf/ft_printf.h"
 # include "../libraries/minilibx/mlx.h"
 
-typedef struct s_window
+typedef struct s_game
 {
 	void	*mlx_id;
 	void	*win_id;
 	int		win_width;
 	int		win_height;
-}	t_window;
-
-typedef struct s_map
-{
 	char	**map;
-	int		line_lenght;
-	int		rows_nb;
+	int		map_width; // line length
+	int		map_height; // number of rows
 	int		count_P;
 	int 	count_E;
 	int		count_C;
-
-}	t_map;
-
-typedef struct s_img
-{
 	void	*img_id;
-
-}	t_img;
+	void	*img_wall;
+	void	*img_ground;
+	void	*img_player;
+	void	*img_exit;
+	void	*img_coll;
+	int		p_w; // player position x
+	int		p_h; // player position y
+}	t_game;
 
 # define SPRITE_SIZE 48
+
+/*
+	Quit game
+*/
+# define ESC 53
 
 // ascii code for each lowercase letter and arrow
 # define KEY_W 119
@@ -58,20 +60,19 @@ typedef struct s_img
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
 
-# define WALL "assets/images/1_wall.xpm"
-# define GROUND "assets/images/0_ground.xpm"
-# define PLAYER "assets/images/P_hero.xpm"
-# define EXIT "assets/images/E_exit.xpm"
-# define COLLECTIBLE "assets/images/C_item.xpm"
+# define WALL_PATH "assets/images/1_wall.xpm"
+# define GROUND_PATH "assets/images/0_ground.xpm"
+# define PLAYER_PATH "assets/images/P_hero.xpm"
+# define EXIT_PATH "assets/images/E_exit.xpm"
+# define COLLECTIBLE_PATH "assets/images/C_item.xpm"
 
-void	struct_init(t_window *window, t_map *map);
-void	window_init(t_window *window);
-void	map_init(t_map *map);
-int		map_check(const char *file, char *extension, t_map *map);
+void	init_game(t_game *game);
+int		map_check(const char *file, t_game *game);
 char	**read_map(const char *path_to_file);
 void	free_map(char **map);
-
-int	deal_key(int key, void *param);
+void	game_hooks(t_game *game);
+int		deal_key(int key, void *param);
+int		clean(t_game *game);
 
 
 #endif
