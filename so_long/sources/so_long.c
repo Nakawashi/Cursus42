@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:51:45 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/29 17:57:08 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/03 14:18:17 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int	main(int argc, char **argv)
 		init_game(&game);
 		if (map_check(argv[1], &game))
 		{
-			mlx_key_hook(game.win_id, deal_key, (void *)0);
+			game_hooks(&game);
+			//images en memoire
+			//afficher les images selon le contenu de la map
+			//mlx_key_hook(game.win_id, deal_key, (void *)0);
 			mlx_loop(game.mlx_id);
 		}
 		else

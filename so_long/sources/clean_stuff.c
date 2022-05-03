@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_2D_table.c                                    :+:      :+:    :+:   */
+/*   clean_stuff.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 20:29:16 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/20 21:05:00 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/03 19:55:20 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static void	ft_free_ptr(void **ptr)
-{
-	if (*ptr)
-	{
-		free(*ptr);
-		*ptr = NULL;
-	}
-}
 
 void	free_map(char **map)
 {
@@ -30,8 +21,22 @@ void	free_map(char **map)
 	i = 0;
 	while (map[i])
 	{
-		ft_free_ptr((void *)&map[i]);
+		free(map[i]);
 		i++;
 	}
-	ft_free_ptr((void *)&map);
+	free(map);
+}
+
+int	clean(t_game *game)
+{
+	ft_printf("ESC used to quit\n");
+	// mlx_destroy_image(game->mlx_id, game->img_wall);
+	// mlx_destroy_image(game->mlx_id, game->img_ground);
+	// mlx_destroy_image(game->mlx_id, game->img_player);
+	// mlx_destroy_image(game->mlx_id, game->img_coll);
+	// mlx_destroy_image(game->mlx_id, game->img_exit);
+	//free_map(game->map);
+	ft_printf("map[1] ; %s\n", game->map[1]);
+	mlx_destroy_window(game->mlx_id, game->win_id);
+	exit(0);
 }

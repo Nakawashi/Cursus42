@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/29 18:23:29 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/03 19:57:40 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	check_walls_around(t_game *game)
 	int	i;
 	int	j;
 
+	if (!game->map)
+		return(0);
 	while (game->map[game->map_height]) // get number of lines == height
 		game->map_height++;
 	j = 0;
@@ -53,6 +55,8 @@ static int	is_rectangle(t_game *game)
 	int	current_line;
 	int	i;
 
+	if (!game->map)
+		return(0);
 	game->map_width = ft_strlen(game->map[0]); //13
 	i = 1;
 	while (game->map[i]) // strings
@@ -71,6 +75,8 @@ static int	is_rectangle(t_game *game)
 */
 static int	compare_assets(t_game *game, int i, int j)
 {
+	if (!game->map)
+		return(0);
 	if (game->map[i][j] == 'P' || game->map[i][j] == 'E'
 			|| game->map[i][j] == 'C' || game->map[i][j] == '1'
 				|| game->map[i][j] == '0')
@@ -95,6 +101,8 @@ static int	check_assets(t_game *game)
 	int		i;
 	int		j;
 
+	if (!game->map)
+		return(0);
 	i = 0;
 	while (game->map[i]) //search line per line
 	{
@@ -124,13 +132,11 @@ static int	check_assets(t_game *game)
 static int	check_ext(const char *file_path, char *extension)
 {
 	char	*new_ext;
-
 	if (!file_path)
 		return (0);
 	new_ext = ft_strrchr(file_path, '.');
 	if (ft_strncmp(new_ext, extension, 5))
 		return (0);
-	ft_printf("new_ext : %s\n", new_ext);
 	return (1);
 }
 

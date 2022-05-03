@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:00:06 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/29 14:50:00 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/03 15:53:10 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 	- WASD to move the player and display it in the window
 
 */
-
-
 int	deal_key(int key, void *param)
 {
 	(void) *param;
