@@ -10,7 +10,7 @@ static char *result[] = {
 "+ c #4D9BE6",
 "@ c #8FD3FF",
 "# c #8FF8E2",
-"$ c None",
+"$ c #0EAF9B",
 /* pixels */
 "$$$$$$$$$$$$$$$XXXXXX$$$XXXXXXXXX$$$$$$$$$$$$$$$",
 "$$$$$$$$$$$$$$$XXXXXX$$$XXXXXXXXX$$$$$$$$$$$$$$$",
@@ -58,6 +58,6 @@ static char *result[] = {
 "$$$$$$XXXXXXXXX                  XXXXXXXXX$$$$$$",
 "$$$$$$XXXXXXXXX                  XXXXXXXXX$$$$$$",
 "$$$$$$$$$$$$$$$XXXXXXXXXXXXXXXXXX$$$$$$$$$$$$$$$",
-"$$$$$$$$$$$$$$$XXXXXXXXXXXXXXXXXX$$$$$$$$$$$$$$$",
-"$$$$$$$$$$$$$$$XXXXXXXXXXXXXXXXXX$$$$$$$$$$$$$$$"
+"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$",
+"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
 };
