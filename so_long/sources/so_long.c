@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:51:45 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/03 14:18:17 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:35:31 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@ int	main(int argc, char **argv)
 	{
 		t_game	game;
 
-		init_game(&game);
 		if (map_check(argv[1], &game))
 		{
+			game_init(&game);
 			game_hooks(&game);
-			//images en memoire
 			//afficher les images selon le contenu de la map
 			//mlx_key_hook(game.win_id, deal_key, (void *)0);
 			mlx_loop(game.mlx_id);
