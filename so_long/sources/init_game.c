@@ -6,19 +6,36 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:27:56 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/09 18:36:34 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/09 19:03:45 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	get_window_size(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	game->win_width = ft_strlen(game->map[i]) * IMG_SIZE;
+	game->win_height = 0;
+	while (game->map[i])
+	{
+		game->win_height++;
+		i++;
+	}
+	game->win_height *= IMG_SIZE;
+}
 
 /*
 	initialize game datas
 */
 static void	init_game(t_game *game)
 {
+	get_window_size(game);
 	game->mlx_id = mlx_init();
-	game->win_id = mlx_new_window(game->mlx_id, 500, 500, "Half Life 3");
+	game->win_id = mlx_new_window
+		(game->mlx_id, game->win_width, game->win_height, "Half Life 3");
 	game->collectable = 0;
 	game->end_game = 0;
 }
@@ -36,7 +53,7 @@ static void	*init_img(char *img_path, t_game *game)
 }
 
 /*
-	initialize images
+	initialize each different img
 */
 static void	put_img(t_game *game)
 {

@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 20:29:16 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/09 15:10:36 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/09 19:00:23 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ int	clean(t_game *game)
 	// mlx_destroy_image(game->mlx_id, game->img_coll);
 	// mlx_destroy_image(game->mlx_id, game->img_exit);
 	//free_map(game->map);
-	ft_printf("map[1] ; %s\n", game->map[1]);
-	free(game->map);
+	//ft_printf("map[1] ; %s\n", game->map[1]);
 	mlx_destroy_window(game->mlx_id, game->win_id);
 	exit(0);
 }
