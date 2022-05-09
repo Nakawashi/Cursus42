@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/03 20:41:34 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/09 18:34:04 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,23 @@ typedef struct s_game
 	int		count_P;
 	int 	count_E;
 	int		count_C;
-	void	*img_id;
-	void	*img_wall;
+	int		img_width;
+	int		img_height;
 	void	*img_ground;
-	void	*img_player;
+	void	*img_wall;
+	void	*img_collectible;
 	void	*img_exit;
-	void	*img_coll;
-	int		p_w; // player position x
-	int		p_h; // player position y
+	void	*img_player_w;
+	void	*img_player_a;
+	void	*img_player_s;
+	void	*img_player_d;
+	int		collectable;
+	int		x;
+	int		y;
+	int		end_game;
 }	t_game;
 
-# define SPRITE_SIZE 48
+# define IMG_SIZE 48
 
 /*
 	Quit game
@@ -60,14 +66,19 @@ typedef struct s_game
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
 
-# define WALL_PATH "assets/images/1_wall.xpm"
-# define GROUND_PATH "assets/images/0_ground.xpm"
-# define PLAYER_PATH "assets/images/P_hero.xpm"
-# define EXIT_PATH "assets/images/E_exit.xpm"
-# define COLLECTIBLE_PATH "assets/images/C_item.xpm"
+// relative paths to xpm images
+# define WALL_PATH "assets/images/1.xpm"
+# define GROUND_PATH "assets/images/0.xpm"
+# define PLAYERW_PATH "assets/images/hero_W.xpm"
+# define PLAYERA_PATH "assets/images/hero_A.xpm"
+# define PLAYERS_PATH "assets/images/hero_S.xpm"
+# define PLAYERD_PATH "assets/images/hero_D.xpm"
+# define EXIT_PATH "assets/images/E.xpm"
+# define COLLECTIBLE_PATH "assets/images/C.xpm"
 
-void	init_game(t_game *game);
+void	img_draw(t_game *game, void *img, int x, int y);
 int		map_check(const char *file, t_game *game);
+void	game_init(t_game *game);
 char	**read_map(const char *path_to_file);
 void	free_map(char **map);
 void	game_hooks(t_game *game);
