@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/13 14:05:40 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:34:47 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,25 +50,21 @@ typedef struct s_game
 	int		end_game;
 }	t_game;
 
-/*
-	size of my images
-*/
+// size of my images
 # define IMG_SIZE 48
 
-/*
-	Quit game
-*/
+// Quit game
 # define ESC 53
 
 // ascii code for each lowercase letter and arrow
-# define KEY_W 119
-# define KEY_A 97
-# define KEY_S 115
-# define KEY_D 100
-# define KEY_UP 65362
-# define KEY_LEFT 65361
-# define KEY_DOWN 65364
-# define KEY_RIGHT 65363
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_UP 126
+# define KEY_LEFT 123
+# define KEY_DOWN 125
+# define KEY_RIGHT 124
 
 // relative paths to xpm images
 # define WALL_PATH "assets/images/1.xpm"
