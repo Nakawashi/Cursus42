@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/05/09 18:02:57 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/05/13 13:44:04 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ SRCS			=	sources/so_long.c \
 					sources/get_next_line.c \
 					sources/map_check.c \
 					sources/map_read.c \
-					sources/init_game.c \
-					sources/window.c \
+					sources/game_init.c \
+					sources/map_init.c \
 					sources/hooks.c \
 					sources/clean_stuff.c
 
@@ -61,7 +61,7 @@ $(NAME)	:	$(OBJS)
 	@echo "$(BLUE)Making ft_printf... $(NONE)"
 	@$(MAKE) -C $(FT_PRINTF_DIR)
 	@echo "$(BLUE)Making so_long... $(NONE)"
-	@$(CC) $(OBJS) $(CFLAGS) -I $(MINILIBX_DIR) -I $(LIBFT_DIR) -I $(FT_PRINTF_DIR) $(INCLUDE) -o $(NAME)
+	@$(CC) $(OBJS) $(CFLAGS) $(DEBUG) -I $(MINILIBX_DIR) -I $(LIBFT_DIR) -I $(FT_PRINTF_DIR) $(INCLUDE) -o $(NAME)
 	@printf "$(GREEN) so_long ready.\n$(NONE)"
 
 bonus:	$(NAME_BONUS)	## Compile every bonus files
