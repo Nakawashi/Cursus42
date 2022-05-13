@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/09 18:34:04 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/13 14:05:40 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_game
 	int		count_P;
 	int 	count_E;
 	int		count_C;
+	int		nb_movements;
 	int		img_width;
 	int		img_height;
 	void	*img_ground;
@@ -43,12 +44,15 @@ typedef struct s_game
 	void	*img_player_a;
 	void	*img_player_s;
 	void	*img_player_d;
-	int		collectable;
+	int		collectible;
 	int		x;
 	int		y;
 	int		end_game;
 }	t_game;
 
+/*
+	size of my images
+*/
 # define IMG_SIZE 48
 
 /*
@@ -76,13 +80,12 @@ typedef struct s_game
 # define EXIT_PATH "assets/images/E.xpm"
 # define COLLECTIBLE_PATH "assets/images/C.xpm"
 
-void	img_draw(t_game *game, void *img, int x, int y);
 int		map_check(const char *file, t_game *game);
 void	game_init(t_game *game);
+void	map_init(t_game *game);
 char	**read_map(const char *path_to_file);
 void	free_map(char **map);
 void	game_hooks(t_game *game);
-int		deal_key(int key, void *param);
 int		clean(t_game *game);
 
 
