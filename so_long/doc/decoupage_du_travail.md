@@ -1,12 +1,12 @@
 # Découper le travail
 
-> [ ] Le Makefile ne relink pas et fonctionne avec les règles $(NAME), all, clean, fclean et relink <br>
+> [X] Le Makefile ne relink pas et fonctionne avec les règles $(NAME), all, clean, fclean et relink <br>
 
 ## La fenêtre
 
 > [X] Possible de fermer la fenetre via la croix<br>
 > [X] Possible de fermer la fenetre via ESC<br>
-> [ ] Check les leaks dûs a la fermeture de la fenêtre<br>
+> [X] Check les leaks dûs a la fermeture de la fenêtre<br>
 > [ ] Afficher le nombre de mouvements ici plutôt que dans le Shell<br>
 
 
