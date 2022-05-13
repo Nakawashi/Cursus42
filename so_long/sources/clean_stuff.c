@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 20:29:16 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/13 15:40:13 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:49:58 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	free_map(char **map)
 
 int	clean(t_game *game)
 {
-	//ft_printf("ESC used to quit\n");
+	free_map(game->map);
 	mlx_destroy_image(game->mlx_id, game->img_ground);
 	mlx_destroy_image(game->mlx_id, game->img_wall);
 	mlx_destroy_image(game->mlx_id, game->img_collectible);
@@ -38,8 +38,6 @@ int	clean(t_game *game)
 	mlx_destroy_image(game->mlx_id, game->img_player_a);
 	mlx_destroy_image(game->mlx_id, game->img_player_s);
 	mlx_destroy_image(game->mlx_id, game->img_player_d);
-	free_map(game->map);
-	//ft_printf("map[1] ; %s\n", game->map[1]);
 	mlx_destroy_window(game->mlx_id, game->win_id);
-	return (0);
+	exit (0);
 }

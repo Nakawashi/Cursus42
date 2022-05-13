@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/13 17:11:18 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/13 20:22:24 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@
 # include "../libraries/libft/ft_printf/ft_printf.h"
 # include "../libraries/minilibx/mlx.h"
 
+enum e_assets
+{
+	GROUND = '0',
+	WALL = '1',
+	PLAYER = 'P',
+	EXIT = 'E',
+	COLLECTIBLE = 'C'
+};
+
 typedef struct s_game
 {
 	void	*mlx_id;
@@ -30,10 +39,10 @@ typedef struct s_game
 	char	**map;
 	int		map_width; // line length
 	int		map_height; // number of rows
-	int		count_P;
-	int 	count_E;
-	int		count_C;
-	int		nb_movements;
+	int		count_p;
+	int		count_e;
+	int		count_c;
+	int		collected;
 	int		img_width;
 	int		img_height;
 	void	*img_ground;
@@ -44,12 +53,22 @@ typedef struct s_game
 	void	*img_player_a;
 	void	*img_player_s;
 	void	*img_player_d;
-	int		collected;
-	char	player_direction;
-	int		x;
-	int		y;
+	int		img_pos_x;
+	int		img_pos_y;
 	int		end_game;
 }	t_game;
+
+typedef struct s_player
+{
+	int		x;
+	int		y;
+	int		x_origin;
+	int		y_origin;
+	int		direction;
+	int		nb_movements;
+	int		collects;
+	char	previous;
+}	t_player;
 
 // size of my images
 # define IMG_SIZE 48
@@ -78,11 +97,15 @@ typedef struct s_game
 # define COLLECTIBLE_PATH "assets/images/C.xpm"
 
 int		map_check(const char *file, t_game *game);
+char	**read_map(const char *path_to_file);
 void	game_init(t_game *game);
 void	map_init(t_game *game);
-char	**read_map(const char *path_to_file);
-void	free_map(char **map);
 void	game_hooks(t_game *game);
+void	move_up(t_game *game, t_player *player);
+void	move_left(t_game *game);
+void	move_right(t_game *game);
+void	move_down(t_game *game);
+void	free_map(char **map);
 int		clean(t_game *game);
 
 #endif

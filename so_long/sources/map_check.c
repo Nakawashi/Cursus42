@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/13 17:24:22 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:57:42 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	check_walls_around(t_game *game)
 	int	j;
 
 	if (!game->map)
-		return(0);
+		return (0);
 	while (game->map[game->map_height]) // get number of lines == height
 		game->map_height++;
 	j = 0;
@@ -56,7 +56,7 @@ static int	is_rectangle(t_game *game)
 	int	i;
 
 	if (!game->map)
-		return(0);
+		return (0);
 	game->map_width = ft_strlen(game->map[0]); //13
 	i = 1;
 	while (game->map[i]) // strings
@@ -76,32 +76,23 @@ static int	is_rectangle(t_game *game)
 static int	compare_assets(t_game *game, int i, int j)
 {
 	if (!game->map)
-		return(0);
+		return (0);
 	if (game->map[i][j] == 'P' || game->map[i][j] == 'E'
-			|| game->map[i][j] == 'C' || game->map[i][j] == '1'
-				|| game->map[i][j] == '0')
+		|| game->map[i][j] == 'C' || game->map[i][j] == '1'
+			|| game->map[i][j] == '0')
 	{
 		if (game->map[i][j] == 'P')
-			{
-				game->count_P++;
-				ft_printf("game->count_P : %d\n", game->count_P);
-			}
+			game->count_p++;
 		else if (game->map[i][j] == 'E')
-			{
-				game->count_E++;
-				ft_printf("game->count_E : %d\n", game->count_E);
-			}
+			game->count_e++;
 		else if (game->map[i][j] == 'C')
-			{
-				game->count_C++;
-				ft_printf("game->count_C : %d\n", game->count_C);
-			}
+			game->count_c++;
 	}
 	else
-		{
-			ft_printf("Lettre non identifiable dans la map\n");
-			return (0);
-		}
+	{
+		ft_printf("Lettre non identifiable dans la map\n");
+		return (0);
+	}
 	return (1);
 }
 
@@ -114,7 +105,7 @@ static int	check_assets(t_game *game)
 	int		j;
 
 	if (!game->map)
-		return(0);
+		return (0);
 	i = 0;
 	while (game->map[i]) //search line per line
 	{
@@ -122,14 +113,12 @@ static int	check_assets(t_game *game)
 		while (game->map[i][j]) // search char per char
 		{
 			if (!compare_assets(game, i, j))
-				return(0);
+				return (0);
 			j++;
-			//ft_printf("j : %d\n", j);
 		}
 		i++;
-		//ft_printf("i : %d\n", i);
 	}
-	if (game->count_P == 1 && game->count_E == 1 && game->count_C > 0)
+	if (game->count_p == 1 && game->count_e == 1 && game->count_c > 0)
 		return (1);
 	return (0);
 }
@@ -146,6 +135,7 @@ static int	check_assets(t_game *game)
 static int	check_ext(const char *file_path, char *extension)
 {
 	char	*new_ext;
+
 	if (!file_path)
 		return (0);
 	new_ext = ft_strrchr(file_path, '.');
@@ -163,12 +153,12 @@ static int	check_ext(const char *file_path, char *extension)
 */
 int	map_check(const char *file, t_game *game)
 {
-	game->count_P = 0;
-	game->count_E = 0;
-	game->count_C = 0;
+	game->count_p = 0;
+	game->count_e = 0;
+	game->count_c = 0;
 	game->map = read_map(file);
 	if (check_ext(file, ".ber") && is_rectangle(game)
-			&& check_walls_around(game) && check_assets(game))
+		&& check_walls_around(game) && check_assets(game))
 		return (1);
 	else
 	{

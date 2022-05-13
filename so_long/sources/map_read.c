@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:05:41 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/04/29 17:31:20 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/13 19:58:10 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,12 @@ char	**read_map(const char *path_to_file)
 	if (fd > 0)
 	{
 		saved = ft_strdup("");
-		while(1)
+		while (1)
 		{
 			line = get_next_line(fd);
 			if (!line)
-				break;
+				break ;
 			saved = ft_strjoin_free(saved, line);
-			//ft_printf("saved : \n%s\n", saved);
 			free(line);
 		}
 		map = ft_split(saved, '\n');
@@ -45,4 +44,3 @@ char	**read_map(const char *path_to_file)
 	close(fd);
 	return (map);
 }
-
