@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 20:29:16 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/13 14:34:45 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/13 15:40:13 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ int	clean(t_game *game)
 	free_map(game->map);
 	//ft_printf("map[1] ; %s\n", game->map[1]);
 	mlx_destroy_window(game->mlx_id, game->win_id);
-	exit(0);
+	return (0);
 }

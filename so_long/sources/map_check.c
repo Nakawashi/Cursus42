@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/03 19:57:40 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:24:22 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,26 @@ static int	compare_assets(t_game *game, int i, int j)
 				|| game->map[i][j] == '0')
 	{
 		if (game->map[i][j] == 'P')
-			game->count_P++;
+			{
+				game->count_P++;
+				ft_printf("game->count_P : %d\n", game->count_P);
+			}
 		else if (game->map[i][j] == 'E')
-			game->count_E++;
+			{
+				game->count_E++;
+				ft_printf("game->count_E : %d\n", game->count_E);
+			}
 		else if (game->map[i][j] == 'C')
-			game->count_C++;
+			{
+				game->count_C++;
+				ft_printf("game->count_C : %d\n", game->count_C);
+			}
 	}
 	else
-		return (0);
+		{
+			ft_printf("Lettre non identifiable dans la map\n");
+			return (0);
+		}
 	return (1);
 }
 
@@ -112,8 +124,10 @@ static int	check_assets(t_game *game)
 			if (!compare_assets(game, i, j))
 				return(0);
 			j++;
+			//ft_printf("j : %d\n", j);
 		}
 		i++;
+		//ft_printf("i : %d\n", i);
 	}
 	if (game->count_P == 1 && game->count_E == 1 && game->count_C > 0)
 		return (1);
@@ -149,6 +163,9 @@ static int	check_ext(const char *file_path, char *extension)
 */
 int	map_check(const char *file, t_game *game)
 {
+	game->count_P = 0;
+	game->count_E = 0;
+	game->count_C = 0;
 	game->map = read_map(file);
 	if (check_ext(file, ".ber") && is_rectangle(game)
 			&& check_walls_around(game) && check_assets(game))
@@ -162,7 +179,7 @@ int	map_check(const char *file, t_game *game)
 		if (!check_walls_around(game))
 			ft_printf("Pas que des 1 autour\n");
 		if (!check_assets(game))
-			ft_printf("Mauvaises lettres dans la map\n");
+			ft_printf("Pas le bon compte d'elements dans la map\n");
 	}
 	return (0);
 }

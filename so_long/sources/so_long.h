@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/13 15:34:47 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:11:18 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ typedef struct s_game
 	void	*img_player_a;
 	void	*img_player_s;
 	void	*img_player_d;
-	int		collectible;
+	int		collected;
+	char	player_direction;
 	int		x;
 	int		y;
 	int		end_game;
@@ -83,6 +84,5 @@ char	**read_map(const char *path_to_file);
 void	free_map(char **map);
 void	game_hooks(t_game *game);
 int		clean(t_game *game);
-
 
 #endif
