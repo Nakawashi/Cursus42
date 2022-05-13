@@ -18,36 +18,28 @@
 > [X] On est bien entouré par des murs partout<br>
 > [X] Au moins une sortie, un item et une position de départ<br>
 > [X] Pas de caractere inopiné genre Z<br>
-> [ ] Afficher les images fixes<br>
+> [X] Afficher les images fixes<br>
 > [ ] Les murs nous bloquent le passage<br>
 > [X] Check toutes les cartes proposées et accepter celles qui sont OK avec tout<br>
-> [ ] La map donnée en exemple dans le PDF fonctionne, avec les images<br>
+> [X] La map donnée en exemple dans le PDF fonctionne, avec les images<br>
 
 
 ## Le jeu
 
 > [ ] Déplacements via W A S D<br>
-> [ ] Incrémenter de 1 pour chaque mouvement effectué<br>
+> [ ! ] Incrémenter de 1 pour chaque mouvement effectué<br>
 > [ ] Condition de victoire Ok : avoir collecté tous les items, sortir, afficher le nombre de mouvements<br>
 > [ ] Mouvement des sprites<br>
 
 ## Erreurs
 
-> Gestion des erreurs pour chaque evenement non OK. Quitter proprement le programme, avec des signaux probablement.<br>
+> Gestion des erreurs pour chaque evenement non OK. Quitter proprement le programme<br>
 
 ### Objectif :<br>
 
-Choisir mes sprites<br>
+A regler :<br>
+segfault quand je quitte <br>
+nb_movements qui prend une nouvelle valeur random des qu'une key est tapee <br>
 
-- murs / collisions
-- sol normal
-- perso
-- items
-- sortie<br>
-
-Afficher une image fixe<br>
-Afficher les bords de la map<br>
-Definir la taille de la fenetre par rapport aux nombres d'elements a afficher<br>
-Gerer le Makefile<br>
 
 -> check si on a des parametres et si on recoit le bon type de fichier.
