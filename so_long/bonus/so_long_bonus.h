@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/13 14:41:35 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:53:28 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ typedef struct s_game
 	char	**map;
 	int		map_width; // line length
 	int		map_height; // number of rows
-	int		count_P;
-	int 	count_E;
-	int		count_C;
+	int		count_p;
+	int 	count_e;
+	int		count_c;
 	int		img_width;
 	int		img_height;
 	int		nb_movements;

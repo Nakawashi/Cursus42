@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:27:56 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/13 14:41:02 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:53:28 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static void	init_game(t_game *game)
 		(game->mlx_id, game->win_width, game->win_height, "Half Life 3");
 	game->nb_movements = 0;
 	game->collectible = 0;
-	game->count_E = 0;
-	game->count_C = 0;
+	game->count_e = 0;
+	game->count_c = 0;
 	game->end_game = 0;
 }
 
