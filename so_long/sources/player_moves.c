@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 19:07:39 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/14 18:17:33 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:37:33 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 void	move_up(t_game *game, t_player *player)
 {
 	ft_printf("aller en haut\n");
-	game->collected++;
+	//game->map[player->index_i - 1][player->index_j] = PLAYER;
 	player->direction = 'w';
+	game->end_game = 0;
 }
 
 void	move_left(t_game *game, t_player *player)
