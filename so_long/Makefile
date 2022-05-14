@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/05/13 19:29:22 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/05/14 18:14:47 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS			=	sources/so_long.c \
 					sources/game_init.c \
 					sources/map_init.c \
 					sources/game_hooks.c \
-					sources/move_player.c \
+					sources/player_moves.c \
 					sources/clean_stuff.c
 
 LIBFT_DIR		=	libraries/libft
