@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:45:17 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/14 17:49:36 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:24:43 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	map_init(t_game *game, t_player *player)
 		{
 			if (game->map[i][j] == '1')
 				img_draw(game, game->img_wall, j, i);
-			else if (game->map[i][j] == '0')
+			else if (game->map[i][j] == '0' && game->collected == game->count_c)
 				img_draw(game, game->img_ground, j, i);
 			else if (game->map[i][j] == 'C')
 				draw_and_init_c(game, j, i);
