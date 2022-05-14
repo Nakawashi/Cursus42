@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/13 19:57:42 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/14 15:39:58 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static int	compare_assets(t_game *game, int i, int j)
 			|| game->map[i][j] == '0')
 	{
 		if (game->map[i][j] == 'P')
-			game->count_p++;
+				game->count_p++;
 		else if (game->map[i][j] == 'E')
 			game->count_e++;
 		else if (game->map[i][j] == 'C')
@@ -124,13 +124,11 @@ static int	check_assets(t_game *game)
 }
 
 /*
-	Used in main file
-	I took the decision to hardcode nb of extension's letters + '\0'
 	xlsx or docx would not work here, but it's easy to update
 	Remember : ft_strncmp returns 0 if both are the same
 
 	const char *file_path :	(../assets/map/filename.ber)
-	char *extension :		dot + file extension = ".ber"
+	char *extension :		dot + file extension = ".ber" + \0 = 5
 */
 static int	check_ext(const char *file_path, char *extension)
 {
@@ -145,15 +143,15 @@ static int	check_ext(const char *file_path, char *extension)
 }
 
 /*
-	Combine all requirement for map parsing
+	Combine all requirement for map checking
 	- Correct .ber extension
 	- Walls around the map
-	- At least 4 lines, 4 columns to be coherent (square)
+	- At least 4 lines, 4 columns to be coherent (rectangle, sqares included OK)
 	- Each asked items (E, P, C, 0, 1)
 */
 int	map_check(const char *file, t_game *game)
 {
-	game->count_p = 0;
+	game->count_p = 0; // pourquoi dans init game ca suffit pas ? car appelee plus tard
 	game->count_e = 0;
 	game->count_c = 0;
 	game->map = read_map(file);

@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:51:45 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/13 20:23:14 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/14 13:26:48 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 int	main(int argc, char **argv)
 {
-	t_game		game;
-	t_player	player;
+	t_game	game;
 
-	(void) player;
 	if (argc == 2)
 	{
 		if (map_check(argv[1], &game))

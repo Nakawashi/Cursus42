@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/13 20:22:24 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:18:00 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,13 @@ typedef struct s_game
 	int		end_game;
 }	t_game;
 
+//initialized in game_init()
 typedef struct s_player
 {
-	int		x;
-	int		y;
-	int		x_origin;
-	int		y_origin;
-	int		direction;
+	int		index_i;
+	int		index_j;
 	int		nb_movements;
-	int		collects;
-	char	previous;
+	char	direction;
 }	t_player;
 
 // size of my images
@@ -96,16 +93,16 @@ typedef struct s_player
 # define EXIT_PATH "assets/images/E.xpm"
 # define COLLECTIBLE_PATH "assets/images/C.xpm"
 
-int		map_check(const char *file, t_game *game);
 char	**read_map(const char *path_to_file);
 void	game_init(t_game *game);
-void	map_init(t_game *game);
+void	map_init(t_game *game, t_player *player);
 void	game_hooks(t_game *game);
 void	move_up(t_game *game, t_player *player);
-void	move_left(t_game *game);
-void	move_right(t_game *game);
-void	move_down(t_game *game);
+void	move_left(t_game *game, t_player *player);
+void	move_down(t_game *game, t_player *player);
+void	move_right(t_game *game, t_player *player);
 void	free_map(char **map);
+int		map_check(const char *file, t_game *game);
 int		clean(t_game *game);
 
 #endif
