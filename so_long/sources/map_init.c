@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:45:17 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/14 18:24:43 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/14 18:32:39 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,30 +48,34 @@ static void	draw_and_init_p(t_game *game, t_player *player, int j, int i)
 /*
 	Run through the map and
 	display *img according to the char in the map (01PEC)
+	display exit only if we get all collectibles
 */
 void	map_init(t_game *game, t_player *player)
 {
 	int		i;
 	int		j;
 
-	i = 0;
-	while (game->map[i])
+	i = -1;
+	while (game->map[++i])
 	{
-		j = 0;
-		while (game->map[i][j])
+		j = -1;
+		while (game->map[i][++j])
 		{
 			if (game->map[i][j] == '1')
 				img_draw(game, game->img_wall, j, i);
-			else if (game->map[i][j] == '0' && game->collected == game->count_c)
-				img_draw(game, game->img_ground, j, i);
 			else if (game->map[i][j] == 'C')
 				draw_and_init_c(game, j, i);
 			else if (game->map[i][j] == 'E')
-				img_draw(game, game->img_exit, j, i);
+			{
+				if (game->collected == game->count_c)
+					img_draw(game, game->img_exit, j, i);
+				else
+					img_draw(game, game->img_ground, j, i);
+			}
 			else if (game->map[i][j] == 'P')
 				draw_and_init_p(game, player, j, i);
-			j++;
+			else
+				img_draw(game, game->img_ground, j, i);
 		}
-		i++;
 	}
 }
