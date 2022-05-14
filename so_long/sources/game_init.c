@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:27:56 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/14 15:35:57 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/14 19:02:33 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,7 @@ static void	init_img(t_game *game)
 */
 void	game_init(t_game *game)
 {
-	t_player player;
-
 	init_game(game);
 	init_img(game);
-	map_init(game, &player);
+	map_init(game);
 }

@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/14 18:18:00 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/14 19:01:30 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,42 +30,44 @@ enum e_assets
 	COLLECTIBLE = 'C'
 };
 
-typedef struct s_game
-{
-	void	*mlx_id;
-	void	*win_id;
-	int		win_width;
-	int		win_height;
-	char	**map;
-	int		map_width; // line length
-	int		map_height; // number of rows
-	int		count_p;
-	int		count_e;
-	int		count_c;
-	int		collected;
-	int		img_width;
-	int		img_height;
-	void	*img_ground;
-	void	*img_wall;
-	void	*img_collectible;
-	void	*img_exit;
-	void	*img_player_w;
-	void	*img_player_a;
-	void	*img_player_s;
-	void	*img_player_d;
-	int		img_pos_x;
-	int		img_pos_y;
-	int		end_game;
-}	t_game;
 
 //initialized in game_init()
 typedef struct s_player
 {
-	int		index_i;
-	int		index_j;
-	int		nb_movements;
-	char	direction;
+	int			index_i;
+	int			index_j;
+	int			nb_movements;
+	char		direction;
 }	t_player;
+
+typedef struct s_game
+{
+	void		*mlx_id;
+	void		*win_id;
+	int			win_width;
+	int			win_height;
+	char		**map;
+	int			map_width; // line length
+	int			map_height; // number of rows
+	int			count_p;
+	int			count_e;
+	int			count_c;
+	int			collected;
+	int			img_width;
+	int			img_height;
+	void		*img_ground;
+	void		*img_wall;
+	void		*img_collectible;
+	void		*img_exit;
+	void		*img_player_w;
+	void		*img_player_a;
+	void		*img_player_s;
+	void		*img_player_d;
+	int			img_pos_x;
+	int			mg_pos_y;
+	int			end_game;
+	t_player	player;
+}	t_game;
 
 // size of my images
 # define IMG_SIZE 48
@@ -95,12 +97,12 @@ typedef struct s_player
 
 char	**read_map(const char *path_to_file);
 void	game_init(t_game *game);
-void	map_init(t_game *game, t_player *player);
+void	map_init(t_game *game);
 void	game_hooks(t_game *game);
-void	move_up(t_game *game, t_player *player);
-void	move_left(t_game *game, t_player *player);
-void	move_down(t_game *game, t_player *player);
-void	move_right(t_game *game, t_player *player);
+void	move_up(t_game *game);
+void	move_left(t_game *game);
+void	move_down(t_game *game);
+void	move_right(t_game *game);
 void	free_map(char **map);
 int		map_check(const char *file, t_game *game);
 int		clean(t_game *game);

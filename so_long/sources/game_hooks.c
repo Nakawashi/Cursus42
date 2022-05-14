@@ -6,22 +6,22 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:59:31 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/14 18:40:36 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/14 19:01:52 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	key_hook(int keycode, t_game *game, t_player *player)
+int	key_hook(int keycode, t_game *game)
 {
 	if (keycode == KEY_W || keycode == KEY_UP)
-	move_up(game, player);
+	move_up(game);
 	else if (keycode == KEY_A)
-	move_left(game, player);
+	move_left(game);
 	else if (keycode == KEY_S)
-	move_down(game, player);
+	move_down(game);
 	else if (keycode == KEY_D)
-	move_right(game, player);
+	move_right(game);
 	if (keycode == ESC)
 		clean(game);
 	return (0);

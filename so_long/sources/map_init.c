@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:45:17 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/14 18:32:39 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/14 19:06:17 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,15 @@ static void	draw_and_init_c(t_game *game, int j, int i)
 /*
 	Extract index of P (gonna be the start position)
 */
-static void	draw_and_init_p(t_game *game, t_player *player, int j, int i)
+static void	draw_and_init_p(t_game *game, int j, int i)
 {
 	img_draw(game, game->img_player_s, j, i);
-	player->index_i = i;
-	player->index_j = j;
-	player->nb_movements = 0;
-	player->direction = 's';
+	game->player.index_i = i;
+	game->player.index_j = j;
+	game->player.nb_movements = 0;
+	game->player.direction = 's';
+	ft_printf("index_i : %d\n", game->player.index_i);
+	ft_printf("index_j : %d\n", game->player.index_j);
 }
 
 /*
@@ -50,7 +52,7 @@ static void	draw_and_init_p(t_game *game, t_player *player, int j, int i)
 	display *img according to the char in the map (01PEC)
 	display exit only if we get all collectibles
 */
-void	map_init(t_game *game, t_player *player)
+void	map_init(t_game *game)
 {
 	int		i;
 	int		j;
@@ -73,7 +75,7 @@ void	map_init(t_game *game, t_player *player)
 					img_draw(game, game->img_ground, j, i);
 			}
 			else if (game->map[i][j] == 'P')
-				draw_and_init_p(game, player, j, i);
+				draw_and_init_p(game, j, i);
 			else
 				img_draw(game, game->img_ground, j, i);
 		}
