@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:45:17 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/15 02:09:03 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/15 14:06:46 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ static void	draw_and_init_p(t_game *game, int j, int i)
 	game->player.index_i = i;
 	game->player.index_j = j;
 	game->player.nb_movements = 0;
-	ft_printf("index_i : %d\n", game->player.index_i);
-	ft_printf("index_j : %d\n", game->player.index_j);
 }
 
 /*

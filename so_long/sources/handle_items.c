@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:41:04 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/05/15 13:42:43 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/15 14:25:46 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,25 @@ static void	swap_value(char *position, char *next_pos, char c, char new_c)
 	*next_pos  = new_c;
 }
 
+/*
+	We don't want E being replaced by 0
+*/
 void	handle_0(t_game *game, int i, int j)
 {
-	swap_value(
-		&game->map[game->player.index_i][game->player.index_j],
-		&game->map[i][j], '0', 'P');
+	if (game->map[game->player.index_i][game->player.index_j] == EXIT)
+	{
+		swap_value(
+			&game->map[game->player.index_i][game->player.index_j],
+			&game->map[i][j], 'E', 'P');
+	}
+	else
+	{
+		swap_value(
+			&game->map[game->player.index_i][game->player.index_j],
+			&game->map[i][j], '0', 'P');
+	}
 	game->player.nb_movements++;
+
 }
 
 /*
@@ -36,16 +49,25 @@ void	handle_0(t_game *game, int i, int j)
 */
 void	handle_c(t_game *game, int i, int j)
 {
-	swap_value(
-		&game->map[game->player.index_i][game->player.index_j],
-		&game->map[i][j], '0', 'P');
+	if (game->map[game->player.index_i][game->player.index_j] == EXIT)
+	{
+		swap_value(
+			&game->map[game->player.index_i][game->player.index_j],
+			&game->map[i][j], 'E', 'P');
+	}
+	else
+	{
+		swap_value(
+			&game->map[game->player.index_i][game->player.index_j],
+			&game->map[i][j], '0', 'P');
+	}
 	game->collected++;
 	game->player.nb_movements++;
 	if (game->collected == game->count_c)
-		{
-			img_draw(game, game->img_exit, game->exit_index_j, game->exit_index_i);
-			game->end_game = 1;
-		}
+	{
+		img_draw(game, game->img_exit, game->exit_index_j, game->exit_index_i);
+		game->end_game = 1;
+	}
 }
 
 void	handle_e(t_game *game)
