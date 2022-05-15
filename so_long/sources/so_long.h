@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/15 12:31:40 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/15 13:42:16 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ enum e_assets
 	COLLECTIBLE = 'C'
 };
 
-
-//initialized in game_init()
 typedef struct s_player
 {
 	int			index_i;
@@ -98,13 +96,16 @@ typedef struct s_game
 # define PLAYERA_PATH "assets/images/hero_A.xpm"
 # define PLAYERS_PATH "assets/images/hero_S.xpm"
 # define PLAYERD_PATH "assets/images/hero_D.xpm"
-# define EXIT_PATH "assets/images/E.xpm"
 # define COLLECTIBLE_PATH "assets/images/C.xpm"
+# define EXIT_PATH "assets/images/E.xpm"
 
 char	**read_map(const char *path_to_file);
 void	game_init(t_game *game);
 void	map_init(t_game *game);
 void	game_hooks(t_game *game);
+void	handle_0(t_game *game, int i, int j);
+void	handle_c(t_game *game, int i, int j);
+void	handle_e(t_game *game);
 void	move_up(t_game *game);
 void	move_left(t_game *game);
 void	move_down(t_game *game);
