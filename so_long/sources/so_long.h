@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/14 19:01:30 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/15 01:49:10 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_player
 	int			index_i;
 	int			index_j;
 	int			nb_movements;
-	char		direction;
 }	t_player;
 
 typedef struct s_game
@@ -51,8 +50,8 @@ typedef struct s_game
 	int			map_height; // number of rows
 	int			count_p;
 	int			count_e;
-	int			count_c;
-	int			collected;
+	int			count_c; // total of 'C' in map
+	int			collected; // nb of collectibles collected
 	int			img_width;
 	int			img_height;
 	void		*img_ground;
@@ -65,6 +64,8 @@ typedef struct s_game
 	void		*img_player_d;
 	int			img_pos_x;
 	int			mg_pos_y;
+	int			exit_index_i;
+	int			exit_index_j;
 	int			end_game;
 	t_player	player;
 }	t_game;
@@ -104,6 +105,7 @@ void	move_left(t_game *game);
 void	move_down(t_game *game);
 void	move_right(t_game *game);
 void	free_map(char **map);
+void	img_draw(t_game *game, void *img, int img_pos_x, int img_pos_y);
 int		map_check(const char *file, t_game *game);
 int		clean(t_game *game);
 
