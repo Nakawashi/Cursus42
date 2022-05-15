@@ -6,11 +6,20 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:59:31 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/15 01:55:40 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/15 02:27:37 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	display_moves_in_window(t_game *game)
+{
+	char	*str;
+
+	mlx_string_put(game->mlx_id, game->win_id, 6, game->win_height + 12, 0x00FFFFFF, "Moves : ");
+	str = ft_itoa(game->player.nb_movements);
+	mlx_string_put(game->mlx_id, game->win_id, IMG_SIZE, game->win_height + 12, 0x00FFFFFF, str);
+}
 
 int	key_hook(int keycode, t_game *game)
 {
@@ -24,6 +33,7 @@ int	key_hook(int keycode, t_game *game)
 	move_right(game);
 	if (keycode == ESC)
 		clean(game);
+	display_moves_in_window(game);
 	return (0);
 }
 

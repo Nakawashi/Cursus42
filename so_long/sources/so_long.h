@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/15 01:49:10 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/15 02:26:01 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ void	free_map(char **map);
 void	img_draw(t_game *game, void *img, int img_pos_x, int img_pos_y);
 int		map_check(const char *file, t_game *game);
 int		clean(t_game *game);
+void	display_moves_in_window(t_game *game);
 
 #endif
