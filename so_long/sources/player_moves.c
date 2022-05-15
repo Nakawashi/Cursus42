@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 19:07:39 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/15 01:58:30 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/15 13:11:00 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,20 @@ static void	handle_c(t_game *game, int i, int j)
 	game->collected++;
 	game->player.nb_movements++;
 	if (game->collected == game->count_c)
-		img_draw(game, game->img_exit, game->exit_index_j, game->exit_index_i);
+		{
+			img_draw(game, game->img_exit, game->exit_index_j, game->exit_index_i);
+			game->end_game = 1;
+		}
 }
 
 static void	handle_e(t_game *game)
 {
 	game->player.nb_movements++;
-	clean(game);
+	if (game->end_game)
+	{
+		ft_printf("Vous avez termine en %d deplacements !\n", game->player.nb_movements);
+		clean(game);
+	}
 }
 
 /*
@@ -101,6 +108,7 @@ void	move_left(t_game *game)
 		img_draw(game, game->img_ground, game->player.index_j, game->player.index_i);
 		game->player.index_j--;
 	}
+	img_draw(game, game->img_player_a, game->player.index_j, game->player.index_i);
 }
 
 void	move_down(t_game *game)
@@ -122,6 +130,7 @@ void	move_down(t_game *game)
 		img_draw(game, game->img_ground, game->player.index_j, game->player.index_i);
 		game->player.index_i++;
 	}
+	img_draw(game, game->img_player_s, game->player.index_j, game->player.index_i);
 }
 
 void	move_right(t_game *game)
@@ -143,4 +152,5 @@ void	move_right(t_game *game)
 		img_draw(game, game->img_ground, game->player.index_j, game->player.index_i);
 		game->player.index_j++;
 	}
+	img_draw(game, game->img_player_d, game->player.index_j, game->player.index_i);
 }

@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/15 02:26:01 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/15 12:31:40 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ typedef struct s_game
 // Quit game
 # define ESC 53
 
+// text coloration
+# define G_FAV 0x008700af
+# define WHITE 0x00FFFFFF
+# define BLACK 0x00000000
+
 // ascii code for each lowercase letter and arrow
 # define KEY_W 13
 # define KEY_A 0
@@ -108,6 +113,5 @@ void	free_map(char **map);
 void	img_draw(t_game *game, void *img, int img_pos_x, int img_pos_y);
 int		map_check(const char *file, t_game *game);
 int		clean(t_game *game);
-void	display_moves_in_window(t_game *game);
 
 #endif
