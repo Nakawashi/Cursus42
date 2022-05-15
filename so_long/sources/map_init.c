@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:45:17 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/15 02:00:08 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/15 02:09:03 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,11 @@ void	img_draw(t_game *game, void *img, int img_pos_x, int img_pos_y)
 			img_pos_x * IMG_SIZE, img_pos_y * IMG_SIZE);
 }
 
-/*
-	see if I really need it
-*/
-static void	draw_and_init_c(t_game *game, int j, int i)
+static void	draw_and_init_e(t_game *game, int i, int j)
 {
-	img_draw(game, game->img_collectible, j, i);
+	img_draw(game, game->img_ground, j, i);
 	game->exit_index_i = i;
 	game->exit_index_j = j;
-
 }
 
 /*
@@ -68,14 +64,9 @@ void	map_init(t_game *game)
 			if (game->map[i][j] == WALL)
 				img_draw(game, game->img_wall, j, i);
 			else if (game->map[i][j] == COLLECTIBLE)
-				draw_and_init_c(game, j, i);
+				img_draw(game, game->img_collectible, j, i);
 			else if (game->map[i][j] == EXIT)
-			{
-				if (game->collected == game->count_c)
-					img_draw(game, game->img_exit, j, i);
-				else
-					img_draw(game, game->img_ground, j, i);
-			}
+				draw_and_init_e(game, i, j);
 			else if (game->map[i][j] == PLAYER)
 				draw_and_init_p(game, j, i);
 			else

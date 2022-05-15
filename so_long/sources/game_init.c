@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:27:56 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/14 19:02:33 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:10:30 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	init_game(t_game *game)
 	get_window_size(game);
 	game->mlx_id = mlx_init();
 	game->win_id = mlx_new_window
-		(game->mlx_id, game->win_width, game->win_height, "Half Life 3");
+		(game->mlx_id, game->win_width, game->win_height + 25, "Half Life 3");
 	game->collected = 0;
 	game->end_game = 0;
 }
