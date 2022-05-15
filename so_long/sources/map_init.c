@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:45:17 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/15 14:06:46 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/15 23:25:53 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ void	img_draw(t_game *game, void *img, int img_pos_x, int img_pos_y)
 			img_pos_x * IMG_SIZE, img_pos_y * IMG_SIZE);
 }
 
+/*
+	Display ground image for E to hide it at the beginning
+	Extract index of E to be able to display the right img after
+*/
 static void	draw_and_init_e(t_game *game, int i, int j)
 {
 	img_draw(game, game->img_ground, j, i);
@@ -33,6 +37,7 @@ static void	draw_and_init_e(t_game *game, int i, int j)
 }
 
 /*
+	Draw corresponding image to P
 	Extract index of P (gonna be the start position)
 */
 static void	draw_and_init_p(t_game *game, int j, int i)
@@ -45,8 +50,7 @@ static void	draw_and_init_p(t_game *game, int j, int i)
 
 /*
 	Run through the map and
-	display *img according to the char in the map (01PEC)
-	display exit only if we get all collectibles
+	display *img where its letter is placed (01PEC)
 */
 void	map_init(t_game *game)
 {

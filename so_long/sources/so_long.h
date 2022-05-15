@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/15 13:42:16 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/16 00:42:04 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_game
 	void		*img_player_a;
 	void		*img_player_s;
 	void		*img_player_d;
+	void		*img_clean_display; // used to avoid superposition when display movements
 	int			img_pos_x;
 	int			mg_pos_y;
 	int			exit_index_i;
@@ -98,6 +99,7 @@ typedef struct s_game
 # define PLAYERD_PATH "assets/images/hero_D.xpm"
 # define COLLECTIBLE_PATH "assets/images/C.xpm"
 # define EXIT_PATH "assets/images/E.xpm"
+# define CLEAN_PATH "assets/images/clean.xpm"
 
 char	**read_map(const char *path_to_file);
 void	game_init(t_game *game);

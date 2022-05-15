@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_stuff.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 20:29:16 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/13 19:49:58 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/16 00:00:02 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

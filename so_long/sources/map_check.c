@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/14 15:39:58 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/16 00:32:31 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 	first and last line should be 1
 	first and last char per line should be 1
 	had to intervert j and i to check horizontally :D
-
-	t_map *map :	reference of struct s_map, init in map_check()
 */
 static int	check_walls_around(t_game *game)
 {
@@ -35,7 +33,7 @@ static int	check_walls_around(t_game *game)
 		while (game->map[j][i])
 		{
 			if ((j == 0 || j == game->map_height - 1 || i == 0
-					|| i == game->map_width - 1) && (game->map[j][i] != '1'))
+					|| i == game->map_width - 1) && (game->map[j][i] != WALL))
 				return (0);
 			i++;
 		}
@@ -47,8 +45,6 @@ static int	check_walls_around(t_game *game)
 /*
 	if each line has same nb of char, it's a rectangle
 	compare all lines with the first (map->line_lenght)
-
-	t_map *map :	reference of struct s_map, init in map_check()
 */
 static int	is_rectangle(t_game *game)
 {
