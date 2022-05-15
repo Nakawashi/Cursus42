@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:41:04 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/05/15 14:25:46 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/15 14:27:32 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	handle_0(t_game *game, int i, int j)
 			&game->map[i][j], '0', 'P');
 	}
 	game->player.nb_movements++;
-
 }
 
 /*
@@ -75,7 +74,7 @@ void	handle_e(t_game *game)
 	game->player.nb_movements++;
 	if (game->end_game)
 	{
-		ft_printf("Vous avez termine en %d deplacements !\n", game->player.nb_movements);
+		ft_printf("Termine en %d deplacements !\n", game->player.nb_movements);
 		clean(game);
 	}
 }
