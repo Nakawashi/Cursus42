@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/05/14 18:14:47 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/05/15 13:49:43 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS			=	sources/so_long.c \
 					sources/map_init.c \
 					sources/game_hooks.c \
 					sources/player_moves.c \
+					sources/handle_items.c \
 					sources/clean_stuff.c
 
 LIBFT_DIR		=	libraries/libft
