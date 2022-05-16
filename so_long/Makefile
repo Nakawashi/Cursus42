@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
+#    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/05/15 13:49:43 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/05/16 14:21:50 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS			=	sources/so_long.c \
 					sources/get_next_line_utils.c \
 					sources/get_next_line.c \
 					sources/map_check.c \
+					sources/map_check_utils.c \
 					sources/map_read.c \
 					sources/game_init.c \
 					sources/map_init.c \
