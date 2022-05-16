@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:41:04 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/05/16 14:22:12 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:42:32 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 static void	swap_value(char *position, char *next_pos, char c, char new_c)
 {
 	*position = c;
-	*next_pos  = new_c;
+	*next_pos = new_c;
 }
 
 /*
