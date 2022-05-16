@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 12:45:17 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/15 23:25:53 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/16 03:16:28 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static void	draw_and_init_p(t_game *game, int j, int i)
 	img_draw(game, game->img_player_s, j, i);
 	game->player.index_i = i;
 	game->player.index_j = j;
-	game->player.nb_movements = 0;
 }
 
 /*

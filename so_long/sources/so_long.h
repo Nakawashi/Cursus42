@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/16 00:42:04 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/16 03:32:41 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_game
 	void		*img_player_a;
 	void		*img_player_s;
 	void		*img_player_d;
-	void		*img_clean_display; // used to avoid superposition when display movements
+	void		*img_clean; // used to avoid superposition when display movements
 	int			img_pos_x;
 	int			mg_pos_y;
 	int			exit_index_i;

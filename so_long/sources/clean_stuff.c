@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 20:29:16 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/16 00:00:02 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/16 03:33:50 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	clean(t_game *game)
 	mlx_destroy_image(game->mlx_id, game->img_player_a);
 	mlx_destroy_image(game->mlx_id, game->img_player_s);
 	mlx_destroy_image(game->mlx_id, game->img_player_d);
+	mlx_destroy_image(game->mlx_id, game->img_clean);
 	mlx_destroy_window(game->mlx_id, game->win_id);
 	exit (0);
 }

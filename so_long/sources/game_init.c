@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:27:56 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/16 01:53:19 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/16 03:32:51 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ static void	init_game(t_game *game)
 	get_window_size(game);
 	game->mlx_id = mlx_init();
 	game->win_id = mlx_new_window
-		(game->mlx_id, game->win_width, game->win_height + 48, "Half Life 3");
+		(game->mlx_id, game->win_width, game->win_height + IMG_SIZE, "Half Life 3");
 	game->collected = 0;
+	game->player.nb_movements = 0;
 	game->end_game = 0;
 }
 
@@ -69,6 +70,7 @@ static void	init_img(t_game *game)
 	game->img_player_a = new_xpm_img(PLAYERA_PATH, game);
 	game->img_player_s = new_xpm_img(PLAYERS_PATH, game);
 	game->img_player_d = new_xpm_img(PLAYERD_PATH, game);
+	game->img_clean = new_xpm_img(CLEAN_PATH, game);
 }
 
 /*
