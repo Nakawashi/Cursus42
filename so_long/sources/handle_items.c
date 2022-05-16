@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_items.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 13:41:04 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/05/16 02:13:24 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/16 14:22:12 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

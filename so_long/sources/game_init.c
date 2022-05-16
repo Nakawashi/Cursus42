@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 19:27:56 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/16 03:32:51 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/16 14:19:49 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ static void	init_game(t_game *game)
 	game->win_id = mlx_new_window
 		(game->mlx_id, game->win_width, game->win_height + IMG_SIZE, "Half Life 3");
 	game->collected = 0;
-	game->player.nb_movements = 0;
 	game->end_game = 0;
 }
 

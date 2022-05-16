@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/16 03:32:41 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/16 14:24:14 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,11 @@ typedef struct s_game
 char	**read_map(const char *path_to_file);
 void	game_init(t_game *game);
 void	map_init(t_game *game);
+int		check_ext(const char *file_path, char *extension);
+int		is_rectangle(t_game *game);
+int		check_walls_around(t_game *game);
+int		compare_assets(t_game *game, int i, int j);
+int		check_assets(t_game *game);
 void	game_hooks(t_game *game);
 void	handle_0(t_game *game, int i, int j);
 void	handle_c(t_game *game, int i, int j);
