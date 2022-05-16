@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:02:28 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/16 14:24:14 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:46:28 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ typedef struct s_player
 	int			nb_movements;
 }	t_player;
 
+/*
+	map_width; : line length
+	map_height : number of rows
+	count_c; : total of collectibles 'C' in map
+*/
 typedef struct s_game
 {
 	void		*mlx_id;
@@ -44,12 +49,12 @@ typedef struct s_game
 	int			win_width;
 	int			win_height;
 	char		**map;
-	int			map_width; // line length
-	int			map_height; // number of rows
+	int			map_width;
+	int			map_height;
 	int			count_p;
 	int			count_e;
-	int			count_c; // total of 'C' in map
-	int			collected; // nb of collectibles collected
+	int			count_c;
+	int			collected;
 	int			img_width;
 	int			img_height;
 	void		*img_ground;
@@ -60,9 +65,7 @@ typedef struct s_game
 	void		*img_player_a;
 	void		*img_player_s;
 	void		*img_player_d;
-	void		*img_clean; // used to avoid superposition when display movements
-	int			img_pos_x;
-	int			mg_pos_y;
+	void		*img_clean;
 	int			exit_index_i;
 	int			exit_index_j;
 	int			end_game;
