@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 19:07:39 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/15 13:44:08 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/16 14:54:56 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,17 @@ void	move_up(t_game *game)
 		else if (game->map[i][j] == GROUND)
 			handle_0(game, i, j);
 		else
-		img_draw(game, game->img_player_w, j, i);
-		img_draw(game, game->img_ground, game->player.index_j, game->player.index_i);
+			img_draw(game, game->img_player_w, j, i);
+		img_draw(
+			game, game->img_ground,
+			game->player.index_j,
+			game->player.index_i
+			);
 		game->player.index_i--;
 	}
-	img_draw(game, game->img_player_w, game->player.index_j, game->player.index_i);
+	img_draw(game, game->img_player_w,
+		game->player.index_j,
+		game->player.index_i);
 }
 
 void	move_left(t_game *game)
@@ -56,10 +62,15 @@ void	move_left(t_game *game)
 		else if (game->map[i][j] == GROUND)
 			handle_0(game, i, j);
 		img_draw(game, game->img_player_a, j, i);
-		img_draw(game, game->img_ground, game->player.index_j, game->player.index_i);
+		img_draw(game,
+			game->img_ground,
+			game->player.index_j,
+			game->player.index_i
+			);
 		game->player.index_j--;
 	}
-	img_draw(game, game->img_player_a, game->player.index_j, game->player.index_i);
+	img_draw(game, game->img_player_a,
+		game->player.index_j, game->player.index_i);
 }
 
 void	move_down(t_game *game)
@@ -78,10 +89,15 @@ void	move_down(t_game *game)
 		else if (game->map[i][j] == GROUND)
 			handle_0(game, i, j);
 		img_draw(game, game->img_player_s, j, i);
-		img_draw(game, game->img_ground, game->player.index_j, game->player.index_i);
+		img_draw(game,
+			game->img_ground,
+			game->player.index_j,
+			game->player.index_i
+			);
 		game->player.index_i++;
 	}
-	img_draw(game, game->img_player_s, game->player.index_j, game->player.index_i);
+	img_draw(game, game->img_player_s,
+		game->player.index_j, game->player.index_i);
 }
 
 void	move_right(t_game *game)
@@ -100,8 +116,13 @@ void	move_right(t_game *game)
 		else if (game->map[i][j] == GROUND)
 			handle_0(game, i, j);
 		img_draw(game, game->img_player_d, j, i);
-		img_draw(game, game->img_ground, game->player.index_j, game->player.index_i);
+		img_draw(game,
+			game->img_ground,
+			game->player.index_j,
+			game->player.index_i
+			);
 		game->player.index_j++;
 	}
-	img_draw(game, game->img_player_d, game->player.index_j, game->player.index_i);
+	img_draw(game, game->img_player_d,
+		game->player.index_j, game->player.index_i);
 }

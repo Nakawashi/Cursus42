@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 12:59:31 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/16 14:40:08 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:51:36 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	display_moves_in_window(t_game *game)
 
 	mlx_string_put(
 		game->mlx_id, game->win_id, 15, game->win_height + 28, G_FAV,
-		"Nombre de mouvements : ");
+		"Mouvements : ");
 	str = ft_itoa(game->player.nb_movements);
 	mlx_string_put(
 		game->mlx_id, game->win_id, 105, game->win_height + 28, WHITE, str);
