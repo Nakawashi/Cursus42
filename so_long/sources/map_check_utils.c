@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 14:22:05 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/16 14:30:11 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:48:17 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	is_rectangle(t_game *game)
 
 	if (!game->map)
 		return (0);
-	game->map_width = ft_strlen(game->map[0]); //13
+	game->map_width = ft_strlen(game->map[0]);
 	i = 1;
-	while (game->map[i]) // strings
+	while (game->map[i])
 	{
 		current_line = ft_strlen(game->map[i]);
 		if (game->map_width == current_line)
@@ -65,9 +65,10 @@ int	check_walls_around(t_game *game)
 {
 	int	i;
 	int	j;
+
 	if (!game->map)
 		return (0);
-	while (game->map[game->map_height]) // get number of lines == height
+	while (game->map[game->map_height])
 		game->map_height++;
 	j = 0;
 	while (game->map[j])
@@ -94,10 +95,10 @@ int	compare_assets(t_game *game, int i, int j)
 		return (0);
 	if (game->map[i][j] == 'P' || game->map[i][j] == 'E'
 		|| game->map[i][j] == 'C' || game->map[i][j] == '1'
-			|| game->map[i][j] == '0')
+		|| game->map[i][j] == '0')
 	{
 		if (game->map[i][j] == 'P')
-				game->count_p++;
+			game->count_p++;
 		else if (game->map[i][j] == 'E')
 			game->count_e++;
 		else if (game->map[i][j] == 'C')
@@ -122,10 +123,10 @@ int	check_assets(t_game *game)
 	if (!game->map)
 		return (0);
 	i = 0;
-	while (game->map[i]) //search line per line
+	while (game->map[i])
 	{
 		j = 0;
-		while (game->map[i][j]) // search char per char
+		while (game->map[i][j])
 		{
 			if (!compare_assets(game, i, j))
 				return (0);
@@ -137,4 +138,3 @@ int	check_assets(t_game *game)
 		return (1);
 	return (0);
 }
-
