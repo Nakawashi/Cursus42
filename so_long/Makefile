@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/05/17 15:25:20 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/05/17 17:06:46 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ OBJS	=	$(SRCS:.c=.o)
 CC		=	gcc
 RM		=	rm -f
 
-DEBUG	=	-fsanitize=address -g3
+#DEBUG	=	-fsanitize=address -g3
+DEBUG	=	-g3
 CFLAGS	=	-Wall -Wextra -Werror
 INCLUDE	=	-L $(LIBFT_DIR) -lft -L $(MINILIBX_DIR) -lmlx -L $(FT_PRINTF_DIR) -lftprintf -framework OpenGL -framework AppKit
 RM		=	rm -f
