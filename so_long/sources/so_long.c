@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:51:45 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/17 14:43:51 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:33:38 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int argc, char **argv)
 			game_init(&game);
 			game_hooks(&game);
 			mlx_loop(game.mlx_id);
+			free_map(game.map);
 		}
 		else
 		{

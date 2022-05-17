@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 19:07:39 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/16 14:54:56 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:50:13 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 	Check which item is where we go
 	Change player direction img
-	Change new position player index
+	i and j are new position player index
 */
 void	move_up(t_game *game)
 {
