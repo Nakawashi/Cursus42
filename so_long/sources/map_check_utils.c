@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 14:22:05 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/16 15:48:11 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/17 15:02:18 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 	Remember : ft_strncmp returns 0 if both are the same
 
 	const char *file_path :	(../assets/map/filename.ber)
-	char *extension :		dot + file extension = ".ber" + \0 = 5
+	char *extension :		dot + file extension = ".ber" + "\0" = 5
 */
 int	check_ext(const char *file_path, char *extension)
 {
