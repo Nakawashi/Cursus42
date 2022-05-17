@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 16:51:45 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/16 14:19:09 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/16 19:38:37 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int	main(int argc, char **argv)
 		ft_printf("Invalid nb of arguments.\n--> [program name] [.ber file]");
 		exit(1);
 	}
+	
 	return (0);
 }

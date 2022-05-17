@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/05/16 14:21:50 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/05/16 20:04:56 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,11 +49,6 @@ GREEN	= \033[0;32m
 RED		= \033[0;31m
 YELLOW	= \033[0;33m
 NONE	= \033[0m
-
-help: ## Print help on Makefile
-	@grep '^[^.#]\+:\s\+.*#' Makefile | \
-	sed "s/\(.\+\):\s*\(.*\) #\s*\(.*\)/`printf "\033[93m"`\1`printf "\033[0m"`	\3 [\2]/" | \
-	expand -t15
 
 all:	$(NAME)	## Compile every mandatory files
 
