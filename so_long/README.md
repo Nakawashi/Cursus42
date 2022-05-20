@@ -47,27 +47,15 @@ git clone https://github.com/nakawashi/so_long && cd so_long/
 # Run make to build the game
 make
 
-# Run make with bonus
-make bonus
-
 # Run the game with the map as an argument
-./so_long_bonus "assets/maps/exemple.ber"
+./so_long_bonus "assets/maps/filename.ber"
 
 # Clean built files
 make fclean
 ```
 
-## Contrôles
+## But et Contrôles
+Récupérer les citrouilles avant de pouvoir sortir.
 WASD ou les flèches pour se déplacer<br>
 Q, EST ou croix pour quitter<br>
-
-> Because the miniLibX uses Appkit and MX11 you need to link them adding `-lmlx -framework OpenGL -framework AppKit` when you compile.
-
-## Nouvelles notions apprises
-
-- Les tags -L et -I (inclure une librairie et le fichier header)<br>
-- Inclure différentes librairies et les gérer dans le Makefile de so_long pour compiler le tout <br>
-- Organiser le travail en amont : les dossiers, le Makefile
-- Récupérer les données dans différents fichiers et bien link le tout
-- Structures
 
