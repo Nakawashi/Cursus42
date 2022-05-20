@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 14:22:05 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/17 15:02:18 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/20 09:56:33 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	compare_assets(t_game *game, int i, int j)
 	}
 	else
 	{
-		ft_printf("Lettre non identifiable dans la map\n");
+		ft_printf("> Lettre non identifiable dans la map\n");
 		return (0);
 	}
 	return (1);
