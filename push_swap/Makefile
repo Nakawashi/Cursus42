@@ -6,13 +6,14 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/05/20 10:43:45 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/05/20 16:12:01 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	push_swap
+NAME	=	push_swap
 
-SRCS			=	sources/main.c \
+SRCS	=	sources/push_swap.c \
+		=	sources/lists_building.c
 
 LIBFT_DIR		=	libraries/libft
 LIBFT			=	libraries/libft/libft.a
@@ -43,9 +44,9 @@ $(NAME)	:	$(OBJS)
 	@$(MAKE) -C $(LIBFT_DIR)
 	@echo "$(BLUE)Making ft_printf... $(NONE)"
 	@$(MAKE) -C $(FT_PRINTF_DIR)
-	@echo "$(BLUE)Making push_swap... $(NONE)"
+	@echo "$(BLUE)Making $(NAME)... $(NONE)"
 	@$(CC) $(OBJS) $(CFLAGS) $(DEBUG)-I $(LIBFT_DIR) -I $(FT_PRINTF_DIR) $(INCLUDE) -o $(NAME)
-	@printf "$(GREEN) push_swap ready.\n$(NONE)"
+	@printf "$(GREEN) $(NAME) ready.\n$(NONE)"
 
 norm:
 	@echo "$(VIOLET)[NORM - START]$(NONE)"
@@ -64,7 +65,7 @@ fclean:	clean
 	@printf "$(GREEN) libft.a removed.\n$(NONE)"
 	@$(MAKE) -C $(FT_PRINTF_DIR) fclean
 	@printf "$(GREEN) libftprintf.a removed.\n$(NONE)"
-	@printf "$(GREEN) push_swap removed.\n$(NONE)"
+	@printf "$(GREEN) $(NAME) removed.\n$(NONE)"
 
 re: fclean all
 
