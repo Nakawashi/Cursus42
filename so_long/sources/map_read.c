@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 13:05:41 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/17 15:24:43 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/20 10:01:46 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,3 @@ char	**read_map(const char *path_to_file)
 	close(fd);
 	return (map);
 }
-
-
-

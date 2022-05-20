@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 00:30:50 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/20 10:00:21 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/20 10:01:25 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ int	map_check(const char *file, t_game *game)
 	variables_init(game);
 	game->map = read_map(file);
 	if (!game->map)
-			{
-				ft_printf("Fichier introuvable");
-				return(0);
-			}
+	{
+		ft_printf("Fichier introuvable");
+		return (0);
+	}
 	if (check_ext(file, ".ber") && is_rectangle(game)
 		&& check_walls_around(game) && check_assets(game))
 		return (1);
