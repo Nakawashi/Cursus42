@@ -6,8 +6,14 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:43:58 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/20 12:15:19 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/20 16:11:26 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	main()
+{
+	ft_printf("coucou rdy to push and to swap\n");
+	return (0);
+}
