@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 20:29:16 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/17 15:04:59 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/20 09:55:40 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,5 @@ int	clean(t_game *game)
 	mlx_destroy_image(game->mlx_id, game->img_player_d);
 	mlx_destroy_image(game->mlx_id, game->img_clean);
 	mlx_destroy_window(game->mlx_id, game->win_id);
-	while (1)
-	{
-		sleep(1);
-		printf("%d\n", getpid());
-	}
 	exit (0);
 }
