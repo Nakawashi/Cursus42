@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/27 15:55:40 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/27 16:39:40 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # define ERR_NOT_INTEGERS "Error : Some arguments are not integers"
 # define ERR_DUPPLICATES "Error : Some arguments are dupplcated"
 
+# define INT_MIN -2147483648
+# define INT_MAX 2147483647
+
 typedef struct s_book
 {
 	int		value;
@@ -35,5 +38,7 @@ typedef struct s_stack
 	t_book	*first;
 	t_book	*last;
 }	t_stack;
+
+int	parse_arguments(int argc, char **argv);
 
 #endif
