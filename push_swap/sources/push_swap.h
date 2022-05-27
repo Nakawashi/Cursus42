@@ -3,38 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/20 16:19:59 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/27 15:55:40 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <unistd.h>
+# include <stdlib.h>
 # include "../libraries/libft/libft.h"
 # include "../libraries/libft/ft_printf/ft_printf.h"
 
-/*
-	actual is adress of the actual element. Shows also the address of the
-	first element. Important to define the start of the list.
-*/
-typedef struct s_list
-{
-	t_element *actual;
-}	t_list;
+# define ERR_ARG "Error : ./push_swap \"numbers\" or ./push_swap [int] [int]
+# define ERR_NOT_INTEGERS "Error : Some arguments are not integers"
+# define ERR_DUPPLICATES "Error : Some arguments are dupplcated"
 
-/*
-	Elements of the list
-	int number : what we want to store
-	pointeur sur un element du meme type called next.
-*/
-typedef struct s_element
+typedef struct s_book
 {
-	int	number;
-	t_element *next;
-	t_element *previous;
-}	t_element;
+	int		value;
+	t_book	*prev;
+	t_book	*next;
+}	t_book;
+
+typedef struct s_stack
+{
+	int		size;
+	t_book	*first;
+	t_book	*last;
+}	t_stack;
 
 #endif
