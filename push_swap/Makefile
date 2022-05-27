@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/05/20 16:12:01 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/05/27 13:55:52 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	push_swap
 
 SRCS	=	sources/push_swap.c \
-		=	sources/lists_building.c
+			sources/lists_building.c
 
 LIBFT_DIR		=	libraries/libft
 LIBFT			=	libraries/libft/libft.a
@@ -24,8 +24,8 @@ OBJS	=	$(SRCS:.c=.o)
 CC		=	gcc
 RM		=	rm -f
 
-#DEBUG	=	-fsanitize=address -g3
-DEBUG	=	-g3
+DEBUG	=	-fsanitize=address -g3
+#DEBUG	=	-g3
 CFLAGS	=	-Wall -Wextra -Werror
 INCLUDE	=	-L $(LIBFT_DIR) -lft -L $(FT_PRINTF_DIR) -lftprintf
 RM		=	rm -f
@@ -45,7 +45,7 @@ $(NAME)	:	$(OBJS)
 	@echo "$(BLUE)Making ft_printf... $(NONE)"
 	@$(MAKE) -C $(FT_PRINTF_DIR)
 	@echo "$(BLUE)Making $(NAME)... $(NONE)"
-	@$(CC) $(OBJS) $(CFLAGS) $(DEBUG)-I $(LIBFT_DIR) -I $(FT_PRINTF_DIR) $(INCLUDE) -o $(NAME)
+	@$(CC) $(OBJS) $(CFLAGS) $(DEBUG) -I $(LIBFT_DIR) -I $(FT_PRINTF_DIR) $(INCLUDE) -o $(NAME)
 	@printf "$(GREEN) $(NAME) ready.\n$(NONE)"
 
 norm:
