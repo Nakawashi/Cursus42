@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/27 16:39:40 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/28 13:05:45 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
+// cell, element of the list
 typedef struct s_book
 {
-	int		value;
-	t_book	*prev;
-	t_book	*next;
+	int				data;
+	struct s_book	*prev;
+	struct s_book	*next;
 }	t_book;
 
+// where the list starts (une pile de livre - umerat)
 typedef struct s_stack
 {
 	int		size;
