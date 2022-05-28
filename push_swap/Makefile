@@ -6,14 +6,16 @@
 #    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/05/27 13:55:52 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/05/28 14:51:20 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	push_swap
 
 SRCS	=	sources/push_swap.c \
-			sources/lists_building.c
+			sources/init_structures.c \
+			sources/manipulate_list.c \
+			sources/parse_argv.c
 
 LIBFT_DIR		=	libraries/libft
 LIBFT			=	libraries/libft/libft.a
