@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init_structures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 16:34:42 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/05/28 14:47:10 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/05/30 14:01:10 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 
-t_stack *init_stack(void)
+t_stack	*init_stack(void)
 {
 	t_stack *stack;
 
@@ -21,20 +21,19 @@ t_stack *init_stack(void)
 	if (!stack)
 		return (NULL);
 	stack->size = 0;
-	stack->first = NULL;
-	stack->last = NULL;
+	stack->top = NULL;
+	stack->bottom = NULL;
 	return (stack);
 }
 
-t_book *init_book(void)
+t_elem	*init_elem(void)
 {
-	t_book *element;
+	t_elem *element;
 
-	element = (t_book *)malloc(sizeof(t_book));
+	element = (t_elem *)malloc(sizeof(t_elem));
 	if (!element)
 		return (NULL);
 	element->data = 0;
 	element->next = NULL;
-	element->prev = NULL;
 	return (element);
 }
