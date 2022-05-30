@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/25 11:44:00 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/10/25 15:53:17 by lgenevey         ###   ########.fr       */
+/*   Created: 2022/05/30 17:45:39 by lgenevey          #+#    #+#             */
+/*   Updated: 2022/05/30 18:08:40 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+/*
+	-- init new instance of t_list type and add first content
+	content: Le contenu du nouvel élément.
+*/
+t_list	*ft_lstnew(void *content)
 {
-	void	*new_array;
+	t_list	*list;
 
-	new_array = malloc(count * size);
-	if (new_array == NULL)
+	list = (t_list *)malloc(sizeof(t_list));
+	if (!list)
 		return (NULL);
-	ft_bzero(new_array, count * size);
-	return (new_array);
+	list->content = content;
+	list->next = NULL;
+	return (list);
 }

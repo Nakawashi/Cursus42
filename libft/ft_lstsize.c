@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/25 11:44:00 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/10/25 15:53:17 by lgenevey         ###   ########.fr       */
+/*   Created: 2022/05/30 18:14:40 by lgenevey          #+#    #+#             */
+/*   Updated: 2022/05/30 18:51:27 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+/*
+	Compte le nombre d'elements de la liste
+	lst: adresse de l'element premier
+*/
+int	ft_lstsize(t_list *lst)
 {
-	void	*new_array;
+	int	i;
 
-	new_array = malloc(count * size);
-	if (new_array == NULL)
-		return (NULL);
-	ft_bzero(new_array, count * size);
-	return (new_array);
+	if (!lst)
+		return (0);
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
