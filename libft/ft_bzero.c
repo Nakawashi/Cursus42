@@ -14,20 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
-	char	*pointer;
-
-	pointer = s;
-	i = 0;
-	if (n != 0)
-	{
-		while (i < n)
-		{
-			if (pointer[i] != 0)
-			{	
-				pointer[i] = 0;
-			}
-			i++;
-		}
-	}
+	ft_memset (s, '\0', n);
 }
