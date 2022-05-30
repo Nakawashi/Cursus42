@@ -54,8 +54,10 @@ make
 make fclean
 ```
 
-## But et Contrôles
-Récupérer les citrouilles avant de pouvoir sortir.
+## Contrôles
 WASD ou les flèches pour se déplacer<br>
 Q, EST ou croix pour quitter<br>
 
+## Pixel Art
+
+[Jamie Brownhill website](https://www.jamiebrownhill.com/)
