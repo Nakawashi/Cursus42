@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 18:46:36 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/30 19:55:30 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/31 11:35:36 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (lst)
+	{
 		del(lst->content);
-	free(lst);
-	lst = NULL;
+		free(lst);
+		lst = NULL;
+	}
 }

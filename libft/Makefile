@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/13 14:02:05 by lgenevey          #+#    #+#              #
-#    Updated: 2022/05/30 19:45:38 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/05/31 11:39:17 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,6 @@ OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
 BLUE	= \033[0;34m
 GREEN	= \033[0;32m
-RED		= \033[0;31m
 NONE	= \033[0m
 
 all: $(NAME)
@@ -78,11 +77,11 @@ bonus: $(OBJS_BONUS) $(OBJS)
 
 clean:
 	rm -f $(OBJS) $(OBJS_BONUS)
-	@printf "$(RED) .o removed.\n$(NONE)"
+	@printf "$(BLUE) .o cleaned.\n$(NONE)"
 
 fclean: clean
 	rm -f  $(NAME)
-	@printf "$(RED) $(NAME) removed.\n$(NONE)"
+	@printf "$(BLUE) $(NAME) cleaned.\n$(NONE)"
 
 re: fclean all
 
