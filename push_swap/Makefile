@@ -6,14 +6,13 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/05/30 16:14:29 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/05/31 12:21:42 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	push_swap
 
 SRCS	=	sources/push_swap.c \
-			sources/init_structures.c \
 			sources/parse_argv.c
 
 LIBFT_DIR		=	libraries/libft
