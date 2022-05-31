@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/05/31 16:24:38 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/31 16:46:14 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 	get user datas and return them in a pointer of array
 	ft_split if only 2 arguments
 */
-static char	**get_datas(int argc, char **argv)
+static char	**get_data(int argc, char **argv)
 {
 	char	**values;
 	int		i;
@@ -45,12 +45,27 @@ static char	**get_datas(int argc, char **argv)
 	return (values);
 }
 
-// static int	check_int(char  **argv)
-// {
-// 	return (0);
-// }
+static int	check_int(char  **data_to_check)
+{
+	int	i;
 
-// static int	check_duplicates(char  **argv)
+	i = 0;
+	while (data_to_check[i])
+	{
+		ft_printf("before check int : {%s}\n", data_to_check[i]);
+		if (data_to_check[i] > INT_MIN && data_to_check[i] < INT_MAX)
+		{
+				
+		}
+		else
+			ft_printf("Erreur : int overflow\n");
+		i++;
+	}
+
+	return (0);
+}
+
+// static int	check_duplicates(char **data_to_check)
 // {
 // 	return (0);
 // }
@@ -62,14 +77,8 @@ int	parse_arguments(int argc, char **argv)
 {
 	char	**values;
 
-	values = get_datas(argc, argv);
-	int i = 0;
-	while (values[i])
-	{
-		ft_printf("values final: |%s|\n", values[i]);
-		i++;
-	}
-	// check_int(values);
+	values = get_data(argc, argv);
+	check_int(values);
 	// check_duplicates(values);
 	return (1);
 }
