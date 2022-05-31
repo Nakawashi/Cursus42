@@ -1,11 +1,14 @@
 
 
-# Push_swap
+Instructions must be separated by a ’\n’ and nothing else
 
-*Because Swap_push isn’t as natural*
+If no parameters are specified, the program must not display anything and give
+the prompt back.
 
-## Summary:
-This project will make you sort data on a stack, with a limited set of instructions, using the lowest possible number of actions. </br>
-To succeed you’ll have to manipulate various types of algorithms and choose the most appropriate solution (out of many) for an optimized data sorting.</br>
+In case of error, you must display "Error" followed by a ’\n’ on the standard
+error. Errors include for example: some arguments are not integers, some arguments
+are bigger than an integer, there are duplicates, an instruction doesn’t exist
+and/or is incorrectly formatted.
 
-Version: 6
+parser user infos
+faire les fonction des mouvements autorises
