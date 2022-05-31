@@ -56,7 +56,7 @@ make fclean
 
 ## Contrôles
 WASD ou les flèches pour se déplacer<br>
-Q, EST ou croix pour quitter<br>
+Q, ESC ou croix pour quitter<br>
 
 ## Pixel Art
 
