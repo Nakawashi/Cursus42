@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/31 12:11:59 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/05/31 13:01:51 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,13 @@ typedef struct s_list
 typedef struct s_stack
 {
 	int		size;
-	t_elem	*top;
-	t_elem	*bottom;
+	t_list	*top;
+	t_list	*bottom;
 }	t_stack;
 
-int		parse_arguments(int argc, char **argv);
-t_stack	*init_stack(void);
-t_elem	*init_elem(void);
+int	parse_arguments(int argc, char **argv);
 
-// push first prent pointeur e lelement
+// push first prend pointeur e lelement
 // push last
 // pop first retourne l'element
 // pop last
