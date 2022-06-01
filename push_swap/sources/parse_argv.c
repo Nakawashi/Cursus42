@@ -6,63 +6,62 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/05/31 16:46:14 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:00:40 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-	get user datas and return them in a pointer of array
+	get user datas and return them in a pointer of array of [int]
 	ft_split if only 2 arguments
 */
-static char	**get_data(int argc, char **argv)
+static int	*get_data(int argc, char **argv)
 {
-	char	**values;
+	char	**char_array;
+	int		*int_array;
 	int		i;
+	int		j;
 
-	values = NULL;
+	char_array = NULL;
+	int_array = 0;
 	if (argc == 2)
-	{
-		values = ft_split(argv[1], ' '); // tableau qui recupere les entrees du second argument
-		i = 0;
-		while (values[i])
+		char_array = ft_split(argv[1], ' '); // tableau qui recupere les entrees du second argument
+	else
+		char_array = ++argv; // tableau qui recupere les entrees on pousse ici pour partir du second argument, on veut pas le nom du programme
+	i = 0;
+	while (char_array[i])
 		{
-			ft_printf("values splitted : [%s]\n", values[i]);
+			ft_printf("char_array[i] : [%s]\n", char_array[i]);
 			i++;
 		}
-		write(1, "\n", 1);
-	}
-	else
-		values = ++argv; // tableau qui recupere les entrees on pousse ici pour partir du second argument, on veut pas le nom du programme
+	write(1, "\n", 1);
 	i = 0;
-	while (values[i])
+	while (char_array[i]) // convertir les char en int pour creer le tableau de int
 	{
-		ft_printf("values : {%s}\n", values[i]);
+		j = 0;
+		while (char_array[i][j])
+		{
+			int_array[i] = ft_atoi(char_array[i]);
+			if (int_array[i] > INT_MAX || int_array[i] < INT_MIN)
+				ft_printf("int overflow");
+			j++;
+		}
 		i++;
 	}
-	write(1, "\n", 1);
-	return (values);
+	return (int_array);
 }
 
-static int	check_int(char  **data_to_check)
+static int	*check_int(int  *data_to_check)
 {
 	int	i;
 
 	i = 0;
 	while (data_to_check[i])
 	{
-		ft_printf("before check int : {%s}\n", data_to_check[i]);
-		if (data_to_check[i] > INT_MIN && data_to_check[i] < INT_MAX)
-		{
-				
-		}
-		else
-			ft_printf("Erreur : int overflow\n");
 		i++;
 	}
-
-	return (0);
+	return (data_to_check);
 }
 
 // static int	check_duplicates(char **data_to_check)
@@ -75,7 +74,7 @@ static int	check_int(char  **data_to_check)
 */
 int	parse_arguments(int argc, char **argv)
 {
-	char	**values;
+	int	*values;
 
 	values = get_data(argc, argv);
 	check_int(values);
