@@ -6,63 +6,11 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/01 16:00:40 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/04 17:17:39 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
-	get user datas and return them in a pointer of array of [int]
-	ft_split if only 2 arguments
-*/
-static int	*get_data(int argc, char **argv)
-{
-	char	**char_array;
-	int		*int_array;
-	int		i;
-	int		j;
-
-	char_array = NULL;
-	int_array = 0;
-	if (argc == 2)
-		char_array = ft_split(argv[1], ' '); // tableau qui recupere les entrees du second argument
-	else
-		char_array = ++argv; // tableau qui recupere les entrees on pousse ici pour partir du second argument, on veut pas le nom du programme
-	i = 0;
-	while (char_array[i])
-		{
-			ft_printf("char_array[i] : [%s]\n", char_array[i]);
-			i++;
-		}
-	write(1, "\n", 1);
-	i = 0;
-	while (char_array[i]) // convertir les char en int pour creer le tableau de int
-	{
-		j = 0;
-		while (char_array[i][j])
-		{
-			int_array[i] = ft_atoi(char_array[i]);
-			if (int_array[i] > INT_MAX || int_array[i] < INT_MIN)
-				ft_printf("int overflow");
-			j++;
-		}
-		i++;
-	}
-	return (int_array);
-}
-
-static int	*check_int(int  *data_to_check)
-{
-	int	i;
-
-	i = 0;
-	while (data_to_check[i])
-	{
-		i++;
-	}
-	return (data_to_check);
-}
 
 // static int	check_duplicates(char **data_to_check)
 // {
@@ -70,14 +18,38 @@ static int	*check_int(int  *data_to_check)
 // }
 
 /*
-	User arguments must be int and not duplicated numbers.
-*/
-int	parse_arguments(int argc, char **argv)
-{
-	int	*values;
+	1. get user datas and return them in an array of pointers
+		ft_split if only 2 arguments
+	2. all integers
+	3. no duplicated numbers
 
-	values = get_data(argc, argv);
-	check_int(values);
-	// check_duplicates(values);
-	return (1);
+	display errors if not.
+
+	returns **char string
+*/
+void	**parse_arguments(int argc, char **argv)
+{
+	int	nb_of_args;
+	char **values;
+
+	nb_of_args = argc--; //dont want to count prg name
+	values = argv++; // start after prg name
+	if (nb_of_args == 2)
+		values = ft_split(argv[0], ' ');
+	else
+	{
+		//check_int(values);
+		values = (char **)malloc(sizeof(char *) * nb_of_args + 1);
+		if (!values)
+			return (NULL);
+		values = argv;
+	}
+	//ft_printf("argv : %s\n", argv[0]);
+	//ft_printf("values : %s\n", values[3]);
+	//check_duplicates(values);
+	return (NULL);
 }
+/*
+	sinon on stock argv mais a partir du pointeur 1 (0 etant le nom du prg)
+	donc la on a un tableau de pointeurs quil faut checker
+*/

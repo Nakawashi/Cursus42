@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/31 13:01:51 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/04 16:29:50 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,6 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
-// cell, element of the list
-typedef struct s_list
-{
-	int				data;
-	struct s_list	*prev;
-	struct s_list	*next;
-}	t_list;
-
 // where the list starts (une pile de livre - umerat)
 typedef struct s_stack
 {
@@ -41,7 +33,7 @@ typedef struct s_stack
 	t_list	*bottom;
 }	t_stack;
 
-int	parse_arguments(int argc, char **argv);
+void	**parse_arguments(int argc, char **argv);
 
 // push first prend pointeur e lelement
 // push last
