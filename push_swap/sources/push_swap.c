@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:43:58 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/04 16:11:03 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/04 17:54:40 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,13 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	char	**str;
 
 	if (argc > 1)
 	{
-		parse_arguments(argc, argv);
 		a = init_stack();
+		str = parse_arguments(argc, argv);
+		build_stack(str, &a);
 		b = init_stack();
 	}
 	//push_swap(a, b);
