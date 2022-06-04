@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 13:50:12 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/10/15 14:59:45 by lgenevey         ###   ########.fr       */
+/*   Created: 2022/05/30 18:14:40 by lgenevey          #+#    #+#             */
+/*   Updated: 2022/05/30 18:51:27 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+/*
+	Compte le nombre d'elements de la liste
+	lst: adresse de l'element premier
+*/
+int	ft_lstsize(t_list *lst)
 {
-	ft_memset (s, '\0', n);
+	int	i;
+
+	if (!lst)
+		return (0);
+	i = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

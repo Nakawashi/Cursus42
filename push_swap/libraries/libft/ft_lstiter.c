@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/25 11:44:00 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/31 11:57:26 by lgenevey         ###   ########.fr       */
+/*   Created: 2022/05/30 19:41:25 by lgenevey          #+#    #+#             */
+/*   Updated: 2022/05/30 19:45:13 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
-{
-	size_t	total;
-	void	*new_array;
+/*
+	Itère sur la liste ’lst’ et applique la fonction
+	’f’ au contenu chaque élément.
 
-	total = count * size;
-	new_array = malloc(total);
-	if (!new_array)
-		return (NULL);
-	ft_bzero(new_array, total);
-	return (new_array);
+	lst: L’adresse du pointeur vers un élément.
+	f: L’adresse de la fonction à appliquer.
+*/
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	if (lst)
+	{
+		while (lst)
+		{
+			f(lst->content);
+			lst = lst->next;
+		}
+	}
 }

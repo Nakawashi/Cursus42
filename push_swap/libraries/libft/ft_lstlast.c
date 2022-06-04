@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 13:50:12 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/10/15 14:59:45 by lgenevey         ###   ########.fr       */
+/*   Created: 2022/05/30 18:19:35 by lgenevey          #+#    #+#             */
+/*   Updated: 2022/05/30 18:51:48 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+/*
+	Renvoie le dernier element de la liste
+	lst: adresse de l'element premier
+*/
+t_list	*ft_lstlast(t_list *lst)
 {
-	ft_memset (s, '\0', n);
+	t_list	*last;
+
+	if (!lst)
+		return (NULL);
+	last = lst;
+	while (lst)
+	{
+		last = lst;
+		lst = lst->next;
+	}
+	return (last);
 }

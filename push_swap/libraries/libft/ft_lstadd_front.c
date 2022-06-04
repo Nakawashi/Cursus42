@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/25 11:44:00 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/05/31 11:57:26 by lgenevey         ###   ########.fr       */
+/*   Created: 2022/05/30 17:56:17 by lgenevey          #+#    #+#             */
+/*   Updated: 2022/05/30 19:55:24 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+/*
+	-- ajoute le nouvel element au debut de la liste
+	lst: L’adresse du pointeur vers le premier élément de la liste. (first)
+	new: L’adresse du pointeur vers l’élément à rajouter à la liste.
+*/
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t	total;
-	void	*new_array;
-
-	total = count * size;
-	new_array = malloc(total);
-	if (!new_array)
-		return (NULL);
-	ft_bzero(new_array, total);
-	return (new_array);
+	if (*lst)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
+	else
+		*lst = new;
 }

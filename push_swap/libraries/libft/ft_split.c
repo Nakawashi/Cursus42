@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 #include <stdio.h>
 
 static	int	ft_how_many_words(const char *str, char c)
