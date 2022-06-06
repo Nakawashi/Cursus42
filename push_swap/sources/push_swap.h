@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/04 17:52:02 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/06 17:41:59 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_stack
 	t_list	*bottom;
 }	t_stack;
 
-void	**parse_arguments(int argc, char **argv);
+char	*parse_arguments(int argc, char **argv);
 
 // push first prend pointeur e lelement
 // push last

@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/06 17:10:38 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/06 18:57:17 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,44 @@
 	returns **char string
 */
 
-static int	is_integer(char **char)
-{
 
-}
 
-void	**parse_arguments(int argc, char **argv)
+char	*parse_arguments(int argc, char **argv)
 {
-	int	nb_of_args;
-	char **values;
+	char	**values;
+	char	*array;
+	int		nb_of_args;
+	int		i;
+	int		j;
 
 	nb_of_args = argc--; //dont want to count prg name
 	values = argv++;
+	array = NULL;
 	if (nb_of_args == 2)
 		values = ft_split(argv[0], ' ');
 	else
 		values = argv; // start after prg name
+	i = 0;
+	while (values[i])
+	{
+		j = 0;
+		while (values[i][j])
+		{
+			ft_printf("values[i][j] : %s\n", values[i][j]);
+			array[j] = values[i][j];
+			j++;
+		}
+		i++;
+	}
+	ft_printf("array : %s\n", array);
+	return (array);
+}
+
+/*
+
 	if (!is_integer(values))
 		clean();
-	if (!are_duplicated(values))
+	if (!is_duplicated(values))
 		clean();
-}
+
+*/
