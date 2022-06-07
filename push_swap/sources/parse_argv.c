@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/07 15:07:11 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/07 16:53:30 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ char	**get_user_data(int argc, char **argv)
 	char	**values;
 	int		nb_of_args;
 
-	nb_of_args = argc--;
-	values = argv++;
+	nb_of_args = --argc; // créée une copie si on met après
+	values = ++argv;
 	if (nb_of_args == 2)
 		values = ft_split(argv[0], ' ');
 	else
