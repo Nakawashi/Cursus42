@@ -6,60 +6,53 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/06 18:57:17 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/07 15:07:11 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-	1. get user datas and return them in an array of pointers
-		ft_split if only 2 arguments
-	2. all integers
-	3. no duplicated numbers
-
-	display errors if not.
-	returns **char string
+	parcours chaque caractère du tableau pour definir si ce sont bien des digit
 */
+int	is_number(char **array)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (array[i])
+	{
+		j = 0;
+		while (array[i][j])
+		{
+			if (!ft_isdigit(array[i][j]))
+				print_error_and_exit();
+			j++;
+		}
+		ft_atoi_check_overflow(array[i]);
+		i++;
+	}
+	return (1);
+}
 
 
 
-char	*parse_arguments(int argc, char **argv)
+/*
+	return a pointer of char *arrays with user data
+	values : argv that we split then duplicated with malloc (ft_strdup)
+*/
+char	**get_user_data(int argc, char **argv)
 {
 	char	**values;
-	char	*array;
 	int		nb_of_args;
-	int		i;
-	int		j;
 
-	nb_of_args = argc--; //dont want to count prg name
+	nb_of_args = argc--;
 	values = argv++;
-	array = NULL;
 	if (nb_of_args == 2)
 		values = ft_split(argv[0], ' ');
 	else
-		values = argv; // start after prg name
-	i = 0;
-	while (values[i])
-	{
-		j = 0;
-		while (values[i][j])
-		{
-			ft_printf("values[i][j] : %s\n", values[i][j]);
-			array[j] = values[i][j];
-			j++;
-		}
-		i++;
-	}
-	ft_printf("array : %s\n", array);
-	return (array);
+		values = argv;
+	return (values);
 }
 
-/*
-
-	if (!is_integer(values))
-		clean();
-	if (!is_duplicated(values))
-		clean();
-
-*/
