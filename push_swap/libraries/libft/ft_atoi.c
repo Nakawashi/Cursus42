@@ -3,15 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 10:10:07 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/10/21 18:37:30 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/07 13:12:37 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
- * l31 : verifier s'il y a un char apres avant de faire * 10
- */
+
 #include "libft.h"
 
 int	ft_atoi(const char *str)
