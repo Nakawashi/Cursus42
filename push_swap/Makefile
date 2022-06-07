@@ -3,17 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/06/01 15:02:07 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/06/07 13:35:20 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	push_swap
 
 SRCS	=	sources/push_swap.c \
-			sources/parse_argv.c
+			sources/parse_argv.c \
+			sources/utils.c
 
 LIBFT_DIR		=	libraries/libft
 LIBFT			=	libraries/libft/libft.a
