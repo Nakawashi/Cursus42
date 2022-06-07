@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/07 14:58:51 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/07 20:36:35 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
-// where the list starts (une pile de livre - umerat)
 typedef struct s_stack
 {
 	int		size;
@@ -40,11 +39,9 @@ void	print_error_and_exit();
 int		is_number(char **array);
 int		ft_atoi_check_overflow(const char *str);
 
-
 // push first prend pointeur e lelement
 // push last
 // pop first retourne l'element
 // pop last
-
 
 #endif
