@@ -6,14 +6,37 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/12 14:25:25 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/12 20:58:21 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	is_duplicate(char **array)
+{
+	int		i;
+	int		j;
+	char	current;
+
+	i = 0;
+	while (array[i])
+	{
+		j = 0;
+		while (array[i][j])
+		{
+			current = array[i][j];
+			if (current == array[i][j + 1])
+				print_error_and_exit();
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 /*
 	parcours chaque caractère du tableau pour definir si ce sont bien des digit
+	tiens compte des nombres negatifs
 */
 int	is_number(char **array)
 {
@@ -54,4 +77,3 @@ char	**get_user_data(int argc, char **argv)
 		values = argv;
 	return (values);
 }
-
