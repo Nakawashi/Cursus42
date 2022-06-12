@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/07 20:55:19 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/12 14:25:25 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	is_number(char **array)
 	while (array[i])
 	{
 		j = 0;
-		if (array[i][j] == '+'|| array[i][j] == '-')
-			j++;
 		while (array[i][j])
 		{
+			if (array[i][j] == '+'|| array[i][j] == '-')
+				j++;
 			if (!ft_isdigit(array[i][j]))
 				print_error_and_exit();
 			j++;
@@ -46,11 +46,9 @@ int	is_number(char **array)
 char	**get_user_data(int argc, char **argv)
 {
 	char	**values;
-	int		nb_of_args;
 
-	nb_of_args = --argc; // créée une copie si on met après
 	values = ++argv;
-	if (nb_of_args == 2)
+	if (argc == 2)
 		values = ft_split(argv[0], ' ');
 	else
 		values = argv;
