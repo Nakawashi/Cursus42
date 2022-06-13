@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/13 19:16:04 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/13 21:05:01 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	find_duplicate(char **array)
 /*
 	Writes Error if a char is not a digit
 	Does nothing if user writes + or - before the number
+	Returns an array of integers
 */
 void	is_number(char **array)
 {
@@ -57,6 +58,7 @@ void	is_number(char **array)
 				print_error_and_exit();
 			j++;
 		}
+		ft_atoi_check_overflow(array[i]);
 		i++;
 	}
 }
