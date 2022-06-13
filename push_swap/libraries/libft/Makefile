@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
+#    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/13 14:02:05 by lgenevey          #+#    #+#              #
-#    Updated: 2022/05/31 11:39:17 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/06/13 13:35:47 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS =	ft_bzero.c \
 		ft_tolower.c \
 		ft_strchr.c \
 		ft_strrchr.c \
+		ft_strcmp.c \
 		ft_strncmp.c \
 		ft_memchr.c \
 		ft_memcmp.c \

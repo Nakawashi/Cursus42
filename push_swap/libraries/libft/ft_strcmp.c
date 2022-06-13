@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/25 14:00:30 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/13 13:32:17 by nakawashi        ###   ########.fr       */
+/*   Created: 2022/06/13 13:32:00 by nakawashi         #+#    #+#             */
+/*   Updated: 2022/06/13 13:38:07 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// l23 : le + 1 c'est pour prendre en compte le 0 qui termine le tableau de char
-
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strdup(const char *s1)
+/*
+	s1 and s2 are compared strings
+	return 0 : no difference
+	else : return the ascii difference
+*/
+int	ft_strcmp(char *s1, char *s2)
 {
-	char	*copy;
-	int		i;
+	int	i;
 
-	copy = (char *)malloc((ft_strlen(s1) + 1) * sizeof(char));
-	if (copy == NULL)
-		return (NULL);
 	i = 0;
-	while (s1[i])
-	{
-		copy[i] = s1[i];
+	while ((s1[i] && s2[i]) && (s1[i] == s2[i]))
 		i++;
-	}
-	copy[i] = 0;
-	return (copy);
+	if ((s1[i] > s2[i]) || (s1[i] < s2[i]))
+		return (s1[i] - s2[i]);
+	return (0);
 }
