@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:29:32 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/12 12:50:48 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/13 19:15:53 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,22 @@ void	print_error_and_exit()
 	exit(0);
 }
 
+/*
+	Return nb of arrays in a pointer of arrays
+*/
+int	ft_strlen_arrays(char **array)
+{
+	int	count;
+
+	count = 0;
+	while (array[count])
+		count++;
+	return (count);
+}
+
+/*
+	atoi, but print error if MAX INT and MIN INT
+*/
 int	ft_atoi_check_overflow(const char *str)
 {
 	int		i;
