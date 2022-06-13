@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/13 14:04:38 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/13 21:07:11 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ typedef struct s_stack
 
 char	**get_user_data(int argc, char **argv);
 void	print_error_and_exit();
-int		is_number(char **array);
-int		find_duplicate(char **array);
+void	is_number(char **array);
+void	find_duplicate(char **array);
+int		ft_strlen_arrays(char **array);
 int		ft_atoi_check_overflow(const char *str);
 
 // push first prend pointeur e lelement
