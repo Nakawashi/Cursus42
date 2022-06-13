@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:43:58 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/07 15:00:34 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/13 14:04:38 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		str = get_user_data(argc, argv);
-		if (is_number(str))
+		if (is_number(str) && find_duplicate(str))
 		{
 			a = init_stack();
 			b = init_stack();
