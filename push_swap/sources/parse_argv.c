@@ -6,30 +6,32 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/12 20:58:21 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/13 18:38:26 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_duplicate(char **array)
+int	find_duplicate(char **array)
 {
 	int		i;
 	int		j;
-	char	current;
+	char	*value_to_check;
 
+	if (!array)
+		return (0);
 	i = 0;
 	while (array[i])
 	{
-		j = 0;
-		while (array[i][j])
+		value_to_check = array[i];
+		i++;
+		j = i;
+		while (array[j])
 		{
-			current = array[i][j];
-			if (current == array[i][j + 1])
+			if (!ft_strcmp(array[j], value_to_check))
 				print_error_and_exit();
 			j++;
 		}
-		i++;
 	}
 	return (1);
 }
@@ -57,7 +59,6 @@ int	is_number(char **array)
 				print_error_and_exit();
 			j++;
 		}
-		ft_atoi_check_overflow(array[i]);
 		i++;
 	}
 	return (1);
