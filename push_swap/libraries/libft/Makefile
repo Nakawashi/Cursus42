@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
+#    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/13 14:02:05 by lgenevey          #+#    #+#              #
-#    Updated: 2022/06/13 13:35:47 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/06/14 16:28:11 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,8 +72,9 @@ $(NAME):
 	ar rcs $(NAME) $(OBJS)
 	@printf "$(GREEN) $(NAME) ready.\n$(NONE)"
 
-bonus: $(OBJS_BONUS) $(OBJS)
-	ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+bonus:
+	$(CC) $(CFLAGS) -c $(SRCS_BONUS)
+	ar rcs $(NAME) $(OBJS_BONUS)
 	@printf "$(GREEN) $(NAME) bonus ready.\n$(NONE)"
 
 clean:
@@ -87,4 +88,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all bonus clean fclean re
-.SILENT: $(NAME) clean fclean re
+.SILENT: $(NAME) bonus clean fclean re

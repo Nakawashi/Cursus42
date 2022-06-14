@@ -6,13 +6,13 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/06/14 13:27:24 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/06/14 16:36:58 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	push_swap
 
-SRCS	=	sources/push_swap.c \
+SRCS	=	sources/main.c.c \
 			sources/parse_argv.c \
 			sources/utils.c \
 			sources/utils_stack.c
@@ -41,9 +41,10 @@ NONE	= \033[0m
 
 all:	$(NAME)
 
-$(NAME)	:	$(OBJS)
-	@echo "$(BLUE)Making libft... $(NONE)"
+$(NAME)	: $(OBJS)
+	@echo "$(BLUE)Making libft and bonuses... $(NONE)"
 	@$(MAKE) -C $(LIBFT_DIR)
+	@$(MAKE) -C $(LIBFT_DIR) bonus
 	@echo "$(BLUE)Making ft_printf... $(NONE)"
 	@$(MAKE) -C $(FT_PRINTF_DIR)
 	@echo "$(BLUE)Making $(NAME)... $(NONE)"
