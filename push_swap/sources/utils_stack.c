@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/14 16:32:04 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:20:27 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	init_stack(t_stack *stack)
 /*
 	convert char to int
 	Fill stack a
+	Returns 0 if only 1 number is passed as argument
 */
 int	fill_stack(char **array, t_stack *stack)
 {
@@ -39,6 +40,7 @@ int	fill_stack(char **array, t_stack *stack)
 		if (!num)
 			return (0);
 		num[i] = ft_atoi(array[i]);
+		printf("[%d]\n", num[i]);
 		new = ft_lstnew(num);
 		if (!new)
 			return (0);
