@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/14 15:01:50 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/14 15:48:42 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char	**get_user_data(int argc, char **argv);
 void	print_error_and_exit();
 void	is_number(char **array);
 void	find_duplicate(char **array);
+void	init_stack(t_stack *stack);
 int		ft_strlen_arrays(char **array);
 int		ft_atoi_check_overflow(const char *array);
 int		fill_stack(char **array, t_stack *stack);

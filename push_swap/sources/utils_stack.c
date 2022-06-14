@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/14 14:57:50 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/14 16:32:04 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,31 @@ void	init_stack(t_stack *stack)
 }
 
 /*
+	convert char to int
 	Fill stack a
 */
 int	fill_stack(char **array, t_stack *stack)
 {
-	int *num;
-	t_list *n;
+	int		i;
+	int		*num;
+	t_list	*new;
 
 	init_stack(stack);
 	stack->size = ft_strlen_arrays(array);
-	while(array){
+	if (stack->size == 1)
+		return (0);
+	i = 0;
+	while(array[i])
+	{
 		num = malloc(sizeof(int));
 		if (!num)
-			return (1);
-		*num = ft_atoi(*array);
-		n = ft_lstnew(num);
-		if (!n)
-			return (1);
-		ft_lstadd_back(&(stack->top), n);
-		array++;
+			return (0);
+		num[i] = ft_atoi(array[i]);
+		new = ft_lstnew(num);
+		if (!new)
+			return (0);
+		ft_lstadd_back(&(stack->top), new);
+		i++;
 	}
+	return (1);
 }
