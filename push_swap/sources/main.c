@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:43:58 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/14 16:36:12 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:20:04 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	main(int argc, char **argv)
 		if(!fill_stack(str, &a))
 		{
 			ft_lstclear(&(a.top), free);
+			ft_free_array(str);
 			return (0);
 		}
-		printf("a->size : %d\n", a.size);
 		init_stack(&b);
 		push_swap(&a, &b);
 	}
