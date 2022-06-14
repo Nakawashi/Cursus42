@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/13 14:02:05 by lgenevey          #+#    #+#              #
-#    Updated: 2022/05/31 11:39:17 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/06/14 16:28:40 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS =	ft_bzero.c \
 		ft_tolower.c \
 		ft_strchr.c \
 		ft_strrchr.c \
+		ft_strcmp.c \
 		ft_strncmp.c \
 		ft_memchr.c \
 		ft_memcmp.c \
@@ -71,8 +72,9 @@ $(NAME):
 	ar rcs $(NAME) $(OBJS)
 	@printf "$(GREEN) $(NAME) ready.\n$(NONE)"
 
-bonus: $(OBJS_BONUS) $(OBJS)
-	ar rcs $(NAME) $(OBJS) $(OBJS_BONUS)
+bonus:
+	$(CC) $(CFLAGS) -c $(SRCS_BONUS)
+	ar rcs $(NAME) $(OBJS_BONUS)
 	@printf "$(GREEN) $(NAME) bonus ready.\n$(NONE)"
 
 clean:
@@ -86,4 +88,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all bonus clean fclean re
-.SILENT: $(NAME) clean fclean re
+.SILENT: $(NAME) bonus clean fclean re
