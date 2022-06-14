@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:29:32 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/13 20:05:30 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/14 13:27:44 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-	codes:
+	codes: (not used here)
 	0 - param non numériques
 	1 - param incluant des doublons
 	2 - int overflow
@@ -25,7 +25,7 @@ void	print_error_and_exit()
 }
 
 /*
-	Return nb of arrays in a pointer of arrays
+	Returns nb of arrays in a pointer of arrays
 */
 int	ft_strlen_arrays(char **array)
 {
@@ -38,7 +38,7 @@ int	ft_strlen_arrays(char **array)
 }
 
 /*
-	atoi, but checking MAX INT and MIN INT
+	atoi, but prints Error if INT overflow
 */
 int	ft_atoi_check_overflow(const char *str)
 {
@@ -68,3 +68,4 @@ int	ft_atoi_check_overflow(const char *str)
 		print_error_and_exit();
 	return (v);
 }
+
