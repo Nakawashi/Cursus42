@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:37:32 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/15 23:37:07 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/16 00:43:27 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,16 @@ int	is_sorted(t_stack *a)
 	element = a->top;
 	while (element) // tant que l'element existe
 	{
-		printf("coucou\n");
+		printf("element->content: %d\n", *((int *)element->content));
+		printf("element->next: %p\n", element->next);
 		if (element->next) // si l'élément suivant existe
 		{
-			printf("coucou2\n");
-			if (element->content > element->next->content) // element actuel plus grand que le prochain
-			printf("oulala\n");
+			if (*((int *)element->content) > *((int *)element->content))
+			{
+				printf("oulala: %d\n", *((int *)element->content));
+			}
 		}
-		element = element->next;
+		element = element->next; // element++
 	}
 	return (1);
 }

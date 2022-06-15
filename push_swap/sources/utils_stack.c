@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/14 18:20:27 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/16 00:44:05 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	fill_stack(char **array, t_stack *stack)
 		if (!new)
 			return (0);
 		ft_lstadd_back(&(stack->top), new);
+		printf("new->content: %d\n", *((int *)new->content));
 		i++;
 	}
 	return (1);
