@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:37:32 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/14 18:24:08 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/15 23:37:07 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ int	is_sorted(t_stack *a)
 	t_list	*element;
 
 	element = a->top;
-	while (element) // si element existe
+	while (element) // tant que l'element existe
 	{
-		if (element->next) // tant qu'on n'est pas sur le dernier element
+		printf("coucou\n");
+		if (element->next) // si l'élément suivant existe
 		{
+			printf("coucou2\n");
 			if (element->content > element->next->content) // element actuel plus grand que le prochain
-				return (0);
+			printf("oulala\n");
 		}
 		element = element->next;
 	}
@@ -39,7 +41,7 @@ void	push_swap(t_stack *a, t_stack *b)
 	(void) b;
 
 	if (is_sorted(a))
-		printf("valeurs dans l'ordre");
+		printf("valeurs dans l'ordre\n");
 	else
-		printf("valeurs pas dans l'ordre");
+		printf("valeurs pas dans l'ordre\n");
 }
