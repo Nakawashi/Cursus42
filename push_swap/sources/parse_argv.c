@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_argv.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/14 13:06:05 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/17 13:21:23 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /*
 	Writes Error at first found duplicated string / number
 */
-void	find_duplicate(char **array)
+static void	find_duplicate(char **array)
 {
 	int		i;
 	int		j;
@@ -43,7 +43,7 @@ void	find_duplicate(char **array)
 	Does nothing if user writes + or - before the number
 	Returns an array of integers
 */
-void	is_number(char **array)
+static void	is_number(char **array)
 {
 	int	i;
 	int	j;
@@ -60,7 +60,6 @@ void	is_number(char **array)
 				print_error_and_exit();
 			j++;
 		}
-		ft_atoi_check_overflow(array[i]);
 		i++;
 	}
 }
@@ -68,7 +67,7 @@ void	is_number(char **array)
 /*
 	return a pointer of char *arrays with user data
 */
-char	**get_user_data(int argc, char **argv)
+static char	**get_user_data(int argc, char **argv)
 {
 	char	**values;
 
@@ -80,4 +79,35 @@ char	**get_user_data(int argc, char **argv)
 	else
 		values = argv;
 	return (values);
+}
+
+/*
+	returns int *array from my char **array
+	writes Error if int overflow or not convertible
+*/
+int	*char_to_int(char **array)
+{
+	int	*num;
+	int	i;
+
+	num = malloc(sizeof(int));
+	if (!num)
+		return (0);
+	i = 0;
+	while (array[i])
+	{
+		num[i] = ft_atoi_check_overflow(array[i]);
+		i++;
+	}
+	return (num);
+}
+
+int	*check_datas(int argc, char **argv)
+{
+	char	**str;
+
+	str = get_user_data(argc, argv);
+	is_number(str);
+	find_duplicate(str);
+	return (char_to_int(str));
 }
