@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:29:32 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/14 16:40:02 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/17 13:18:16 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	print_error_and_exit()
 /*
 	Returns nb of arrays in a pointer of arrays
 */
-int	ft_strlen_arrays(char **array)
+int	ft_count_arrays(char **array)
 {
 	int	count;
 
@@ -35,6 +35,16 @@ int	ft_strlen_arrays(char **array)
 	while (array[count])
 		count++;
 	return (count);
+}
+
+int	ft_count_indexes(int *num)
+{
+	int i;
+
+	i = 0;
+	while (num[i])
+		i++;
+	return (i);
 }
 
 /*

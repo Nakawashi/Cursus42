@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/14 18:10:26 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/17 12:57:31 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,15 @@ typedef struct s_stack
 	t_list	*top;
 }	t_stack;
 
-char	**get_user_data(int argc, char **argv);
 void	print_error_and_exit();
-void	is_number(char **array);
-void	find_duplicate(char **array);
 void	init_stack(t_stack *stack);
 void	ft_free_array(char **array);
 void	push_swap(t_stack *a, t_stack *b);
-int		ft_strlen_arrays(char **array);
+int		*check_datas(int argc, char **argv);
+int		ft_count_arrays(char **array);
+int		ft_count_indexes(int *num);
 int		ft_atoi_check_overflow(const char *array);
-int		fill_stack(char **array, t_stack *stack);
+int		fill_stack(int *num, t_stack *stack);
 int		is_sorted(t_stack *a);
 
 // push first prend pointeur e lelement

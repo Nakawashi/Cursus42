@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/16 00:44:05 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/17 14:21:02 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,26 @@ void	init_stack(t_stack *stack)
 }
 
 /*
-	convert char to int
 	Fill stack a
 	Returns 0 if only 1 number is passed as argument
 */
-int	fill_stack(char **array, t_stack *stack)
+int	fill_stack(int *num, t_stack *stack)
 {
 	int		i;
-	int		*num;
 	t_list	*new;
-
+	printf("num: [%d]\n", num[0]);
+	printf("num: [%d]\n", num[1]);
+	printf("num: [%d]\n", num[2]);
+	printf("num: [%d]\n", num[3]);
 	init_stack(stack);
-	stack->size = ft_strlen_arrays(array);
+	stack->size = ft_count_indexes(num);
+	printf("stack->size : %d\n", stack->size);
 	if (stack->size == 1)
 		return (0);
 	i = 0;
-	while(array[i])
+	while(num[i])
 	{
-		num = malloc(sizeof(int));
-		if (!num)
-			return (0);
-		num[i] = ft_atoi(array[i]);
-		printf("[%d]\n", num[i]);
-		new = ft_lstnew(num);
+		new = ft_lstnew(&num[i]);
 		if (!new)
 			return (0);
 		ft_lstadd_back(&(stack->top), new);

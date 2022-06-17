@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:43:58 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/14 18:20:04 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/17 14:19:46 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,15 @@ int	main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
-	char	**str;
+	int		*num;
 
 	if (argc > 1)
 	{
-		str = get_user_data(argc, argv);
-		is_number(str);
-		find_duplicate(str);
-		if(!fill_stack(str, &a))
+		num = check_datas(argc, argv);
+		if(!fill_stack(num, &a))
 		{
 			ft_lstclear(&(a.top), free);
-			ft_free_array(str);
+			free(num);
 			return (0);
 		}
 		init_stack(&b);
