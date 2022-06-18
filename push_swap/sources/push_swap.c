@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:37:32 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/17 14:07:47 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/18 16:42:06 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,20 @@
 /*
 	Parcours la stack et retourne 1 si deja triée
 	Comparaison entre la valeur courante et la suivante
-	S'il existe un element suivant, modifier la valeure courante
+	Modifier l'adresse sur l'élément courant pour qu'il soit sur le suivant
 */
-int	is_sorted(t_stack *a)
+int	is_sorted(t_stack *stack)
 {
 	t_list	*element;
 
-	element = a->top;
-	while (element) // tant que l'element existe
+	element = stack->top;
+	while (element)
 	{
-		printf("element->content: %d\n", *((int *)element->content));
-		if (element->next) // si l'élément suivant existe
-		{
-			printf("element->next: %d\n", *(int *)element->next->content);
-			if (*((int *)element->content) > *((int *)element->content))
-			{
-				printf("oulala: %d\n", *((int *)element->content));
-			}
-		}
-		element = element->next; // element++
+		printf("valeur de l'élément courant de la liste : [%d]\n", *((int *)element->content));
+		printf("valeur de l'élément suivant de la liste : [%d]\n", *((int *)element->next->content));
+		if (*((int *)element->content) > *((int *)element->next->content))
+			return (0);
+		element = element->next;
 	}
 	return (1);
 }
