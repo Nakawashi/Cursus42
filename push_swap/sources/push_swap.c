@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:37:32 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/18 16:42:06 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/18 17:19:14 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	is_sorted(t_stack *stack)
 	t_list	*element;
 
 	element = stack->top;
-	while (element)
+	while (element && element->next)
 	{
-		printf("valeur de l'élément courant de la liste : [%d]\n", *((int *)element->content));
-		printf("valeur de l'élément suivant de la liste : [%d]\n", *((int *)element->next->content));
+		//printf("valeur de l'élément courant de la liste : [%d]\n", *((int *)element->content));
+		//printf("valeur de l'élément suivant de la liste : [%d]\n", *((int *)element->next->content));
 		if (*((int *)element->content) > *((int *)element->next->content))
 			return (0);
 		element = element->next;

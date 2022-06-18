@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/17 12:57:31 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/18 16:13:56 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		ft_count_arrays(char **array);
 int		ft_count_indexes(int *num);
 int		ft_atoi_check_overflow(const char *array);
 int		fill_stack(int *num, t_stack *stack);
-int		is_sorted(t_stack *a);
+int		is_sorted(t_stack *stack);
 
 // push first prend pointeur e lelement
 // push last
