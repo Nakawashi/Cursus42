@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/19 16:46:24 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/19 19:30:18 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,31 @@ typedef struct s_stack
 	t_list	*top;
 }	t_stack;
 
-void	print_error_and_exit();
-void	init_stack(t_stack *stack);
-void	ft_free_array(char **array);
-void	push_swap(t_stack *a, t_stack *b);
-void	sort_two(t_stack *a);
-void	sort_three(t_stack *a, t_stack *b);
-void	sa(t_stack *a);
+// parse user arguments : parse_argv
 int		*check_datas(int argc, char **argv);
+
+// utils
 int		ft_count_arrays(char **array);
 int		ft_count_indexes(int *num);
 int		ft_atoi_check_overflow(const char *array);
-int		fill_stack(int *num, t_stack *stack);
-int		is_sorted(t_stack *stack);
 
-// push first prend pointeur e lelement
-// push last
-// pop first retourne l'element
-// pop last
+// error and cleaning
+void	print_error_and_exit();
+void	ft_free_array(char **array);
+
+// stack and list handlers
+void	init_stack(t_stack *stack);
+int		fill_stack(int *num, t_stack *stack);
+
+// algos
+void	push_swap(t_stack *a, t_stack *b);
+int		is_sorted(t_stack *stack);
+void	sort_2_elements(t_stack *a);
+void	sort_3_elements(t_stack *a);
+
+// allowed operations
+void	sa(t_stack *stack);
+void	sb(t_stack *stack);
+void	ss(t_stack *a, t_stack *b);
 
 #endif
