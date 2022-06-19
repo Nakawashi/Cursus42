@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/18 16:13:56 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/19 16:46:24 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ void	print_error_and_exit();
 void	init_stack(t_stack *stack);
 void	ft_free_array(char **array);
 void	push_swap(t_stack *a, t_stack *b);
+void	sort_two(t_stack *a);
+void	sort_three(t_stack *a, t_stack *b);
+void	sa(t_stack *a);
 int		*check_datas(int argc, char **argv);
 int		ft_count_arrays(char **array);
 int		ft_count_indexes(int *num);

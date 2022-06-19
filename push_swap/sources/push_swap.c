@@ -6,16 +6,16 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:37:32 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/19 15:38:59 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/19 16:19:01 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-	Parcours la stack et retourne 1 si deja triée
+	Parcours la liste chainée et retourne 1 si deja triée
 	Comparaison entre la valeur courante et la suivante
-	Modifier l'adresse sur l'élément courant pour qu'il soit sur le suivant
+	Aller à l'élément suivant de la liste chainée
 */
 int	is_sorted(t_stack *stack)
 {
@@ -31,12 +31,19 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
+
+
 void	push_swap(t_stack *a, t_stack *b)
 {
 	(void) b;
 
 	if (is_sorted(a))
-		printf("valeurs dans l'ordre\n");
+		printf("is sorted : free num, liste et array si argc == 2\n");
 	else
-		printf("valeurs pas dans l'ordre\n");
+		{
+			if (a->size == 2)
+				sort_two(a);
+			else if (a->size == 3)
+				sort_three(a, b);
+		}
 }

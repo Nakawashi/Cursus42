@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/19 15:34:27 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/19 16:14:32 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,20 @@
 /* MAKE SURE WE GOT DIGITS, INTEGER RANGE AND NO DUPLICATES */
 
 /*
-	Writes Error at first found duplicated string / number
+	return a pointer of char *arrays with user data
 */
-static void	find_duplicate(char **array)
+static char	**get_user_data(int argc, char **argv)
 {
-	int		i;
-	int		j;
-	char	*value_to_check;
+	char	**values;
 
-	i = 0;
-	while (array[i])
-	{
-		value_to_check = array[i];
-		i++;
-		j = i;
-		while (array[j])
-		{
-			if (!ft_strcmp(array[j], value_to_check))
-				print_error_and_exit();
-			j++;
-		}
-	}
+	if (!argv)
+		return (NULL);
+	values = ++argv;
+	if (argc == 2)
+		values = ft_split(argv[0], ' ');
+	else
+		values = argv;
+	return (values);
 }
 
 /*
@@ -65,27 +58,34 @@ static void	is_number(char **array)
 }
 
 /*
-	return a pointer of char *arrays with user data
+	Writes Error at first found duplicated string / number
 */
-static char	**get_user_data(int argc, char **argv)
+static void	find_duplicate(char **array)
 {
-	char	**values;
+	int		i;
+	int		j;
+	char	*value_to_check;
 
-	if (!argv)
-		return (NULL);
-	values = ++argv;
-	if (argc == 2)
-		values = ft_split(argv[0], ' ');
-	else
-		values = argv;
-	return (values);
+	i = 0;
+	while (array[i])
+	{
+		value_to_check = array[i];
+		i++;
+		j = i;
+		while (array[j])
+		{
+			if (!ft_strcmp(array[j], value_to_check))
+				print_error_and_exit();
+			j++;
+		}
+	}
 }
 
 /*
 	returns int *array from my char **array
 	writes Error if int overflow or not convertible
 */
-int	*char_to_int(char **array)
+static int	*char_to_int(char **array)
 {
 	int	*num;
 	int	i;

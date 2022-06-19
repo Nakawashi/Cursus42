@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/18 17:37:52 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/19 16:27:38 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	fill_stack(int *num, t_stack *stack)
 
 	init_stack(stack);
 	stack->size = ft_count_indexes(num);
-	printf("size : %d\n", stack->size);
+	printf("stack->size : %d\n", stack->size);
 	if (stack->size == 1)
 		return (0);
 	i = 0;
@@ -39,8 +39,6 @@ int	fill_stack(int *num, t_stack *stack)
 		if (!new)
 			return (0);
 		ft_lstadd_back(&(stack->top), new);
-		//printf("num[i] : %d\n", num[i]);
-		//printf("new->content[i] : %d\n", *((int *)new->content));
 		i++;
 	}
 	return (1);
