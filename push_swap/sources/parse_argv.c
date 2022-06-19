@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/19 16:14:32 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/19 19:44:22 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	is_number(char **array)
 		j = 0;
 		while (array[i][j])
 		{
-			if (array[i][j] == '+'|| array[i][j] == '-')
+			if (array[i][j] == '+' || array[i][j] == '-')
 				j++;
 			if (!ft_isdigit(array[i][j]))
 				print_error_and_exit();
@@ -97,6 +97,7 @@ static int	*char_to_int(char **array)
 	while (array[i])
 	{
 		num[i] = ft_atoi_check_overflow(array[i]);
+		printf("char to int num[%d] : %d\n", i, num[0]);
 		i++;
 	}
 	return (num);

@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   operations_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/20 10:43:58 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/19 19:36:35 by nakawashi        ###   ########.fr       */
+/*   Created: 2022/06/19 17:45:16 by nakawashi         #+#    #+#             */
+/*   Updated: 2022/06/19 20:40:44 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+/*
+	Update next address which link each element
+*/
+static void	rotate(t_stack *stack)
 {
-	t_stack	a;
-	t_stack	b;
-	int		*num;
+	ft_lstlast(stack->top)->next = stack->top;
+	stack->top->next = NULL;
 
-	if (argc > 1)
-	{
-		num = check_datas(argc, argv);
-		printf("num[0] : %d\n", num[0]);
-		if(!fill_stack(num, &a))
-		{
-			ft_lstclear(&(a.top), free);
-			free(num);
-			return (0);
-		}
-		init_stack(&b);
-		push_swap(&a, &b);
-		while (a.top)
-		{
-			printf("liste dans l'ordre : [%d]\n", *((int *)a.top->content));
-			a.top = a.top->next;
-		}
-	}
-	return (0);
+
+}
+
+/*
+	rotate a, shift up all elements of stack a by 1.
+	the first element becomes the last one. the second element is now 1st.
+*/
+void	ra(t_stack *stack)
+{
+	rotate(stack);
+	ft_putendl_fd("ra", 1);
 }

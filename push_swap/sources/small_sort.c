@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:13:10 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/19 17:00:11 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/19 19:27:00 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,34 @@
 
 /* 2, 3. 4 OR 5 NUMBERS TO SORT */
 
-void	sort_two(t_stack *a)
+void	sort_2_elements(t_stack *a)
 {
-	printf("swap a : swap the first 2 elements at the top of stack a\n");
 	sa(a);
 }
 
-void	sort_three(t_stack *a, t_stack *b)
+void	sort_3_elements(t_stack *a)
 {
-	(void) a;
-	(void) b;
-	printf("check qui est plus petit, plus grand.\n");
+	int	top;
+	int	mid;
+	int	bot;
+
+	top = *((int *)a->top->content);
+	mid = *((int *)a->top->next->content);
+	bot = *((int *)ft_lstlast(a->top)->content);
+	if (mid < top && top < bot)
+		sa(a);
+	if (top < mid && top > bot)
+		//rra(a)
+	if ((top > mid && top > bot) && mid < bot)
+		//ra(a)
+	if (top > mid && mid > bot)
+	{
+		//sa
+		//rra
+	}
+	if (top < mid && mid > bot)
+	{
+		//sa(a)
+		//ra(a)
+	}
 }
