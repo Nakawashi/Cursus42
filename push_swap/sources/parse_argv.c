@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/17 13:21:23 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/19 15:34:27 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	*char_to_int(char **array)
 	int	*num;
 	int	i;
 
-	num = malloc(sizeof(int));
+	num = (int *)malloc(sizeof(int) * ft_count_arrays(array));
 	if (!num)
 		return (0);
 	i = 0;
