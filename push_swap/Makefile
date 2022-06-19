@@ -6,7 +6,7 @@
 #    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/06/19 16:24:41 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/06/19 18:00:19 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS	=	sources/main.c \
 			sources/utils_stack.c \
 			sources/push_swap.c \
 			sources/small_sort.c \
-			sources/operations.c
+			sources/operations_swap.c
 
 LIBFT_DIR		=	libraries/libft
 LIBFT			=	libraries/libft/libft.a
