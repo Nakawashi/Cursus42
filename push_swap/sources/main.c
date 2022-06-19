@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:43:58 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/19 15:36:24 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/19 16:53:36 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ int	main(int argc, char **argv)
 		}
 		init_stack(&b);
 		push_swap(&a, &b);
+		while (a.top)
+		{
+			printf("liste dans l'ordre : [%d]\n", *((int *)a.top->content));
+			a.top = a.top->next;
+		}
 	}
 	return (0);
 }
