@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:45:16 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/20 12:05:09 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/20 12:41:49 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,23 @@ static void	rotate(t_stack *stack)
 {
 	t_list	*actual_last;
 	t_list	*actual_first;
+	t_list	*actual_second;
 
 	actual_last = ft_lstlast(stack->top);
 	actual_first = stack->top;
+	actual_second = stack->top->next;
 
-	printf("actual last : %d\n", *((int *)actual_last->content));
 	printf("actual first : %d\n", *((int *)actual_first->content));
+	printf("actual second : %d\n", *((int *)actual_second->content));
+	printf("actual last : %d\n", *((int *)actual_last->content));
 
-	actual_last->next = actual_first->next;
+	stack->top = actual_second;
+	actual_last->next = actual_first;
 	actual_first->next = NULL;
 
-	printf("last : %d\n", *((int *)actual_last->content));
 	printf("first : %d\n", *((int *)actual_first->content));
+	printf("second : %d\n", *((int *)actual_second->content));
+	printf("last : %d\n", *((int *)actual_last->content));
 }
 
 /*
