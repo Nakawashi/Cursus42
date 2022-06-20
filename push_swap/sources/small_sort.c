@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:13:10 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/20 15:06:00 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/20 16:47:28 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ void	sort_5_elements(t_stack *a, t_stack *b)
 {
 	pb(a, b);
 	pb(a, b);
-	sort_3_elements(a);
+	printf("sort 5 elements\n");
+	//sort_3_elements(a);
 }
