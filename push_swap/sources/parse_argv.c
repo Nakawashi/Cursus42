@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/19 19:44:22 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/20 11:57:35 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static int	*char_to_int(char **array)
 	while (array[i])
 	{
 		num[i] = ft_atoi_check_overflow(array[i]);
-		printf("char to int num[%d] : %d\n", i, num[0]);
+		printf("char to int num[%d] : %d\n", i, num[i]);
 		i++;
 	}
 	return (num);

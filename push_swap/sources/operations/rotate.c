@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations_rotate.c                                :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:45:16 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/20 12:41:49 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/20 12:47:54 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 /*
 	Update next address that link each element
@@ -25,17 +25,9 @@ static void	rotate(t_stack *stack)
 	actual_first = stack->top;
 	actual_second = stack->top->next;
 
-	printf("actual first : %d\n", *((int *)actual_first->content));
-	printf("actual second : %d\n", *((int *)actual_second->content));
-	printf("actual last : %d\n", *((int *)actual_last->content));
-
 	stack->top = actual_second;
 	actual_last->next = actual_first;
 	actual_first->next = NULL;
-
-	printf("first : %d\n", *((int *)actual_first->content));
-	printf("second : %d\n", *((int *)actual_second->content));
-	printf("last : %d\n", *((int *)actual_last->content));
 }
 
 /*

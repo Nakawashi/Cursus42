@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:43:58 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/19 19:36:35 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/20 12:05:38 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		num = check_datas(argc, argv);
-		printf("num[0] : %d\n", num[0]);
 		if(!fill_stack(num, &a))
 		{
 			ft_lstclear(&(a.top), free);
