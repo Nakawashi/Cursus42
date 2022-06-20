@@ -6,21 +6,31 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:45:16 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/19 20:40:44 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/20 12:05:09 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-	Update next address which link each element
+	Update next address that link each element
 */
 static void	rotate(t_stack *stack)
 {
-	ft_lstlast(stack->top)->next = stack->top;
-	stack->top->next = NULL;
+	t_list	*actual_last;
+	t_list	*actual_first;
 
+	actual_last = ft_lstlast(stack->top);
+	actual_first = stack->top;
 
+	printf("actual last : %d\n", *((int *)actual_last->content));
+	printf("actual first : %d\n", *((int *)actual_first->content));
+
+	actual_last->next = actual_first->next;
+	actual_first->next = NULL;
+
+	printf("last : %d\n", *((int *)actual_last->content));
+	printf("first : %d\n", *((int *)actual_first->content));
 }
 
 /*
