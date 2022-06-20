@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 18:00:31 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/20 13:13:01 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/20 13:42:36 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 
 /*
-	if stack empty, do nothing
+	if stack empty OR first element smaller then the second, do nothing
 */
 static void	swap(t_stack *stack)
 {
 	int	temp;
-	
-	if (!stack)
+
+	if (!stack || *((int *)stack->top->content) < *((int *)stack->top->next->content))
 		return ;
 	temp = *((int *)stack->top->content);
 	*((int *)stack->top->content) = *((int *)stack->top->next->content);
