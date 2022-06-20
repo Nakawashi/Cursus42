@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:45:16 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/20 12:47:54 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/20 13:12:12 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 */
 static void	rotate(t_stack *stack)
 {
+	if (!stack)
+		return ;
 	t_list	*actual_last;
 	t_list	*actual_first;
 	t_list	*actual_second;

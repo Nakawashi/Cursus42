@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/20 11:54:42 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/20 12:52:29 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	sort_3_elements(t_stack *a);
 void	sa(t_stack *stack);
 void	sb(t_stack *stack);
 void	ss(t_stack *a, t_stack *b);
+void	rra(t_stack *stack);
 void	ra(t_stack *stack);
 
 #endif
