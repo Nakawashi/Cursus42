@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:13:10 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/20 13:11:24 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/20 15:06:00 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,27 @@ void	sort_3_elements(t_stack *a)
 	top = *((int *)a->top->content);
 	mid = *((int *)a->top->next->content);
 	bot = *((int *)ft_lstlast(a->top)->content);
-	if (mid < top && top < bot) //case 1
+	if (mid < top && top < bot)
 		sa(a);
-	else if (top < mid && top > bot) //case 5
+	else if (top < mid && top > bot)
 		rra(a);
-	else if (top > mid && top > bot && mid < bot) //case 3
+	else if (top > mid && top > bot && mid < bot)
 		ra(a);
-	else if (top > mid && mid > bot) // case 2
+	else if (top > mid && mid > bot)
 	{
 		sa(a);
 		rra(a);
 	}
-	else if (top < mid && mid > bot) // case 4
+	else if (top < mid && mid > bot)
 	{
 		sa(a);
 		ra(a);
 	}
+}
+
+void	sort_5_elements(t_stack *a, t_stack *b)
+{
+	pb(a, b);
+	pb(a, b);
+	sort_3_elements(a);
 }

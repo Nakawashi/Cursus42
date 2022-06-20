@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/20 12:52:29 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/20 14:58:47 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,15 @@ void	push_swap(t_stack *a, t_stack *b);
 int		is_sorted(t_stack *stack);
 void	sort_2_elements(t_stack *a);
 void	sort_3_elements(t_stack *a);
+void	sort_5_elements(t_stack *a, t_stack *b);
 
 // allowed operations
 void	sa(t_stack *stack);
 void	sb(t_stack *stack);
 void	ss(t_stack *a, t_stack *b);
-void	rra(t_stack *stack);
 void	ra(t_stack *stack);
+void	rra(t_stack *stack);
+void	pa(t_stack *b, t_stack *a);
+void	pb(t_stack *a, t_stack *b);
 
 #endif
