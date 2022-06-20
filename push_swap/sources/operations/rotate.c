@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:45:16 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/20 13:12:12 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/20 15:04:03 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /*
 	Update next address that link each element
+	The first element becomes the last one. the second element is now 1st.
 */
 static void	rotate(t_stack *stack)
 {
@@ -26,15 +27,13 @@ static void	rotate(t_stack *stack)
 	actual_last = ft_lstlast(stack->top);
 	actual_first = stack->top;
 	actual_second = stack->top->next;
-
 	stack->top = actual_second;
 	actual_last->next = actual_first;
 	actual_first->next = NULL;
 }
 
 /*
-	rotate a, shift up all elements of stack a by 1.
-	the first element becomes the last one. the second element is now 1st.
+	shift up
 */
 void	ra(t_stack *stack)
 {

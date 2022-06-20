@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:43:45 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/20 13:14:46 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/20 15:04:23 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 /*
 	Update next address that link each element
+	The last element becomes the first one.
 */
 static void	reverse_rotate(t_stack *stack)
 {
@@ -36,11 +37,16 @@ static void	reverse_rotate(t_stack *stack)
 }
 
 /*
-	reverse_rotate a, shift down all elements of stack a by 1.
-	the last element becomes the first one.
+	shift down
 */
 void	rra(t_stack *stack)
 {
 	reverse_rotate(stack);
 	ft_putendl_fd("rra", 1);
+}
+
+void	rrb(t_stack *stack)
+{
+	reverse_rotate(stack);
+	ft_putendl_fd("rrb", 1);
 }
