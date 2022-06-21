@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/21 15:13:55 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/21 19:09:06 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,12 @@ static int	*char_to_int(char **array)
 	return (num);
 }
 
-int	*check_datas(int argc, char **argv)
+int	*check_datas(int argc, char **argv, t_stack *a)
 {
 	char	**str;
 
 	str = get_user_data(argc, argv);
+	a->size = ft_count_arrays(str);
 	is_number(str);
 	find_duplicate(str);
 	return (char_to_int(str));

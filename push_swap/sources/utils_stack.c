@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/21 16:58:18 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/21 18:58:45 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	fill_stack(int *num, t_stack *stack)
 	int		i;
 	t_list	*new;
 
-	init_stack(stack);
-	stack->size = ft_count_indexes(num);
 	if (stack->size == 1)
 		return (0);
 	i = 0;
@@ -45,7 +43,7 @@ int	fill_stack(int *num, t_stack *stack)
 }
 
 /*
-	return the address of the element that contains the greatest INT value
+	return the min value in stack a
 */
 int	get_min_value(t_stack *a)
 {
@@ -62,8 +60,3 @@ int	get_min_value(t_stack *a)
 	}
 	return (min);
 }
-
-/*
-	return the address of the element that contains the second greatest INT val
-*/
-

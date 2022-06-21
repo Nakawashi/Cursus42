@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/21 16:41:20 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/21 18:59:04 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,10 @@ typedef struct s_stack
 }	t_stack;
 
 // parse user arguments : parse_argv
-int		*check_datas(int argc, char **argv);
+int		*check_datas(int argc, char **argv, t_stack *a);
 
 // utils
 int		ft_count_arrays(char **array);
-int		ft_count_indexes(int *num);
 int		ft_atoi_check_overflow(const char *array);
 
 // error and cleaning
@@ -46,8 +45,6 @@ void	ft_free_array(char **array);
 void	init_stack(t_stack *stack);
 int		fill_stack(int *num, t_stack *stack);
 int		get_min_value(t_stack *a);
-
-
 
 // algos
 void	push_swap(t_stack *a, t_stack *b);

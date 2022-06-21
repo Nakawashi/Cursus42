@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:29:32 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/19 15:40:30 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/21 18:52:58 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,6 @@ int	ft_count_arrays(char **array)
 	while (array[count])
 		count++;
 	return (count);
-}
-
-/*
-	in a int * array, count number of indexes
-*/
-int	ft_count_indexes(int *num)
-{
-	int i;
-
-	i = 0;
-	while (num[i])
-		i++;
-	return (i);
 }
 
 /*

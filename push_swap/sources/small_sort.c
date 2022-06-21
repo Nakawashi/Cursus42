@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:13:10 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/21 16:45:17 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/21 19:41:13 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,26 @@ void	sort_3_elements(t_stack *a)
 }
 
 /*
-	prend les deux valeeurs les plus grandes, les mets a l'ecart
-	trie les trois qui restent
-	ramene les deux ensuite
+	Separe les deux valeurs plus petites
+	Trier les trois valeurs restantes
 */
 void	sort_5_elements(t_stack *a, t_stack *b)
 {
-	(void) a;
-	(void) b;
-	printf("value : [%d]\n", get_min_value(a));
+	int	min;
+	int	last;
+
+	last = *((int *)(ft_lstlast(a->top))->content);
+	while (a->size > 3)
+	{
+		min = get_min_value(a);
+		if (last == min)
+			ra(a);
+		if (*((int *)a->top->content) == min)
+			pb(a, b);
+		else
+			ra(a);
+	}
+	sort_3_elements(a);
+	while (b->size)
+		pa(b, a);
 }
