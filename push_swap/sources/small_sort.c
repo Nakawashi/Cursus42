@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:13:10 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/21 19:41:13 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/21 20:04:00 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void	sort_5_elements(t_stack *a, t_stack *b)
 	int	min;
 	int	last;
 
-	last = *((int *)(ft_lstlast(a->top))->content);
-	while (a->size > 3)
+	while (a->size >= 3) // tant quon a encore 3
 	{
 		min = get_min_value(a);
+		last = *((int *)(ft_lstlast(a->top))->content);
 		if (last == min)
 			ra(a);
 		if (*((int *)a->top->content) == min)
@@ -67,6 +67,6 @@ void	sort_5_elements(t_stack *a, t_stack *b)
 			ra(a);
 	}
 	sort_3_elements(a);
-	while (b->size)
+	while (b->size) // tant quon a qqch dans b
 		pa(b, a);
 }

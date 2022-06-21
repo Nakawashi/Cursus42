@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 18:00:31 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/21 13:26:48 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/21 20:06:29 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	swap(t_stack *stack)
 {
 	int	temp;
 
-	if (stack || *((int *)stack->top->content) > *((int *)stack->top->next->content))
+	if (*((int *)stack->top->content) > *((int *)stack->top->next->content))
 	{
 		temp = *((int *)stack->top->content);
 		*((int *)stack->top->content) = *((int *)stack->top->next->content);
