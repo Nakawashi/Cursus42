@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/19 18:39:01 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/21 09:59:21 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	fill_stack(int *num, t_stack *stack)
 
 	init_stack(stack);
 	stack->size = ft_count_indexes(num);
-	printf("stack->size : %d\n", stack->size);
+	//printf("stack->size : %d\n", stack->size);
 	if (stack->size == 1)
 		return (0);
 	i = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:22:12 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/20 23:53:54 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/21 11:54:34 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,35 +18,17 @@
 */
 static void	push(t_stack *from, t_stack *to)
 {
-	t_list	*actual_to_top;
+	t_list	*first_element;
 
-	if (!from || !to)
-		return ;
-	from->size = ft_lstsize(from->top);
-	to->size = ft_lstsize(to->top);
-	if (to->size) // si deja qqch dans to
-		actual_to_top = to->top;
-	printf("from initial size : %d\n", from->size);
-	printf("to initial size : %d\n", to->size);
+	if (from.top == NULL)
+		return :
+	first_element = from->top; // sauver la premiere adresse
+	to->top = from->top;
+	from->top = first_element->next;
 
-	ft_lstadd_front(&(to->top), from->top); // passer de l'un à l'autre
 
-	if (to->size == 0) // si b était vide, le nouvel element est le seul
-		to->top->next = NULL;
-	else
-		to->top->next = actual_to_top;
-	from->size -= 1;
-	to->size += 1;
-	if (from->size > 1)
-		from->top = from->top->next; // changer premier élément de from
-	else if (from->size == 1)
-		from->top->next = NULL;
-
-	printf("numéro passé dans b : %d\n", *((int *)to->top->content));
-	printf("nouveau premier élément de a : %d\n", *((int *)from->top->content));
-	printf("from size : %d\n", from->size);
-	printf("to size : %d\n", to->size);
 }
+
 
 /*
 	push element from b to a
