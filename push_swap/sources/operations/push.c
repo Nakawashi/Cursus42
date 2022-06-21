@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:22:12 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/21 11:54:34 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/21 13:42:46 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ static void	push(t_stack *from, t_stack *to)
 {
 	t_list	*first_element;
 
-	if (from.top == NULL)
-		return :
-	first_element = from->top; // sauver la premiere adresse
-	to->top = from->top;
-	from->top = first_element->next;
-
-
+	first_element = NULL;
+	if (from->top != NULL)
+	{
+		first_element = from->top; // sauver la premiere adresse si elle existe
+		to->top = from->top; // faire pointer to sur la premiere adresse aussi
+	}
+	if (from->top->next != NULL)
+		from->top = first_element->next; // faire pointer from sur la seconde adresse
 }
 
 
