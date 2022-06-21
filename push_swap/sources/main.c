@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:43:58 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/21 19:21:40 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/21 21:34:47 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,18 @@ int	main(int argc, char **argv)
 		printf("taille de b :	[%d]\n", ft_lstsize(b.top));
 		while (a.top)
 		{
+			printf("-- Liste A --\n");
 			printf("liste dans l'ordre : [%d]\n", *((int *)a.top->content));
 			a.top = a.top->next;
 		}
+		printf("\n");
+		while (b.top)
+		{
+			printf("-- Liste B --\n");
+			printf("liste dans l'ordre : [%d]\n", *((int *)b.top->content));
+			a.top = a.top->next;
+		}
+		printf("\n");
 		ft_lstclear(&(a.top), free);
 		ft_lstclear(&(b.top), free);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:22:12 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/21 20:15:45 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/21 23:12:03 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,27 @@
 // }
 
 
-static void	push(t_stack *from, t_stack *to)
+static void	push_b(t_stack *from, t_stack *to)
 {
 	t_list	*first_element;
 
-	first_element = from->top; // sauver la premiere adresse
-	to->top = from->top;
-	from->top = first_element->next;
+	printf("FROM size : 	[%i]\n", from->size);
+	printf("TO size : 	[%i]\n", to->size);
+
+	first_element = NULL; // sauver la premiere adresse
+
+	if (from->top)
+	{
+		first_element = from->top; // sauver la premiere adresse
+		to->top = first_element;
+		from->top = from->top->next;
+		to->size++;
+		from->size--;
+	}
+
+	printf("FROM size AFTER : 	[%i]\n", from->size);
+	printf("TO size AFTER:	 	[%i]\n", to->size);
+
 }
 
 /*
@@ -52,7 +66,7 @@ static void	push(t_stack *from, t_stack *to)
 */
 void	pa(t_stack *b, t_stack *a)
 {
-	push(b, a);
+	push_b(b, a);
 	ft_putendl_fd("pa", 1);
 }
 
@@ -61,6 +75,6 @@ void	pa(t_stack *b, t_stack *a)
 */
 void	pb(t_stack *a, t_stack *b)
 {
-	push(a, b);
+	push_b(a, b);
 	ft_putendl_fd("pb", 1);
 }
