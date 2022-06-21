@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/21 15:51:15 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:58:18 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	fill_stack(int *num, t_stack *stack)
 	if (stack->size == 1)
 		return (0);
 	i = 0;
-	while(i < stack->size)
+	while (i < stack->size)
 	{
 		new = ft_lstnew(&num[i]);
 		if (!new)
@@ -47,35 +47,23 @@ int	fill_stack(int *num, t_stack *stack)
 /*
 	return the address of the element that contains the greatest INT value
 */
-t_list	*get_greatest_element(t_stack *a)
+int	get_min_value(t_stack *a)
 {
-	t_list	*greatest;
+	t_list	*elem;
+	int		min;
 
-	greatest = a->top;
-	while (a->top->next != NULL)
+	elem = a->top;
+	min = *((int *)elem->content);
+	while (elem->next != NULL)
 	{
-		if (*((int *)greatest->content) < *((int *)a->top->next->content))
-			greatest = a->top;
-		a->top = a->top->next;
+		if (min > *((int *)elem->next->content))
+			min = *((int *)elem->next->content);
+		elem = elem->next;
 	}
-	printf("greatest: [%d]\n", *((int *)greatest->content));
-	return (greatest);
+	return (min);
 }
 
 /*
 	return the address of the element that contains the second greatest INT val
 */
-t_list	*get_second_last_greatest_element(t_stack *a)
-{
-	t_list	*second_greatest;
 
-	second_greatest = a->top;
-	while (a->top->next != NULL)
-	{
-		if (*((int *)second_greatest->content) < *((int *)a->top->next->content))
-			second_greatest = a->top;
-		a->top = a->top->next;
-	}
-	printf("greatest: [%d]\n", *((int *)second_greatest->content));
-	return (second_greatest);
-}

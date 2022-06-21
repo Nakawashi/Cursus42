@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:13:10 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/21 15:49:20 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:45:17 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,5 @@ void	sort_5_elements(t_stack *a, t_stack *b)
 {
 	(void) a;
 	(void) b;
-	t_list	*max;
-	t_list	*second_max;
-
-	max = get_greatest_element(a);
-
+	printf("value : [%d]\n", get_min_value(a));
 }

@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/21 15:36:08 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/21 16:41:20 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	ft_free_array(char **array);
 // stack and list handlers
 void	init_stack(t_stack *stack);
 int		fill_stack(int *num, t_stack *stack);
-t_list	*get_greatest_element(t_stack *a);
+int		get_min_value(t_stack *a);
+
 
 
 // algos
