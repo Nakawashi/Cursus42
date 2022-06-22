@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:22:12 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/21 23:12:03 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/22 18:57:34 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,49 +16,26 @@
 	1er élément de la stack en haut de l'autre
 	Ajouter le 1er élément de la stack x à la suite des autres de la stack y
 */
-// static void	push(t_stack *from, t_stack *to)
-// {
-// 	t_list	*first_element;
-// 	t_list	*last_element;
-
-// 	first_element = from->top;
-// 	last_element = ft_lstlast(from->top);
-// 	if (!from->top->next)
-// 	{
-// 		from->top = 0;
-// 		last_element = 0;
-// 	}
-// 	else
-// 	{
-// 		from->top = from->top->next;
-// 	}
-// 	first_element->next = 0;
-// 	ft_lstadd_front(&(to->top), first_element);
-// 	from->size--;
-// }
-
-
 static void	push_b(t_stack *from, t_stack *to)
 {
-	t_list	*first_element;
+	t_list	*first;
+	t_list	*last;
 
 	printf("FROM size : 	[%i]\n", from->size);
 	printf("TO size : 	[%i]\n", to->size);
 
-	first_element = NULL; // sauver la premiere adresse
-
+	first = NULL; // sauver la premiere adresse
+	last = ft_lstlast(from->top);
 	if (from->top)
 	{
-		first_element = from->top; // sauver la premiere adresse
-		to->top = first_element;
+		first = from->top; // sauver la premiere adresse
+		to->top = first;
 		from->top = from->top->next;
 		to->size++;
 		from->size--;
 	}
-
 	printf("FROM size AFTER : 	[%i]\n", from->size);
 	printf("TO size AFTER:	 	[%i]\n", to->size);
-
 }
 
 /*
