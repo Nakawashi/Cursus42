@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/22 21:51:49 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/22 22:21:06 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "../libraries/libft/libft.h"
-# include "../libraries/libft/ft_printf/ft_printf.h"
 
 # define ERR_ARG "Error : ./push_swap \"numbers\" or ./push_swap [int] [int]"
 
