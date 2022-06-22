@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_argv.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/21 19:09:06 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/22 22:19:24 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ static int	*char_to_int(char **array)
 int	*check_datas(int argc, char **argv, t_stack *a)
 {
 	char	**str;
-
+	
 	str = get_user_data(argc, argv);
 	a->size = ft_count_arrays(str);
 	is_number(str);

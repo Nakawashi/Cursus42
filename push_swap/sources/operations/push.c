@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:22:12 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/22 18:57:34 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/22 21:21:43 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,19 @@
 	1er élément de la stack en haut de l'autre
 	Ajouter le 1er élément de la stack x à la suite des autres de la stack y
 */
-static void	push_b(t_stack *from, t_stack *to)
+static void	push(t_stack *from, t_stack *to)
 {
-	t_list	*first;
-	t_list	*last;
+	t_list	*tmp; // sauver la premiere adresse
 
-	printf("FROM size : 	[%i]\n", from->size);
-	printf("TO size : 	[%i]\n", to->size);
-
-	first = NULL; // sauver la premiere adresse
-	last = ft_lstlast(from->top);
-	if (from->top)
+	if (from->top) //la stack existe, meme si 0 element, je pointe sur null
 	{
-		first = from->top; // sauver la premiere adresse
-		to->top = first;
-		from->top = from->top->next;
+		tmp = from->top; // isoler 1
+		from->top = from->top->next; // pointer sur 2
+		tmp->next = to->top; // fait la coupure, défini l'élément 2 dans B
+		to->top = tmp;
 		to->size++;
 		from->size--;
 	}
-	printf("FROM size AFTER : 	[%i]\n", from->size);
-	printf("TO size AFTER:	 	[%i]\n", to->size);
 }
 
 /*
@@ -43,7 +36,7 @@ static void	push_b(t_stack *from, t_stack *to)
 */
 void	pa(t_stack *b, t_stack *a)
 {
-	push_b(b, a);
+	push(b, a);
 	ft_putendl_fd("pa", 1);
 }
 
@@ -52,6 +45,6 @@ void	pa(t_stack *b, t_stack *a)
 */
 void	pb(t_stack *a, t_stack *b)
 {
-	push_b(a, b);
+	push(a, b);
 	ft_putendl_fd("pb", 1);
 }

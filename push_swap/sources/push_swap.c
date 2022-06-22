@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:37:32 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/20 14:59:04 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/22 21:02:57 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,18 @@ int	is_sorted(t_stack *stack)
 
 void	push_swap(t_stack *a, t_stack *b)
 {
-	(void) b;
+	int	compter;
 
+	compter = 0;
 	if (is_sorted(a))
+	{
 		printf("is sorted : free num, liste et array si argc == 2\n");
-	else
-		{
-			if (a->size == 2)
-				sort_2_elements(a);
-			else if (a->size == 3)
-				sort_3_elements(a);
-			else if (a->size == 5)
-				sort_5_elements(a, b);
-		}
+		return ;
+	}
+	if (a->size == 2)
+		sort_2_elements(a);
+	else if (a->size == 3)
+		sort_3_elements(a);
+	else if (a->size == 5)
+		sort_5_elements(a, b);
 }

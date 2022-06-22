@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 18:00:31 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/21 20:06:29 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/22 21:15:35 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 static void	swap(t_stack *stack)
 {
 	int	temp;
-
 	if (*((int *)stack->top->content) > *((int *)stack->top->next->content))
 	{
 		temp = *((int *)stack->top->content);

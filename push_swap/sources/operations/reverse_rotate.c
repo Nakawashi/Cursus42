@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:43:45 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/21 20:10:45 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/22 21:51:17 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

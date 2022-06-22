@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:29:32 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/21 18:52:58 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/22 20:31:04 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,23 @@ void	ft_free_array(char **array)
 		}
 	free(array);
 	}
+}
+
+void	print_stack(t_stack *a, t_stack *b)
+{
+	printf("-- Liste A --\n");
+	while (a->top)
+	{
+		printf("liste dans l'ordre : [%d]\n", *((int *)a->top->content));
+		a->top = a->top->next;
+	}
+	printf("\n");
+
+	printf("-- Liste B --\n");
+	while (b->top)
+	{
+		printf("liste dans l'ordre : [%d]\n", *((int *)b->top->content));
+		b->top = b->top->next;
+	}
+	printf("\n");
 }

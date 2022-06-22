@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/21 18:59:04 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/22 21:51:49 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
+# define TEST 0
+
 typedef struct s_stack
 {
 	int		size;
@@ -36,6 +38,7 @@ int		*check_datas(int argc, char **argv, t_stack *a);
 // utils
 int		ft_count_arrays(char **array);
 int		ft_atoi_check_overflow(const char *array);
+void	print_stack(t_stack *a, t_stack *b);
 
 // error and cleaning
 void	print_error_and_exit();
