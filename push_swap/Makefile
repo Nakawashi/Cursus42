@@ -6,7 +6,7 @@
 #    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/06/22 22:13:24 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/06/22 22:24:22 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,6 @@ SRCS	=	sources/main.c \
 
 LIBFT_DIR		=	libraries/libft
 LIBFT			=	libraries/libft/libft.a
-FT_PRINTF_DIR	=	libraries/libft/ft_printf
-FT_PRINTF		=	libraries/libft/ft_printf/libftprintf.a
 
 OBJS	=	$(SRCS:.c=.o)
 CC		=	gcc
@@ -35,7 +33,7 @@ RM		=	rm -f
 DEBUG	=	-fsanitize=address -g3
 #DEBUG	=	-g3
 CFLAGS	=	-Wall -Wextra -Werror
-INCLUDE	=	-L $(LIBFT_DIR) -lft -L $(FT_PRINTF_DIR) -lftprintf
+INCLUDE	=	-L $(LIBFT_DIR) -lft
 RM		=	rm -f
 
 BLUE	= \033[0;34m
@@ -51,10 +49,7 @@ $(NAME)	: $(OBJS)
 	@echo "$(BLUE)Making libft and bonuses... $(NONE)"
 	@$(MAKE) -C $(LIBFT_DIR)
 	@$(MAKE) -C $(LIBFT_DIR) bonus
-	@echo "$(BLUE)Making ft_printf... $(NONE)"
-	@$(MAKE) -C $(FT_PRINTF_DIR)
-	@echo "$(BLUE)Making $(NAME)... $(NONE)"
-	@$(CC) $(OBJS) $(CFLAGS) $(DEBUG) -I $(LIBFT_DIR) -I $(FT_PRINTF_DIR) $(INCLUDE) -o $(NAME)
+	@$(CC) $(OBJS) $(CFLAGS) $(DEBUG) -I $(LIBFT_DIR) $(INCLUDE) -o $(NAME)
 	@printf "$(GREEN) $(NAME) ready.\n$(NONE)"
 
 norm:
@@ -65,15 +60,12 @@ norm:
 clean:
 	@$(RM) $(OBJS)
 	@$(MAKE) -C $(LIBFT_DIR) clean
-	@$(MAKE) -C $(FT_PRINTF_DIR) clean
 	@printf "$(GREEN) OBJS removed.\n$(NONE)"
 
 fclean:	clean
 	@$(RM) $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 	@printf "$(GREEN) libft.a removed.\n$(NONE)"
-	@$(MAKE) -C $(FT_PRINTF_DIR) fclean
-	@printf "$(GREEN) libftprintf.a removed.\n$(NONE)"
 	@printf "$(GREEN) $(NAME) removed.\n$(NONE)"
 
 re: fclean all
