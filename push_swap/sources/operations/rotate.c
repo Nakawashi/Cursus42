@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:45:16 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/22 21:50:45 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/23 20:59:38 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 */
 static void	rotate(t_stack *stack)
 {
-	if (!stack)
-		return ;
 	t_list	*actual_last;
 	t_list	*actual_first;
 	t_list	*actual_second;
 
+	if (!stack)
+		return ;
 	actual_last = ft_lstlast(stack->top);
 	actual_first = stack->top;
 	actual_second = stack->top->next;
@@ -39,4 +39,13 @@ void	ra(t_stack *stack)
 {
 	rotate(stack);
 	ft_putendl_fd("ra", 1);
+}
+
+/*
+	shift up
+*/
+void	rb(t_stack *stack)
+{
+	rotate(stack);
+	ft_putendl_fd("rb", 1);
 }

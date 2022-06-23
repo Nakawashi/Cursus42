@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:29:32 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/22 20:31:04 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/23 19:13:22 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 	1 - param incluant des doublons
 	2 - int overflow
 */
-void	print_error_and_exit()
+void	print_error_and_exit(void)
 {
 	ft_putendl_fd("Error", 2);
 	exit(0);
@@ -84,7 +84,7 @@ void	ft_free_array(char **array)
 			free(array[i]);
 			i++;
 		}
-	free(array);
+		free(array);
 	}
 }
 
@@ -97,7 +97,6 @@ void	print_stack(t_stack *a, t_stack *b)
 		a->top = a->top->next;
 	}
 	printf("\n");
-
 	printf("-- Liste B --\n");
 	while (b->top)
 	{

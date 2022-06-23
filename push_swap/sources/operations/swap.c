@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 18:00:31 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/22 21:15:35 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/23 19:10:20 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
 
 /*
 	if stack empty OR first element smaller then the second, do nothing
@@ -19,6 +18,7 @@
 static void	swap(t_stack *stack)
 {
 	int	temp;
+
 	if (*((int *)stack->top->content) > *((int *)stack->top->next->content))
 	{
 		temp = *((int *)stack->top->content);

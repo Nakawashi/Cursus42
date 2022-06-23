@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 13:22:12 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/22 21:21:43 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/23 19:44:14 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@
 static void	push(t_stack *from, t_stack *to)
 {
 	t_list	*tmp; // sauver la premiere adresse
-
 	if (from->top) //la stack existe, meme si 0 element, je pointe sur null
 	{
 		tmp = from->top; // isoler 1
 		from->top = from->top->next; // pointer sur 2
-		tmp->next = to->top; // fait la coupure, défini l'élément 2 dans B
+		tmp->next = to->top; // coupure : isole from.top
 		to->top = tmp;
 		to->size++;
 		from->size--;

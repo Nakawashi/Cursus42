@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/22 21:37:32 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/23 21:08:55 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@ void	init_stack(t_stack *stack)
 {
 	stack->size = 0;
 	stack->top = NULL;
+}
+
+void	init_chunk(t_chunk *chunk)
+{
+	chunk->pieces = 0;
+	chunk->size = 0;
+	chunk->start = 0;
+	chunk->end = 0;
 }
 
 /*
@@ -44,12 +52,12 @@ int	fill_stack(int *num, t_stack *stack)
 /*
 	return the min value in stack a
 */
-int	get_min_value(t_stack *a)
+int	get_min_value(t_stack *stack)
 {
 	t_list	*elem;
 	int		min;
 
-	elem = a->top;
+	elem = stack->top;
 	min = *((int *)elem->content);
 	while (elem->next != NULL)
 	{
@@ -58,4 +66,20 @@ int	get_min_value(t_stack *a)
 		elem = elem->next;
 	}
 	return (min);
+}
+
+int	get_max_value(t_stack *stack)
+{
+	t_list	*elem;
+	int		max;
+
+	elem = stack->top;
+	max = *((int *)elem->content);
+	while (elem->next != NULL)
+	{
+		if (max < *((int *)elem->next->content))
+			max = *((int *)elem->next->content);
+		elem = elem->next;
+	}
+	return (max);
 }

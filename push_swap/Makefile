@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
+#    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/06/22 22:24:22 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/06/23 21:00:57 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS	=	sources/main.c \
 			sources/utils_stack.c \
 			sources/push_swap.c \
 			sources/small_sort.c \
+			sources/big_sort.c \
 			sources/operations/push.c \
 			sources/operations/swap.c \
 			sources/operations/rotate.c \
