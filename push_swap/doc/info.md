@@ -12,3 +12,7 @@ and/or is incorrectly formatted.
 
 parser user infos
 faire les fonction des mouvements autorises
+
+ARG="5 4 3 1 2"; ./push_swap $ARG | wc -l
+
+ARG="4 67"; ./push_swap $ARG | ./checker $ARG
