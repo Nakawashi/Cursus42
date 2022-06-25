@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:13:10 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/25 14:59:49 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/25 15:13:54 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,3 @@ void	sort_5_elements(t_stack *a, t_stack *b)
 	while (b->size)
 		pa(b, a);
 }
-
-
-
-// if get min > 12, use fonction get max

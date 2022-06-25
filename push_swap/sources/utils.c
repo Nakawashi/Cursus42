@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:29:32 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/23 19:13:22 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/25 17:43:47 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	print_stack(t_stack *a, t_stack *b)
 	printf("-- Liste A --\n");
 	while (a->top)
 	{
-		printf("liste dans l'ordre : [%d]\n", *((int *)a->top->content));
+		printf("liste dans l'ordre : index : [%i]-[%d]\n", a->top->index, *((int *)a->top->content));
 		a->top = a->top->next;
 	}
 	printf("\n");

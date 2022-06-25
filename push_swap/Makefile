@@ -6,7 +6,7 @@
 #    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/06/25 15:14:26 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/06/25 16:11:03 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS	=	sources/main.c \
 			sources/utils_stack.c \
 			sources/push_swap.c \
 			sources/small_sort.c \
+			sources/big_sort.c \
 			sources/operations/push.c \
 			sources/operations/swap.c \
 			sources/operations/rotate.c \
