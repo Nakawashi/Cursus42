@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:13:10 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/23 19:12:14 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/25 14:02:00 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	sort_3_elements(t_stack *a)
 	Separe les deux valeurs plus petites
 	Trier les trois valeurs restantes
 */
-void	sort_5_elements(t_stack *a, t_stack *b)
+/* void	sort_5_elements(t_stack *a, t_stack *b)
 {
 	int	min;
 	int	last;
@@ -69,4 +69,28 @@ void	sort_5_elements(t_stack *a, t_stack *b)
 	sort_3_elements(a);
 	while (b->size)
 		pa(b, a);
+} */
+void	sort_5_elements(t_stack *a, t_stack *b)
+{
+	int	min;
+	int	max;
+	int	last;
+
+	if ()
+	while (a->size > 3)
+	{
+		min = get_min_value(a);
+		last = *((int *)(ft_lstlast(a->top))->content);
+		if (last == min)
+			ra(a);
+		if (*((int *)a->top->content) == min)
+			pb(a, b);
+		else
+			ra(a);
+	}
+	sort_3_elements(a);
+	while (b->size)
+		pa(b, a);
 }
+
+// if get min > 12, use fonction get max

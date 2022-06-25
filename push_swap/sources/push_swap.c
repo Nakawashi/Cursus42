@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:37:32 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/23 20:59:08 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:54:47 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,4 @@ void	push_swap(t_stack *a, t_stack *b)
 		sort_3_elements(a);
 	else if (a->size == 5)
 		sort_5_elements(a, b);
-	else
-		sort_big(a, b);
 }

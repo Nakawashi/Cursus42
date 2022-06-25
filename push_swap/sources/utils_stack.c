@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/23 21:08:55 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/25 13:57:02 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,6 @@ void	init_stack(t_stack *stack)
 {
 	stack->size = 0;
 	stack->top = NULL;
-}
-
-void	init_chunk(t_chunk *chunk)
-{
-	chunk->pieces = 0;
-	chunk->size = 0;
-	chunk->start = 0;
-	chunk->end = 0;
 }
 
 /*
