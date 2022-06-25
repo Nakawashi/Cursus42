@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/25 13:55:08 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/25 15:11:40 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
-# define TEST 1
+# define TEST 0
 
 typedef struct s_stack
 {
