@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/25 17:44:04 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/25 21:38:06 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		is_sorted(t_stack *stack);
 void	sort_2_elements(t_stack *a);
 void	sort_3_elements(t_stack *a);
 void	sort_5_elements(t_stack *a, t_stack *b);
+void	big_sort(t_stack *a, t_stack *b);
 
 // allowed operations
 void	sa(t_stack *stack);

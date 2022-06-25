@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:37:32 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/25 15:15:47 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/25 21:38:29 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,6 @@ void	push_swap(t_stack *a, t_stack *b)
 		sort_3_elements(a);
 	else if (a->size <= 5)
 		sort_5_elements(a, b);
+	else
+		big_sort(a, b);
 }
