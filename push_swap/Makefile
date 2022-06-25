@@ -6,7 +6,7 @@
 #    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/06/25 13:52:02 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/06/25 15:14:26 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ $(NAME)	: $(OBJS)
 
 norm:
 	@echo "$(VIOLET)[NORM - START]$(NONE)"
-	@norminette sources/*.*
+	@norminette sources/*.*/*.*
 	@echo "$(VIOLET)[NORM - END]$(NONE)"
 
 clean:
