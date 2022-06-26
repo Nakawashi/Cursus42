@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:13:10 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/25 15:13:54 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/26 23:48:34 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ void	sort_3_elements(t_stack *a)
 */
 void	sort_5_elements(t_stack *a, t_stack *b)
 {
-	int	min;
-	int	last;
+	t_list	*min;
+	t_list	*last;
 
 	while (a->size > 3)
 	{
 		min = get_min_value(a);
-		last = *((int *)(ft_lstlast(a->top))->content);
-		if (last == min)
+		last = ft_lstlast(a->top);
+		if (get_content(*last) == get_content(*last))
 			rra(a);
-		if (*((int *)a->top->content) == min)
+		if (get_content(*a->top) == get_content(*min))
 			pb(a, b);
 		else
 			ra(a);

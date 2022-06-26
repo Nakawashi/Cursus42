@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/25 21:38:06 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/27 01:07:26 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
-# define TEST 1
+# define TEST 0
 
 typedef struct s_stack
 {
@@ -38,6 +38,7 @@ int		*check_datas(int argc, char **argv, t_stack *a);
 int		ft_count_arrays(char **array);
 int		ft_atoi_check_overflow(const char *array);
 void	print_stack(t_stack *a, t_stack *b);
+int		get_content(t_list list);
 
 // error and cleaning
 void	print_error_and_exit(void);
@@ -46,8 +47,8 @@ void	ft_free_array(char **array);
 // stack and list handlers
 void	init_stack(t_stack *stack);
 int		fill_stack(int *num, t_stack *stack);
-int		get_min_value(t_stack *stack);
-int		get_max_value(t_stack *stack);
+t_list	*get_min_value(t_stack *stack);
+t_list	*get_max_value(t_stack *stack);
 
 // algos
 void	push_swap(t_stack *a, t_stack *b);

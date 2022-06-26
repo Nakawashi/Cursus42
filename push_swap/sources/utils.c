@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:29:32 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/26 03:20:45 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/27 00:21:56 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,18 +90,23 @@ void	ft_free_array(char **array)
 
 void	print_stack(t_stack *a, t_stack *b)
 {
+	t_list	*lsta;
+	t_list	*lstb;
+
+	lsta = a->top;
+	lstb = b->top;
 	printf("-- Liste A --\n");
-	while (a->top)
+	while (lsta)
 	{
-		printf("liste dans l'ordre : [%d]\n", *((int *)a->top->content));
-		a->top = a->top->next;
+		printf("liste dans l'ordre : [%d]\n", get_content(*lsta));
+		lsta = lsta->next;
 	}
 	printf("\n");
 	printf("-- Liste B --\n");
-	while (b->top)
+	while (lstb)
 	{
-		printf("liste dans l'ordre : [%d]\n", *((int *)b->top->content));
-		b->top = b->top->next;
+		printf("liste dans l'ordre : [%d]\n", get_content(*lstb));
+		lstb = lstb->next;
 	}
 	printf("\n");
 }

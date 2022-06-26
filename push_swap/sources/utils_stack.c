@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/26 02:26:44 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/27 01:00:53 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,36 +41,45 @@ int	fill_stack(int *num, t_stack *stack)
 	return (1);
 }
 
+int	get_content(t_list list)
+{
+	return (*((int *)list.content));
+}
+
 /*
 	return the min value in stack a
 */
-int	get_min_value(t_stack *stack)
+t_list	*get_min_value(t_stack *stack)
 {
 	t_list	*elem;
-	int		min;
+	t_list	*min;
 
 	elem = stack->top;
-	min = *((int *)elem->content);
-	while (elem->next != NULL)
+	if (elem == NULL)
+		return (NULL);
+	min = elem;
+	while (elem)
 	{
-		if (min > *((int *)elem->next->content))
-			min = *((int *)elem->next->content);
+		if (min->content > elem->content)
+			min = elem;
 		elem = elem->next;
 	}
 	return (min);
 }
 
-int	get_max_value(t_stack *stack)
+t_list	*get_max_value(t_stack *stack)
 {
 	t_list	*elem;
-	int		max;
+	t_list	*max;
 
 	elem = stack->top;
-	max = *((int *)elem->content);
-	while (elem->next != NULL)
+	if (elem == NULL)
+		return (NULL);
+	max = elem;
+	while (elem)
 	{
-		if (max < *((int *)elem->next->content))
-			max = *((int *)elem->next->content);
+		if (get_content(*max) < get_content(*elem))
+			max = elem;
 		elem = elem->next;
 	}
 	return (max);

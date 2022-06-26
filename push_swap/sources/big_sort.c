@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/26 22:36:59 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/27 01:07:54 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,31 +51,42 @@
 */
 void	big_sort(t_stack *a, t_stack *b)
 {
-	int	average;
-	int	min;
-	int	max;
+	int		average;
+	t_list	*min;
+	t_list	*max;
+	int		size;
 
 	while (a->size)
 	{
+		size = a->size;
 		min = get_min_value(a);
 		max = get_max_value(a);
-		average = (min + max) / 2;
-		printf("average : %d\n", average);
-		while (a->top)
+		if (min == NULL || max == NULL)
+			break ;
+		average = (get_content(*min) + get_content(*max)) / 2;
+		while (a->top && size) //size permet de définir quand s'arrêter
 		{
-			if (get_content(*a->top) < average)
+			if (get_content(*a->top) <= average)
 				pb(a, b); // push sur pile b
 			else
-				ra(a);
+				ra(a); // rotate pile a, premier element devient le dernier
+			--size;
 		}
-		printf("lalala");
-
 	}
-	print_stack(a, b);
+	if (TEST)
+	{
+		printf("size of a : %i\n", a->size);
+		printf("size of b : %i\n", b->size);
+		//printf("b last : %d\n", get_content(*(ft_lstlast(b->top))));
+		//printf("b fist : %d\n", get_content(*b->top));
+		print_stack(a, b);
+	}
 	while (b->size)
 	{
 		max = get_max_value(b);
-		if (get_content(*b->top) == max)
+		if (max == NULL)
+			break ;
+		if (get_content(*b->top) == get_content(*max))
 			pa(b, a); // push sur pile a
 		else
 			rb(b);
