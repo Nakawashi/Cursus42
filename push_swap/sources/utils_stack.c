@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/25 17:39:04 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/26 02:26:44 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	fill_stack(int *num, t_stack *stack)
 		if (!new)
 			return (0);
 		ft_lstadd_back(&(stack->top), new);
-		new->index = i;
 		i++;
 	}
 	return (1);
