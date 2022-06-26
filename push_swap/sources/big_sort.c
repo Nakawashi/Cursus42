@@ -6,57 +6,78 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/26 13:23:46 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/26 22:36:59 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*
-	Retourne le contenu de l'élément qui se trouve au milieu de la liste
-	Permettra de savoir s'il vaut mieux ra que rra
-	ra : si en haut de la liste (index de la valeur plus petit que le milieu)
-	rra : si en bas de la liste (index de la valeur plus grand que le milieu)
-	exemple impair : si size = 11, central index vaudra 5
+	retourne la valeur de l'élément souhaité, à l'emplacement choisi
+	utile pour trouver le milieu de la liste
+	utile pour trouver le pivot de comparaison
 */
-static int	get_middle(t_stack *a)
-{
-	t_list	*element;
-	int		middle;
-
-	element = a->top;
-	middle = a->size / 2;
-	while (middle--)
-		element = element->next;
-	return (*((int *)element->content));
-}
-
-/*
-	Retourne l'index du pivot, selon le nombre de valeurs à trier
-	on comparera les valeurs au pivot pour les basculer à b si plus petites
-*/
-static int	get_pivot(t_stack *a)
-{
-	if (a->size <= 100)				// si on a 100 nombres ou moins
-		return (a->size / 4);		// nombre par lequel diviser la taille du tableau pour définir la plage de vérification
-	if (a->size > 100)
-		return (a->size / 10);
-	return (-1);
-}
-
-void	big_sort(t_stack *a, t_stack *b)
+/* static t_list	*get_element(t_stack *a, int counter)
 {
 	t_list	*elem;
-	int		middle;
-	int		pivot;
-	(void) b;
 
 	elem = a->top;
-	middle = get_middle(a);
-	pivot = get_pivot(a);
-	while (elem) // on parcours la liste en entiers, dernier élément inclus
+	while (counter--)
 	{
-		printf("hello\n");
+		if (elem == NULL)
+			return NULL;
 		elem = elem->next;
+	}
+	return (elem);
+} */
+
+/*
+	Retourne une valeur pas liée au contenu de la pile a
+	Définie selon les valeurs min et max de la pile ainsi que du nb à trier
+	Utilisé comme comparaison pour le big sort (si plus petit, pb(a, b))
+*/
+/* static int	get_pivot_location(t_stack *a)
+{
+	if (a->size <= 100)
+		return (4);
+	if (a->size > 100)
+		return (11);
+	return (-1);
+} */
+
+/*
+	passer les valeurs plus petites que le pivot dans la pile b
+	passer les valeurs max de b sur la pile a, ce qui va trier
+*/
+void	big_sort(t_stack *a, t_stack *b)
+{
+	int	average;
+	int	min;
+	int	max;
+
+	while (a->size)
+	{
+		min = get_min_value(a);
+		max = get_max_value(a);
+		average = (min + max) / 2;
+		printf("average : %d\n", average);
+		while (a->top)
+		{
+			if (get_content(*a->top) < average)
+				pb(a, b); // push sur pile b
+			else
+				ra(a);
+		}
+		printf("lalala");
+
+	}
+	print_stack(a, b);
+	while (b->size)
+	{
+		max = get_max_value(b);
+		if (get_content(*b->top) == max)
+			pa(b, a); // push sur pile a
+		else
+			rb(b);
 	}
 }
