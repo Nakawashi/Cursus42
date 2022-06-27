@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/27 02:16:17 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/27 12:41:21 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 	utile pour trouver le milieu de la liste
 	utile pour trouver le pivot de comparaison
 */
-/* static t_list	*get_element(t_stack *a, int counter)
+static t_list	*get_element(t_stack *a, int counter)
 {
 	t_list	*elem;
 
@@ -29,7 +29,7 @@
 		elem = elem->next;
 	}
 	return (elem);
-} */
+}
 
 /*
 	Retourne une valeur pas liée au contenu de la pile a
@@ -48,30 +48,42 @@
 /*
 	passer les valeurs plus petites que le pivot dans la pile b
 	passer les valeurs max de b sur la pile a, ce qui va trier
+
+	a faire : fonction handle a et foncton handle b
 */
 void	big_sort(t_stack *a, t_stack *b)
 {
-	int		average;
+	t_list	*middle;
 	t_list	*min;
 	t_list	*max;
+	int		average; // sert pour mes pivots
+	int		after_middle; // si on passe middle alors = 1 et rra()
 	int		size;
 
-	while (a->size)
+	while (a->top && a->size)
 	{
 		size = a->size;
+		after_middle = 0;
 		min = get_min_value(a);
 		max = get_max_value(a);
-		if (min == NULL || max == NULL)
+		middle = get_element(a, a->size / 2);
+		if (TEST)
+		{
+			printf("middle : %i\n", get_content(*middle));
+		}
+		if (min == NULL || max == NULL || middle == NULL)
 			break ;
-		average = (get_content(*min) + get_content(*max)) / 4;
-		printf("average : %i\n", average);
-		while (a->top && size) //size permet de définir quand s'arrêter
+		average = get_content(*min) + ((get_content(*max) - get_content(*min)) / 5);
+		if (TEST)
+		{
+			printf("average : %i\n", average);
+		}
+		while (size--) //size permet de définir quand s'arrêter
 		{
 			if (get_content(*a->top) <= average)
 				pb(a, b); // push sur pile b
 			else
 				ra(a); // rotate pile a, premier element devient le dernier
-			--size;
 		}
 	}
 	if (TEST)
