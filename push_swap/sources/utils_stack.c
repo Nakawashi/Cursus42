@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/27 01:00:53 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/27 11:46:09 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_list	*get_min_value(t_stack *stack)
 	min = elem;
 	while (elem)
 	{
-		if (min->content > elem->content)
+		if (get_content(*min) > get_content(*elem))
 			min = elem;
 		elem = elem->next;
 	}

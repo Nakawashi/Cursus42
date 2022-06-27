@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 16:13:10 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/26 23:48:34 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/27 11:46:31 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	sort_5_elements(t_stack *a, t_stack *b)
 	{
 		min = get_min_value(a);
 		last = ft_lstlast(a->top);
-		if (get_content(*last) == get_content(*last))
+		if (get_content(*last) == get_content(*min))
 			rra(a);
 		if (get_content(*a->top) == get_content(*min))
 			pb(a, b);

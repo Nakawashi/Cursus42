@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:43:45 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/22 21:51:17 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/27 16:23:59 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,22 @@ static void	reverse_rotate(t_stack *stack)
 		return ;
 	actual_last = ft_lstlast(stack->top);
 	actual_first = stack->top;
-	while (stack->top->next != NULL)
+	if (stack->size > 1)
 	{
-		actual_second_last = stack->top;
-		stack->top = stack->top->next;
+		while (stack->top->next != NULL)
+		{
+			actual_second_last = stack->top;
+			stack->top = stack->top->next;
+		}
+		stack->top = actual_last;
+		actual_last->next = actual_first;
+		actual_second_last->next = NULL;
 	}
-	stack->top = actual_last;
-	actual_last->next = actual_first;
-	actual_second_last->next = NULL;
+	else
+	{
+		stack->top = actual_last;
+		stack->top->next = NULL;
+	}
 }
 
 /*
