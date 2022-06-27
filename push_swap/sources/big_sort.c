@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/27 01:07:54 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/27 02:16:17 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 /* static int	get_pivot_location(t_stack *a)
 {
 	if (a->size <= 100)
-		return (4);
+		return (5);
 	if (a->size > 100)
 		return (11);
 	return (-1);
@@ -63,7 +63,8 @@ void	big_sort(t_stack *a, t_stack *b)
 		max = get_max_value(a);
 		if (min == NULL || max == NULL)
 			break ;
-		average = (get_content(*min) + get_content(*max)) / 2;
+		average = (get_content(*min) + get_content(*max)) / 4;
+		printf("average : %i\n", average);
 		while (a->top && size) //size permet de définir quand s'arrêter
 		{
 			if (get_content(*a->top) <= average)
