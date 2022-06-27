@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/27 17:12:22 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/27 17:45:31 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,26 @@ static int	get_pivot_location(t_stack *a)
 }
 
 /*
+	Retourne le nombre de steps a faire depuis en haut pour arriver a middle
+*/
+static int	count_steps(t_stack *stack, t_list *middle)
+{
+	int		i;
+	t_list	*elem;
+
+	i = 0;
+	elem = stack->top;
+	while (elem)
+	{
+		if (get_content(*elem) == get_content(*middle))
+		return (i);
+		++i;
+		elem = elem->next;
+	}
+	return (i);
+}
+
+/*
 	passer les valeurs plus petites que le pivot dans la pile b
 	passer les valeurs max de b sur la pile a, ce qui va trier
 
@@ -63,12 +83,19 @@ void	big_sort(t_stack *a, t_stack *b)
 
 	while (a->top && a->size)
 	{
-		size = a->size;
+		size = ft_lstsize(a->top);
 		after_middle = 0;
 		min = get_min_value(a);
 		max = get_max_value(a);
 		last = ft_lstlast(a->top);
 		middle = get_element(a, a->size / 2);
+
+		if (TEST)
+		{
+			printf("middle : %d\n", get_content(*middle));
+			printf("count steps : %d\n", count_steps(a, middle));
+		}
+
 		if (min == NULL || max == NULL || middle == NULL || last == NULL)
 			break ;
 		pivot = get_content(*min) + ((get_content(*max) - get_content(*min)) / get_pivot_location(a));
@@ -84,8 +111,6 @@ void	big_sort(t_stack *a, t_stack *b)
 	}
 	if (TEST)
 	{
-		printf("size of a : %i\n", a->size);
-		printf("size of b : %i\n", b->size);
 		print_stack(a, b);
 	}
 	while (b->size)
@@ -95,7 +120,10 @@ void	big_sort(t_stack *a, t_stack *b)
 			break ;
 		if (get_content(*b->top) == get_content(*max))
 			pa(b, a); // push sur pile a
-		else
+		if (after_middle <= count_steps(b, middle))
 			rb(b);
+		else
+			rrb(b);
+		++after_middle;
 	}
 }

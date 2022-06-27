@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:43:45 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/27 16:23:59 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/27 18:16:46 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,23 @@
 */
 static void	reverse_rotate(t_stack *stack)
 {
-	t_list	*actual_last;
-	t_list	*actual_first;
-	t_list	*actual_second_last;
+	t_list	*tmp;
+	t_list	*last;
+	t_list	*second_last;
 
-	if (!stack)
+	if (stack->top == NULL)
 		return ;
-	actual_last = ft_lstlast(stack->top);
-	actual_first = stack->top;
-	if (stack->size > 1)
+	tmp = stack->top;
+	stack->top = stack->top->next;
+	while (tmp)
 	{
-		while (stack->top->next != NULL)
-		{
-			actual_second_last = stack->top;
-			stack->top = stack->top->next;
-		}
-		stack->top = actual_last;
-		actual_last->next = actual_first;
-		actual_second_last->next = NULL;
+		if (tmp->next == NULL)
+			second_last = tmp;
+		last = tmp;
+		tmp = tmp->next;
 	}
-	else
-	{
-		stack->top = actual_last;
-		stack->top->next = NULL;
-	}
+
+
 }
 
 /*
