@@ -3,38 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:43:45 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/27 18:16:46 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/28 01:04:46 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
 /*
-	Update next address that link each element
 	The last element becomes the first one.
 */
 static void	reverse_rotate(t_stack *stack)
 {
-	t_list	*tmp;
-	t_list	*last;
-	t_list	*second_last;
-
-	if (stack->top == NULL)
+	t_list	*actual_last;
+	t_list	*actual_first;
+	t_list	*actual_second_last;
+	
+	if (!stack)
 		return ;
-	tmp = stack->top;
-	stack->top = stack->top->next;
-	while (tmp)
+	actual_last = ft_lstlast(stack->top);
+	actual_first = stack->top;
+	while (stack->top->next != NULL)
 	{
-		if (tmp->next == NULL)
-			second_last = tmp;
-		last = tmp;
-		tmp = tmp->next;
+		actual_second_last = stack->top;
+		stack->top = stack->top->next;
 	}
-
-
+	stack->top = actual_last;
+	actual_last->next = actual_first;
+	actual_second_last->next = NULL;
 }
 
 /*
