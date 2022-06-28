@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 17:43:45 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/28 01:04:46 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/28 21:22:45 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	reverse_rotate(t_stack *stack)
 	t_list	*actual_last;
 	t_list	*actual_first;
 	t_list	*actual_second_last;
-	
+
 	if (!stack)
 		return ;
 	actual_last = ft_lstlast(stack->top);

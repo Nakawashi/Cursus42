@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/19 18:00:31 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/28 01:57:45 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/29 00:03:33 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ static void	swap(t_stack *stack)
 
 	if (stack->size < 2)
 		return ;
-	tmp = stack->top->content;
-	stack->top->content = stack->top->next->content;
-	stack->top->next->content = tmp;
+	if (stack->top)
+	{
+		tmp = stack->top->content;
+		stack->top->content = stack->top->next->content;
+		stack->top->next->content = tmp;
+	}
 }
 
 /*
