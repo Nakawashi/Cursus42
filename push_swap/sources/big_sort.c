@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/29 00:22:50 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/30 15:21:24 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 	utile pour trouver le milieu de la liste
 	utile pour trouver le pivot de comparaison
 */
-static t_list	*get_element(t_stack *a, int counter)
+static t_list	*get_element(t_stack *a, int location)
 {
 	t_list	*elem;
 
 	elem = a->top;
-	while (counter--)
+	while (location--)
 	{
 		if (elem == NULL)
 			return NULL;
@@ -31,13 +31,22 @@ static t_list	*get_element(t_stack *a, int counter)
 	return (elem);
 }
 
+// taille de la stack
+// faire un tableau
+// insérer la liste dans le tableau modèle
+// chemin le plus court et de définir les chunks (je sais que le 20eme)
 /* Retourne le nombre de pivots que je veux (chunks) */
-static int	get_chunks(t_stack *a)
+
+void	get_shortest_path();
+
+
+
+int	get_nb_chunks(t_stack *a)
 {
 	if (a->size <= 100)
 		return (5);
 	if (a->size > 100)
-		return (11);
+		return (12);
 	return (-1);
 }
 
@@ -63,101 +72,61 @@ static int	count_steps_before_element(t_stack *stack, t_list *element)
 }
 
 /*
-	Retourne une valeur à ne pas recalculer
-	Définie selon les valeurs min et max initiales de la pile
-	ainsi que du nb à trier
-	Utilisé comme comparaison pour le big sort (si plus petit, pb(a, b))
-	Ma façon de couper en n parties égales
+	Les éléments les plus grands en bas
 */
-static int	get_additionner(t_stack *a, int min, int max)
+void	bubble_sort(t_stack *stack)
 {
-	if (a->size <= 100)
-		return ((max - min) / get_chunks(a));
-	if (a->size > 100)
-		return ((max - min) / get_chunks(a));
-	return (-1);
-}
+	t_list	*element;
 
-/*
-	on stack a
-*/
-static void	lst_swap_move_big(t_stack *a)
-{
-	t_list	*elem;
-	t_list	*next;
-
-	elem = a->top;
-	next = elem->next;
-	if (get_content(*elem) > get_content(*elem->next))
-		sa(a);
-}
-
-void	bubble_sort(t_stack *a)
-{
-	int	i;
-	int	size;
-
-	size = a->size - 1;
-	while (is_sorted(a) != 1)
+	while (is_sorted(stack) == 0)
 	{
-		i = 0;
-		while (i < size)
+		element = stack->top;
+		while (element && element->next)
 		{
-			lst_swap_move_big(a);
-			ra(a);
-			i++;
+			if (get_content(*element) > get_content(*element->next))
+				sa(stack);
+			element = element->next;
 		}
-		i = 0;
-		while (i < size)
-		{
-			rra(a);
-			lst_swap_move_small(a);
-			i++;
-		}
-		--size;
 	}
 }
 
+
 /*
 	Sorte de Quicksort
-	Calculer mes pivots
-	passer les éléments plus petit que lui sur b
+	- Comparer si valeur plus petite, passer à b
+	Laisser le dernier chunk dans a, bubble sort dessus
+	Puis rappatrier b avec un tri par séléction
+	nb_of_handshakes : pour ne parcourir qu'une une fois chaque élément
 */
-static void	handle_stack_a(t_stack *a, t_stack *b)
+static void	handle_stack_a(t_stack *a, t_stack *b, t_template *template)
 {
-	t_list	*min;
-	t_list	*max;
-	int		fix_value;
-	int		pivot; // sert pour mes pivots
+	t_list	*last;
 	int		nb_of_handshakes;
+	int		i;
 
-	min = get_min_value(a);
-	max = get_max_value(a);
-	fix_value = get_additionner(a, get_content(*min), get_content(*max));
-	pivot = get_content(*min) + fix_value;
-
-	while (pivot < get_content(*max) - fix_value)
+	last = ft_lstlast(a->top);
+	i = 0;
+	while (i < template->nb_loops)
 	{
 		nb_of_handshakes = ft_lstsize(a->top);
-		min = get_min_value(a);
-		max = get_max_value(a);
-		if (min == NULL || max == NULL)
-			return ;
-		while (nb_of_handshakes--) // parcourir qu'une une fois chaque élément
+		while (nb_of_handshakes--)
 		{
-			if (get_content(*a->top) <= pivot)
+			if (get_content(*last) <= template->pivot_value)
+				rra(a);
+			if (get_content(*a->top) <= template->pivot_value)
 				pb(a, b);
 			else
 				ra(a);
 		}
-		pivot = pivot + fix_value;
+		template->value_index += template->nb_values_in_a_chunk;
+		++i;
 	}
 }
 
-// faire arriver à top la prochaine valeur max
-// parcourir b et trouver le nombre de moves à faire avant de tomber sur max
-// si plus petit que pour arriver à mid, rb()
-// sinon rrb() (moins de mouvements à faire depuis le bas)
+/*
+	Tri par séléction
+	Chemin le plus court : si élément voulu = avant le milieu : ra() sinon rra()
+*/
 static void	handle_stack_b(t_stack *a, t_stack *b)
 {
 	t_list	*max;
@@ -193,9 +162,8 @@ static void	handle_stack_b(t_stack *a, t_stack *b)
 
 	a faire : fonction handle a et foncton handle b
 */
-void	big_sort(t_stack *a, t_stack *b)
+void	big_sort(t_stack *a, t_stack *b, t_template *template)
 {
-	handle_stack_a(a, b);
-	bubble_sort(a);
+	handle_stack_a(a, b, template);
 	handle_stack_b(a, b);
 }
