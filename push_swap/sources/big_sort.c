@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/30 20:33:17 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/30 20:38:45 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,10 @@ static void	handle_stack_a(t_stack *a, t_stack *b, t_template *template)
 		printf("template->nb_values_in_a_chunk : %d\n", template->nb_values_in_a_chunk);
 		printf("template->value_index : %d\n", template->value_index);
 		printf("template->value_to_compare : %d\n", template->value_to_compare);
-		printf("^ avant de commencer a trier ^\n");
+		printf("^ avant de commencer a trier ^\n\n");
 	}
-	while (i < template->nb_loops)
+	//while (i < template->nb_loops)
+	while (a->size)
 	{
 		if (TEST)
 			printf("template->nb_loops : %d\n", template->nb_loops);
@@ -180,7 +181,7 @@ static void	handle_stack_b(t_stack *a, t_stack *b)
 void	big_sort(t_stack *a, t_stack *b, t_template *template)
 {
 	handle_stack_a(a, b, template);
-	//print_stack(a, b);
-	bubble_sort(a, a->size);
+	print_stack(a, b);
+	//bubble_sort(a, a->size);
 	handle_stack_b(a, b);
 }
