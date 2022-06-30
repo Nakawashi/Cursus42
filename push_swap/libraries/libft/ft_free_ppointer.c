@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_array.c                                    :+:      :+:    :+:   */
+/*   ft_free_ppointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/30 12:39:58 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/30 12:40:24 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 00:58:58 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 	free ppointer
 */
-void	ft_free_array(char **array)
+void	ft_free_ppointer(char **array)
 {
 	int	i;
 
@@ -28,5 +28,6 @@ void	ft_free_array(char **array)
 			i++;
 		}
 		free(array);
+		array = NULL;
 	}
 }
