@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 12:25:09 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/26 02:25:54 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/30 12:40:55 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,13 @@ char	**ft_split(const char *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_swap(int *a, int *b);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+void	ft_free_array(char **array);
+void	ft_quicksort(int *i_tab, int size);
 
 //bonus
 

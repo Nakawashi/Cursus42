@@ -6,7 +6,7 @@
 #    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/13 14:02:05 by lgenevey          #+#    #+#              #
-#    Updated: 2022/06/26 16:31:55 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/06/30 12:44:50 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,10 +43,13 @@ SRCS =	ft_bzero.c \
 		ft_itoa.c \
 		ft_strmapi.c \
 		ft_striteri.c \
+		ft_swap.c \
 		ft_putchar_fd.c \
 		ft_putstr_fd.c \
 		ft_putendl_fd.c \
-		ft_putnbr_fd.c
+		ft_putnbr_fd.c \
+		ft_free_array.c \
+		ft_quicksort.c
 
 SRCS_BONUS =	ft_lstnew.c \
 				ft_lstadd_front.c \
