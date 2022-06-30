@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/28 22:38:34 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/30 12:41:22 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		get_content(t_list list);
 
 // error and cleaning
 void	print_error_and_exit(void);
-void	ft_free_array(char **array);
+void	free_all(int *num, int argc, t_stack *a, char *str);
 
 // stack and list handlers
 void	init_stack(t_stack *stack);
