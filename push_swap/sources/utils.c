@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:29:32 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/30 12:41:04 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 01:22:43 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,17 @@ void	print_error_and_exit(void)
 	exit(0);
 }
 
-/*
-	utilisé à la fin du programme
-	free num : mon tableau de int qui remplit la stack
-	free a.top : free chaque element de la liste chainee
-	free str : si argc vaut 2 j'ai utilisé ft_split qui malloc
-*/
-void	free_all(int *num, int argc, t_stack *a, char *str)
+void	free_ppointer_num_and_exit(char **str, int *num)
 {
+	ft_free_ppointer(str);
 	free(num);
-	ft_lstclear(&(a->top), free);
-	if (argc == 2)
-		free(str);
+	exit(0);
+}
+
+void	free_ppointer_and_exit(char **str)
+{
+	ft_free_ppointer(str);
+	exit(0);
 }
 
 /*

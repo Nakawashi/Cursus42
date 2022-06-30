@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/30 20:38:45 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 01:47:15 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	bubble_sort(t_stack *stack, int size)
 }
 
 /*
-	Sorte de Quicksort
+	Sorte de Quicksort / divide and conquer
 	- Comparer si valeur plus petite, passer à b
 	Laisser le dernier chunk dans a, bubble sort dessus
 	Puis rappatrier b avec un tri par séléction
@@ -107,8 +107,7 @@ static void	handle_stack_a(t_stack *a, t_stack *b, t_template *template)
 		printf("template->value_to_compare : %d\n", template->value_to_compare);
 		printf("^ avant de commencer a trier ^\n\n");
 	}
-	//while (i < template->nb_loops)
-	while (a->size)
+	while (i < template->nb_loops)
 	{
 		if (TEST)
 			printf("template->nb_loops : %d\n", template->nb_loops);
@@ -181,7 +180,6 @@ static void	handle_stack_b(t_stack *a, t_stack *b)
 void	big_sort(t_stack *a, t_stack *b, t_template *template)
 {
 	handle_stack_a(a, b, template);
-	print_stack(a, b);
 	//bubble_sort(a, a->size);
 	handle_stack_b(a, b);
 }

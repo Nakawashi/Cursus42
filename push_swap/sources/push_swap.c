@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:37:32 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/30 15:21:49 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 01:48:05 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,6 @@ int	is_sorted(t_stack *stack)
 
 void	push_swap(t_stack *a, t_stack *b, t_template *template)
 {
-	int	compter;
-
-	compter = 0;
 	if (is_sorted(a))
 		return ;
 	if (a->size == 2)
