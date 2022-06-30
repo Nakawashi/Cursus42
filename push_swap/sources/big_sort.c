@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/06/30 15:21:24 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/30 20:33:17 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,11 @@ static t_list	*get_element(t_stack *a, int location)
 	return (elem);
 }
 
-// taille de la stack
-// faire un tableau
-// insérer la liste dans le tableau modèle
-// chemin le plus court et de définir les chunks (je sais que le 20eme)
-/* Retourne le nombre de pivots que je veux (chunks) */
-
-void	get_shortest_path();
-
-
-
-int	get_nb_chunks(t_stack *a)
+int	get_nb_chunks(size)
 {
-	if (a->size <= 100)
+	if (size <= 100)
 		return (5);
-	if (a->size > 100)
+	if (size > 100)
 		return (12);
 	return (-1);
 }
@@ -74,22 +64,24 @@ static int	count_steps_before_element(t_stack *stack, t_list *element)
 /*
 	Les éléments les plus grands en bas
 */
-void	bubble_sort(t_stack *stack)
+void	bubble_sort(t_stack *stack, int size)
 {
 	t_list	*element;
 
+	if (size == 3)
+		sort_3_elements(stack);
+	if (size == 2)
+		sort_2_elements(stack);
 	while (is_sorted(stack) == 0)
 	{
 		element = stack->top;
-		while (element && element->next)
+		while (get_content(*element) > get_content(*element->next) && element->next)
 		{
-			if (get_content(*element) > get_content(*element->next))
-				sa(stack);
-			element = element->next;
+			sa(stack);
+			ra(stack);
 		}
 	}
 }
-
 
 /*
 	Sorte de Quicksort
@@ -106,19 +98,33 @@ static void	handle_stack_a(t_stack *a, t_stack *b, t_template *template)
 
 	last = ft_lstlast(a->top);
 	i = 0;
+	if (TEST)
+	{
+		printf("template->nb_loops : %d\n", template->nb_loops);
+		printf("template->nb_chunks : %d\n", template->nb_chunks);
+		printf("template->nb_values_in_a_chunk : %d\n", template->nb_values_in_a_chunk);
+		printf("template->value_index : %d\n", template->value_index);
+		printf("template->value_to_compare : %d\n", template->value_to_compare);
+		printf("^ avant de commencer a trier ^\n");
+	}
 	while (i < template->nb_loops)
 	{
+		if (TEST)
+			printf("template->nb_loops : %d\n", template->nb_loops);
 		nb_of_handshakes = ft_lstsize(a->top);
 		while (nb_of_handshakes--)
 		{
-			if (get_content(*last) <= template->pivot_value)
+			if (TEST)
+				printf("int_array[%i] = %d\n",template->value_index, template->value_to_compare);
+			if (get_content(*last) <= template->value_to_compare)
 				rra(a);
-			if (get_content(*a->top) <= template->pivot_value)
+			if (get_content(*a->top) <= template->value_to_compare)
 				pb(a, b);
 			else
 				ra(a);
 		}
 		template->value_index += template->nb_values_in_a_chunk;
+		template->value_to_compare = template->int_array[template->value_index];
 		++i;
 	}
 }
@@ -131,20 +137,29 @@ static void	handle_stack_b(t_stack *a, t_stack *b)
 {
 	t_list	*max;
 	t_list	*middle;
+	t_list	*last;
 	int		moves_to_middle;
 	int		moves_to_max;
 
-	middle = get_element(b, b->size / 2);
-
-	if (middle == NULL)
-			return ;
 	while (b->size)
 	{
 		max = get_max_value(b);
-		if (max == NULL)
+		if (TEST)
+			printf("max : %d\n", get_content(*max));
+		middle = get_element(b, b->size / 2);
+		if (TEST)
+			printf("middle : %d\n", get_content(*middle));
+		last = ft_lstlast(b->top);
+		if (max == NULL || middle == NULL || last == NULL)
 			break ;
 		moves_to_middle = count_steps_before_element(b, middle);
+		if (TEST)
+			printf("moves to middle : %d\n", moves_to_middle);
 		moves_to_max = count_steps_before_element(b, max);
+		if (TEST)
+			printf("moves to max : %d\n", moves_to_max);
+		if ((get_content(*last) == get_content(*max)) && b->size > 3)
+			rrb(b);
 		if (get_content(*b->top) == get_content(*max))
 			pa(b, a);
 		else if (moves_to_max < moves_to_middle)
@@ -165,5 +180,7 @@ static void	handle_stack_b(t_stack *a, t_stack *b)
 void	big_sort(t_stack *a, t_stack *b, t_template *template)
 {
 	handle_stack_a(a, b, template);
+	//print_stack(a, b);
+	bubble_sort(a, a->size);
 	handle_stack_b(a, b);
 }

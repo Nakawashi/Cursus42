@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/30 15:22:12 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/30 20:31:57 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,11 @@
 typedef struct s_template
 {
 	int	*int_array;			// mon talbleau d'integers template
-	int	int_array_size;
 	int	nb_chunks;			// combien de blocs
 	int	nb_values_in_a_chunk;	// combien de valeurs dans un chunk, aide pour trouver le prochain pivot
 	int	nb_loops;			// combien de fois on boucle avant de laisser les plus grands dans stack a
 	int	value_index;		// index de valeur à comparer
-	int	pivot_value;		// valeur à comparer
+	int	value_to_compare;	// valeur à comparer
 }	t_template;
 
 /*
@@ -71,15 +70,15 @@ t_list	*get_max_value(t_stack *stack);
 // algos
 void	push_swap(t_stack *a, t_stack *b, t_template *template);
 int		is_sorted(t_stack *stack);
-void	bubble_sort(t_stack *stack);
+void	bubble_sort(t_stack *stack, int size);
 void	sort_2_elements(t_stack *a);
 void	sort_3_elements(t_stack *a);
 void	sort_5_elements(t_stack *a, t_stack *b);
 void	big_sort(t_stack *a, t_stack *b, t_template *template);
 
 // big sort utils
-int		get_nb_chunks(t_stack *a);
-void	init_template(t_template *template, t_stack *a, int *n);
+int		get_nb_chunks(int size);
+void	init_template(t_template *template, int size, int *num);
 
 // allowed operations
 void	sa(t_stack *stack);
