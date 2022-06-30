@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/30 20:31:57 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 01:49:21 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_stack
 }	t_stack;
 
 // parse user arguments : parse_argv
-int		*check_datas(int argc, char **argv, t_stack *a);
+void	get_data(int argc, char **argv , t_stack *a, t_template *template);
 
 // utils
 int		ft_count_arrays(char **array);
@@ -57,13 +57,13 @@ int		ft_atoi_check_overflow(const char *array);
 void	print_stack(t_stack *a, t_stack *b);
 int		get_content(t_list list);
 
-// error and cleaning
+// error and free
 void	print_error_and_exit(void);
-void	free_all(int *num, int argc, t_stack *a, char *str);
+void	free_ppointer_num_and_exit(char **str, int *num);
+void	free_ppointer_and_exit(char **str);
 
 // stack and list handlers
 void	init_stack(t_stack *stack);
-int		fill_stack(int *num, t_stack *stack);
 t_list	*get_min_value(t_stack *stack);
 t_list	*get_max_value(t_stack *stack);
 
@@ -78,7 +78,7 @@ void	big_sort(t_stack *a, t_stack *b, t_template *template);
 
 // big sort utils
 int		get_nb_chunks(int size);
-void	init_template(t_template *template, int size, int *num);
+void	init_template(t_template *template, int size);
 
 // allowed operations
 void	sa(t_stack *stack);
