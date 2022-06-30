@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/27 11:46:09 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/06/30 12:21:49 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_stack(t_stack *stack)
 }
 
 /*
-	Fill stack a
+	Fill stack a with numbers
 	Returns 0 if only 1 number is passed as argument
 */
 int	fill_stack(int *num, t_stack *stack)
@@ -41,6 +41,9 @@ int	fill_stack(int *num, t_stack *stack)
 	return (1);
 }
 
+/*
+	Parce que c'est relou de cast tout le temps
+*/
 int	get_content(t_list list)
 {
 	return (*((int *)list.content));

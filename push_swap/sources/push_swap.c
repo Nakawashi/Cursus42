@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 16:37:32 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/29 00:15:33 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/06/30 15:21:49 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-void	push_swap(t_stack *a, t_stack *b)
+void	push_swap(t_stack *a, t_stack *b, t_template *template)
 {
 	int	compter;
 
@@ -45,5 +45,5 @@ void	push_swap(t_stack *a, t_stack *b)
 	else if (a->size <= 5)
 		sort_5_elements(a, b);
 	else
-		big_sort(a, b);
+		big_sort(a, b, template);
 }
