@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 10:43:58 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/01 01:48:20 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 01:55:37 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	{
 		init_stack(&a);
 		get_data(argc, argv, &a, &template);
+		init_template(&template, a.size);
 		init_stack(&b);
 		push_swap(&a, &b, &template);
 		if (TEST)

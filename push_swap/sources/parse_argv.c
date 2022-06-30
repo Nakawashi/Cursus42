@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 01:45:26 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 01:54:26 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,11 @@ void	get_data(int argc, char **argv , t_stack *a, t_template *template)
 	while (str[i])
 	{
 		current = str[i];
-		template->int_array = malloc(sizeof(int));
+		template->int_array = (int *)malloc(sizeof(int));
 		if (!template->int_array)
 			free_ppointer_num_and_exit(str, template->int_array);
 		*template->int_array = ft_atoi_check_overflow(current);
+		printf("template->int_array : %d\n", template->int_array[i]);
 		ft_lstadd_back(&a->top, ft_lstnew(template->int_array));
 		++i;
 	}
