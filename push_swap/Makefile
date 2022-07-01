@@ -6,7 +6,7 @@
 #    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/07/01 00:48:15 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/07/01 16:48:34 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,8 @@ OBJS	=	$(SRCS:.c=.o)
 CC		=	gcc
 RM		=	rm -f
 
-#DEBUG	=	-fsanitize=address
-DEBUG	=	-g3
+DEBUG	=	-fsanitize=address
+#DEBUG	=	-g3
 CFLAGS	=	-Wall -Wextra -Werror
 INCLUDE	=	-L $(LIBFT_DIR) -lft
 RM		=	rm -f
