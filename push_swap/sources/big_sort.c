@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 13:44:12 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 14:08:47 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_list	*get_element(t_stack *a, int location)
 	return (elem);
 }
 
-int	get_nb_chunks(size)
+int	get_nb_chunks(int size)
 {
 	if (size <= 100)
 		return (5);
@@ -97,10 +97,11 @@ static void	handle_stack_a(t_stack *a, t_stack *b, t_template *template)
 	int		i;
 
 	last = ft_lstlast(a->top);
-	
+
 	if (TEST)
 	{
 		printf("xxxxx template->int_array i : %d\n", template->int_array[0]);
+		printf("a.size : %d\n", a->size);
 
  		printf("template->nb_loops : %d\n", template->nb_loops);
 		printf("template->nb_chunks : %d\n", template->nb_chunks);
