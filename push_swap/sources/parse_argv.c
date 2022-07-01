@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 16:43:23 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 23:58:26 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,38 @@ static void	find_duplicate(char **array)
 }
 
 /*
+	/!\ à la copie d'adresse
+	n : pointeur sur int permettant de réserver une nouvelle adresse mémoire
+	Contient les mêmes valeurs que le user a entré, pour remplir la liste
+	Evite de trier ma pile lorsque je trie mon tableau template
+	template->int_array : me permet de choisir mes pivots
+*/
+static int	fill_stack(char **str, t_template *template, t_stack *a)
+{
+	char	*str_cpy;
+	int		i;
+	int		*n;
+	t_list	*new;
+
+	i = 0;
+	str_cpy = NULL;
+	while (str[i]) // des free a faire ici
+	{
+		str_cpy = str[i];
+		template->int_array[i] = ft_atoi_check_overflow(str_cpy);
+		n = (int *)malloc(sizeof(int));
+			free(n);
+		*n = template->int_array[i];
+		new = ft_lstnew(&n[i]);
+		if (new == NULL)
+			free(new);
+		ft_lstadd_back(&a->top, new);
+		++i;
+	}
+	return (1);
+}
+
+/*
 	Je malloc les deux cas de figure : avec et sans ""
 	Récupère le nombre de valeurs à trier
 	Je copie chaque string sur une nouvelle adresse (l125)
@@ -108,14 +140,10 @@ static void	find_duplicate(char **array)
 void	get_data(int argc, char **argv , t_stack *a, t_template *template)
 {
 	char	**str;
-	char	*str_cpy;
-	int		i;
-	int		*n;
 
 
 	str = get_user_data(argc, argv);
 	a->size = ft_count_arrays(str);
-	str_cpy = NULL;
 	if (a->size == 1)
 		free_ppointer_and_exit(str);
 	is_number(str);
@@ -123,21 +151,12 @@ void	get_data(int argc, char **argv , t_stack *a, t_template *template)
 	template->int_array = (int *)malloc(sizeof(int) * a->size);
 	if (!template->int_array)
 		free_ppointer_num_and_exit(str, template->int_array);
-
-	i = 0;
-	while (str[i]) // des free a faire ici
+	if (!fill_stack(str, template, a))
 	{
-		str_cpy = str[i];
-		template->int_array[i] = ft_atoi_check_overflow(str_cpy);
-		if (template->int_array != NULL)
-			//free int array et str
-		n = (int *)malloc(sizeof(int)); // créer nouvelle adresse
-				// free str template->int_array et n
-		*n = template->int_array[i]; // meme valeur dans nouvelle adresse
-		ft_lstadd_back(&a->top, ft_lstnew(n)); // liste et tableau à trier sont séparés
-		//free les éléments de la liste
-		++i;
-
+		ft_lstclear(&(a->top), free);
+		a->top = NULL;
+		free(template->int_array);
+		free(str);
 	}
 	ft_free_ppointer(str);
 }

@@ -6,36 +6,13 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:29:32 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 01:22:43 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 23:48:11 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-	codes: (not used here)
-	0 - param non numériques
-	1 - param incluant des doublons
-	2 - int overflow
-*/
-void	print_error_and_exit(void)
-{
-	ft_putendl_fd("Error", 2);
-	exit(0);
-}
 
-void	free_ppointer_num_and_exit(char **str, int *num)
-{
-	ft_free_ppointer(str);
-	free(num);
-	exit(0);
-}
-
-void	free_ppointer_and_exit(char **str)
-{
-	ft_free_ppointer(str);
-	exit(0);
-}
 
 /*
 	in a char **, returns nb of arrays in a pointer of arrays

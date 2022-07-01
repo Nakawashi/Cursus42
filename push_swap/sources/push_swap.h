@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/01 22:55:14 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 23:37:07 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		get_content(t_list list);
 void	print_error_and_exit(void);
 void	free_ppointer_num_and_exit(char **str, int *num);
 void	free_ppointer_and_exit(char **str);
+void	free_all_and_exit(char **str, int *num1, int *num2);
 
 // stack and list handlers
 void	init_stack(t_stack *stack);
