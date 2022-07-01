@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 15:18:13 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 15:30:16 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,12 +126,7 @@ void	get_data(int argc, char **argv , t_stack *a, t_template *template)
 	{
 		str_cpy = str[i];
 		template->int_array[i] = ft_atoi_check_overflow(str_cpy);
-		//printf("--- template->int_array i : %d\n", template->int_array[i]);
 		ft_lstadd_back(&a->top, ft_lstnew(&template->int_array[i]));
-/* 		printf("--- template->nb_loops : %d\n", template->nb_loops);
-		printf("--- template->nb_values_in_a_chunk : %d\n", template->nb_values_in_a_chunk);
-		printf("--- template->value_index : %d\n", template->value_index);
-		printf("------->template->value_to_compare : %d\n", template->value_to_compare); */
 		++i;
 	}
 	ft_free_ppointer(str);
