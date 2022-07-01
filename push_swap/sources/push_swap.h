@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/01 15:18:40 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 19:04:57 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
-# define TEST 1
+# define TEST 0
 
 /*
 	va stocker un tableau de référence qui facilitera la recherche

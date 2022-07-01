@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 15:30:16 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 16:43:23 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ void	get_data(int argc, char **argv , t_stack *a, t_template *template)
 	char	**str;
 	char	*str_cpy;
 	int		i;
+	int		*n;
+
 
 	str = get_user_data(argc, argv);
 	a->size = ft_count_arrays(str);
@@ -121,13 +123,21 @@ void	get_data(int argc, char **argv , t_stack *a, t_template *template)
 	template->int_array = (int *)malloc(sizeof(int) * a->size);
 	if (!template->int_array)
 		free_ppointer_num_and_exit(str, template->int_array);
+
 	i = 0;
-	while (str[i])
+	while (str[i]) // des free a faire ici
 	{
 		str_cpy = str[i];
 		template->int_array[i] = ft_atoi_check_overflow(str_cpy);
-		ft_lstadd_back(&a->top, ft_lstnew(&template->int_array[i]));
+		if (template->int_array != NULL)
+			//free int array et str
+		n = (int *)malloc(sizeof(int)); // créer nouvelle adresse
+				// free str template->int_array et n
+		*n = template->int_array[i]; // meme valeur dans nouvelle adresse
+		ft_lstadd_back(&a->top, ft_lstnew(n)); // liste et tableau à trier sont séparés
+		//free les éléments de la liste
 		++i;
+
 	}
 	ft_free_ppointer(str);
 }

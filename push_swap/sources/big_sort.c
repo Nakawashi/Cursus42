@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 15:37:38 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 19:05:07 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	get_nb_chunks(int size)
 	if (size <= 100)
 		return (5);
 	if (size > 100)
-		return (12);
+		return (10);
 	return (-1);
 }
 
@@ -93,21 +93,21 @@ void	bubble_sort(t_stack *stack, int size)
 static void	handle_stack_a(t_stack *a, t_stack *b, t_template *template)
 {
 	t_list	*last;
+	t_list	*max;
 	int		nb_of_handshakes;
-	int		i;
 
 	last = ft_lstlast(a->top);
+	max = ft_lstlast(a->top);
 	init_template(template, a->size);
+	//printf("taille de la pile A : %i\n", a->size);
 	ft_quicksort(template->int_array, a->size);
 	template->value_to_compare = template->int_array[template->value_index];
-	printf("a.size : %d\n", a->size);
-	printf("template->nb_loops : %d\n", template->nb_loops);
-	printf("template->nb_chunks : %d\n", template->nb_chunks);
-	printf("template->nb_values_in_a_chunk : %d\n", template->nb_values_in_a_chunk);
-	printf("template->value_index : %d\n", template->value_index);
+	//printf("pivot de comparaison : %d \n", template->value_to_compare);
 
 	if (TEST)
 	{
+		printf("\n");
+		printf("Quicksorted : \n");
 		int j = 0;
 		while (j < a->size)
 		{
@@ -115,20 +115,14 @@ static void	handle_stack_a(t_stack *a, t_stack *b, t_template *template)
 			j++;
 		}
 		printf("\n");
-
-		printf("^ avant de commencer à trier ^\n\n");
 	}
-	i = 0;
-	while (i < a->size)
+	while (a->size)
 	{
-		printf("template->value_to_compare : %d\n", template->value_to_compare);
+		//printf("pivot de comparaison : %d \n", template->value_to_compare);
 		nb_of_handshakes = ft_lstsize(a->top);
+		//printf("handshakes (taille de A): [%i]\n", a->size);
 		while (nb_of_handshakes--)
 		{
-			if (TEST)
-				printf("int_array[%i] = %d\n",template->value_index, template->int_array[template->value_index]);
-			if (get_content(*last) <= template->value_to_compare)
-				rra(a);
 			if (get_content(*a->top) <= template->value_to_compare)
 				pb(a, b);
 			else
@@ -136,7 +130,6 @@ static void	handle_stack_a(t_stack *a, t_stack *b, t_template *template)
 		}
 		template->value_index += template->nb_values_in_a_chunk;
 		template->value_to_compare = template->int_array[template->value_index];
-		++i;
 	}
 }
 
@@ -161,14 +154,6 @@ static void	handle_stack_b(t_stack *a, t_stack *b)
 			break ;
 		moves_to_middle = count_steps_before_element(b, middle);
 		moves_to_max = count_steps_before_element(b, max);
-/* 		if (TEST)
-		{
-			printf("max : %d\n", get_content(*max));
-			printf("middle : %d\n", get_content(*middle));
-			printf("moves to middle : %d\n", moves_to_middle);
-			printf("moves to max : %d\n", moves_to_max);
-			print_stack(a, b);
-		} */
 		if ((get_content(*last) == get_content(*max)) && b->size > 3)
 			rrb(b);
 		if (get_content(*b->top) == get_content(*max))
