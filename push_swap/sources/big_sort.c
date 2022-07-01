@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 01:47:15 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 13:44:12 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,25 +97,28 @@ static void	handle_stack_a(t_stack *a, t_stack *b, t_template *template)
 	int		i;
 
 	last = ft_lstlast(a->top);
-	i = 0;
+	
 	if (TEST)
 	{
-		printf("template->nb_loops : %d\n", template->nb_loops);
+		printf("xxxxx template->int_array i : %d\n", template->int_array[0]);
+
+ 		printf("template->nb_loops : %d\n", template->nb_loops);
 		printf("template->nb_chunks : %d\n", template->nb_chunks);
 		printf("template->nb_values_in_a_chunk : %d\n", template->nb_values_in_a_chunk);
 		printf("template->value_index : %d\n", template->value_index);
 		printf("template->value_to_compare : %d\n", template->value_to_compare);
-		printf("^ avant de commencer a trier ^\n\n");
+		printf("^ avant de commencer à trier ^\n\n");
 	}
-	while (i < template->nb_loops)
+	i = 0;
+	while (i < a->size)
 	{
-		if (TEST)
-			printf("template->nb_loops : %d\n", template->nb_loops);
+/* 		if (TEST)
+			printf("template->nb_loops : %d\n", template->nb_loops) */;
 		nb_of_handshakes = ft_lstsize(a->top);
 		while (nb_of_handshakes--)
 		{
 			if (TEST)
-				printf("int_array[%i] = %d\n",template->value_index, template->value_to_compare);
+				printf("int_array[%i] = %d\n",template->value_index, template->int_array[template->value_index]);
 			if (get_content(*last) <= template->value_to_compare)
 				rra(a);
 			if (get_content(*a->top) <= template->value_to_compare)
@@ -144,20 +147,20 @@ static void	handle_stack_b(t_stack *a, t_stack *b)
 	while (b->size)
 	{
 		max = get_max_value(b);
-		if (TEST)
-			printf("max : %d\n", get_content(*max));
 		middle = get_element(b, b->size / 2);
-		if (TEST)
-			printf("middle : %d\n", get_content(*middle));
 		last = ft_lstlast(b->top);
 		if (max == NULL || middle == NULL || last == NULL)
 			break ;
 		moves_to_middle = count_steps_before_element(b, middle);
-		if (TEST)
-			printf("moves to middle : %d\n", moves_to_middle);
 		moves_to_max = count_steps_before_element(b, max);
-		if (TEST)
+/* 		if (TEST)
+		{
+			printf("max : %d\n", get_content(*max));
+			printf("middle : %d\n", get_content(*middle));
+			printf("moves to middle : %d\n", moves_to_middle);
 			printf("moves to max : %d\n", moves_to_max);
+			print_stack(a, b);
+		} */
 		if ((get_content(*last) == get_content(*max)) && b->size > 3)
 			rrb(b);
 		if (get_content(*b->top) == get_content(*max))

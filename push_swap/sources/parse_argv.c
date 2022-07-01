@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 02:30:48 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 13:44:19 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,26 +108,27 @@ static void	find_duplicate(char **array)
 void	get_data(int argc, char **argv , t_stack *a, t_template *template)
 {
 	char	**str;
-	char	*current;
+	char	*str_cpy;
 	int		i;
 
 	str = get_user_data(argc, argv);
 	a->size = ft_count_arrays(str);
-	current = NULL;
+	str_cpy = NULL;
 	if (a->size == 1)
 		free_ppointer_and_exit(str);
 	is_number(str);
 	find_duplicate(str);
-	init_template(template, a->size);
 	i = 0;
 	while (str[i])
 	{
-		current = str[i];
-		template->int_array = (int *)malloc(sizeof(int));
+		str_cpy = str[i];
+		template->int_array = (int *)malloc(sizeof(int) * a->size);
 		if (!template->int_array)
 			free_ppointer_num_and_exit(str, template->int_array);
-		template->int_array[i] = ft_atoi_check_overflow(current);
+		template->int_array[i] = ft_atoi_check_overflow(str_cpy);
+		printf("template->int_array i : %d\n", template->int_array[i]);
 		ft_lstadd_back(&a->top, ft_lstnew(&template->int_array[i]));
+		init_template(template, a->size);
 		++i;
 	}
 	ft_free_ppointer(str);
