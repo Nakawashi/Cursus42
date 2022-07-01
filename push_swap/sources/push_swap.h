@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/01 19:04:57 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 22:55:14 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_list	*get_max_value(t_stack *stack);
 // algos
 void	push_swap(t_stack *a, t_stack *b, t_template *template);
 int		is_sorted(t_stack *stack);
-void	bubble_sort(t_stack *stack, int size);
+void	bubble_sort(t_stack *stack);
 void	sort_2_elements(t_stack *a);
 void	sort_3_elements(t_stack *a);
 void	sort_5_elements(t_stack *a, t_stack *b);

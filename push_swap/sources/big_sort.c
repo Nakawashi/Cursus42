@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 19:05:07 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 23:16:56 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,65 +62,25 @@ static int	count_steps_before_element(t_stack *stack, t_list *element)
 }
 
 /*
-	Les éléments les plus grands en bas
-*/
-void	bubble_sort(t_stack *stack, int size)
-{
-	t_list	*element;
-
-	if (size == 3)
-		sort_3_elements(stack);
-	if (size == 2)
-		sort_2_elements(stack);
-	while (is_sorted(stack) == 0)
-	{
-		element = stack->top;
-		while (get_content(*element) > get_content(*element->next) && element->next)
-		{
-			sa(stack);
-			ra(stack);
-		}
-	}
-}
-
-/*
 	Sorte de Quicksort / divide and conquer
 	- Comparer si valeur plus petite, passer à b
-	Laisser le dernier chunk dans a, bubble sort dessus
 	Puis rappatrier b avec un tri par séléction
 	nb_of_handshakes : pour ne parcourir qu'une une fois chaque élément
 */
 static void	handle_stack_a(t_stack *a, t_stack *b, t_template *template)
 {
-	t_list	*last;
 	t_list	*max;
 	int		nb_of_handshakes;
 
-	last = ft_lstlast(a->top);
 	max = ft_lstlast(a->top);
+	if (max == NULL)
+		return ;
 	init_template(template, a->size);
-	//printf("taille de la pile A : %i\n", a->size);
 	ft_quicksort(template->int_array, a->size);
 	template->value_to_compare = template->int_array[template->value_index];
-	//printf("pivot de comparaison : %d \n", template->value_to_compare);
-
-	if (TEST)
-	{
-		printf("\n");
-		printf("Quicksorted : \n");
-		int j = 0;
-		while (j < a->size)
-		{
-			printf("---> template->int_array i : %d\n", template->int_array[j]);
-			j++;
-		}
-		printf("\n");
-	}
 	while (a->size)
 	{
-		//printf("pivot de comparaison : %d \n", template->value_to_compare);
 		nb_of_handshakes = ft_lstsize(a->top);
-		//printf("handshakes (taille de A): [%i]\n", a->size);
 		while (nb_of_handshakes--)
 		{
 			if (get_content(*a->top) <= template->value_to_compare)
@@ -130,6 +90,11 @@ static void	handle_stack_a(t_stack *a, t_stack *b, t_template *template)
 		}
 		template->value_index += template->nb_values_in_a_chunk;
 		template->value_to_compare = template->int_array[template->value_index];
+		if (a->size == 3)
+		{
+			sort_3_elements(a);
+			return ;
+		}
 	}
 }
 
@@ -167,7 +132,6 @@ static void	handle_stack_b(t_stack *a, t_stack *b)
 
 /*
 	passer les valeurs plus petites que le pivot dans la pile b
-	bubble sort si besoin sur toute la stack
 	check par rapport au milieu si ra ou rra
 	passer les valeurs max de b sur la pile a, ce qui va trier
 
@@ -176,6 +140,5 @@ static void	handle_stack_b(t_stack *a, t_stack *b)
 void	big_sort(t_stack *a, t_stack *b, t_template *template)
 {
 	handle_stack_a(a, b, template);
-	//bubble_sort(a, a->size);
 	handle_stack_b(a, b);
 }
