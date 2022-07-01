@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 01:54:26 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 02:13:54 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void	get_data(int argc, char **argv , t_stack *a, t_template *template)
 		free_ppointer_and_exit(str);
 	is_number(str);
 	find_duplicate(str);
+	init_template(template, a->size);
 	i = 0;
 	while (str[i])
 	{
