@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 14:29:55 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/01 15:04:52 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,14 @@ static void	handle_stack_a(t_stack *a, t_stack *b, t_template *template)
 	int		i;
 
 	last = ft_lstlast(a->top);
+	ft_quicksort(template->int_array, a->size);
+	init_template(template, a->size);
+
 
 	if (TEST)
 	{
 		printf("xxxxx template->int_array i : %d\n", template->int_array[0]);
 		printf("a.size : %d\n", a->size);
-
  		printf("template->nb_loops : %d\n", template->nb_loops);
 		printf("template->nb_chunks : %d\n", template->nb_chunks);
 		printf("template->nb_values_in_a_chunk : %d\n", template->nb_values_in_a_chunk);
