@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup_ppointer.c                               :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 17:23:53 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/02 18:43:30 by lgenevey         ###   ########.fr       */
+/*   Created: 2021/10/12 09:58:33 by lgenevey          #+#    #+#             */
+/*   Updated: 2021/10/13 15:02:02 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
-/*
-	Copie et malloc un ppointer
-*/
-char	**ft_strdup_ppointer(int argc, char **argv)
+void	*ft_memset(void *pointer, int value, size_t size)
 {
-	char	**cpy;
-	int		i;
+	char	*mypointer;
+	size_t	i;
 
-	cpy = malloc(sizeof(char *) * argc);
-	if (cpy == NULL)
-		exit(0);
+	mypointer = pointer;
 	i = 0;
-	while (argv[i])
+	while (i < size)
 	{
-		cpy[i] = ft_strdup(argv[i]);
+		mypointer[i] = value;
 		i++;
 	}
-	cpy[i] = NULL;
-	return (cpy);
+	return (mypointer);
 }

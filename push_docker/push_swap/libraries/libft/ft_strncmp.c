@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup_ppointer.c                               :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 17:23:53 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/02 18:43:30 by lgenevey         ###   ########.fr       */
+/*   Created: 2021/10/15 11:44:04 by lgenevey          #+#    #+#             */
+/*   Updated: 2021/10/22 14:45:25 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
-/*
-	Copie et malloc un ppointer
-*/
-char	**ft_strdup_ppointer(int argc, char **argv)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	**cpy;
-	int		i;
+	size_t	i;
 
-	cpy = malloc(sizeof(char *) * argc);
-	if (cpy == NULL)
-		exit(0);
 	i = 0;
-	while (argv[i])
-	{
-		cpy[i] = ft_strdup(argv[i]);
+	while (s1[i] && s2[i] && (s1[i] == s2[i]) && i < n)
 		i++;
-	}
-	cpy[i] = NULL;
-	return (cpy);
+	if (i == n)
+		return ((unsigned char)s1[i - 1] - s2[i - 1]);
+	return ((unsigned char)s1[i] - s2[i]);
 }

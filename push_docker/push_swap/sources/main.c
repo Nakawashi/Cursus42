@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup_ppointer.c                               :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 17:23:53 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/02 18:43:30 by lgenevey         ###   ########.fr       */
+/*   Created: 2022/05/20 10:43:58 by lgenevey          #+#    #+#             */
+/*   Updated: 2022/07/02 18:25:22 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-
-/*
-	Copie et malloc un ppointer
-*/
-char	**ft_strdup_ppointer(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	char	**cpy;
-	int		i;
+	t_stack		a;
+	t_stack		b;
+	t_template	template;
 
-	cpy = malloc(sizeof(char *) * argc);
-	if (cpy == NULL)
-		exit(0);
-	i = 0;
-	while (argv[i])
+	if (argc > 1)
 	{
-		cpy[i] = ft_strdup(argv[i]);
-		i++;
+		init_stack(&a);
+		get_data(argc, argv, &a, &template);
+		init_stack(&b);
+		push_swap(&a, &b, &template);
+		if (TEST)
+			print_stack(&a, &b);
+		ft_lstclear(&(a.top), free);
+		free(template.int_array);
 	}
-	cpy[i] = NULL;
-	return (cpy);
+	return (0);
 }

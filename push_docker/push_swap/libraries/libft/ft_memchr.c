@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup_ppointer.c                               :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 17:23:53 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/02 18:43:30 by lgenevey         ###   ########.fr       */
+/*   Created: 2021/10/15 17:19:29 by lgenevey          #+#    #+#             */
+/*   Updated: 2021/11/05 10:55:43 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
-/*
-	Copie et malloc un ppointer
-*/
-char	**ft_strdup_ppointer(int argc, char **argv)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char	**cpy;
-	int		i;
+	size_t	i;
+	char	*s2;
+	char	c2;
 
-	cpy = malloc(sizeof(char *) * argc);
-	if (cpy == NULL)
-		exit(0);
+	s2 = (char *)s;
+	c2 = (char)c;
 	i = 0;
-	while (argv[i])
+	while (i < n)
 	{
-		cpy[i] = ft_strdup(argv[i]);
+		if (s2[i] == c2)
+			return (s2 + i);
 		i++;
 	}
-	cpy[i] = NULL;
-	return (cpy);
+	return (NULL);
 }

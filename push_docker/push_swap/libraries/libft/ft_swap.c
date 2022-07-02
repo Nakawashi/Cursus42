@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_ppointer.c                                    :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 12:39:58 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 00:58:58 by nakawashi        ###   ########.fr       */
+/*   Created: 2022/06/30 12:33:48 by nakawashi         #+#    #+#             */
+/*   Updated: 2022/07/01 16:34:24 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-	free ppointer
-*/
-void	ft_free_ppointer(char **array)
+void	ft_swap(int *a, int *b)
 {
-	int	i;
+	int	temp;
 
-	if (array)
-	{
-		i = 0;
-		while (array[i])
-		{
-			free(array[i]);
-			array[i] = NULL;
-			i++;
-		}
-		free(array);
-		array = NULL;
-	}
+	temp = *a;
+	*a = *b;
+	*b = temp;
 }

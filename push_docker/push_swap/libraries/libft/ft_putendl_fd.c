@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_ppointer.c                                    :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 12:39:58 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 00:58:58 by nakawashi        ###   ########.fr       */
+/*   Created: 2021/11/04 20:27:38 by lgenevey          #+#    #+#             */
+/*   Updated: 2021/11/05 12:18:14 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-/*
-	free ppointer
-*/
-void	ft_free_ppointer(char **array)
+void	ft_putendl_fd(char *s, int fd)
 {
 	int	i;
 
-	if (array)
+	if (s)
 	{
 		i = 0;
-		while (array[i])
+		while (s[i])
 		{
-			free(array[i]);
-			array[i] = NULL;
+			write(fd, &s[i], 1);
 			i++;
 		}
-		free(array);
-		array = NULL;
+		write(fd, "\n", 1);
 	}
 }

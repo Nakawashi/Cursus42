@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_ppointer.c                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 12:39:58 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 00:58:58 by nakawashi        ###   ########.fr       */
+/*   Created: 2021/10/21 10:10:07 by lgenevey          #+#    #+#             */
+/*   Updated: 2022/06/07 13:12:37 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-	free ppointer
-*/
-void	ft_free_ppointer(char **array)
+int	ft_atoi(const char *str)
 {
-	int	i;
+	int		i;
+	long	v;
+	int		sign;
 
-	if (array)
+	i = 0;
+	v = 0;
+	sign = 1;
+	while ((str[i] >= 8 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		i = 0;
-		while (array[i])
-		{
-			free(array[i]);
-			array[i] = NULL;
-			i++;
-		}
-		free(array);
-		array = NULL;
+		if (str[i] == '-')
+			sign = -1;
+		i++;
 	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		v += str[i] - 48;
+		v *= 10;
+		i++;
+	}
+	return ((v * sign) / 10);
 }

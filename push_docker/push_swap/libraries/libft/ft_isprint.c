@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_ppointer.c                                    :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/30 12:39:58 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 00:58:58 by nakawashi        ###   ########.fr       */
+/*   Created: 2021/10/11 18:06:32 by lgenevey          #+#    #+#             */
+/*   Updated: 2021/10/13 14:57:46 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
-	free ppointer
-*/
-void	ft_free_ppointer(char **array)
+int	ft_isprint(int c)
 {
-	int	i;
-
-	if (array)
-	{
-		i = 0;
-		while (array[i])
-		{
-			free(array[i]);
-			array[i] = NULL;
-			i++;
-		}
-		free(array);
-		array = NULL;
-	}
+	if (c >= 32 && c <= 126)
+		return (1);
+	else
+		return (0);
 }

@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup_ppointer.c                               :+:      :+:    :+:   */
+/*   big_sort_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 17:23:53 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/02 18:43:30 by lgenevey         ###   ########.fr       */
+/*   Created: 2022/06/28 01:12:43 by nakawashi         #+#    #+#             */
+/*   Updated: 2022/07/02 16:24:34 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-
-/*
-	Copie et malloc un ppointer
-*/
-char	**ft_strdup_ppointer(int argc, char **argv)
+void	init_template(t_template *template, int size)
 {
-	char	**cpy;
-	int		i;
-
-	cpy = malloc(sizeof(char *) * argc);
-	if (cpy == NULL)
-		exit(0);
-	i = 0;
-	while (argv[i])
-	{
-		cpy[i] = ft_strdup(argv[i]);
-		i++;
-	}
-	cpy[i] = NULL;
-	return (cpy);
+	template->nb_chunks = get_nb_chunks(size);
+	template->nb_values_in_a_chunk = size / template->nb_chunks;
+	template->nb_loops = template->nb_chunks - 1;
+	template->value_index = (size / template->nb_chunks) - 1;
+	template->value_to_compare = 0;
 }
+
+

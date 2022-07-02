@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup_ppointer.c                               :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 17:23:53 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/02 18:43:30 by lgenevey         ###   ########.fr       */
+/*   Created: 2021/10/25 11:44:00 by lgenevey          #+#    #+#             */
+/*   Updated: 2022/05/31 11:57:26 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
-/*
-	Copie et malloc un ppointer
-*/
-char	**ft_strdup_ppointer(int argc, char **argv)
+void	*ft_calloc(size_t count, size_t size)
 {
-	char	**cpy;
-	int		i;
+	size_t	total;
+	void	*new_array;
 
-	cpy = malloc(sizeof(char *) * argc);
-	if (cpy == NULL)
-		exit(0);
-	i = 0;
-	while (argv[i])
-	{
-		cpy[i] = ft_strdup(argv[i]);
-		i++;
-	}
-	cpy[i] = NULL;
-	return (cpy);
+	total = count * size;
+	new_array = malloc(total);
+	if (!new_array)
+		return (NULL);
+	ft_bzero(new_array, total);
+	return (new_array);
 }

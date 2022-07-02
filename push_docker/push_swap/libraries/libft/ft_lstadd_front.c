@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup_ppointer.c                               :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 17:23:53 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/02 18:43:30 by lgenevey         ###   ########.fr       */
+/*   Created: 2022/05/30 17:56:17 by lgenevey          #+#    #+#             */
+/*   Updated: 2022/05/30 19:55:24 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
 /*
-	Copie et malloc un ppointer
+	-- ajoute le nouvel element au debut de la liste
+	lst: L’adresse du pointeur vers le premier élément de la liste. (first)
+	new: L’adresse du pointeur vers l’élément à rajouter à la liste.
 */
-char	**ft_strdup_ppointer(int argc, char **argv)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	char	**cpy;
-	int		i;
-
-	cpy = malloc(sizeof(char *) * argc);
-	if (cpy == NULL)
-		exit(0);
-	i = 0;
-	while (argv[i])
+	if (*lst)
 	{
-		cpy[i] = ft_strdup(argv[i]);
-		i++;
+		new->next = *lst;
+		*lst = new;
 	}
-	cpy[i] = NULL;
-	return (cpy);
+	else
+		*lst = new;
 }

@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup_ppointer.c                               :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 17:23:53 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/02 18:43:30 by lgenevey         ###   ########.fr       */
+/*   Created: 2022/05/30 19:41:25 by lgenevey          #+#    #+#             */
+/*   Updated: 2022/05/30 19:45:13 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
 /*
-	Copie et malloc un ppointer
-*/
-char	**ft_strdup_ppointer(int argc, char **argv)
-{
-	char	**cpy;
-	int		i;
+	Itère sur la liste ’lst’ et applique la fonction
+	’f’ au contenu chaque élément.
 
-	cpy = malloc(sizeof(char *) * argc);
-	if (cpy == NULL)
-		exit(0);
-	i = 0;
-	while (argv[i])
+	lst: L’adresse du pointeur vers un élément.
+	f: L’adresse de la fonction à appliquer.
+*/
+
+void	ft_lstiter(t_list *lst, void (*f)(void *))
+{
+	if (lst)
 	{
-		cpy[i] = ft_strdup(argv[i]);
-		i++;
+		while (lst)
+		{
+			f(lst->content);
+			lst = lst->next;
+		}
 	}
-	cpy[i] = NULL;
-	return (cpy);
 }

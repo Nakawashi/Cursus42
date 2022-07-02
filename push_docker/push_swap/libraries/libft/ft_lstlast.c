@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup_ppointer.c                               :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/02 17:23:53 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/02 18:43:30 by lgenevey         ###   ########.fr       */
+/*   Created: 2022/05/30 18:19:35 by lgenevey          #+#    #+#             */
+/*   Updated: 2022/05/30 18:51:48 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
 /*
-	Copie et malloc un ppointer
+	Renvoie le dernier element de la liste
+	lst: adresse de l'element premier
 */
-char	**ft_strdup_ppointer(int argc, char **argv)
+t_list	*ft_lstlast(t_list *lst)
 {
-	char	**cpy;
-	int		i;
+	t_list	*last;
 
-	cpy = malloc(sizeof(char *) * argc);
-	if (cpy == NULL)
-		exit(0);
-	i = 0;
-	while (argv[i])
+	if (!lst)
+		return (NULL);
+	last = lst;
+	while (lst)
 	{
-		cpy[i] = ft_strdup(argv[i]);
-		i++;
+		last = lst;
+		lst = lst->next;
 	}
-	cpy[i] = NULL;
-	return (cpy);
+	return (last);
 }
