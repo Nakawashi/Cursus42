@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/02 18:21:05 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/07/02 19:38:30 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,23 @@
 /*
 	va stocker un tableau de référence qui facilitera la recherche
 	des bons pivots
+	*int_array;				mon talbleau d'integers template
+	nb_chunks;				combien de blocs
+	nb_values_in_a_chunk;	combien de valeurs dans un chunk, aide pour trouver
+							le prochain pivot
+	nb_loops;				combien de fois on boucle avant de laisser les plus
+							grands dans stack a
+	value_index;			index de valeur à comparer
+	value_to_compare;		valeur à comparer
 */
 typedef struct s_template
 {
-	int	*int_array;			// mon talbleau d'integers template
-	int	nb_chunks;			// combien de blocs
-	int	nb_values_in_a_chunk;	// combien de valeurs dans un chunk, aide pour trouver le prochain pivot
-	int	nb_loops;			// combien de fois on boucle avant de laisser les plus grands dans stack a
-	int	value_index;		// index de valeur à comparer
-	int	value_to_compare;	// valeur à comparer
+	int	*int_array;
+	int	nb_chunks;
+	int	nb_values_in_a_chunk;
+	int	nb_loops;
+	int	value_index;
+	int	value_to_compare;
 }	t_template;
 
 /*
@@ -49,13 +57,14 @@ typedef struct s_stack
 }	t_stack;
 
 // parse user arguments : parse_argv
-void	get_data(int argc, char **argv , t_stack *a, t_template *template);
+void	get_data(int argc, char **argv, t_stack *a, t_template *template);
 
 // utils
 int		ft_count_arrays(char **array);
 int		ft_atoi_check_overflow(char *array);
 void	print_stack(t_stack *a, t_stack *b);
 int		get_content(t_list list);
+int		min(int a, int b);
 
 // error and free
 void	print_error_freeppointer_and_exit(char **str);
@@ -67,6 +76,7 @@ void	free_all_and_exit(char **str, int *num1, int *num2);
 void	init_stack(t_stack *stack);
 t_list	*get_min_value(t_stack *stack);
 t_list	*get_max_value(t_stack *stack);
+t_list	*get_element(t_stack *a, int location);
 
 // algos
 void	push_swap(t_stack *a, t_stack *b, t_template *template);

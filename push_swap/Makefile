@@ -6,7 +6,7 @@
 #    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/07/02 19:02:09 by lgenevey         ###   ########.fr        #
+#    Updated: 2022/07/02 19:05:51 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,7 @@ $(NAME)	: $(OBJS)
 
 norm:
 	@echo "$(VIOLET)[NORM - START]$(NONE)"
-	@norminette sources/*.*/
+	@norminette sources/*.*
 	@echo "$(VIOLET)[NORM - END]$(NONE)"
 
 clean:

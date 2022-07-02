@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/02 18:47:39 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/07/02 19:36:29 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,12 @@ static void	fill_stack(char **str, t_template *template, t_stack *a)
 {
 	char	*str_cpy;
 	int		i;
-	int		*n = NULL;
+	int		*n;
 
 	i = 0;
+	n = NULL;
 	str_cpy = NULL;
-	while (str[i]) // des free a faire ici
+	while (str[i])
 	{
 		str_cpy = str[i];
 		template->int_array[i] = ft_atoi_check_overflow(str_cpy);
@@ -116,7 +117,7 @@ static void	fill_stack(char **str, t_template *template, t_stack *a)
 	Les convertis les string en integer
 	Initialise ma chaine, ajoute à chaque élément le contenu.
 */
-void	get_data(int argc, char **argv , t_stack *a, t_template *template)
+void	get_data(int argc, char **argv, t_stack *a, t_template *template)
 {
 	char	**str;
 

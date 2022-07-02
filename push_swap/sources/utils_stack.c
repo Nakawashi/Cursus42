@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/02 15:37:47 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/07/02 19:24:57 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,34 +19,30 @@ void	init_stack(t_stack *stack)
 }
 
 /*
-	Fill stack a with numbers
-	Returns 0 if only 1 number is passed as argument
-*/
-// int	fill_stack(int *num, t_stack *stack)
-// {
-// 	int		i;
-// 	t_list	*new;
-
-// 	if (stack->size == 1)
-// 		return (0);
-// 	i = 0;
-// 	while (i < stack->size)
-// 	{
-// 		new = ft_lstnew(&num[i]);
-// 		if (!new)
-// 			return (0);
-// 		ft_lstadd_back(&(stack->top), new);
-// 		i++;
-// 	}
-// 	return (1);
-// }
-
-/*
 	Parce que c'est relou de cast tout le temps
 */
 int	get_content(t_list list)
 {
 	return (*((int *)list.content));
+}
+
+/*
+	retourne l'élément souhaité, à l'emplacement demandé
+	utile pour trouver le milieu de la liste
+	utile pour trouver le pivot de comparaison
+*/
+t_list	*get_element(t_stack *a, int location)
+{
+	t_list	*elem;
+
+	elem = a->top;
+	while (location--)
+	{
+		if (elem == NULL)
+			return (NULL);
+		elem = elem->next;
+	}
+	return (elem);
 }
 
 /*

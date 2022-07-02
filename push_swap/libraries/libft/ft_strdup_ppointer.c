@@ -6,12 +6,11 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 17:23:53 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/02 18:43:30 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/07/02 19:33:49 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 /*
 	Copie et malloc un ppointer

@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:29:32 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/02 18:00:55 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/07/02 19:22:04 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,24 @@ int	ft_count_arrays(char **array)
 	while (array[count])
 		count++;
 	return (count);
+}
+
+int	min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+int	get_nb_chunks(int size)
+{
+	if (size <= 100)
+		return (5);
+	if (size > 100 && size <= 400)
+		return (10);
+	if (size > 400)
+		return (12);
+	return (-1);
 }
 
 /*
