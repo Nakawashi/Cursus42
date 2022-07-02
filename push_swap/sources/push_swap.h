@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/02 17:11:19 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/07/02 18:21:05 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ void	get_data(int argc, char **argv , t_stack *a, t_template *template);
 
 // utils
 int		ft_count_arrays(char **array);
-int		ft_atoi_check_overflow(const char *array);
+int		ft_atoi_check_overflow(char *array);
 void	print_stack(t_stack *a, t_stack *b);
 int		get_content(t_list list);
 
 // error and free
-void	print_error_and_exit(void);
-void	free_ppointer_num_and_exit(char **str, int *num);
+void	print_error_freeppointer_and_exit(char **str);
+void	print_error_free_and_exit(char *str);
 void	free_ppointer_and_exit(char **str);
 void	free_all_and_exit(char **str, int *num1, int *num2);
 

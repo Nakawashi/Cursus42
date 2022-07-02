@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 23:47:51 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 23:48:13 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/02 18:00:06 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@
 	1 - param incluant des doublons
 	2 - int overflow
 */
-void	print_error_and_exit(void)
+void	print_error_freeppointer_and_exit(char **str)
 {
+	ft_free_ppointer(str);
 	ft_putendl_fd("Error", 2);
 	exit(0);
 }
 
-void	free_ppointer_num_and_exit(char **str, int *num)
+void	print_error_free_and_exit(char *str)
 {
-	ft_free_ppointer(str);
-	free(num);
+	free(str);
+	ft_putendl_fd("Error", 2);
 	exit(0);
 }
 

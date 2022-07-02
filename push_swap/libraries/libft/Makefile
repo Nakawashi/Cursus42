@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
+#    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/13 14:02:05 by lgenevey          #+#    #+#              #
-#    Updated: 2022/07/01 23:54:47 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/07/02 17:24:14 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS =	ft_bzero.c \
 		ft_strlcat.c \
 		ft_calloc.c \
 		ft_strdup.c \
+		ft_strdup_ppointer.c \
 		ft_substr.c \
 		ft_strjoin.c \
 		ft_strtrim.c \

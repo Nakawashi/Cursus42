@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:29:32 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 23:48:11 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/02 18:00:55 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
 
 /*
 	in a char **, returns nb of arrays in a pointer of arrays
@@ -30,7 +28,7 @@ int	ft_count_arrays(char **array)
 /*
 	atoi, but prints Error if INT overflow
 */
-int	ft_atoi_check_overflow(const char *str)
+int	ft_atoi_check_overflow(char *str)
 {
 	int		i;
 	long	v;
@@ -55,7 +53,7 @@ int	ft_atoi_check_overflow(const char *str)
 	}
 	v = (v * sign) / 10;
 	if (v > INT_MAX || v < INT_MIN)
-		print_error_and_exit();
+		print_error_free_and_exit(str);
 	return (v);
 }
 
