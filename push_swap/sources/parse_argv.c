@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_argv.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 23:58:26 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/02 15:21:01 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,7 @@ static int	fill_stack(char **str, t_template *template, t_stack *a)
 {
 	char	*str_cpy;
 	int		i;
-	int		*n;
-	t_list	*new;
+	int		*n = NULL;
 
 	i = 0;
 	str_cpy = NULL;
@@ -118,14 +117,18 @@ static int	fill_stack(char **str, t_template *template, t_stack *a)
 	{
 		str_cpy = str[i];
 		template->int_array[i] = ft_atoi_check_overflow(str_cpy);
-		n = (int *)malloc(sizeof(int));
-			free(n);
+		n = malloc(sizeof(int *));
 		*n = template->int_array[i];
-		new = ft_lstnew(&n[i]);
-		if (new == NULL)
-			free(new);
-		ft_lstadd_back(&a->top, new);
+		ft_lstadd_back(&a->top, ft_lstnew(n));
+		printf("liste neuve: [%d]\n", get_content(*a->top));
+		printf("liste neuve: [%d]\n", get_content(*a->top->next));
+		if (template->int_array != NULL) // si on a reussi a remplir la chaine
+		{
+			ft_free_ppointer(str);
+			free(str_cpy);
+		}
 		++i;
+
 	}
 	return (1);
 }
@@ -141,7 +144,6 @@ void	get_data(int argc, char **argv , t_stack *a, t_template *template)
 {
 	char	**str;
 
-
 	str = get_user_data(argc, argv);
 	a->size = ft_count_arrays(str);
 	if (a->size == 1)
@@ -150,13 +152,11 @@ void	get_data(int argc, char **argv , t_stack *a, t_template *template)
 	find_duplicate(str);
 	template->int_array = (int *)malloc(sizeof(int) * a->size);
 	if (!template->int_array)
-		free_ppointer_num_and_exit(str, template->int_array);
+		free(template->int_array);
 	if (!fill_stack(str, template, a))
 	{
-		ft_lstclear(&(a->top), free);
-		a->top = NULL;
 		free(template->int_array);
+		ft_lstclear(&(a->top), free);
 		free(str);
 	}
-	ft_free_ppointer(str);
 }

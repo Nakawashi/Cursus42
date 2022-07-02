@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
+#    By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/07/01 23:48:35 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/07/02 11:26:28 by lgenevey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ $(NAME)	: $(OBJS)
 	@echo "$(BLUE)Making libft and bonuses... $(NONE)"
 	@$(MAKE) -C $(LIBFT_DIR)
 	@$(MAKE) -C $(LIBFT_DIR) bonus
-	@$(CC) $(OBJS) $(CFLAGS) $(DEBUG) -I $(LIBFT_DIR) $(INCLUDE) -o $(NAME)
+	@$(CC) $(SRCS) $(CFLAGS) $(DEBUG) -I $(LIBFT_DIR) $(INCLUDE) -o $(NAME)
 	@printf "$(GREEN) $(NAME) ready.\n$(NONE)"
 
 norm:

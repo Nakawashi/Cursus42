@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:27:02 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/06/30 12:21:49 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/02 11:29:48 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,6 @@ void	init_stack(t_stack *stack)
 {
 	stack->size = 0;
 	stack->top = NULL;
-}
-
-/*
-	Fill stack a with numbers
-	Returns 0 if only 1 number is passed as argument
-*/
-int	fill_stack(int *num, t_stack *stack)
-{
-	int		i;
-	t_list	*new;
-
-	if (stack->size == 1)
-		return (0);
-	i = 0;
-	while (i < stack->size)
-	{
-		new = ft_lstnew(&num[i]);
-		if (!new)
-			return (0);
-		ft_lstadd_back(&(stack->top), new);
-		i++;
-	}
-	return (1);
 }
 
 /*
