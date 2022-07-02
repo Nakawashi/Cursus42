@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/25 15:17:56 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 23:16:56 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/02 16:33:28 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ int	get_nb_chunks(int size)
 {
 	if (size <= 100)
 		return (5);
-	if (size > 100)
+	if (size > 100 && size <= 400)
 		return (10);
+	if (size > 400)
+		return (12);
 	return (-1);
 }
 
@@ -61,6 +63,13 @@ static int	count_steps_before_element(t_stack *stack, t_list *element)
 	return (i);
 }
 
+
+static int	min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
 /*
 	Sorte de Quicksort / divide and conquer
 	- Comparer si valeur plus petite, passer à b
@@ -80,15 +89,17 @@ static void	handle_stack_a(t_stack *a, t_stack *b, t_template *template)
 	template->value_to_compare = template->int_array[template->value_index];
 	while (a->size)
 	{
-		nb_of_handshakes = ft_lstsize(a->top);
+		nb_of_handshakes = a->size;
 		while (nb_of_handshakes--)
 		{
-			if (get_content(*a->top) <= template->value_to_compare)
+			if (get_content(*a->top) <= template->value_to_compare){
 				pb(a, b);
+			}
 			else
 				ra(a);
 		}
-		template->value_index += template->nb_values_in_a_chunk;
+		a->size = ft_lstsize(a->top);
+		template->value_index += min(template->nb_values_in_a_chunk, a->size);
 		template->value_to_compare = template->int_array[template->value_index];
 		if (a->size == 3)
 		{

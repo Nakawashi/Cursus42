@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 01:12:43 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/01 15:33:31 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/07/02 16:24:34 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
