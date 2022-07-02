@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 12:15:01 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/07/02 19:38:30 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/07/02 19:56:13 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
-
-# define TEST 0
 
 /*
 	va stocker un tableau de référence qui facilitera la recherche
@@ -62,7 +60,6 @@ void	get_data(int argc, char **argv, t_stack *a, t_template *template);
 // utils
 int		ft_count_arrays(char **array);
 int		ft_atoi_check_overflow(char *array);
-void	print_stack(t_stack *a, t_stack *b);
 int		get_content(t_list list);
 int		min(int a, int b);
 

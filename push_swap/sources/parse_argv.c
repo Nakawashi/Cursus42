@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/27 15:03:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/07/02 19:36:29 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/07/02 20:04:20 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,6 @@ void	get_data(int argc, char **argv, t_stack *a, t_template *template)
 
 	str = get_user_data(argc, argv);
 	a->size = ft_count_arrays(str);
-	if (a->size == 1)
-		free_ppointer_and_exit(str);
 	is_number(str);
 	find_duplicate(str);
 	template->int_array = (int *)malloc(sizeof(int) * a->size);
