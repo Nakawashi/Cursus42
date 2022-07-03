@@ -1,4 +1,4 @@
-# Push_swap
+# Push_swap [86%]
 
 *Because Swap_push isn’t as natural*
 
