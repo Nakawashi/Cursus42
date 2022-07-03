@@ -64,12 +64,6 @@ Je parcours ma pile a et compare chaque contenu avec cette valeur. Je passe sur 
 <br>
 Une fois ma pile a vide, je fais un tri par séléction sur la pile b pour rappatrier sur la pile a le contenu le plus grand, en parcourant le chemin le plus court pour le ramener en haut de la pile b.<br>
 
-## Amliorations
-Etant pressée par le black hole j'ai préféré ne pas prendre plus de temps pour implémenter ceci.<br>
-
-1. Une fois le premier bloc poussé sur la pile b, trier cette petite quantité avant d'amener le reste.<br>
-2. Ne pas déplacer sur la pile b le dernier bloc resté dans la pile a. Je sais déjà que ce sont les plus grands. Les trier avec un bubble sort. Une fois cela fait, rappatrier les éléments sur la pile b avec le tri par séléction.
-
 ## Gestion des Leaks
 J'ai réservé un emplacement mémoire pour ces variables :
 - Mon tableau de string qui découle d'argv (`ft_split` et `ft_strdup` pour avoir dans tous les cas un tableau à `free()`)
@@ -82,3 +76,9 @@ Pour mes cas d'erreurs je print Error sur le fd 2, `free` mon tableau de strings
 J'utilise `exit()` pour protéger mes `malloc()`.<br>
 Dès que j'ai ma liste chaînée je `free()`mon tableau de strings.<br>
 A la toute fin je `free()` ma liste chaînée avec `ft_lstclear()` (qui va aussi libérer les adresses de mon tableau intermédiare (n)) ainsi que mon template.
+
+# Amliorations
+Etant pressée par le black hole j'ai préféré ne pas prendre plus de temps pour implémenter ceci.<br>
+
+1. Une fois le premier bloc poussé sur la pile b, trier cette petite quantité avant d'amener le reste.<br>
+2. Ne pas déplacer sur la pile b le dernier bloc resté dans la pile a. Je sais déjà que ce sont les plus grands. Les trier avec un bubble sort. Une fois cela fait, rappatrier les éléments sur la pile b avec le tri par séléction.
