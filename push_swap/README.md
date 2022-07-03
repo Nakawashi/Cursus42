@@ -59,5 +59,15 @@ Trier les valeurs sur a avec mon tri et pousser sur la pile a les deux valeurs q
 Je fais des actions d'abord sur la pile a, ensuite sur la pile b. Rien de simultané (pas de `rr` ni `rrr`).<br>
 Pour **100** valeurs à trier je divise la taille de la pile a en **5** (le plus opti pour moi).<br>
 Pour **500** valeurs à trier je divise la taille de la pile a en **12** (le plus opti pour moi).<br>
+Je récupère la valeur à l'index correspondant dans mon tableau template.<br>
+Je parcours ma pile a et compare chaque contenu avec cette valeur. Je passe sur b tous les éléments plus petits ou égaux que cette valeur. S'il me reste trois éléments dans la pile a, j'utilise mon tri.
+<br>
+Une fois ma pile a vide, je fais un tri par séléction sur la pile b pour rappatrier sur la pile a le contenu le plus grand, en parcourant le chemin le plus court pour le ramener en haut de la pile b.<br>
 
+## Amliorations
+Etant pressée par le black hole j'ai préféré ne pas prendre plus de temps pour implémenter ceci.
+<br>
+<br>
+1. Une fois le premier bloc poussé sur la pile b, trier cette petite quantité avant d'amener le reste.<br>
+2. Ne pas déplacer sur la pile b le dernier bloc resté dans la pile a. Je sais déjà que ce sont les plus grands. Les trier avec un bubble sort. Une fois cela fait, rappatrier les éléments sur la pile b avec le tri par séléction.
 
