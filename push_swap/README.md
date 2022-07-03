@@ -65,9 +65,14 @@ Je parcours ma pile a et compare chaque contenu avec cette valeur. Je passe sur 
 Une fois ma pile a vide, je fais un tri par séléction sur la pile b pour rappatrier sur la pile a le contenu le plus grand, en parcourant le chemin le plus court pour le ramener en haut de la pile b.<br>
 
 ## Amliorations
-Etant pressée par le black hole j'ai préféré ne pas prendre plus de temps pour implémenter ceci.
-<br>
-<br>
+Etant pressée par le black hole j'ai préféré ne pas prendre plus de temps pour implémenter ceci.<br>
+
 1. Une fois le premier bloc poussé sur la pile b, trier cette petite quantité avant d'amener le reste.<br>
 2. Ne pas déplacer sur la pile b le dernier bloc resté dans la pile a. Je sais déjà que ce sont les plus grands. Les trier avec un bubble sort. Une fois cela fait, rappatrier les éléments sur la pile b avec le tri par séléction.
 
+## Gestion des Leaks
+J'ai réservé un emplacement mémoire pour ces variables :
+- Mon tableau de string qui découle d'argv
+- Mon pointeur sur int qui me sert de template
+- Mon pointeur sur int qui me sert à récupérer les valeurs du template pour les mettre dans les éléments de ma liste chaînée
+- Chaque noeud / élément de ma liste chainée
