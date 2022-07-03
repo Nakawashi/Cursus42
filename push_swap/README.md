@@ -34,7 +34,30 @@ The last element becomes the first one.<br>
 1. Clone the repository
 2. Use command `make`
 3. Run the programm with arguments, either with our without double quotes :<br>
-`./push swap "453 -50 78 5 42"`
-`./push swap 453 -50 78 5 42`
-Then it will print all the used operations necessary to sort it.
-You can use testers and visualizator from other repositories.
+`./push swap "453 -50 78 5 42"` <br>
+`./push swap 453 -50 78 5 42` <br>
+Then it will print all the used operations necessary to sort it.<br>
+You can use testers and visualizator from other repositories.<br>
+
+## Routine in french
+
+Gestion des cas d'erreurs en gardant un tableau de strings récupéré de argv.<br>
+Création d'un tableau "template" qui va récupérer les valeurs d'un atoi. Ce tableau sera trié avec un quicksort pour me permettre de récupérer un pivot pour plus tard.<br>
+Création d'un tableau intermédiaire qui va permettre de récupérer ces valeurs dans un nouvel emplacement mémoire, pour les copier dans chaque élément de ma liste chaînée. Ce pointeur sur int permet d'éviter de lier mon template avec la liste. Sinon lorsque je trie le tableau la liste sera aussi triée vu qu'ils pointent sur les mêmes adresses.<br>
+
+### Trier deux éléments
+Swap entre le premier élément de la liste et le second.
+
+### Trier trois éléments
+Comparer les trois valeurs et les trier manuellement avec une forêt de if/else if
+
+### Trier cinq éléments
+Jusqu'à ce que je n'aie plus que trois éléments dans ma pile a, je prends les deux valeurs les plus petites et les poussent sur b.<br>
+Trier les valeurs sur a avec mon tri et pousser sur la pile a les deux valeurs qui attendaient dans la pile b.
+
+### Trier plus d'éléments (mais doit être optimal pour 100 et 500)
+Je fais des actions d'abord sur la pile a, ensuite sur la pile b. Rien de simultané (pas de `rr` ni `rrr`).<br>
+Pour **100** valeurs à trier je divise la taille de la pile a en **5** (le plus opti pour moi).<br>
+Pour **500** valeurs à trier je divise la taille de la pile a en **12** (le plus opti pour moi).<br>
+
+
