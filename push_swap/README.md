@@ -72,7 +72,7 @@ J'ai réservé un emplacement mémoire pour ces variables :
 - Chaque noeud / élément de ma liste chainée
 
 Fichiers `parsing_args.c` et `main.c`
-Pour mes cas d'erreurs je print Error sur le fd 2, `free` mon tableau de strings (char **) et exit.<br>
+Pour mes cas d'erreurs je print Error sur le fd 2, `free()` mon tableau de strings (char **) et exit.<br>
 J'utilise `exit()` pour protéger mes `malloc()`.<br>
 Dès que j'ai ma liste chaînée je `free()`mon tableau de strings.<br>
 A la toute fin je `free()` ma liste chaînée avec `ft_lstclear()` (qui va aussi libérer les adresses de mon tableau intermédiare (n)) ainsi que mon template.
