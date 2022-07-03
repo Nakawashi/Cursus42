@@ -31,4 +31,10 @@ The last element becomes the first one.<br>
 
 ## Usage
 
-1. make..
+1. Clone the repository
+2. Use command `make`
+3. Run the programm with arguments, either with our without double quotes :<br>
+`./push swap "453 -50 78 5 42"`
+`./push swap 453 -50 78 5 42`
+Then it will print all the used operations necessary to sort it.
+You can use testers and visualizator from other repositories.
