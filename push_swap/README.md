@@ -77,7 +77,7 @@ J'utilise `exit()` pour protéger mes `malloc()`.<br>
 Dès que j'ai ma liste chaînée je `free()`mon tableau de strings.<br>
 A la toute fin je `free()` ma liste chaînée avec `ft_lstclear()` (qui va aussi libérer les adresses de mon tableau intermédiare (n)) ainsi que mon template.
 
-# Amliorations
+# Améliorations
 Etant pressée par le black hole j'ai préféré ne pas prendre plus de temps pour implémenter ceci.<br>
 
 1. Une fois le premier bloc poussé sur la pile b, trier cette petite quantité avant d'amener le reste.<br>
