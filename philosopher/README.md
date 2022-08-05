@@ -11,8 +11,6 @@ Vous découvrirez les mutex, les sémaphores et la mémoire partagée.</br>
 
 ## A savoir
 - Des philosophes (un minimum) sont assis autour d'une table ronde au centre de laquelle se trouve un grand plat de spaghetti.
-</br>
-
 - Les philosophes sont soit en train de **manger**, de **penser** ou de **dormir**.
 Lorsqu'ils mangent, ils ne peuvent pas penser ou dormir.
 Lorsqu'ils dorment, ils ne peuvent pas manger ou penser.
@@ -29,11 +27,11 @@ Enfin, lorsqu'ils pensent, ils en peuvent pas manger ou dormir.
 Programme concernant la partie obligatoire :
 - Variables globales interdites !
 - Arguments :
-`[number_of_philosophers]` : nb de philosophes, mais aussi nb de fourchettes
-`[time_to_die]` (en millisecondes) : Si un philosophe n'a pas commencé à manger `[cette valeur]` après le début de son précédent repas ou depuis le début de la simulation, il meurt.
-`[time_to_eat]` (en millisecones) : Le temps qu'un philosophe prend à manger. Pendant ce temps, le philosophe doit garder ses deux fourchettes.
-`[time_to_sleep]` (en millisecondes) : Le temps qu'un philosophe passe à dormir.
-`[number_of_times_each_philosopher_must_eat]` (arg optionnel) : Si tous les philosophes ont mangé au moins `[cette valeur]` de fois, la simulation prend fin. Si cet argument n'est pas spécifié, alors la simulation prend fin à la mort d'un philosophe.
+`[number_of_philosophers]` : nb de philosophes, mais aussi nb de fourchettes </br>
+`[time_to_die]` (en millisecondes) : Si un philosophe n'a pas commencé à manger `[cette valeur]` après le début de son précédent repas ou depuis le début de la simulation, il meurt. </br>
+`[time_to_eat]` (en millisecones) : Le temps qu'un philosophe prend à manger. Pendant ce temps, le philosophe doit garder ses deux fourchettes. </br>
+`[time_to_sleep]` (en millisecondes) : Le temps qu'un philosophe passe à dormir. </br>
+`[number_of_times_each_philosopher_must_eat]` (arg optionnel) : Si tous les philosophes ont mangé au moins `[cette valeur]` de fois, la simulation prend fin. Si cet argument n'est pas spécifié, alors la simulation prend fin à la mort d'un philosophe. </br>
 - Chaque philosophe se voit assigner un numéro entre 1 et `[number_of_philosophers]`
 - Le philosophe numéro 1 est assis à côté du philosophe numéro `[number_of_philosophers]`. les autres suivent cette logique, ils sont donc en cercle.
 
