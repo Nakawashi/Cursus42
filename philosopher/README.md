@@ -12,6 +12,7 @@ Vous découvrirez les mutex, les sémaphores et la mémoire partagée.</br>
 ## A savoir
 - Des philosophes (un minimum) sont assis autour d'une table ronde au centre de laquelle se trouve un grand plat de spaghetti.
 </br>
+
 - Les philosophes sont soit en train de **manger**, de **penser** ou de **dormir**.
 Lorsqu'ils mangent, ils ne peuvent pas penser ou dormir.
 Lorsqu'ils dorment, ils ne peuvent pas manger ou penser.
