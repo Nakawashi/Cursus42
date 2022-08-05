@@ -26,7 +26,7 @@ Enfin, lorsqu'ils pensent, ils en peuvent pas manger ou dormir.
 ## Règles communes
 Programme concernant la partie obligatoire :
 - Variables globales interdites !
-- Arguments :
+- Arguments : </br>
 `[number_of_philosophers]` : nb de philosophes, mais aussi nb de fourchettes </br>
 `[time_to_die]` (en millisecondes) : Si un philosophe n'a pas commencé à manger `[cette valeur]` après le début de son précédent repas ou depuis le début de la simulation, il meurt. </br>
 `[time_to_eat]` (en millisecones) : Le temps qu'un philosophe prend à manger. Pendant ce temps, le philosophe doit garder ses deux fourchettes. </br>
