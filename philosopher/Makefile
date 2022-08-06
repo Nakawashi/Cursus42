@@ -6,13 +6,13 @@
 #    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/08/05 11:48:25 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/08/06 14:02:02 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	philo
 
-SRCS	=
+SRCS	=	sources/main.c \
 
 OBJS	=	$(SRCS:.c=.o)
 CC		=	gcc
@@ -33,7 +33,6 @@ NONE	= \033[0m
 all:	$(NAME)
 
 $(NAME)	: $(OBJS)
-	@echo "$(BLUE)Making libft and bonuses... $(NONE)"
 	@$(CC) $(OBJS) $(CFLAGS) $(DEBUG) -I $(INCLUDE) -o $(NAME)
 	@printf "$(GREEN) $(NAME) ready.\n$(NONE)"
 
