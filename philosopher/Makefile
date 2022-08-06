@@ -6,13 +6,14 @@
 #    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/08/06 14:02:02 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/08/06 14:18:11 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	philo
 
 SRCS	=	sources/main.c \
+			sources/mini_libft.c \
 
 OBJS	=	$(SRCS:.c=.o)
 CC		=	gcc
