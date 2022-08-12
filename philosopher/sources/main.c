@@ -6,25 +6,13 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:31:39 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/08/06 14:01:18 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/08/12 17:04:43 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-/*
-	Returns the timestamp in milliseconds
-*/
-long	get_time(void)
-{
-	struct timeval tp;
-	long	milliseconds;
 
-	gettimeofday(&tp, NULL);
-	milliseconds = tp.tv_sec * 1000;
-	milliseconds += tp.tv_usec / 1000;
-	return (milliseconds);
-}
 
 // prints time, sleeps 200ms, repeat
 int	main(void)
@@ -35,7 +23,6 @@ int	main(void)
 	while (1)
 	{
 		printf("%ld\n", get_time() - start_time);
-
 		usleep(200 * 1000);
 	}
 	return (0);
