@@ -6,7 +6,7 @@
 #    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/08/06 14:18:11 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/08/12 16:53:41 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ norm:
 
 clean:
 	@$(RM) $(OBJS)
-	@printf "$(GREEN) OBJS removed.\n$(NONE)"
+	@printf "$(GREEN) object files removed.\n$(NONE)"
 
 fclean:	clean
 	@$(RM) $(NAME)
