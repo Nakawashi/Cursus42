@@ -75,12 +75,34 @@ Le thread libère le moniteur dès qu'il a terminé l'exécution du code synchro
 Un mutex est comme un verrou possédant deux états : déverrouillé (disponible) et verrouillé (occupé).</br>
 Il est de type "pthread_mutex_t".
 Avant de pouvoir utiliser un mutex, il faudra l’initialiser.</br>
+
 Nous pouvons initialiser un mutex à l’aide d’une macro, il aura le comportement par défaut.</br>
 ```C
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 ```
 
+Nous pouvons initialiser aussi un mutex à l’aide de la fonction “pthread_mutex_init”
+```c
+int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *mutexattr);
+```
+Le premier argument correspond au mutex à initialiser. Le second argument représente les attributs à utiliser lors de l’initialisation. Nous pouvons utiliser la valeur NULL.</br>
+La fonction retourne toujours la valeur 0.</br>
 
+Pour détruire un mutex, nous utilisons la fonction “pthread_mutex_destroy”
+```c
+int pthread_mutex_destroy(pthread_mutex_t *mutex);
+```
+
+### Verrouillage, déverrouillage
+
+Un thread peut verrouiller le mutex s’il a besoin d’un accès exclusif aux données partagées.</br>
+Pour verrouiller un mutex, nous utilisons la fonction “pthread_mutex_lock”</br>
+
+```c
+int pthread_mutex_lock(pthread_mutex_t *mutex);
+```
+
+Dans ce cas de figure, la fonction retourne soit **un message d’erreur** si ça s’est mal passé, soit la valeur **0** pour indiquer que le mutex a été correctement verrouillé. Le thread en question est le seul à détenir un verrou sur le mutex. (Dôù la notion de propriétaire : celui qui verrouille est celui qui déverrouille).</br>
 
 
 ## Usage
