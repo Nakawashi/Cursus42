@@ -54,6 +54,31 @@ Concernant les logs de votre programme :
 - Une fourchette est placée entre chaque paire de philosophes. Cela signifique que, s'il y a plusieurs philosophes, chaque philosophe a une fourchette à sa gauche et une à sa droite. S'il n'y a qu'un seul philosophe, il n'y aura donc qu'une seule fourchette à sa table.
 - Afin d'empêcher les philosophes de dupliquer les fourchettes, vous devez protéger leur état en mémoire avec un **mutex** pour chacune d'entre elle.
 
+# Ma compréhension des thread, mutex et sémaphores
+
+## Thread
+Sous-ensemble d'un processus, partageant son **espace mémoire** et ses **variables"**. Cela rend plus rapide le lancement du processus. Un thread a sa propre pile, masque de signaux, priorité d'exécution, etc. </br>
+Ils peuvent être exécutés en parallèle par un système multitâche. </br>
+Le fait que la mémoire et les variables du processus soient partagés amènent le problème de "comment faire lorsque tout le monde veut utiliser la même ressource en même temps ?"
+
+## Synchronisation
+Exemple : un avion dont il ne reste qu'une seule place disponible et deux clients qui se présentent à deux différents guichets. Si la place est proposée au client 1 et que celui-ci prends son temps pour réfléchir, nous n'allons pas attribuer la place au client 2. De ce fait, nous synchronisons l'accès à la méthode de réservation de telle manière à ne pas attribuer la même place à deux clients, ni au client 2 avant que le premier client se soit décidé.
+
+### Moniteur (Sémaphore)
+le moniteur est utilisé pour synchroniser l'accès à une ressource partagée (peut être un bout de code donné).</br>
+Un thread accède à cette ressource par l'intermédiaire de ce moniteur.</br>
+Ce moniteur est attribué à un seul thread à la fois (comme pour une course de relais, un seul coureur tient le témoin dans sa main pour le passer au coureur suivant dès qu'il a terminé son tronçon).</br>
+Pendant que le thread exécute la ressource partagée, aucun autre thread ne peut y accéder.</br>
+Le thread libère le moniteur dès qu'il a terminé l'exécution du code synchronisé. De cette façon il est assuré que chaque accès aux données partagées soit bien "mutuellement exclusif". Pour cela c'est le **mutex** (pour mutual exclusion) qui sera utile.
+
+### Mutex
+Un mutex est comme un verrou possédant deux états : déverrouillé (disponible) et verrouillé (occupé).</br>
+Il est de type "pthread_mutex_t".
+
+
+
+
+
 ## Usage
 
 1. Clone the repository

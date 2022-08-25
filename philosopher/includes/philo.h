@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/08/12 17:05:12 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/08/22 15:21:50 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <sys/time.h>
+# include <pthread.h>
 
-typedef pthread_mutex_t t_mutex
+pthread_mutex_t mutex;
 
 typedef struct s_args
 {
@@ -28,11 +29,11 @@ typedef struct s_args
 	int	number_of_times_each_philosopher_must_eat;
 }	t_args;
 
-typedef struct s_philo
+typedef struct s_philosophers
 {
 	int	id;
 
-}	t_philo
+}	t_philo;
 
 // mini_libft : because libft is not allowed
 
