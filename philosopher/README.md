@@ -74,7 +74,11 @@ Le thread libère le moniteur dès qu'il a terminé l'exécution du code synchro
 ### Mutex
 Un mutex est comme un verrou possédant deux états : déverrouillé (disponible) et verrouillé (occupé).</br>
 Il est de type "pthread_mutex_t".
-
+Avant de pouvoir utiliser un mutex, il faudra l’initialiser.</br>
+Nous pouvons initialiser un mutex à l’aide d’une macro, il aura le comportement par défaut.</br>
+```C
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+```
 
 
 
