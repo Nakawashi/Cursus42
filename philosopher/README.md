@@ -104,6 +104,9 @@ int pthread_mutex_lock(pthread_mutex_t *mutex);
 
 Dans ce cas de figure, la fonction retourne soit **un message d’erreur** si ça s’est mal passé, soit la valeur **0** pour indiquer que le mutex a été correctement verrouillé. Le thread en question est le seul à détenir un verrou sur le mutex. (Dôù la notion de propriétaire : celui qui verrouille est celui qui déverrouille).</br>
 
+Documentation : 
+Documentation : (http://www.iro.umontreal.ca/~dift1169/cours/ift1169/communs/Cours/2P/1_03/C12Posix-1169.pdf).
+
 
 ## Usage
 
