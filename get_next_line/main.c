@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 17:03:39 by lgenevey          #+#    #+#             */
-/*   Updated: 2021/12/23 14:52:45 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/02/21 18:49:31 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 #include "get_next_line.h"
 #include <stdio.h>
-/*
+
 int	main(void)
 {
 	int	fd;
 	int	i;
 
 	//fd = open("gnlTester/files/41_with_nl", O_RDONLY);
-	//fd = open("test.txt", O_RDONLY);
+	fd = open("test.txt", O_RDONLY);
 
 	// on veut au moins un fichier
 	if (fd > 0)
@@ -37,10 +37,10 @@ int	main(void)
 		return (-1);
 	close(fd);
 	return (0);
-}*/
+}
 
 
-
+/*
 int	main(void)
 {
 	int	fd;
@@ -62,3 +62,4 @@ int	main(void)
 	close(fd);
 	return (0);
 }
+*/

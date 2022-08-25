@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 15:58:56 by lgenevey          #+#    #+#             */
-/*   Updated: 2022/03/04 18:27:53 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/03/18 17:16:28 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <signal.h>
 # include "../ft_printf/ft_printf.h"
 
+void	send_signals(pid_t pid, char *s);
+void	sigusr1_handler(int signal, siginfo_t *siginfo, void *unused);
 int		ft_atoi(const char *str);
-void	send_bits(pid_t pid, char *s);
+void	ft_sig_handler(int signal, siginfo_t *siginfo, void *unused);
 
 #endif
