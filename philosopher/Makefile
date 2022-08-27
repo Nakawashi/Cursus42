@@ -6,7 +6,7 @@
 #    By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/22 15:51:17 by lgenevey          #+#    #+#              #
-#    Updated: 2022/08/12 16:53:41 by nakawashi        ###   ########.fr        #
+#    Updated: 2022/08/27 18:17:29 by nakawashi        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,9 @@ NAME	=	philo
 
 SRCS	=	sources/main.c \
 			sources/mini_libft.c \
+			sources/utils.c \
+			sources/handle_time.c \
+			sources/init.c \
 
 OBJS	=	$(SRCS:.c=.o)
 CC		=	gcc
