@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:31:39 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/08/27 21:08:36 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/08/29 11:47:47 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 // prints time, sleeps 200ms, repeat
 int	main(int argc, char **argv)
 {
-	t_args args;
+	//t_args args;
 
-	if (are_args_valid(argc, argv))
-	{
-		init_args(argc, argv, &args);
-	}
+	if (argc < 5 || argc > 6)
+		return (error(NB_ARGUMENTS));
+	if (!are_args_valid(argc, argv))
+		return (error(INVALID_VALUE));
+
+
 
 /* 	printf("argv 1 : %d\n", ft_atoi(argv[1]));
 	printf("number of philosophers : %d\n", args.number_of_philosophers);

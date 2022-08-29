@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_libft.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 14:05:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/08/27 14:42:23 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/08/29 11:18:57 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,19 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	ft_putstr(char *str)
+void	ft_putstr_fd(char *s, int fd)
 {
-	write(1, str, ft_strlen(str));
+	int	i;
+
+	if (s)
+	{
+		i = 0;
+		while (s[i])
+		{
+			write(fd, &s[i], 1);
+			i++;
+		}
+	}
 }
 
 void	ft_putnbr(int n)

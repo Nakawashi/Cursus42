@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:57:20 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/08/27 21:05:10 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/08/29 12:01:40 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
+
+int	error(int type_of_error)
+{
+	if (type_of_error == NB_ARGUMENTS)
+	{
+		printf("Error : must get 5 or 6 arguments\n");
+		printf(" nb of philos\n time to die\n time to eat\n time to sleep\n");
+		printf(" [number_of_times_each_philosopher_must_eat]");
+	}
+	else if (type_of_error == INVALID_VALUE)
+		printf("Error : values must be an integer and not equal to 0");
+	return (1);
+}
 
 static int	is_digit(int n)
 {
@@ -37,20 +50,14 @@ int	are_args_valid(int argc, char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if (!is_digit(argv[i][j]) || ft_atoi(argv[i]) == 0)
+			if (!is_digit(argv[i][j]) || ft_atoi(argv[i]) <= 0)
 			{
-				printf("Unvalid arguments !\n");
+				printf("argument : %d\n", ft_atoi(argv[i]));
 				return (0);
 			}
 			++j;
 		}
 		++i;
 	}
-	if (argc > 6)
-		printf("Too many arguments !\n");
-	else if (argc < 5)
-		printf("Too few arguments !\n");
-	else
-		return (1);
-	return (0);
+	return (1);
 }
