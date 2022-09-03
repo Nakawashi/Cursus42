@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:57:20 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/08/29 12:01:40 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/09/03 09:34:59 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,7 @@ int	are_args_valid(int argc, char **argv)
 		while (argv[i][j])
 		{
 			if (!is_digit(argv[i][j]) || ft_atoi(argv[i]) <= 0)
-			{
-				printf("argument : %d\n", ft_atoi(argv[i]));
 				return (0);
-			}
 			++j;
 		}
 		++i;

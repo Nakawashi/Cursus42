@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:31:39 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/08/29 11:47:47 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/09/03 13:15:53 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 // prints time, sleeps 200ms, repeat
 int	main(int argc, char **argv)
 {
-	//t_args args;
+	t_args args;
 
 	if (argc < 5 || argc > 6)
 		return (error(NB_ARGUMENTS));
 	if (!are_args_valid(argc, argv))
 		return (error(INVALID_VALUE));
+	init_args(argc, argv, &args);
+	printf("nb philo : %d\n", args.number_of_philosophers);
+	printf("die : %d\n", args.time_to_die);
+	printf("eat : %d\n", args.time_to_eat);
+	printf("sleep : %d\n", args.time_to_sleep);
 
 
 
@@ -39,16 +44,17 @@ int	main(int argc, char **argv)
 	printf("argc : %d\n", argc);
 	printf("nb of time each philos must eat : %d\n", args.number_of_times_each_philosopher_must_eat);
  */
-/*
-	long	start_time;
 
-	start_time = get_time();
-	while (1)
+	unsigned int	prog_start;
+
+	prog_start = get_time();
+	printf("start time value : %u", prog_start);
+	/* while (1)
 	{
-		printf("%ld\n", get_time() - start_time);
+		printf("%ld\n", get_time() - prog_start);
 		usleep(200 * 1000);
-	}
+	} */
 
-*/
+
 	return (0);
 }
