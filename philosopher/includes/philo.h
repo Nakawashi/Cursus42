@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/03 09:38:09 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/09/04 11:58:40 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,27 @@ typedef struct s_args
 	int	number_of_times_each_philosopher_must_eat;
 }	t_args;
 
-typedef struct s_philosophers
+typedef struct s_philo
 {
 	int	id;
+	int	fork_in_hands;
 
 }	t_philo;
+
+typedef struct s_fork
+{
+	int	id;
+	int	state;
+}	t_fork;
+
+typedef struct s_global
+{
+	t_args			*args;
+	t_philo			*philos;
+	t_fork			*forks;
+	pthread_mutex_t	mutex1;
+	pthread_mutex_t	mutex2;
+}	t_global;
 
 // mini_libft.c : because entire libft is not allowed
 
