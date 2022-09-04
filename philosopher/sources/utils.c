@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:57:20 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/03 09:34:59 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/09/04 11:57:55 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,21 @@ int	error(int type_of_error)
 	{
 		printf("Error : must get 5 or 6 arguments\n");
 		printf(" nb of philos\n time to die\n time to eat\n time to sleep\n");
-		printf(" [number_of_times_each_philosopher_must_eat]");
+		printf(" [number_of_times_each_philosopher_must_eat]\n");
 	}
 	else if (type_of_error == INVALID_VALUE)
-		printf("Error : values must be an integer and not equal to 0");
+		printf("Error : values must be an integer and not equal to 0\n");
 	return (1);
+}
+
+/*
+	returns 1 if n is even
+*/
+int	is_even(int n)
+{
+	if (n % 2 == 0)
+		return (1);
+	return (0);
 }
 
 static int	is_digit(int n)
