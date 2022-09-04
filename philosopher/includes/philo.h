@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/04 17:02:13 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/04 18:03:10 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,27 @@
 
 # include <stdio.h>
 # include <unistd.h>
+# include <stdlib.h>
 # include <sys/time.h>
 # include <pthread.h>
 
 enum e_errors
 {
 	NB_ARGUMENTS = 0,
-	INVALID_VALUE = 1,
+	INVALID_VALUE = 1
 };
 
-pthread_mutex_t mutex;
+enum e_philo_state
+{
+	THINKING = 0,
+	EATING = 1,
+	SLEEPING = 2,
+	DEAD = 3,
+};
 
 typedef struct s_args
 {
-	int	number_of_philosophers;
+	int	nb_of_philos;
 	int	time_to_die;
 	int	time_to_eat;
 	int	time_to_sleep;
@@ -37,8 +44,9 @@ typedef struct s_args
 
 typedef struct s_philo
 {
-	int				id;
+	unsigned		id;
 	int				fork_in_hands;
+	unsigned int	state;
 	unsigned int	meal_eaten;
 
 }	t_philo;
@@ -77,6 +85,6 @@ int		is_even(int n);
 int		are_args_valid(int argc, char **argv);
 
 // handle_time.c
-void	get_time_in_ms(t_global *global);
+void	get_time_in_ms(struct timeval *tp, t_global *global);
 
 #endif

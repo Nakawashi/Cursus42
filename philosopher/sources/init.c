@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:27:23 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/04 16:59:10 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/04 17:29:36 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 */
 void	init_args(int argc, char **argv, t_args *args)
 {
-	args->number_of_philosophers = ft_atoi(argv[1]);
+	args->nb_of_philos = ft_atoi(argv[1]);
 	args->time_to_die = ft_atoi(argv[2]);
 	args->time_to_eat = ft_atoi(argv[3]);
 	args->time_to_sleep = ft_atoi(argv[4]);
