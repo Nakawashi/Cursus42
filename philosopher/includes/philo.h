@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/04 11:58:40 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/04 17:02:13 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ typedef struct s_args
 
 typedef struct s_philo
 {
-	int	id;
-	int	fork_in_hands;
+	int				id;
+	int				fork_in_hands;
+	unsigned int	meal_eaten;
 
 }	t_philo;
 
@@ -53,6 +54,8 @@ typedef struct s_global
 	t_args			*args;
 	t_philo			*philos;
 	t_fork			*forks;
+	unsigned int	prog_start;
+	unsigned int	timestamp_in_ms;
 	pthread_mutex_t	mutex1;
 	pthread_mutex_t	mutex2;
 }	t_global;
@@ -70,9 +73,10 @@ void	init_args(int argc, char **argv, t_args *args);
 
 // utils.c : necessary and general functions for all the project
 int		error(int type_of_error);
+int		is_even(int n);
 int		are_args_valid(int argc, char **argv);
 
 // handle_time.c
-long	get_time(void);
+void	get_time_in_ms(t_global *global);
 
 #endif

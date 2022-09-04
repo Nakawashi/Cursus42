@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:56:50 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/08/12 17:04:50 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/04 16:58:50 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 /*
 	Returns the timestamp in milliseconds
 */
-long	get_time(void)
+void	get_time_in_ms(t_global *global)
 {
 	struct timeval tp;
-	static long	milliseconds;
 
 	gettimeofday(&tp, NULL);
-	milliseconds = tp.tv_sec * 1000;
-	milliseconds += tp.tv_usec / 1000;
-	return (milliseconds);
+	global->prog_start = tp.tv_sec * 1000 + tp.tv_usec / 1000;
+	//gettimeofday(&tp, NULL);
+	global->timestamp_in_ms = (tp.tv_sec * 1000 + tp.tv_usec / 1000) - global->prog_start;
 }

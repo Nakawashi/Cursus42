@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:27:23 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/08/27 18:37:19 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/04 16:59:10 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,3 +25,6 @@ void	init_args(int argc, char **argv, t_args *args)
 	if (argc == 6)
 		args->number_of_times_each_philosopher_must_eat = ft_atoi(argv[5]);
 }
+
+
+
