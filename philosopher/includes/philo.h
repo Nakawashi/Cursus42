@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/04 18:03:10 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/04 18:25:59 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,13 @@ void	ft_putnbr(int n);
 
 // init.c : init structures' variables
 void	init_args(int argc, char **argv, t_args *args);
+t_philo	*create_philos(t_args *args, t_global *global);
+t_fork	*create_forks(t_args *args);
 
-// utils.c : necessary and general functions for all the project
+// utils.c : fonctions utiles propre à ce projet
 int		error(int type_of_error);
 int		is_even(int n);
 int		are_args_valid(int argc, char **argv);
-
-// handle_time.c
 void	get_time_in_ms(struct timeval *tp, t_global *global);
 
 #endif
