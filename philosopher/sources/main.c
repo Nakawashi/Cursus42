@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:31:39 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/04 18:23:41 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/05 22:38:25 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	forks = create_forks(&args);
 	global.philos = philos;
 	global.forks = forks;
-	if (args.nb_of_philos == 1)
+/* 	if (args.nb_of_philos == 1)
 		return (one_philo_routine(&global));
-	return (philos_routine(&global));
+	return (philos_routine(&global)); */
 }

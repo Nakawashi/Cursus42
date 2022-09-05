@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:27:23 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/05 11:51:29 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/05 22:38:58 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_fork	*create_forks(t_args *args)
 {
 	t_fork		*forks;
 	int			i;
-	pthread_t	thread_id;
+	//pthread_t	thread_id;
 
 	forks = malloc(args->nb_of_philos * sizeof(t_fork));
 	if (!forks)
@@ -67,7 +67,7 @@ t_fork	*create_forks(t_args *args)
 	i = 1;
 	while (i <= args->nb_of_philos)
 	{
-		pthread_create(&thread_id, NULL, )
+		//pthread_create(&thread_id, NULL, )
 		forks[i].id = i;
 		forks[i].state = 0;
 	}
