@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/06 19:00:18 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/09/06 19:07:32 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ typedef struct s_philo
 	unsigned int	last_meal;
 	pthread_mutex_t	fork_left;
 	pthread_mutex_t	fork_right;
-	t_rules			*rules;
 }	t_philo;
 
 // mini_libft.c : because entire libft is not allowed
