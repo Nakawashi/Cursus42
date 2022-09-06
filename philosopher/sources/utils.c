@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:57:20 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/04 18:24:37 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/06 18:53:02 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	are_args_valid(int argc, char **argv)
 /*
 	Retourne la différence de temps entre "maintenant" et prog_start
 */
-void	get_time_in_ms(struct timeval *tp, t_global *global)
+void	get_time_in_ms(struct timeval *tp, t_rules *global)
 {
 	gettimeofday(tp, NULL);
 	global->timestamp_in_ms = (tp->tv_sec * 1000 + tp->tv_usec / 1000) - global->prog_start;

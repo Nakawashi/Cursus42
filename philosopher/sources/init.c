@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:27:23 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/05 22:38:58 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/06 18:56:02 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	init_args(int argc, char **argv, t_args *args)
 	creates n arrays of t_philo structures (n = nb of philos)
 	returns the pointer to those structures
 */
-t_philo	*create_philos(t_args *args, t_global *global)
+t_philo	*create_philos(t_args *args, t_rules *global)
 {
 	t_philo *philos;
 	int		i;
@@ -49,28 +49,5 @@ t_philo	*create_philos(t_args *args, t_global *global)
 		++i;
 	}
 	return (philos);
-}
-
-/*
-	creates n array of t_forks structures
-	returns the pointer to those structures
-*/
-t_fork	*create_forks(t_args *args)
-{
-	t_fork		*forks;
-	int			i;
-	//pthread_t	thread_id;
-
-	forks = malloc(args->nb_of_philos * sizeof(t_fork));
-	if (!forks)
-		return (NULL);
-	i = 1;
-	while (i <= args->nb_of_philos)
-	{
-		//pthread_create(&thread_id, NULL, )
-		forks[i].id = i;
-		forks[i].state = 0;
-	}
-	return (forks);
 }
 
