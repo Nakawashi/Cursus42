@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:27:23 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/11 14:15:43 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/11 16:04:45 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,28 @@ void	init_args(int argc, char **argv, t_args *args)
 
 /*
 	creates n arrays of t_philo structures (n = nb of philos)
+	creates one thread per philosophe (pthread_create()
 	returns the pointer to those structures
 */
-t_philo	*create_philos(t_args *args, t_rules *global)
+t_philo	*create_philos(t_args *args, t_rules *rules)
 {
-	t_philo *philos;
+
 	int		i;
 
-	philos = malloc(args->nb_of_philos * sizeof(t_philo));
-	if (!philos)
+	rules->philos_array = malloc(args->nb_of_philos * sizeof(t_philo));
+	if (!rules->philos_array)
 		return (NULL);
 	i = 1;
 	while (i <= args->nb_of_philos)
 	{
-		philos[i].id = i;
-		philos[i].fork_in_hands = 0;
-		philos[i].meal_eaten = 0;
-		philos[i].state = THINKING;
-		pthread_create(&global->philos->thread, NULL, &routine, NULL); // va créer un thread par philosophe
-		printf("%u %u is thinking\n", global->timestamp_in_ms, philos[i].id);
+		rules->philos_array[i].id = i;
+		rules->philos_array[i].fork_in_hands = 0;
+		rules->philos_array[i].meal_eaten = 0;
+		rules->philos_array[i].state = THINKING;
+		pthread_create(&rules->philos_array->thread, NULL, routine, &rules->philos_array[i]);
+		printf("%u %u is thinking\n", rules->timestamp_in_ms, rules->philos_array[i].id);
 		++i;
 	}
-	return (philos);
+	return (rules->philos_array);
 }
 
