@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:31:39 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/11 14:16:25 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/11 14:37:49 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	main(int argc, char **argv)
 {
 	t_args 			args;
 	t_rules			rules;
-	t_philo			*philos;
 	struct timeval	tp;
 
 	if (argc < 5 || argc > 6)
@@ -25,16 +24,13 @@ int	main(int argc, char **argv)
 		return (error(INVALID_VALUE));
 	init_args(argc, argv, &args);
 	gettimeofday(&tp, NULL);
-	global.prog_start = tp.tv_sec * 1000 + tp.tv_usec / 1000;
-	get_time_in_ms(&tp, &global);
-	philos = create_philos(&args, &global);
-	forks = create_forks(&args);
-	global.philos = philos;
-	global.forks = forks;
+	rules.prog_start = tp.tv_sec * 1000 + tp.tv_usec / 1000;
+	get_time_in_ms(&tp, &rules);
+	rules.philos_array = create_philos(&args, &rules);
 	int i = 0;
 	while (i < args.nb_of_philos)
 	{
-		printf("philosophe : %d\n", global.philos->id);
+		printf("afficher tableau de struct philos : %d\n", rules.philos_array->id);
 		++i;
 	}
 /* 	if (args.nb_of_philos == 1)
