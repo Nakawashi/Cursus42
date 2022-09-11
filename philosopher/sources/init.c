@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:27:23 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/11 16:04:45 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/11 17:34:32 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ void	init_args(int argc, char **argv, t_args *args)
 */
 t_philo	*create_philos(t_args *args, t_rules *rules)
 {
-
-	int		i;
+	int	i;
 
 	rules->philos_array = malloc(args->nb_of_philos * sizeof(t_philo));
 	if (!rules->philos_array)
@@ -43,10 +42,9 @@ t_philo	*create_philos(t_args *args, t_rules *rules)
 	while (i <= args->nb_of_philos)
 	{
 		rules->philos_array[i].id = i;
-		rules->philos_array[i].fork_in_hands = 0;
 		rules->philos_array[i].meal_eaten = 0;
-		rules->philos_array[i].state = THINKING;
-		pthread_create(&rules->philos_array->thread, NULL, routine, &rules->philos_array[i]);
+		if (pthread_create(&rules->philos_array->thread, NULL, routine, &rules->philos_array[i]) != 0)
+			return (ERR_THREAD_CREATION);
 		printf("%u %u is thinking\n", rules->timestamp_in_ms, rules->philos_array[i].id);
 		++i;
 	}

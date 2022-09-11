@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:57:20 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/11 14:32:16 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/11 17:36:03 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,19 @@
 
 int	error(int type_of_error)
 {
-	if (type_of_error == NB_ARGUMENTS)
+	if (type_of_error == ERR_NB_ARGUMENTS)
 	{
 		printf("Error : must get 5 or 6 arguments\n");
 		printf(" nb of philos\n time to die\n time to eat\n time to sleep\n");
 		printf(" [number_of_times_each_philosopher_must_eat]\n");
 	}
-	else if (type_of_error == INVALID_VALUE)
+	else if (type_of_error == ERR_INVALID_VALUE)
 		printf("Error : values must be an integer and not equal to 0\n");
+	else if (type_of_error == ERR_THREAD_CREATION)
+	{
+		// free ce qui a ete malloc
+		// message d'erreur et quitter
+	}
 	return (1);
 }
 
@@ -72,8 +77,10 @@ int	are_args_valid(int argc, char **argv)
 /*
 	Retourne la différence de temps entre "maintenant" et prog_start
 */
-void	get_time_in_ms(struct timeval *tp, t_rules *rules)
+long long	get_time_in_ms(void)
 {
-	gettimeofday(tp, NULL);
-	rules->timestamp_in_ms = (tp->tv_sec * 1000 + tp->tv_usec / 1000) - rules->prog_start;
+	struct timeval	tp;
+
+	gettimeofday(&tp, NULL);
+	return (tp.tv_sec * 1000 +tp.tv_usec / 1000);
 }
