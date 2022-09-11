@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/11 14:13:57 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/11 14:17:18 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <sys/time.h>
 # include <pthread.h>
 
+typedef pthread_mutex_t	t_mutex;
+typedef pthread_t		t_pthread;
+
 enum e_errors
 {
 	NB_ARGUMENTS = 0,
@@ -27,10 +30,10 @@ enum e_errors
 
 enum e_philo_state
 {
-	THINKING = 0,
-	EATING = 1,
-	SLEEPING = 2,
-	DEAD = 3,
+	THINKING = 1,
+	EATING,
+	SLEEPING,
+	DEAD
 };
 
 typedef struct s_args
@@ -41,6 +44,16 @@ typedef struct s_args
 	int	time_to_sleep;
 	int	number_of_times_each_philosopher_must_eat;
 }	t_args;
+
+typedef struct s_rules
+{
+	t_args			*args;
+	t_philo			*philos;
+	t_mutex			*fork;
+	t_mutex			writing;
+	unsigned int	prog_start;
+	unsigned int	timestamp_in_ms;
+}	t_rules;
 
 typedef struct s_philo
 {
@@ -78,8 +91,7 @@ void	ft_putnbr(int n);
 
 // init.c : init structures' variables
 void	init_args(int argc, char **argv, t_args *args);
-t_philo	*create_philos(t_args *args, t_global *global);
-t_fork	*create_forks(t_args *args);
+t_philo	*create_philos(t_args *args, t_rules *global);
 
 // utils.c : fonctions utiles propre à ce projet
 int		error(int type_of_error);
