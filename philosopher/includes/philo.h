@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/04 18:25:59 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/11 14:13:57 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_philo
 	int				fork_in_hands;
 	unsigned int	state;
 	unsigned int	meal_eaten;
-
+	pthread_t		thread;
 }	t_philo;
 
 typedef struct s_fork
@@ -64,8 +64,8 @@ typedef struct s_global
 	t_fork			*forks;
 	unsigned int	prog_start;
 	unsigned int	timestamp_in_ms;
-	pthread_mutex_t	mutex1;
-	pthread_mutex_t	mutex2;
+	pthread_mutex_t	fork;
+	pthread_mutex_t	printed_text;
 }	t_global;
 
 // mini_libft.c : because entire libft is not allowed
@@ -86,5 +86,6 @@ int		error(int type_of_error);
 int		is_even(int n);
 int		are_args_valid(int argc, char **argv);
 void	get_time_in_ms(struct timeval *tp, t_global *global);
+void	routine(void);
 
 #endif
