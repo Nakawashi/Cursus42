@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:27:23 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/05 22:38:58 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/11 14:02:43 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_philo	*create_philos(t_args *args, t_global *global)
 		philos[i].fork_in_hands = 0;
 		philos[i].meal_eaten = 0;
 		philos[i].state = THINKING;
+		pthread_create(&global->philos->thread, NULL, &routine, NULL); // va créer un thread par philosophe
 		printf("%u %u is thinking\n", global->timestamp_in_ms, philos[i].id);
 		++i;
 	}
