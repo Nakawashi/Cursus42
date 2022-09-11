@@ -6,20 +6,23 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:30:59 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/11 14:15:52 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/11 16:06:58 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void	routine(void)
+void	*routine(void *philo)
 {
-	int mails = 0;
+	t_philo *p;
+
+	p = (t_philo *) philo;
 	int i = 0;
-	while (i < 10000)
+	while (i < 100)
 	{
-		++mails;
+		p->fork_in_hands++;
 		++i;
 	}
-	printf("mails : %d\n", mails);
+	// doit pas aller à plus que deux
+	printf("afficher nombre de fourchettes en main (pas plus que 2) : %d\n", p->fork_in_hands++);
 }
