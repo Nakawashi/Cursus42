@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/13 01:20:27 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/13 01:27:15 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,6 @@ typedef struct s_philo
 
 // mini_libft.c : because entire libft is not allowed
 int		ft_atoi(const char *str);
-int		ft_strlen(char *str);
-void	ft_putchar(char c);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putnbr(int n);
 
 // init.c : init structures' variables
 void	init_args(int argc, char **argv, t_args *args);
