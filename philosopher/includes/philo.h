@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/11 17:33:53 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/13 00:00:06 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@
 # include <sys/time.h>
 # include <pthread.h>
 
-typedef pthread_mutex_t	t_mutex;
-typedef pthread_t		t_pthread;
+typedef struct s_philo	t_philo;
 
 enum e_errors
 {
 	ERR_NB_ARGUMENTS = 1,
 	ERR_INVALID_VALUE,
 	ERR_THREAD_CREATION,
+	ERR_MUTEX_INIT,
+	ERR_MALLOC,
 };
 
 enum e_philo_state
@@ -43,30 +44,29 @@ typedef struct s_args
 	int	time_to_die;
 	int	time_to_eat;
 	int	time_to_sleep;
-	int	number_of_times_each_philosopher_must_eat;
+	int	number_of_times_each_philosopher_must_eat; // nb eat
 }	t_args;
+
+typedef struct s_rules
+{
+	int				all_alive;
+	int				all_eat;
+	long long		timestamp_in_ms; // t0
+	t_philo			*philos_array;
+	pthread_mutex_t	*fork_array;
+	pthread_mutex_t	msg_log;
+}	t_rules;
 
 typedef struct s_philo
 {
 	unsigned int	id;
-	unsigned int	meal_eaten;
+	unsigned int	eat_count;
 	long long		last_meal;
 	pthread_t		thread;
-	pthread_mutex_t	left_fork;
-	pthread_mutex_t	right_fork;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	t_rules			*rules;
 }	t_philo;
-
-typedef struct s_rules
-{
-	long long		die_time;
-	long long		eat_time;
-	long long		sleep_time;
-	long long		timestamp_in_ms;
-	t_args			*args;
-	t_philo			*philos_array;
-	pthread_mutex_t	*fork;
-	pthread_mutex_t	printed_text;
-}	t_rules;
 
 // mini_libft.c : because entire libft is not allowed
 int		ft_atoi(const char *str);
@@ -77,7 +77,8 @@ void	ft_putnbr(int n);
 
 // init.c : init structures' variables
 void	init_args(int argc, char **argv, t_args *args);
-t_philo	*create_philos(t_args *args, t_rules *rules);
+int		init_rules(t_rules *rules, t_args *args);
+
 
 // utils.c : fonctions utiles propre à ce projet
 int			error(int type_of_error);
