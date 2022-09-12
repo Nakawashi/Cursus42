@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:27:23 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/13 00:00:10 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/13 01:14:06 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	init_args(int argc, char **argv, t_args *args)
 	args->time_to_die = ft_atoi(argv[2]);
 	args->time_to_eat = ft_atoi(argv[3]);
 	args->time_to_sleep = ft_atoi(argv[4]);
-	args->number_of_times_each_philosopher_must_eat = -1;
+	args->nb_of_times_each_philo_must_eat = -1;
 	if (argc == 6)
-		args->number_of_times_each_philosopher_must_eat = ft_atoi(argv[5]);
+		args->nb_of_times_each_philo_must_eat = ft_atoi(argv[5]);
 }
 
 /*
@@ -39,7 +39,6 @@ static int	init_philos(t_args *args, t_rules *rules)
 	while (i <= args->nb_of_philos)
 	{
 		rules->philos_array[i].id = i;
-		printf("rules.philos_array[0].id :	%u\n", rules->philos_array[i].id);
 		rules->philos_array[i].eat_count = 0;
 		rules->philos_array[i].last_meal = get_time_in_ms();
 		rules->philos_array[i].left_fork = &rules->fork_array[i];
