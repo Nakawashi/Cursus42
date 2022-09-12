@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:57:20 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/11 17:36:03 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/12 23:46:00 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,17 @@ int	error(int type_of_error)
 	if (type_of_error == ERR_NB_ARGUMENTS)
 	{
 		printf("Error : must get 5 or 6 arguments\n");
-		printf(" nb of philos\n time to die\n time to eat\n time to sleep\n");
-		printf(" [number_of_times_each_philosopher_must_eat]\n");
+		printf(" [1] nb of philos\n [2] time to die\n [3] time to eat\n"
+		" [4] time to sleep\n [5] [number_of_times_each_philosopher_must_eat]\n");
 	}
 	else if (type_of_error == ERR_INVALID_VALUE)
 		printf("Error : values must be an integer and not equal to 0\n");
 	else if (type_of_error == ERR_THREAD_CREATION)
-	{
-		// free ce qui a ete malloc
-		// message d'erreur et quitter
-	}
+		printf("Error while creating a thread\n");
+	else if (type_of_error == ERR_MUTEX_INIT)
+		printf("Error while initializing a mutex\n");
+	else if (type_of_error == ERR_MALLOC)
+		printf("Error while allocating memory for array of philos or forks\n");
 	return (1);
 }
 
@@ -66,12 +67,12 @@ int	are_args_valid(int argc, char **argv)
 		while (argv[i][j])
 		{
 			if (!is_digit(argv[i][j]) || ft_atoi(argv[i]) <= 0)
-				return (0);
+				return (1);
 			++j;
 		}
 		++i;
 	}
-	return (1);
+	return (0);
 }
 
 /*
