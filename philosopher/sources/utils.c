@@ -6,13 +6,21 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:57:20 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/13 01:14:06 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/16 13:23:14 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	error(int type_of_error)
+static void	free_ppointers(t_rules *rules)
+{
+	if (rules->philos_array)
+		free(rules->philos_array);
+	if (rules->fork_array)
+		free(rules->fork_array);
+}
+
+int	error(t_rules *rules, int type_of_error)
 {
 	if (type_of_error == ERR_NB_ARGUMENTS)
 	{
@@ -32,17 +40,8 @@ int	error(int type_of_error)
 		printf("Error while joining thread\n");
 	else if (type_of_error == ERR_MUTEX_DESTROY)
 		printf("Error while destoy mutex\n");
+	free_ppointers(rules);
 	return (1);
-}
-
-/*
-	returns 1 if n is even
-*/
-int	is_even(int n)
-{
-	if (n % 2 == 0)
-		return (1);
-	return (0);
 }
 
 static int	is_digit(int n)

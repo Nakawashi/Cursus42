@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/13 01:27:15 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/16 13:22:59 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,15 @@ typedef struct s_philo
 }	t_philo;
 
 // mini_libft.c : because entire libft is not allowed
-int		ft_atoi(const char *str);
+int	ft_atoi(const char *str);
+int	is_even(int n);
 
 // init.c : init structures' variables
 void	init_args(int argc, char **argv, t_args *args);
 int		init_rules(t_rules *rules, t_args *args);
 
 // utils.c : fonctions utiles propre à ce projet
-int			error(int type_of_error);
-int			is_even(int n);
+int			error(t_rules *rules, int type_of_error);
 int			are_args_valid(int argc, char **argv);
 long long	get_time_in_ms(void);
 

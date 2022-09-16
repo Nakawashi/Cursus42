@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:30:59 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/13 00:45:40 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/16 13:24:47 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,17 +59,17 @@ int	start_simulation(t_rules *rules, t_args *args)
 	i = -1;
 	while (++i < args->nb_of_philos)
 		if (pthread_create(&p_cpy[i].thread, NULL, &routine, &p_cpy[i]) != 0)
-			return (error(ERR_THREAD_CREATION));
+			return (error(rules, ERR_THREAD_CREATION));
 		death_comming(rules, args);
 	i = -1;
 	while (++i < args->nb_of_philos)
 		if (pthread_join(p_cpy[i].thread, NULL) != 0)
-			return (error(ERR_JOIN_THREAD));
+			return (error(rules, ERR_JOIN_THREAD));
 	i = -1;
 	while (++i < args->nb_of_philos)
 		if (pthread_mutex_destroy(&rules->fork_array[i]) != 0)
-			return (error(ERR_MUTEX_DESTROY));
+			return (error(rules, ERR_MUTEX_DESTROY));
 	if (pthread_mutex_destroy(&rules->msg_log) != 0)
-		return (error(ERR_MUTEX_DESTROY));
+		return (error(rules, ERR_MUTEX_DESTROY));
 	return (0);
 }

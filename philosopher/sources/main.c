@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:31:39 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/13 01:14:06 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/16 13:24:08 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	main(int argc, char **argv)
 	t_rules			rules;
 
 	if (argc < 5 || argc > 6)
-		return (error(ERR_NB_ARGUMENTS));
+		return (error(&rules, ERR_NB_ARGUMENTS));
 	if (are_args_valid(argc, argv) != 0)
-		return (error(ERR_INVALID_VALUE));
+		return (error(&rules, ERR_INVALID_VALUE));
 	init_args(argc, argv, &args);
 	if (init_rules(&rules, &args) != 0)
 		exit(1); // on free le tableau de philos et le tableau de forks
