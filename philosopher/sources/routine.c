@@ -6,26 +6,26 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 00:44:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/13 01:21:06 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/16 22:02:37 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-static int	check_eat(t_philo *philo)
+static int	check_eat(t_rules *rules)
 {
 	int	i;
 
-	if (philo->args->nb_of_times_each_philo_must_eat == 0)
+	if (rules->args->nb_of_times_they_must_eat == 0)
 		return (0);
 	i = 0;
-	while (i < philo->args->nb_of_philos)
+	while (i < rules->args->nb_philos)
 	{
-		if (philo[i].eat_count < philo->args->nb_of_times_each_philo_must_eat)
+		if (rules->philos_array[i].eat_count < rules->args->nb_of_times_they_must_eat)
 			return (0);
 		++i;
 	}
-	philo->rules->all_eat = 1;
+	rules->all_eat = 1;
 	return (1);
 }
 
@@ -65,9 +65,10 @@ static void	philo_eats(t_philo *philo)
 		pthread_mutex_lock(philo->left_fork);
 		print_log(philo, "has taken a fork");
 		philo->last_meal = get_time_in_ms();
+		printf("Error\n");
 		print_log(philo, "is eating");
-		++philo->eat_count;
-		philo_sleapt(philo, philo->args->time_to_eat);
+		philo->eat_count += 1;
+		philo_sleapt(philo, philo->rules->args->time_to_eat);
 		pthread_mutex_unlock(philo->right_fork);
 	}
 	else
@@ -87,10 +88,10 @@ void	*routine(void *philo_array)
 	while (philo->rules->all_alive && philo->rules->all_eat == 0)
 	{
 		philo_eats(philo);
-		if (check_eat(philo))
+		if (check_eat(philo->rules))
 			break ;
 		print_log(philo, "is sleeping");
-		philo_sleapt(philo, philo->args->time_to_sleep);
+		philo_sleapt(philo, philo->rules->args->time_to_sleep);
 		print_log(philo, "is thinking");
 	}
 	return (NULL);

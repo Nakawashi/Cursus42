@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:30:59 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/16 13:24:47 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/16 21:46:06 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	death_comming(t_rules *rules, t_args *args)
 	while (rules->all_alive)
 	{
 		i = 0;
-		while (i < args->nb_of_philos)
+		while (i < args->nb_philos)
 		{
 			p_cpy = &rules->philos_array[i]; // pour chaque philosophe (on met une ligne dans la copie)
 			if (get_time_in_ms() - p_cpy->last_meal > args->time_to_die)
@@ -49,7 +49,7 @@ static void	death_comming(t_rules *rules, t_args *args)
 	destroy mutexes for fork array
 	destroy mutex about log message
 */
-int	start_simulation(t_rules *rules, t_args *args)
+int	start_simulation(t_rules *rules)
 {
 	int		i;
 	t_philo	*p_cpy;
@@ -57,19 +57,19 @@ int	start_simulation(t_rules *rules, t_args *args)
 	p_cpy = rules->philos_array;
 	rules->timestamp_in_ms = get_time_in_ms();
 	i = -1;
-	while (++i < args->nb_of_philos)
+	while (++i < rules->args->nb_philos)
 		if (pthread_create(&p_cpy[i].thread, NULL, &routine, &p_cpy[i]) != 0)
-			return (error(rules, ERR_THREAD_CREATION));
-		death_comming(rules, args);
+			return (error(ERR_THREAD_CREATION));
+		death_comming(rules, rules->args);
 	i = -1;
-	while (++i < args->nb_of_philos)
+	while (++i < rules->args->nb_philos)
 		if (pthread_join(p_cpy[i].thread, NULL) != 0)
-			return (error(rules, ERR_JOIN_THREAD));
+			return (error(ERR_JOIN_THREAD));
 	i = -1;
-	while (++i < args->nb_of_philos)
+	while (++i < rules->args->nb_philos)
 		if (pthread_mutex_destroy(&rules->fork_array[i]) != 0)
-			return (error(rules, ERR_MUTEX_DESTROY));
+			return (error(ERR_MUTEX_DESTROY));
 	if (pthread_mutex_destroy(&rules->msg_log) != 0)
-		return (error(rules, ERR_MUTEX_DESTROY));
+		return (error(ERR_MUTEX_DESTROY));
 	return (0);
 }

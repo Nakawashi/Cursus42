@@ -6,28 +6,35 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:57:20 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/16 13:23:14 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/16 22:02:37 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-static void	free_ppointers(t_rules *rules)
+/* static void	free_ppointers(t_rules *rules)
 {
 	if (rules->philos_array)
-		free(rules->philos_array);
-	if (rules->fork_array)
-		free(rules->fork_array);
-}
-
-int	error(t_rules *rules, int type_of_error)
-{
-	if (type_of_error == ERR_NB_ARGUMENTS)
 	{
-		printf("Error : must get 5 or 6 arguments\n");
-		printf(" [1] nb of philos\n [2] time to die\n [3] time to eat\n"
-		" [4] time to sleep\n [5] [nb_of_times_each_philo_must_eat]\n");
+		printf("Error !!!! philos\n");
+		printf("philo[0] %d\n", rules->philos_array[1].id);
+		free(rules->philos_array);
 	}
+	if (rules->fork_array)
+	{
+		printf("Error !!!! forks\n");
+		free(rules->fork_array);
+	}
+		printf("Error !!!! end\n");
+} */
+
+int	error(int type_of_error)
+{
+	if (type_of_error == 0)
+		return (0);
+	if (type_of_error == ERR_NB_ARGUMENTS)
+		printf(" [1] nb of philos\n [2] time to die\n [3] time to eat\n"
+		" [4] time to sleep\n [5] [nb_of_times_they_must_eat]\n");
 	else if (type_of_error == ERR_INVALID_VALUE)
 		printf("Error : values must be an integer and not equal to 0\n");
 	else if (type_of_error == ERR_THREAD_CREATION)
@@ -40,7 +47,6 @@ int	error(t_rules *rules, int type_of_error)
 		printf("Error while joining thread\n");
 	else if (type_of_error == ERR_MUTEX_DESTROY)
 		printf("Error while destoy mutex\n");
-	free_ppointers(rules);
 	return (1);
 }
 
@@ -53,12 +59,11 @@ static int	is_digit(int n)
 }
 
 /*
-	return 0 if arguments :
+	return 1 if arguments are not valide
 	- are not numbers
-	- are equal to 0
-	- are lower than 5 or greater than 6
+	- are equal or less than zero
 */
-int	are_args_valid(int argc, char **argv)
+int	check_args(int argc, char **argv)
 {
 	int	i;
 	int	j;
