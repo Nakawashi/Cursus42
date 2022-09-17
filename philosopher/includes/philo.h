@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/17 12:08:22 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/17 13:58:32 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ typedef struct s_rules
 
 typedef struct s_philo
 {
-	unsigned int	id;
+	int				id;
 	int				eat_count;
 	long long		last_meal;
 	pthread_t		thread;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	t_rules			*rules;		//question, pour pouvoir utiliser dans routine ?
+	t_rules			*rules;
 }	t_philo;
 
 // mini_libft.c : because entire libft is not allowed

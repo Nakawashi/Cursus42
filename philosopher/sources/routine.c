@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 00:44:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/17 12:22:42 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/17 15:00:38 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,9 @@ static void	print_log(t_philo *philo, char *s)
 
 static void	philo_eats(t_philo *philo)
 {
-	printf("Error memory\n");
-
 	pthread_mutex_lock(philo->left_fork);
 	print_log(philo, "has taken a fork left");
+	printf("valeur de fourchette gauche :	%d\n", philo->left_fork);
 	if (philo->right_fork != philo->left_fork)
 	{
 		pthread_mutex_lock(philo->left_fork);

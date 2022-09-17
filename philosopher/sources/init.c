@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:27:23 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/17 12:15:26 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/17 14:21:42 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,13 @@ void	init_args(int argc, char **argv, t_rules *rules)
 static int	init_philos(t_rules *rules)
 {
 	int	i;
+	int	id;
 
-	i = 1;
+	i = 0;
+	id = 1;
 	while (i <= rules->args.nb_philos)
 	{
-		rules->philos_array[i].id = i;
+		rules->philos_array[i].id = id;
 		rules->philos_array[i].eat_count = 0;
 		rules->philos_array[i].last_meal = get_time_in_ms();
 		rules->philos_array[i].left_fork = &rules->fork_array[i];
@@ -55,6 +57,7 @@ static int	init_philos(t_rules *rules)
 		if (pthread_mutex_init(&rules->fork_array[i], NULL))
 			return (error(ERR_MUTEX_INIT));
 		++i;
+		++id;
 	}
 	return (0);
 }
