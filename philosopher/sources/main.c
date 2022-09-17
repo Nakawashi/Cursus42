@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:31:39 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/17 14:22:03 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/17 16:12:47 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ int	main(int argc, char **argv)
 	if (errno == 0)
 	{
 		init_args(argc, argv, &rules);
-		if (init_rules(&rules) == 0)
-			start_simulation(&rules);
-		else
+		if (init_rules(&rules) || start_simulation(&rules))
 		{
 			ft_free_t_philo_array(&rules.philos_array);
 			ft_free_mutex_array(&rules.fork_array);
