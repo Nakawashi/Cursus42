@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:57:20 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/17 12:19:16 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/17 16:13:36 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	error(int type_of_error)
 		printf(" [1] nb of philos\n [2] time to die\n [3] time to eat\n"
 		" [4] time to sleep\n [5] [nb_of_times_they_must_eat]\n");
 	else if (type_of_error == ERR_INVALID_VALUE)
-		printf("Error : values must be an integer and not equal to 0\n");
+		printf("Error : values must be an integer > 0 and not equal to 0\n");
 	else if (type_of_error == ERR_THREAD_CREATION)
 		printf("Error while creating a thread\n");
 	else if (type_of_error == ERR_MUTEX_INIT)
