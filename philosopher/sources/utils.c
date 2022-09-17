@@ -6,27 +6,11 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:57:20 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/16 22:02:37 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/17 12:19:16 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
-
-/* static void	free_ppointers(t_rules *rules)
-{
-	if (rules->philos_array)
-	{
-		printf("Error !!!! philos\n");
-		printf("philo[0] %d\n", rules->philos_array[1].id);
-		free(rules->philos_array);
-	}
-	if (rules->fork_array)
-	{
-		printf("Error !!!! forks\n");
-		free(rules->fork_array);
-	}
-		printf("Error !!!! end\n");
-} */
 
 int	error(int type_of_error)
 {

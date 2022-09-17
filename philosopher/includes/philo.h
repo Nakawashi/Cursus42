@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/16 22:02:37 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/17 12:08:22 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_rules
 	long long		timestamp_in_ms; // t0
 	pthread_mutex_t	*fork_array;
 	pthread_mutex_t	msg_log;
-	t_args			*args;
+	t_args			args;
 	t_philo			*philos_array;
 }	t_rules;
 
@@ -72,8 +72,8 @@ typedef struct s_philo
 }	t_philo;
 
 // mini_libft.c : because entire libft is not allowed
-int	ft_atoi(const char *str);
-int	is_even(int n);
+int		ft_atoi(const char *str);
+int		is_even(int n);
 void	ft_free_t_philo_array(t_philo **array);
 void	ft_free_mutex_array(pthread_mutex_t **array);
 
@@ -90,6 +90,6 @@ long long	get_time_in_ms(void);
 int	start_simulation(t_rules *rules);
 
 // routine.c : la routine, vie de philosophes
-void	*routine(void *philo_array);
+void	*routine(void *philo);
 
 #endif

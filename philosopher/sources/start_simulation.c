@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:30:59 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/16 21:46:06 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/17 12:08:00 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 	Check each philosopher when was his last meal
 	Lock the log print message
 */
-static void	death_comming(t_rules *rules, t_args *args)
+static void	death_comming(t_rules *rules)
 {
 	int		i;
 	t_philo	*p_cpy;
@@ -24,10 +24,10 @@ static void	death_comming(t_rules *rules, t_args *args)
 	while (rules->all_alive)
 	{
 		i = 0;
-		while (i < args->nb_philos)
+		while (i < rules->args.nb_philos)
 		{
 			p_cpy = &rules->philos_array[i]; // pour chaque philosophe (on met une ligne dans la copie)
-			if (get_time_in_ms() - p_cpy->last_meal > args->time_to_die)
+			if (get_time_in_ms() - p_cpy->last_meal > rules->args.time_to_die)
 			{
 				pthread_mutex_lock(&rules->msg_log);
 				rules->all_alive = 0;
@@ -45,28 +45,31 @@ static void	death_comming(t_rules *rules, t_args *args)
 
 /*
 	create thread for each philosopher
+	check death
 	join thread to wait the end of the routines
 	destroy mutexes for fork array
 	destroy mutex about log message
+
+	these pthread functions must return 0 if no errors
 */
 int	start_simulation(t_rules *rules)
 {
 	int		i;
-	t_philo	*p_cpy;
+	t_philo	*philo;
 
-	p_cpy = rules->philos_array;
+	philo = rules->philos_array;
 	rules->timestamp_in_ms = get_time_in_ms();
 	i = -1;
-	while (++i < rules->args->nb_philos)
-		if (pthread_create(&p_cpy[i].thread, NULL, &routine, &p_cpy[i]) != 0)
+	while (++i < rules->args.nb_philos)
+		if (pthread_create(&philo[i].thread, NULL, &routine, &philo[i]) != 0)
 			return (error(ERR_THREAD_CREATION));
-		death_comming(rules, rules->args);
+		death_comming(rules);
 	i = -1;
-	while (++i < rules->args->nb_philos)
-		if (pthread_join(p_cpy[i].thread, NULL) != 0)
+	while (++i < rules->args.nb_philos)
+		if (pthread_join(philo[i].thread, NULL) != 0)
 			return (error(ERR_JOIN_THREAD));
 	i = -1;
-	while (++i < rules->args->nb_philos)
+	while (++i < rules->args.nb_philos)
 		if (pthread_mutex_destroy(&rules->fork_array[i]) != 0)
 			return (error(ERR_MUTEX_DESTROY));
 	if (pthread_mutex_destroy(&rules->msg_log) != 0)
