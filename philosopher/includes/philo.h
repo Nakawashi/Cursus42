@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/17 13:58:32 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/17 15:03:43 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ typedef struct s_args
 	long long	time_to_die;
 	long long	time_to_eat;
 	long long	time_to_sleep;
-	int			nb_of_times_they_must_eat; // nb eat
+	int			nb_of_times_they_must_eat;
 }	t_args;
 
 typedef struct s_rules
 {
 	int				all_alive;
 	int				all_eat;
-	long long		timestamp_in_ms; // t0
+	long long		timestamp_in_ms;
 	pthread_mutex_t	*fork_array;
 	pthread_mutex_t	msg_log;
 	t_args			args;
@@ -72,14 +72,14 @@ typedef struct s_philo
 }	t_philo;
 
 // mini_libft.c : because entire libft is not allowed
-int		ft_atoi(const char *str);
-int		is_even(int n);
-void	ft_free_t_philo_array(t_philo **array);
-void	ft_free_mutex_array(pthread_mutex_t **array);
+int			ft_atoi(const char *str);
+int			is_even(int n);
+void		ft_free_t_philo_array(t_philo **array);
+void		ft_free_mutex_array(pthread_mutex_t **array);
 
 // init.c : init structures' variables
-void	init_args(int argc, char **argv, t_rules *rules);
-int		init_rules(t_rules *rules);
+void		init_args(int argc, char **argv, t_rules *rules);
+int			init_rules(t_rules *rules);
 
 // utils.c : fonctions utiles propre à ce projet
 int			error(int type_of_error);
@@ -87,9 +87,9 @@ int			check_args(int argc, char **argv);
 long long	get_time_in_ms(void);
 
 // start_simulation.c : le démarrage du tout
-int	start_simulation(t_rules *rules);
+int			start_simulation(t_rules *rules);
 
 // routine.c : la routine, vie de philosophes
-void	*routine(void *philo);
+void		*routine(void *philo);
 
 #endif
