@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:30:59 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/17 14:58:12 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/17 16:03:37 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@
 	Lock the log print message
 	current_philo contient l'adresse du premier tableau
 */
-static void	death_comming(t_rules *rules)
+/* static void	death_comming(t_rules *rules)
 {
 	int		i;
 	t_philo	*curr_philo;
 
-	curr_philo = NULL;
 	while (rules->all_alive)
 	{
 		i = 0;
@@ -34,7 +33,7 @@ static void	death_comming(t_rules *rules)
 				pthread_mutex_lock(&rules->msg_log);
 				rules->all_alive = 0;
 				if (rules->all_eat == 0)
-					printf("%lld ms %d has died\n", get_time_in_ms() - rules->timestamp_in_ms, curr_philo[i].id);
+					printf("%lld ms %d has died\n", get_time_in_ms() - rules->timestamp_in_ms, curr_philo->id);
 				pthread_mutex_unlock(&rules->msg_log);
 				return ;
 			}
@@ -42,7 +41,7 @@ static void	death_comming(t_rules *rules)
 		}
 		usleep(50);
 	}
-}
+} */
 
 /*
 	create thread for each philosopher
@@ -66,7 +65,8 @@ int	start_simulation(t_rules *rules)
 	while (++i < rules->args.nb_philos)
 		if (pthread_create(&philo[i].thread, NULL, &routine, &philo[i]) != 0)
 			return (error(ERR_THREAD_CREATION));
-		death_comming(rules);
+	//death_comming(rules);
+	printf("apres death coming\n");
 	i = -1;
 	while (++i < rules->args.nb_philos)
 		if (pthread_join(philo[i].thread, NULL) != 0)
@@ -77,5 +77,6 @@ int	start_simulation(t_rules *rules)
 			return (error(ERR_MUTEX_DESTROY));
 	if (pthread_mutex_destroy(&rules->msg_log) != 0)
 		return (error(ERR_MUTEX_DESTROY));
+	printf("fin func start simulation\n");
 	return (0);
 }
