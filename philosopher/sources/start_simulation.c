@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:30:59 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 22:47:08 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 23:39:38 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	death_comming(t_rules *rules)
 	int		i;
 	t_philo	*philo;
 
-	while (rules->is_dead == 0)
+	while (rules->all_alive)
 	{
 		i = -1;
 		while (++i < rules->args.nb_philos)
@@ -31,10 +31,10 @@ static void	death_comming(t_rules *rules)
 			if (get_time_in_ms() - philo->last_meal > rules->args.time_to_die)
 			{
 				pthread_mutex_lock(&rules->msg_log);
+				rules->all_alive = 0;
 				if (rules->all_meals_eaten == 0)
 					printf("\033[0;31m%lld ms %d has died\033[0m\n",
 					get_time_in_ms() - rules->start_time, philo->id);
-				rules->is_dead = 1;
 				pthread_mutex_unlock(&rules->msg_log);
 				return ;
 			}
@@ -62,17 +62,17 @@ int	start_simulation(t_rules *rules)
 	i = -1;
 	while (++i < rules->args.nb_philos)
 		if (pthread_create(&philo[i].thread, NULL, &routine, &philo[i]) != 0)
-			return (error(ERR_THREAD_CREATION));
+			return (error(rules, ERR_THREAD_CREATION));
 	death_comming(rules);
 	i = -1;
 	while (++i < rules->args.nb_philos)
 		if (pthread_join(philo[i].thread, NULL) != 0)
-			return (error(ERR_JOIN_THREAD));
+			return (error(rules, ERR_JOIN_THREAD));
 	i = -1;
 	while (++i < rules->args.nb_philos)
 		if (pthread_mutex_destroy(&rules->fork_array[i]) != 0)
-			return (error(ERR_MUTEX_DESTROY));
+			return (error(rules, ERR_MUTEX_DESTROY));
 	if (pthread_mutex_destroy(&rules->msg_log) != 0)
-		return (error(ERR_MUTEX_DESTROY));
+		return (error(rules, ERR_MUTEX_DESTROY));
 	return (0);
 }

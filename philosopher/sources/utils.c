@@ -6,21 +6,24 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:57:20 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 21:17:10 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 23:41:54 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-int	error(int type_of_error)
+static void	ft_free(t_rules *rules)
+{
+	if (rules->philos_array)
+		free(rules->philos_array);
+	if (rules->fork_array)
+		free(rules->fork_array);
+}
+
+int	error(t_rules *rules, int type_of_error)
 {
 	if (type_of_error == 0)
 		return (0);
-	if (type_of_error == ERR_NB_ARGUMENTS)
-		printf(" [1] nb of philos\n [2] time to die\n [3] time to eat\n"
-		" [4] time to sleep\n [5] [nb_of_times_they_must_eat]\n");
-	else if (type_of_error == ERR_INVALID_VALUE)
-		printf("Error : values must be an integer > 0 and not equal to 0\n");
 	else if (type_of_error == ERR_THREAD_CREATION)
 		printf("Error while creating a thread\n");
 	else if (type_of_error == ERR_MUTEX_INIT)
@@ -31,6 +34,7 @@ int	error(int type_of_error)
 		printf("Error while joining thread\n");
 	else if (type_of_error == ERR_MUTEX_DESTROY)
 		printf("Error while destoy mutex\n");
+	ft_free(rules);
 	return (1);
 }
 

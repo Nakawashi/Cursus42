@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 22:55:08 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 23:34:15 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_args
 
 typedef struct s_rules
 {
-	int				is_dead;
+	int				all_alive;
 	int				all_meals_eaten;
 	long long		start_time;
 	pthread_mutex_t	*fork_array;
@@ -71,7 +71,7 @@ void		init_args(int argc, char **argv, t_rules *rules);
 int			init_rules(t_rules *rules);
 
 // utils.c : fonctions utiles propre à ce projet
-int			error(int type_of_error);
+int			error(t_rules *rules, int type_of_error);
 int			check_args(int argc, char **argv);
 long long	get_time_in_ms(void);
 

@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 00:44:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 22:44:04 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 23:48:03 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	philo_sleapt(t_philo *philo, long long time)
 	long long tstart;
 
 	tstart = get_time_in_ms();
-	while (philo->rules->is_dead == 0 && philo->rules->all_meals_eaten == 0
+	while (philo->rules->all_alive && philo->rules->all_meals_eaten == 0
 		&& get_time_in_ms() - tstart < time)
 		usleep(50);
 }
@@ -59,7 +59,7 @@ static void	print_log(t_philo *philo, char *s)
 
 	time = get_time_in_ms() - philo->rules->start_time;
 	pthread_mutex_lock(&philo->rules->msg_log);
-	if (philo->rules->is_dead == 0 && philo->rules->all_meals_eaten == 0)
+	if (philo->rules->all_alive && philo->rules->all_meals_eaten == 0)
 		printf("%lld ms %u %s\n", time, philo->id, s);
 	pthread_mutex_unlock(&philo->rules->msg_log);
 }
@@ -82,7 +82,7 @@ static void	philo_eats(t_philo *philo)
 		pthread_mutex_unlock(philo->right_fork);
 	}
 	else
-		while (philo->rules->is_dead == 0)
+		while (philo->rules->all_alive)
 			usleep(50);
 	pthread_mutex_unlock(philo->left_fork);
 }
@@ -99,7 +99,7 @@ void	*routine(void *philo)
 	a_philo->last_meal = get_time_in_ms();
 	if (a_philo->id % 2)
 		usleep(500);
-	while (!a_philo->rules->is_dead && !a_philo->rules->all_meals_eaten)
+	while (a_philo->rules->all_alive && !a_philo->rules->all_meals_eaten)
 	{
 		philo_eats(a_philo);
 		if (check_eat(a_philo->rules))
