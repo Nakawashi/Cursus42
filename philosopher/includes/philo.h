@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/17 15:03:43 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 15:16:35 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,6 @@ enum e_errors
 	ERR_MALLOC,
 	ERR_JOIN_THREAD,
 	ERR_MUTEX_DESTROY,
-};
-
-enum e_philo_state
-{
-	THINKING = 1,
-	EATING,
-	SLEEPING,
-	DEAD
 };
 
 typedef struct s_args
