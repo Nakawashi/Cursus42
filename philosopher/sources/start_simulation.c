@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:30:59 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/17 16:03:37 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 15:24:10 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@
 	Lock the log print message
 	current_philo contient l'adresse du premier tableau
 */
-/* static void	death_comming(t_rules *rules)
+static void	death_comming(t_rules *rules)
 {
 	int		i;
 	t_philo	*curr_philo;
 
 	while (rules->all_alive)
 	{
-		i = 0;
-		while (i < rules->args.nb_philos)
+		i = -1;
+		while (++i < rules->args.nb_philos)
 		{
 			curr_philo = &rules->philos_array[i]; // curr philo contient l'adresse du premier tableau
 			if (get_time_in_ms() - curr_philo->last_meal > rules->args.time_to_die)
@@ -37,11 +37,10 @@
 				pthread_mutex_unlock(&rules->msg_log);
 				return ;
 			}
-			++i;
 		}
 		usleep(50);
 	}
-} */
+}
 
 /*
 	create thread for each philosopher
@@ -60,13 +59,11 @@ int	start_simulation(t_rules *rules)
 
 	philo = rules->philos_array;
 	rules->timestamp_in_ms = get_time_in_ms();
-	printf("0 START\n");
 	i = -1;
 	while (++i < rules->args.nb_philos)
 		if (pthread_create(&philo[i].thread, NULL, &routine, &philo[i]) != 0)
 			return (error(ERR_THREAD_CREATION));
-	//death_comming(rules);
-	printf("apres death coming\n");
+	death_comming(rules);
 	i = -1;
 	while (++i < rules->args.nb_philos)
 		if (pthread_join(philo[i].thread, NULL) != 0)

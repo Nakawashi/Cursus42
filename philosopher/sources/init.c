@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:27:23 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 15:21:03 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 15:22:42 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,6 @@ void	init_args(int argc, char **argv, t_rules *rules)
 	rules->args.nb_of_times_they_must_eat = 0;
 	if (argc == 6)
 		rules->args.nb_of_times_they_must_eat = ft_atoi(argv[5]);
-/* 	printf("\nCheck init args, philos and rules structures : \n");
-	printf("args.nb_philos :	%d\n", rules->args->nb_philos);
-	printf("args.time_to_die :	%lld\n", rules->args->time_to_die);
-	printf("args.time_to_eat :	%lld\n", rules->args->time_to_eat);
-	printf("args.time_to_sleep :	%lld\n", rules->args->time_to_sleep);
-	if (argc == 6)
-		printf("args.nb_of_times_they_must_eat : %d\n\n", rules->args->nb_of_times_they_must_eat);
- */
 }
 
 /*
@@ -81,4 +73,3 @@ int	init_rules(t_rules *rules)
 		return (error(ERR_MUTEX_INIT));
 	return (init_philos(rules));
 }
-

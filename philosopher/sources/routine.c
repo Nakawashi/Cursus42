@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 00:44:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/17 19:05:06 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 13:53:32 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	philo_eats(t_philo *philo)
 	print_log(philo, "has taken a fork left");
 	if (philo->right_fork != philo->left_fork)
 	{
-		pthread_mutex_lock(philo->left_fork);
+		pthread_mutex_lock(philo->right_fork);
 		print_log(philo, "has taken a fork right");
 		philo->last_meal = get_time_in_ms();
 		print_log(philo, "is eating");
@@ -81,13 +81,15 @@ static void	philo_eats(t_philo *philo)
 
 /*
 	Défini un ordre de qui va manger, pas tous en même temps
-	
+
 */
 void	*routine(void *philo)
 {
 	t_philo	*a_philo;
 
-	a_philo = (t_philo *)philo;
+	a_philo = (t_philo *) philo;
+printf("a_philo.id :	%d\n", a_philo->id);
+
 	a_philo->last_meal = get_time_in_ms();
 	if (a_philo->id % 2)
 		usleep(500);
