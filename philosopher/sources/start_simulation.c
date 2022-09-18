@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:30:59 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 15:26:01 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 15:44:34 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,26 @@
 /*
 	Check each philosopher when was his last meal
 	Lock the log print message
-	current_philo contient l'adresse du premier tableau
+	philo is the current_philo contient l'adresse du premier tableau
 */
 static void	death_comming(t_rules *rules)
 {
 	int		i;
-	t_philo	*curr_philo;
+	t_philo	*philo;
 
 	while (rules->all_alive)
 	{
 		i = -1;
 		while (++i < rules->args.nb_philos)
 		{
-			curr_philo = &rules->philos_array[i]; // curr philo contient l'adresse du premier tableau
-			if (get_time_in_ms() - curr_philo->last_meal > rules->args.time_to_die)
+			philo = &rules->philos_array[i];
+			if (get_time_in_ms() - philo->last_meal > rules->args.time_to_die)
 			{
 				pthread_mutex_lock(&rules->msg_log);
 				rules->all_alive = 0;
 				if (rules->all_eat == 0)
-					printf("%lld ms %d has died\n", get_time_in_ms() - rules->timestamp_in_ms, curr_philo->id);
+					printf("\033[0;31m%lld ms %d has died\033[0m\n",
+					get_time_in_ms() - rules->timestamp_in_ms, philo->id);
 				pthread_mutex_unlock(&rules->msg_log);
 				return ;
 			}

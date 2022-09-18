@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 00:44:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 15:26:52 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 15:47:03 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static int	check_eat(t_rules *rules)
 	i = 0;
 	while (i < rules->args.nb_philos)
 	{
-		if (rules->philos_array[i].eat_count < rules->args.nb_of_times_they_must_eat)
+		if (rules->philos_array[i].eat_count
+			< rules->args.nb_of_times_they_must_eat)
 			return (0);
 		++i;
 	}
