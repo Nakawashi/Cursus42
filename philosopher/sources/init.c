@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:27:23 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 15:50:47 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 22:43:24 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,9 @@ int	init_rules(t_rules *rules)
 {
 	rules->philos_array = NULL;
 	rules->fork_array = NULL;
-	rules->all_alive = 1;
-	rules->all_eat = 0;
+	//rules->all_alive = 1;
+	rules->is_dead = 0;
+	rules->all_meals_eaten = 0;
 	rules->philos_array = malloc(sizeof(t_philo) * rules->args.nb_philos);
 	rules->fork_array =
 		malloc(sizeof(pthread_mutex_t) * rules->args.nb_philos);

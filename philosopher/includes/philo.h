@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/05 12:06:14 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 15:16:35 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 22:55:08 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ typedef struct s_args
 
 typedef struct s_rules
 {
-	int				all_alive;
-	int				all_eat;
-	long long		timestamp_in_ms;
+	int				is_dead;
+	int				all_meals_eaten;
+	long long		start_time;
 	pthread_mutex_t	*fork_array;
 	pthread_mutex_t	msg_log;
 	t_args			args;
@@ -65,9 +65,6 @@ typedef struct s_philo
 
 // mini_libft.c : because entire libft is not allowed
 int			ft_atoi(const char *str);
-int			is_even(int n);
-void		ft_free_t_philo_array(t_philo **array);
-void		ft_free_mutex_array(pthread_mutex_t **array);
 
 // init.c : init structures' variables
 void		init_args(int argc, char **argv, t_rules *rules);
@@ -83,5 +80,4 @@ int			start_simulation(t_rules *rules);
 
 // routine.c : la routine, vie de philosophes
 void		*routine(void *philo);
-
 #endif

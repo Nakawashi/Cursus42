@@ -6,12 +6,16 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 00:44:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 15:47:03 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 22:44:04 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
+/*
+	Dans le cas ou on a mis l'argument nb of times they must eat
+	Retourne 1 si le compte est bon
+*/
 static int	check_eat(t_rules *rules)
 {
 	int	i;
@@ -26,7 +30,7 @@ static int	check_eat(t_rules *rules)
 			return (0);
 		++i;
 	}
-	rules->all_eat = 1;
+	rules->all_meals_eaten = 1;
 	return (1);
 }
 
@@ -41,7 +45,7 @@ static void	philo_sleapt(t_philo *philo, long long time)
 	long long tstart;
 
 	tstart = get_time_in_ms();
-	while (philo->rules->all_alive && philo->rules->all_eat == 0
+	while (philo->rules->is_dead == 0 && philo->rules->all_meals_eaten == 0
 		&& get_time_in_ms() - tstart < time)
 		usleep(50);
 }
@@ -53,18 +57,21 @@ static void	print_log(t_philo *philo, char *s)
 {
 	long long	time;
 
-	time = get_time_in_ms() - philo->rules->timestamp_in_ms;
+	time = get_time_in_ms() - philo->rules->start_time;
 	pthread_mutex_lock(&philo->rules->msg_log);
-	if (philo->rules->all_alive && philo->rules->all_eat == 0)
+	if (philo->rules->is_dead == 0 && philo->rules->all_meals_eaten == 0)
 		printf("%lld ms %u %s\n", time, philo->id, s);
 	pthread_mutex_unlock(&philo->rules->msg_log);
 }
 
+/*
+	l73 : si 1 seul philo il prend pas de 2nd fourchette
+*/
 static void	philo_eats(t_philo *philo)
 {
 	pthread_mutex_lock(philo->left_fork);
 	print_log(philo, "has taken a fork left");
-	if (philo->right_fork != philo->left_fork)
+	if (philo->rules->args.nb_philos > 1)
 	{
 		pthread_mutex_lock(philo->right_fork);
 		print_log(philo, "has taken a fork right");
@@ -75,14 +82,14 @@ static void	philo_eats(t_philo *philo)
 		pthread_mutex_unlock(philo->right_fork);
 	}
 	else
-		while (philo->rules->all_alive)
+		while (philo->rules->is_dead == 0)
 			usleep(50);
 	pthread_mutex_unlock(philo->left_fork);
 }
 
 /*
 	Défini un ordre de qui va manger, pas tous en même temps
-
+	l93, 94 : évite au max les deadlocks
 */
 void	*routine(void *philo)
 {
@@ -92,7 +99,7 @@ void	*routine(void *philo)
 	a_philo->last_meal = get_time_in_ms();
 	if (a_philo->id % 2)
 		usleep(500);
-	while (a_philo->rules->all_alive && !a_philo->rules->all_eat)
+	while (!a_philo->rules->is_dead && !a_philo->rules->all_meals_eaten)
 	{
 		philo_eats(a_philo);
 		if (check_eat(a_philo->rules))

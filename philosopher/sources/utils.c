@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:57:20 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/17 16:13:36 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 21:17:10 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int	check_args(int argc, char **argv)
 }
 
 /*
-	Retourne la différence de temps entre "maintenant" et prog_start
+	Retourne "maintenant" en ms
+	-> unsigned long
 */
 long long	get_time_in_ms(void)
 {

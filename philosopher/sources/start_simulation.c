@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:30:59 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 15:44:34 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 22:47:08 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	death_comming(t_rules *rules)
 	int		i;
 	t_philo	*philo;
 
-	while (rules->all_alive)
+	while (rules->is_dead == 0)
 	{
 		i = -1;
 		while (++i < rules->args.nb_philos)
@@ -31,10 +31,10 @@ static void	death_comming(t_rules *rules)
 			if (get_time_in_ms() - philo->last_meal > rules->args.time_to_die)
 			{
 				pthread_mutex_lock(&rules->msg_log);
-				rules->all_alive = 0;
-				if (rules->all_eat == 0)
+				if (rules->all_meals_eaten == 0)
 					printf("\033[0;31m%lld ms %d has died\033[0m\n",
-					get_time_in_ms() - rules->timestamp_in_ms, philo->id);
+					get_time_in_ms() - rules->start_time, philo->id);
+				rules->is_dead = 1;
 				pthread_mutex_unlock(&rules->msg_log);
 				return ;
 			}
@@ -57,9 +57,8 @@ int	start_simulation(t_rules *rules)
 	int		i;
 	t_philo	*philo;
 
-
 	philo = rules->philos_array;
-	rules->timestamp_in_ms = get_time_in_ms();
+	rules->start_time = get_time_in_ms();
 	i = -1;
 	while (++i < rules->args.nb_philos)
 		if (pthread_create(&philo[i].thread, NULL, &routine, &philo[i]) != 0)

@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 13:31:39 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 15:22:58 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 22:53:54 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ int	main(int argc, char **argv)
 	init_args(argc, argv, &rules);
 	if (init_rules(&rules) || start_simulation(&rules))
 	{
-		ft_free_t_philo_array(&rules.philos_array);
-		ft_free_mutex_array(&rules.fork_array);
+		free(&rules.philos_array);
+		free(&rules.fork_array);
 		return (1);
 	}
+	free(&rules.philos_array);
+	free(&rules.fork_array);
 	return (0);
 }
