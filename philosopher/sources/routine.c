@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 00:44:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 13:53:32 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 15:26:52 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,6 @@ void	*routine(void *philo)
 	t_philo	*a_philo;
 
 	a_philo = (t_philo *) philo;
-printf("a_philo.id :	%d\n", a_philo->id);
-
 	a_philo->last_meal = get_time_in_ms();
 	if (a_philo->id % 2)
 		usleep(500);
