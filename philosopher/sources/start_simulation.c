@@ -6,7 +6,7 @@
 /*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:30:59 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 15:24:10 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/18 15:26:01 by nakawashi        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,5 @@ int	start_simulation(t_rules *rules)
 			return (error(ERR_MUTEX_DESTROY));
 	if (pthread_mutex_destroy(&rules->msg_log) != 0)
 		return (error(ERR_MUTEX_DESTROY));
-	printf("fin func start simulation\n");
 	return (0);
 }
