@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 16:57:20 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 23:41:54 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/19 11:36:08 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,5 @@ long long	get_time_in_ms(void)
 	struct timeval	tp;
 
 	gettimeofday(&tp, NULL);
-	return (tp.tv_sec * 1000 +tp.tv_usec / 1000);
+	return (tp.tv_sec * 1000 + tp.tv_usec / 1000);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 00:44:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 23:48:03 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/19 13:18:34 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,13 @@ static int	check_eat(t_rules *rules)
 }
 
 /*
-	besoin de comprendre
 	temps de dormir, on attend tant que tout le monde est vivant
 	tous n'ont pas encore mangé
 	qu'on dépasse pas le temps donné en argument argv[4]
 */
-static void	philo_sleapt(t_philo *philo, long long time)
+static void	philo_slept(t_philo *philo, long long time)
 {
-	long long tstart;
+	long long	tstart;
 
 	tstart = get_time_in_ms();
 	while (philo->rules->all_alive && philo->rules->all_meals_eaten == 0
@@ -52,6 +51,7 @@ static void	philo_sleapt(t_philo *philo, long long time)
 
 /*
 	print un message de log selon l'état, au moment ou la fonction est appelée
+	mais que si tout le monde est encore vivant et le nb de repas donnés
 */
 static void	print_log(t_philo *philo, char *s)
 {
@@ -65,7 +65,7 @@ static void	print_log(t_philo *philo, char *s)
 }
 
 /*
-	l73 : si 1 seul philo il prend pas de 2nd fourchette
+	l74 : si 1 seul philo il prend pas de 2nd fourchette
 */
 static void	philo_eats(t_philo *philo)
 {
@@ -89,7 +89,7 @@ static void	philo_eats(t_philo *philo)
 
 /*
 	Défini un ordre de qui va manger, pas tous en même temps
-	l93, 94 : évite au max les deadlocks
+	l100, 101 : évite au max les deadlocks
 */
 void	*routine(void *philo)
 {

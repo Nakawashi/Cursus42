@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 14:27:23 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 23:37:03 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/19 11:35:00 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static int	init_philos(t_rules *rules)
 		rules->philos_array[i].eat_count = 0;
 		rules->philos_array[i].last_meal = get_time_in_ms();
 		rules->philos_array[i].left_fork = &rules->fork_array[i];
-		rules->philos_array[i].right_fork =
-			&rules->fork_array[(i + 1) % rules->args.nb_philos];
+		rules->philos_array[i].right_fork
+			= &rules->fork_array[(i + 1) % rules->args.nb_philos];
 		rules->philos_array[i].rules = rules;
 		if (pthread_mutex_init(&rules->fork_array[i], NULL))
 			return (error(rules, ERR_MUTEX_INIT));
@@ -67,8 +67,8 @@ int	init_rules(t_rules *rules)
 	rules->all_alive = 1;
 	rules->all_meals_eaten = 0;
 	rules->philos_array = malloc(sizeof(t_philo) * rules->args.nb_philos);
-	rules->fork_array =
-		malloc(sizeof(pthread_mutex_t) * rules->args.nb_philos);
+	rules->fork_array
+		= malloc(sizeof(pthread_mutex_t) * rules->args.nb_philos);
 	if (!rules->philos_array || !rules->fork_array)
 		return (error(rules, ERR_MALLOC));
 	if (pthread_mutex_init(&rules->msg_log, NULL) != 0)

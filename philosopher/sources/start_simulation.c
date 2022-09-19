@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_simulation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nakawashi <nakawashi@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 11:30:59 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/18 23:39:38 by nakawashi        ###   ########.fr       */
+/*   Updated: 2022/09/19 11:35:40 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	death_comming(t_rules *rules)
 				rules->all_alive = 0;
 				if (rules->all_meals_eaten == 0)
 					printf("\033[0;31m%lld ms %d has died\033[0m\n",
-					get_time_in_ms() - rules->start_time, philo->id);
+						get_time_in_ms() - rules->start_time, philo->id);
 				pthread_mutex_unlock(&rules->msg_log);
 				return ;
 			}
