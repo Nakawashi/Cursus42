@@ -50,7 +50,7 @@ void	exec_cmd(char **cmd, char *path, char **env, int last_cmd)
 		if (!last_cmd)
 			if (dup2(fd[1], 1) == -1) print_err("error: fatal\n", 1);
 		execve(path, cmd, env);
-		ft_perror("error: cannot execute ", cmd[0]);
+		ft_perror("error: cannot execute ", path);
 		exit(1);
 	}
 }
