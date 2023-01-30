@@ -6,7 +6,7 @@
 /*   By: lgenevey <lgenevey@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 00:44:13 by nakawashi         #+#    #+#             */
-/*   Updated: 2022/09/19 13:18:34 by lgenevey         ###   ########.fr       */
+/*   Updated: 2022/09/19 11:50:54 by lgenevey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	check_eat(t_rules *rules)
 	tous n'ont pas encore mangé
 	qu'on dépasse pas le temps donné en argument argv[4]
 */
-static void	philo_slept(t_philo *philo, long long time)
+static void	philo_sleapt(t_philo *philo, long long time)
 {
 	long long	tstart;
 

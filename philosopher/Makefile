@@ -23,7 +23,7 @@ OBJS	=	$(SRCS:.c=.o)
 CC		=	gcc
 RM		=	rm -f
 
-DEBUG	=	-fsanitize=address -g
+DEBUG	=	-fsanitize=thread -g
 #DEBUG	=	-g3
 CFLAGS	=	-Wall -Wextra -Werror
 INCLUDE	=	-L
@@ -38,7 +38,7 @@ NONE	= \033[0m
 all:	$(NAME)
 
 $(NAME)	: $(OBJS)
-	@$(CC) $(OBJS) $(CFLAGS) $(DEBUG) -I $(INCLUDE) -o $(NAME)
+	$(CC) $(OBJS) $(CFLAGS) $(DEBUG) -I $(INCLUDE) -o $(NAME)
 	@printf "$(GREEN) $(NAME) ready.\n$(NONE)"
 
 norm:
