@@ -37,13 +37,13 @@ void send_all(int fd)
 int main(int ac, char **av)
 {
 	if (ac != 2)
-		exit_error("err");
+		exit_error("Wrong number of arguments\n");
 
 	int port = atoi(av[1]);
 	struct sockaddr_in servaddr;
 	int server_socket = socket(AF_INET, SOCK_STREAM, 0);
 	if (server_socket == -1)
-		exit_error("fatal");
+		exit_error("Fatal error\n");
 	bzero(&servaddr, sizeof(servaddr));
 
 	servaddr.sin_family = AF_INET;
@@ -51,9 +51,9 @@ int main(int ac, char **av)
 	servaddr.sin_port = htons(port);
 
 	if ((bind(server_socket, (struct sockaddr *)&servaddr, sizeof(servaddr))) != 0)
-		exit_error("fatal");
+		exit_error("Fatal error\n");
 	if (listen(server_socket, 128) != 0)
-		exit_error("fatal");
+		exit_error("Fatal error\n");
 
 	max = server_socket;
 	FD_SET(server_socket, &active);
